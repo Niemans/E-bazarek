@@ -402,6 +402,12 @@
             <DependentOn>ekran_startowy.h</DependentOn>
             <BuildOrder>1</BuildOrder>
         </CppCompile>
+        <CppCompile Include="glowne_okno.cpp">
+            <Form>Forma_glowne_okno</Form>
+            <FormType>fmx</FormType>
+            <DependentOn>glowne_okno.h</DependentOn>
+            <BuildOrder>4</BuildOrder>
+        </CppCompile>
         <PCHCompile Include="Project1PCH1.h">
             <BuildOrder>2</BuildOrder>
             <PCH>true</PCH>
@@ -416,6 +422,9 @@
         <FormResources Include="ekran_startowy.fmx"/>
         <FormResources Include="ekran_startowy.LgXhdpiTb.fmx"/>
         <FormResources Include="ekran_startowy.LgXhdpiPh.fmx"/>
+        <FormResources Include="glowne_okno.fmx"/>
+        <FormResources Include="glowne_okno.LgXhdpiTb.fmx"/>
+        <FormResources Include="glowne_okno.LgXhdpiPh.fmx"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

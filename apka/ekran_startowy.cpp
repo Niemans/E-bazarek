@@ -3,6 +3,7 @@
 #include <fmx.h>
 #pragma hdrstop
 
+#include "glowne_okno.h"
 #include "ekran_startowy.h"
 #include "zapomniane_haslo.h"
 //---------------------------------------------------------------------------
@@ -38,7 +39,15 @@ void __fastcall TForma_ekran_startowy::Button1Click(TObject *Sender)
 	}
 	else
 	{
+
 		Text3->Visible = false;
+		if (/*email i has³o s¹ razem w bazie*/ true) {
+			Forma_glowne_okno->Visible = true;
+			Jasiu->Text = "";
+            Jasiu2->Text = "";
+			Forma_ekran_startowy->Visible = false;
+		}
+
 	}
 }
 //---------------------------------------------------------------------------
@@ -73,6 +82,7 @@ void __fastcall TForma_ekran_startowy::CheckBox1Click(TObject *Sender)
 
 void __fastcall TForma_ekran_startowy::Text5Click(TObject *Sender)
 {
+	Jasiu2->Text = "";
 	Forma_zapomniane_haslo->Visible = true;
 	Forma_ekran_startowy->Visible = false;
 }
