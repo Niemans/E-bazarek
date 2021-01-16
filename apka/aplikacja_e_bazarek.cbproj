@@ -201,23 +201,29 @@
             <DependentOn>ekran_ebazarek.h</DependentOn>
             <BuildOrder>5</BuildOrder>
         </CppCompile>
+        <CppCompile Include="ekran_panelu_admina.cpp">
+            <Form>Form1</Form>
+            <FormType>fmx</FormType>
+            <DependentOn>ekran_panelu_admina.h</DependentOn>
+            <BuildOrder>7</BuildOrder>
+        </CppCompile>
         <CppCompile Include="ekran_przedmiotu.cpp">
             <Form>Form_ekran_przedmiotu</Form>
             <FormType>fmx</FormType>
             <DependentOn>ekran_przedmiotu.h</DependentOn>
             <BuildOrder>6</BuildOrder>
         </CppCompile>
+        <CppCompile Include="ekran_rejestracja.cpp">
+            <Form>Forma_rejestracja</Form>
+            <FormType>fmx</FormType>
+            <DependentOn>ekran_rejestracja.h</DependentOn>
+            <BuildOrder>8</BuildOrder>
+        </CppCompile>
         <CppCompile Include="ekran_startowy.cpp">
             <Form>Forma_ekran_startowy</Form>
             <FormType>fmx</FormType>
             <DependentOn>ekran_startowy.h</DependentOn>
             <BuildOrder>1</BuildOrder>
-        </CppCompile>
-        <CppCompile Include="glowne_okno.cpp">
-            <Form>Forma_glowne_okno</Form>
-            <FormType>fmx</FormType>
-            <DependentOn>glowne_okno.h</DependentOn>
-            <BuildOrder>4</BuildOrder>
         </CppCompile>
         <PCHCompile Include="Project1PCH1.h">
             <BuildOrder>2</BuildOrder>
@@ -229,19 +235,14 @@
             <DependentOn>zapomniane_haslo.h</DependentOn>
             <BuildOrder>3</BuildOrder>
         </CppCompile>
-        <FormResources Include="glowne_okno.fmx"/>
+        <FormResources Include="ekran_startowy.fmx"/>
         <FormResources Include="zapomniane_haslo.fmx"/>
-        <FormResources Include="zapomniane_haslo.LgXhdpiTb.fmx"/>
-        <FormResources Include="zapomniane_haslo.LgXhdpiPh.fmx"/>
+        <FormResources Include="ekran_rejestracja.fmx"/>
         <FormResources Include="ekran_ebazarek.fmx"/>
         <FormResources Include="ekran_ebazarek.XLgXhdpiTb.fmx"/>
         <FormResources Include="ekran_ebazarek.LgXhdpiPh.fmx"/>
         <FormResources Include="ekran_ebazarek.NmXhdpiPh.fmx"/>
-        <FormResources Include="ekran_startowy.fmx"/>
-        <FormResources Include="ekran_startowy.LgXhdpiTb.fmx"/>
-        <FormResources Include="ekran_startowy.LgXhdpiPh.fmx"/>
-        <FormResources Include="ekran_startowy.XLgXhdpiTb.fmx"/>
-        <FormResources Include="ekran_startowy.NmXhdpiPh.fmx"/>
+        <FormResources Include="ekran_panelu_admina.fmx"/>
         <FormResources Include="ekran_przedmiotu.fmx"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
