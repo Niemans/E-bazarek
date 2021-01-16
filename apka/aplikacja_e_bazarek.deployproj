@@ -4,7 +4,7 @@
         <ProjectFileVersion>12</ProjectFileVersion>
     </ProjectExtensions>
     <PropertyGroup>
-        <DeviceId Condition="'$(Platform)'=='Android'">9WVDU18519009212</DeviceId>
+        <DeviceId Condition="'$(Platform)'=='Android'"/>
     </PropertyGroup>
     <ItemGroup Condition="'$(Platform)'=='Win32'">
         <DeployFile Include="$(BDS)\bin\cc32c260.dll" Condition="'$(DynamicRTL)'=='true' And '$(Multithreaded)'!='true'">

@@ -4,6 +4,7 @@
 #pragma hdrstop
 
 #include "ekran_ebazarek.h"
+#include "ekran_przedmiotu.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma resource "*.fmx"
@@ -37,3 +38,15 @@ void __fastcall TForma_ekran_bazarek::WczytajDane()
 	Grid->Cells[1][i] = "50";
 	}
 }
+
+
+
+void __fastcall TForma_ekran_bazarek::grid_colNazwaTap(TObject *Sender, const TPointF &Point)
+
+{
+	TForm_ekran_przedmiotu *Form_ekran_przedmiotu = new TForm_ekran_przedmiotu(this);
+	Form_ekran_przedmiotu->ShowModal();
+	delete Form_ekran_przedmiotu;
+}
+//---------------------------------------------------------------------------
+

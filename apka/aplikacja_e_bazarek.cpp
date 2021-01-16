@@ -7,10 +7,11 @@
 #pragma hdrstop
 #include <System.StartUpCopy.hpp>
 //---------------------------------------------------------------------------
-USEFORM("zapomniane_haslo.cpp", Forma_zapomniane_haslo);
 USEFORM("glowne_okno.cpp", Forma_glowne_okno);
-USEFORM("ekran_startowy.cpp", Forma_ekran_startowy);
+USEFORM("zapomniane_haslo.cpp", Forma_zapomniane_haslo);
 USEFORM("ekran_ebazarek.cpp", Forma_ekran_bazarek);
+USEFORM("ekran_startowy.cpp", Forma_ekran_startowy);
+USEFORM("ekran_przedmiotu.cpp", Form_ekran_przedmiotu);
 //---------------------------------------------------------------------------
 extern "C" int FMXmain()
 {
@@ -19,6 +20,7 @@ extern "C" int FMXmain()
 		Application->Initialize();
 //		Application->CreateForm(__classid(TForma_ekran_startowy), &Forma_ekran_startowy);
 		Application->CreateForm(__classid(TForma_ekran_bazarek), &Forma_ekran_bazarek);
+		Application->CreateForm(__classid(TForm_ekran_przedmiotu), &Form_ekran_przedmiotu);
 		Application->Run();
 	}
 	catch (Exception &exception)

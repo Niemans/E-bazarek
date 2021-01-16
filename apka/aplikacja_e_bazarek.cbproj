@@ -201,6 +201,12 @@
             <DependentOn>ekran_ebazarek.h</DependentOn>
             <BuildOrder>5</BuildOrder>
         </CppCompile>
+        <CppCompile Include="ekran_przedmiotu.cpp">
+            <Form>Form_ekran_przedmiotu</Form>
+            <FormType>fmx</FormType>
+            <DependentOn>ekran_przedmiotu.h</DependentOn>
+            <BuildOrder>6</BuildOrder>
+        </CppCompile>
         <CppCompile Include="ekran_startowy.cpp">
             <Form>Forma_ekran_startowy</Form>
             <FormType>fmx</FormType>
@@ -236,6 +242,7 @@
         <FormResources Include="ekran_startowy.LgXhdpiPh.fmx"/>
         <FormResources Include="ekran_startowy.XLgXhdpiTb.fmx"/>
         <FormResources Include="ekran_startowy.NmXhdpiPh.fmx"/>
+        <FormResources Include="ekran_przedmiotu.fmx"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

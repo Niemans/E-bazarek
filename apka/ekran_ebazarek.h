@@ -17,20 +17,22 @@
 #include <FMX.Grid.Style.hpp>
 #include <FMX.ScrollBox.hpp>
 #include <System.Rtti.hpp>
+#include <FMX.Objects.hpp>
 //---------------------------------------------------------------------------
 class TForma_ekran_bazarek : public TForm
 {
 __published:	// IDE-managed Components
 	TPanel *Panel1;
-	TButton *btn_menu;
 	TImageList *ImageList1;
 	TEdit *edit_szukaj;
-	TButton *btn_szukaj;
 	TGestureManager *GestureManager1;
 	TStringGrid *Grid;
 	TStringColumn *grid_colNazwa;
 	TCurrencyColumn *grid_colKwota;
+	TImage *Image1;
+	TImage *Image2;
 	void __fastcall btn_szukajClick(TObject *Sender);
+	void __fastcall grid_colNazwaTap(TObject *Sender, const TPointF &Point);
 private:	// User declarations
     void __fastcall WczytajDane();
 public:		// User declarations
