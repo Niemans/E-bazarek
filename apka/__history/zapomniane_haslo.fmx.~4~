@@ -57,7 +57,6 @@ object Forma_zapomniane_haslo: TForma_zapomniane_haslo
     Text = 'Powr'#243't'
     TextSettings.Font.Size = 20.000000000000000000
     TintColor = claGray
-    OnClick = Button3Click
     object ColorAnimation2: TColorAnimation
       AutoReverse = True
       Enabled = True

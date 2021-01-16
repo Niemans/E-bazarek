@@ -18,6 +18,11 @@ __fastcall TForma_zapomniane_haslo::TForma_zapomniane_haslo(TComponent* Owner)
 {
 }
 //---------------------------------------------------------------------------
+void __fastcall TForma_zapomniane_haslo::Button3Click(TObject *Sender)
+{
+   return;
+}
+//---------------------------------------------------------------------------
 
 
 void __fastcall TForma_zapomniane_haslo::Button1Click(TObject *Sender)
@@ -74,12 +79,6 @@ void __fastcall TForma_zapomniane_haslo::FormClose(TObject *Sender, TCloseAction
 //   Forma_ekran_startowy->Visible = true;
 
     Close();
-}
-//---------------------------------------------------------------------------
-
-void __fastcall TForma_zapomniane_haslo::Button3Click(TObject *Sender)
-{
- ModalResult = 1;
 }
 //---------------------------------------------------------------------------
 

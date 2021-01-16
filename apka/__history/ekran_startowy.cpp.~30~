@@ -94,12 +94,16 @@ void __fastcall TForma_ekran_startowy::Text5Click(TObject *Sender)
 	delete frm_zapomniane_haslo;
 
 	Forma_ekran_startowy->Visible = true;
+
 }
 //---------------------------------------------------------------------------
 
 
 void __fastcall TForma_ekran_startowy::FormClose(TObject *Sender, TCloseAction &Action)
+
 {
+
+	delete Forma_ekran_startowy;
 ;
 }
 //---------------------------------------------------------------------------

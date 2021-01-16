@@ -35,13 +35,14 @@ __published:	// IDE-managed Components
 	TEdit *haslo_jasiu4;
 	TText *Text7;
 	TEdit *haslo_jasiu5;
+	void __fastcall Button3Click(TObject *Sender);
 	void __fastcall Button1Click(TObject *Sender);
 	void __fastcall Button2Click(TObject *Sender);
 	void __fastcall FormClose(TObject *Sender, TCloseAction &Action);
-	void __fastcall Button3Click(TObject *Sender);
 private:	// User declarations
 public:		// User declarations
 	__fastcall TForma_zapomniane_haslo(TComponent* Owner);
+	TForma_zapomniane_haslo();
 };
 //---------------------------------------------------------------------------
 extern PACKAGE TForma_zapomniane_haslo *Forma_zapomniane_haslo;

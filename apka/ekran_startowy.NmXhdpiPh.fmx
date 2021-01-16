@@ -1,49 +1,24 @@
-inherited Forma_ekran_startowy_LgXhdpiPh: TForma_ekran_startowy_LgXhdpiPh
-  ClientHeight = 695
-  ClientWidth = 450
-  DesignerMasterStyle = 3
-  inherited Text1: TText
-    Position.Y = 120.000000000000000000
-  end
-  inherited Text2: TText
-    Position.Y = 176.000000000000000000
-  end
-  inherited Jasiu2: TEdit
-    Position.Y = 184.000000000000000000
-    Size.Width = 297.000000000000000000
-    inherited Text4: TText
-      Size.Width = 144.800704956054700000
-    end
-    inherited Text5: TText
-      Position.X = 130.945678710937500000
-      Size.Width = 93.939285278320310000
-    end
-  end
-  inherited Jasiu: TEdit
-    Position.Y = 128.000000000000000000
-    Size.Width = 305.000000000000000000
-  end
+inherited Forma_ekran_startowy_NmXhdpiPh: TForma_ekran_startowy_NmXhdpiPh
+  ClientHeight = 615
+  DesignerMasterStyle = 0
   inherited CheckBox1: TCheckBox
-    Size.Width = 417.000000000000000000
-    Text = 'Poka'#380', '#380'e nie jeste'#347' robotem'
+    Position.Y = 213.554412841796900000
+    Size.Height = 41.244415283203130000
   end
   inherited Button1: TButton
-    Position.Y = 305.000000000000000000
-    Size.Width = 473.000000000000000000
-    Size.Height = 74.000000000000000000
+    Position.Y = 271.296569824218800000
+    Size.Height = 66.907592773437500000
     inherited Text3: TText
-      Position.X = 8.000000000000000000
-      Position.Y = -25.000000000000000000
-      Size.Width = 449.000000000000000000
-      Size.Height = 26.000000000000000000
+      Position.Y = -21.997018814086910000
+      Size.Height = 27.578239440917970000
     end
   end
   inherited Button2: TButton
-    Position.X = -72.000000000000000000
-    Position.Y = 416.000000000000000000
-    Size.Width = 585.000000000000000000
+    Position.Y = 366.617004394531300000
+    Size.Height = 52.242919921875000000
     inherited Text6: TText
-      Size.Width = 585.000000000000000000
+      Position.Y = -21.997018814086910000
+      Size.Height = 22.913560867309570000
     end
   end
   inherited Image1: TImage
@@ -315,12 +290,10 @@ inherited Forma_ekran_startowy_LgXhdpiPh: TForma_ekran_startowy_LgXhdpiPh
           FFAF0FD76E83B0DAD3166C9C70CEFB19FCDAEF64EBCAFF032654DBF94277B786
           0000000049454E44AE426082}
       end>
-    Position.Y = 8.000000000000000000
-    Size.Width = 450.000000000000000000
-    Size.Height = 97.000000000000000000
+    Position.Y = 7.332340240478516000
+    Size.Height = 81.572280883789060000
   end
   inherited Button3: TButton
-    Position.Y = 640.000000000000000000
-    Size.Width = 450.000000000000000000
+    Position.Y = 560.000000000000000000
   end
 end

@@ -17,8 +17,8 @@ extern "C" int FMXmain()
 	{
 		Application->Initialize();
 		Application->CreateForm(__classid(TForma_ekran_startowy), &Forma_ekran_startowy);
-//		Application->CreateForm(__classid(TForma_zapomniane_haslo), &Forma_zapomniane_haslo);
-//		Application->CreateForm(__classid(TForma_glowne_okno), &Forma_glowne_okno);
+		Application->CreateForm(__classid(TForma_zapomniane_haslo), &Forma_zapomniane_haslo);
+		Application->CreateForm(__classid(TForma_glowne_okno), &Forma_glowne_okno);
 		Application->Run();
 	}
 	catch (Exception &exception)

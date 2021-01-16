@@ -77,9 +77,3 @@ void __fastcall TForma_zapomniane_haslo::FormClose(TObject *Sender, TCloseAction
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TForma_zapomniane_haslo::Button3Click(TObject *Sender)
-{
- ModalResult = 1;
-}
-//---------------------------------------------------------------------------
-

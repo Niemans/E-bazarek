@@ -1,76 +1,20 @@
-object Forma_zapomniane_haslo: TForma_zapomniane_haslo
-  Left = 0
-  Top = 0
-  Caption = 'Forma_zapomniane_haslo'
-  ClientHeight = 700
-  ClientWidth = 400
-  FormFactor.Width = 320
-  FormFactor.Height = 480
-  FormFactor.Devices = [Desktop]
-  OnClose = FormClose
-  DesignerMasterStyle = 0
-  object Button1: TButton
-    Align = Scale
-    StyledSettings = [Style, FontColor]
-    Padding.Top = 30.000000000000000000
-    Padding.Bottom = 30.000000000000000000
-    Position.X = -4.000000000000000000
-    Position.Y = 252.000000000000000000
-    Size.Width = 408.000000000000000000
-    Size.Height = 76.000000000000000000
-    Size.PlatformDefault = False
-    TabOrder = 2
-    Text = 'Wy'#347'lij wiadomo'#347#263' na email'
-    TextSettings.Font.Family = 'Georgia'
-    TextSettings.Font.Size = 20.000000000000000000
-    TintColor = claGreen
-    OnClick = Button1Click
-    object Text3: TText
-      Align = Scale
-      Margins.Bottom = 10.000000000000000000
-      Position.Y = -24.986303329467770000
-      Size.Width = 408.000000000000000000
-      Size.Height = 32.000000000000000000
-      Size.PlatformDefault = False
-      TextSettings.FontColor = claRed
-    end
-    object ColorAnimation1: TColorAnimation
-      AutoReverse = True
-      Enabled = True
-      Duration = 4.000000000000000000
-      Interpolation = Sinusoidal
-      Loop = True
-      PropertyName = 'TintColor'
-      StartValue = claGreen
-      StartFromCurrent = True
-      StopValue = claLimegreen
+inherited Forma_zapomniane_haslo_LgXhdpiPh: TForma_zapomniane_haslo_LgXhdpiPh
+  ClientHeight = 695
+  ClientWidth = 450
+  DesignerMasterStyle = 3
+  inherited Button1: TButton
+    Position.X = -8.000000000000000000
+    Position.Y = 248.000000000000000000
+    Size.Width = 465.000000000000000000
+    inherited Text3: TText
+      Size.Width = 465.000000000000000000
     end
   end
-  object Button3: TButton
-    Align = MostBottom
-    StyledSettings = [Family, Style, FontColor]
-    Position.Y = 645.000000000000000000
-    Size.Width = 400.000000000000000000
-    Size.Height = 55.000000000000000000
-    Size.PlatformDefault = False
-    TabOrder = 4
-    Text = 'Powr'#243't'
-    TextSettings.Font.Size = 20.000000000000000000
-    TintColor = claGray
-    OnClick = Button3Click
-    object ColorAnimation2: TColorAnimation
-      AutoReverse = True
-      Enabled = True
-      Duration = 8.000000000000000000
-      Interpolation = Sinusoidal
-      Loop = True
-      PropertyName = 'TintColor'
-      StartValue = claGray
-      StartFromCurrent = True
-      StopValue = claDarkgray
-    end
+  inherited Button3: TButton
+    Position.Y = 640.000000000000000000
+    Size.Width = 450.000000000000000000
   end
-  object Image1: TImage
+  inherited Image1: TImage
     MultiResBitmap = <
       item
         Width = 73
@@ -339,122 +283,55 @@ object Forma_zapomniane_haslo: TForma_zapomniane_haslo
           51FFBF3E5CBB0DC26A4F5BB071DC39EF67F06BBF97AD2BFF0F5ADFDBFC2EF933
           1D0000000049454E44AE426082}
       end>
-    Align = Scale
-    Position.Y = 8.345752716064453000
-    Size.Width = 400.000030517578100000
-    Size.Height = 92.846496582031250000
-    Size.PlatformDefault = False
+    Position.Y = 8.000000000000000000
+    Size.Width = 450.000000000000000000
+    Size.Height = 97.000000000000000000
   end
-  object Button2: TButton
-    Align = Scale
-    StyledSettings = [Family, Style]
-    Position.Y = 548.000000000000000000
-    Size.Width = 400.000000000000000000
-    Size.Height = 73.000000000000000000
-    Size.PlatformDefault = False
-    TabOrder = 10
-    Text = 'Zmie'#324' has'#322'o'
-    TextSettings.Font.Size = 20.000000000000000000
-    TintColor = claGreen
-    OnClick = Button2Click
-    object ColorAnimation3: TColorAnimation
-      AutoReverse = True
-      Enabled = True
-      Duration = 4.000000000000000000
-      Interpolation = Sinusoidal
-      Loop = True
-      PropertyName = 'TintColor'
-      StartValue = claGreen
-      StartFromCurrent = True
-      StopValue = claLimegreen
-    end
-    object Text6: TText
-      Align = Scale
-      Margins.Bottom = 10.000000000000000000
-      Position.Y = -24.000000000000000000
-      Size.Width = 401.000000000000000000
-      Size.Height = 25.000000000000000000
-      Size.PlatformDefault = False
-      TextSettings.FontColor = claRed
+  inherited Button2: TButton
+    Position.Y = 544.085693359375000000
+    Size.Width = 450.000000000000000000
+    Size.Height = 72.478576660156250000
+    inherited Text6: TText
+      Position.Y = -23.828573226928710000
+      Size.Width = 451.125000000000000000
+      Size.Height = 24.750003814697270000
     end
   end
-  object Text1: TText
-    Position.X = 80.000000000000000000
-    Position.Y = 112.000000000000000000
-    Text = 'Email:'
+  inherited Text1: TText
+    Position.Y = 136.000000000000000000
   end
-  object Text2: TText
-    Position.X = 56.000000000000000000
-    Position.Y = 176.000000000000000000
-    Size.Width = 81.000000000000000000
-    Size.Height = 50.000000000000000000
-    Size.PlatformDefault = False
-    Text = 'Stare has'#322'o:'
+  inherited Text2: TText
+    Position.Y = 200.000000000000000000
   end
-  object haslo_jasiu1: TEdit
-    Touch.InteractiveGestures = [LongTap, DoubleTap]
-    TabOrder = 17
-    Position.X = 136.000000000000000000
-    Position.Y = 120.000000000000000000
-    Size.Width = 225.000000000000000000
-    Size.Height = 32.000000000000000000
-    Size.PlatformDefault = False
-  end
-  object haslo_jasiu2: TEdit
-    Touch.InteractiveGestures = [LongTap, DoubleTap]
-    TabOrder = 15
-    Position.X = 136.000000000000000000
-    Position.Y = 184.000000000000000000
-    Size.Width = 225.000000000000000000
-    Size.Height = 32.000000000000000000
-    Size.PlatformDefault = False
-  end
-  object Text4: TText
-    Position.X = 88.000000000000000000
-    Position.Y = 344.000000000000000000
-    Text = 'kod:'
-  end
-  object Text5: TText
-    Position.X = 48.000000000000000000
-    Position.Y = 408.000000000000000000
-    Size.Width = 89.000000000000000000
-    Size.Height = 50.000000000000000000
-    Size.PlatformDefault = False
-    Text = 'Nowe has'#322'o:'
-  end
-  object haslo_jasiu3: TEdit
-    Touch.InteractiveGestures = [LongTap, DoubleTap]
+  inherited haslo_jasiu1: TEdit
     TabOrder = 16
-    Position.X = 136.000000000000000000
-    Position.Y = 352.000000000000000000
-    Size.Width = 225.000000000000000000
-    Size.Height = 32.000000000000000000
-    Size.PlatformDefault = False
+    Position.X = 144.000000000000000000
+    Position.Y = 136.000000000000000000
   end
-  object haslo_jasiu4: TEdit
-    Touch.InteractiveGestures = [LongTap, DoubleTap]
+  inherited haslo_jasiu2: TEdit
     TabOrder = 14
-    Position.X = 136.000000000000000000
-    Position.Y = 416.000000000000000000
-    Size.Width = 225.000000000000000000
-    Size.Height = 32.000000000000000000
-    Size.PlatformDefault = False
+    Password = True
+    Position.X = 144.000000000000000000
+    Position.Y = 200.000000000000000000
   end
-  object Text7: TText
-    Position.X = 8.000000000000000000
-    Position.Y = 472.000000000000000000
-    Size.Width = 129.000000000000000000
-    Size.Height = 50.000000000000000000
-    Size.PlatformDefault = False
-    Text = 'Powt'#243'rz nowe has'#322'o:'
+  inherited Text4: TText
+    Position.Y = 384.000000000000000000
   end
-  object haslo_jasiu5: TEdit
-    Touch.InteractiveGestures = [LongTap, DoubleTap]
-    TabOrder = 13
-    Position.X = 136.000000000000000000
-    Position.Y = 480.000000000000000000
-    Size.Width = 225.000000000000000000
-    Size.Height = 32.000000000000000000
-    Size.PlatformDefault = False
+  inherited Text5: TText
+    Position.Y = 448.000000000000000000
+  end
+  inherited haslo_jasiu3: TEdit
+    TabOrder = 18
+    Position.Y = 392.000000000000000000
+  end
+  inherited haslo_jasiu4: TEdit
+    TabOrder = 15
+    Position.Y = 456.000000000000000000
+  end
+  inherited Text7: TText
+    Position.Y = 512.000000000000000000
+  end
+  inherited haslo_jasiu5: TEdit
+    Position.Y = 520.000000000000000000
   end
 end
