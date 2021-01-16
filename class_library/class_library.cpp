@@ -94,6 +94,11 @@ void Osoba::edytuj_dane(std::string newMail, std::string newHaslo)
 	haslo = newHaslo;
 }
 
+unsigned int Osoba::podaj_id()
+{
+	return ID;
+}
+
 
 		//metody klasy Klient
 
@@ -124,6 +129,28 @@ Przedmiot* Klient::zwroc_koszyk() { return NULL; }		//dowiedziec sie co funkcja 
 	//usuwa przedmioty z koszyka
 void Klient::oproznij_koszyk(){}		//do zrobienia
 
+	//gettery parametrow imieINazwisko oraz next
+std::string Klient::podaj_nazwe_klienta()
+{
+	return imieINazwisko;
+}
+
+Klient* Klient::podaj_wskaznik_next_klienta()
+{
+	return next;
+}
+
+	//settery parametrow imieINazwisko oraz next
+void Klient::ustaw_nazwe_klienta(std::string nazwa_do_ustawienia)
+{
+	imieINazwisko = nazwa_do_ustawienia;
+}
+
+void Klient::ustaw_wskaznik_next_klienta(Klient* wskaznik_do_ustawienia)
+{
+	next = wskaznik_do_ustawienia;
+}
+
 
 		//metody klasy Firma
 			//praktycznie takie same jak w Kliencie - mozna przeniesc do klasy Osoba
@@ -143,6 +170,28 @@ void Firma::dodaj_licytacje(){}		//do zrobienia
 	//funkcja usuwajaca licytacje z bazarku
 void Firma::usun_licytacje(){}			//do zrobienia
 
+	//gettery parametrow nazwa i next
+std::string Firma::podaj_nazwe_firmy()
+{
+	return nazwa_firmy;
+}
+
+Firma* Firma::podaj_wskaznik_next_firmy()
+{
+	return next;
+}
+
+	//settery parametrow nazwa i next
+void Firma::ustaw_nazwe_firmy(std::string nazwa_do_ustawienia)
+{
+	nazwa_firmy = nazwa_do_ustawienia;
+}
+
+void Firma::ustaw_wskaznik_next_firmy(Firma* wskaznik_do_ustawienia)
+{
+	next = wskaznik_do_ustawienia;
+}
+
 
 		//metody klasy Admin
 
@@ -152,3 +201,111 @@ void Admin::usun_przedmiot(unsigned int id_przedmiotu){}		//do zrobienia
 	//funkcja usuwajaca uzytkownika
 void Admin::usun_uzytkownika(unsigned int id_uzytkownika){}	//do zrobienia
 
+		//metody klasy ListaFirm
+
+	//funkcja dodaje firme do listy
+void ListaFirm::dodaj(Firma* toAdd)
+{
+	if (head == NULL)		//jezeli nie ma jeszcze firm na liscie - firma zostaje pierwsza
+	{
+		head = toAdd;			
+		return;
+	}
+
+	Firma* pom = head;		//wskaznik pomocniczy - ustawiamy najpierw na glowe
+
+	while (pom->podaj_wskaznik_next_firmy() != NULL)	//jezeli sa juz jakies firmy na liscie to szukamy ogona
+	{
+		pom = pom->podaj_wskaznik_next_firmy();			//z kazda iteracja wskaznik przeskakuje w strone ogona
+	}
+
+	pom->ustaw_wskaznik_next_firmy(toAdd);				//dodana firma staje sie ogonem
+}
+
+	//funkcja sprawdza czy podana firma juz istnieje
+bool ListaFirm::sprawdz(std::string email_firmy, std::string nazwa_firmy)		//mozna zmodyfikowac funkcje aby zwracala informacja czy to email sie duplikuje czy nazwa firmy
+{
+	//nalezy do klasy Firma dodac funkcje porownojaca dane firmy z wprowadzonymi przez uzytkownika
+	return true;
+}
+
+	//funkcja wyszukuje firme po id
+Firma* ListaFirm::wyszukaj_firme(unsigned int id_firmy)
+{
+	Firma* pom = head;		//wskaznik pomocniczy - ustawiamy najpierw na glowe
+
+	while (pom != NULL && pom->podaj_id() != id_firmy)		
+	{
+		pom = pom->podaj_wskaznik_next_firmy();		//dopoki nie znajdziemy firmy o danym ID lub nie dotrzemy do konca listy - przechodzimy kolejne welzy
+	}
+
+	return pom;		//jezeli znajdziemy firme - zwroci jej adres, jezeli nie - NULL
+}
+
+	//funkcja wyszukuje firme po nazwie
+Firma* ListaFirm::wyszukaj_firme(std::string nazwa_firmy)
+{
+	Firma* pom = head;		//wskaznik pomocniczy - ustawiamy najpierw na glowe
+
+	while (pom != NULL && pom->podaj_nazwe_firmy() != nazwa_firmy)
+	{
+		pom = pom->podaj_wskaznik_next_firmy();		//dopoki nie znajdziemy firmy o danej nazwie lub nie dotrzemy do konca listy - przechodzimy kolejne welzy
+	}
+
+	return pom;		//jezeli znajdziemy firme - zwroci jej adres, jezeli nie - NULL
+}
+
+
+		//metody klasy ListaKlientow
+
+	//funkcja dodaje klienta do listy
+void ListaKlientow::dodaj(Klient* toAdd)
+{
+	if (head == NULL)		//jezeli nie ma jeszcze klientow na liscie - klient zostaje pierwszy
+	{
+		head = toAdd;
+		return;
+	}
+
+	Klient* pom = head;		//wskaznik pomocniczy - ustawiamy najpierw na glowe
+
+	while (pom->podaj_wskaznik_next_klienta() != NULL)	//jezeli sa juz jacys klienci na liscie to szukamy ogona
+	{
+		pom = pom->podaj_wskaznik_next_klienta();			//z kazda iteracja wskaznik przeskakuje w strone ogona
+	}
+
+	pom->ustaw_wskaznik_next_klienta(toAdd);				//dodany klient staje sie ogonem
+}
+
+//funkcja sprawdza czy podany klient juz istnieje
+bool ListaKlientow::sprawdz(std::string email_klienta, std::string nazwa_klienta)		//mozna zmodyfikowac funkcje aby zwracala informacja czy to email sie duplikuje czy nazwa klienta
+{
+	//nalezy do klasy Klient dodac funkcje porownojaca dane klienta z wprowadzonymi przez uzytkownika
+	return true;
+}
+
+//funkcja wyszukuje klienta po id
+Klient* ListaKlientow::wyszukaj_klienta(unsigned int id_klienta)
+{
+	Klient* pom = head;		//wskaznik pomocniczy - ustawiamy najpierw na glowe
+
+	while (pom != NULL && pom->podaj_id() != id_klienta)
+	{
+		pom = pom->podaj_wskaznik_next_klienta();	//dopoki nie znajdziemy klienta o danym ID lub nie dotrzemy do konca listy - przechodzimy kolejne welzy
+	}
+
+	return pom;		//jezeli znajdziemy klienta - zwroci jego adres, jezeli nie - NULL
+}
+
+//funkcja wyszukuje klienta po nazwie
+Klient* ListaKlientow::wyszukaj_klienta(std::string nazwa_klienta)
+{
+	Klient* pom = head;		//wskaznik pomocniczy - ustawiamy najpierw na glowe
+
+	while (pom != NULL && pom->podaj_nazwe_klienta() != nazwa_klienta)
+	{
+		pom = pom->podaj_wskaznik_next_klienta();		//dopoki nie znajdziemy klienta o danej nazwie lub nie dotrzemy do konca listy - przechodzimy kolejne welzy
+	}
+
+	return pom;		//jezeli znajdziemy klienta - zwroci jej adres, jezeli nie - NULL
+}
