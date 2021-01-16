@@ -91,11 +91,8 @@ void __fastcall TForma_ekran_startowy::Text5Click(TObject *Sender)
 void __fastcall TForma_ekran_startowy::Button2Click(TObject *Sender)
 {
 	TForma_rejestracja * forma = new TForma_rejestracja (this);
-
-		forma->Show();
-
-	//Forma_ekran_startowy->Visible = false;
-	  delete forma;
+	forma->ShowModal();
+	delete forma;
 
 }
 //---------------------------------------------------------------------------

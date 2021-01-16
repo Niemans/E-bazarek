@@ -40,6 +40,7 @@ __published:	// IDE-managed Components
 	void __fastcall Btn_co_to_hasloClick(TObject *Sender);
 	void __fastcall Btn_powrotClick(TObject *Sender);
 	void __fastcall FormClose(TObject *Sender, TCloseAction &Action);
+	void __fastcall FormActivate(TObject *Sender);
 private:	// User declarations
 public:		// User declarations
 	__fastcall TForma_rejestracja(TComponent* Owner);

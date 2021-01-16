@@ -32,13 +32,19 @@ void __fastcall TForma_rejestracja::Btn_co_to_hasloClick(TObject *Sender)
 //---------------------------------------------------------------------------
 void __fastcall TForma_rejestracja::Btn_powrotClick(TObject *Sender)
 {
-	 Forma_ekran_startowy->Visible = true;
-
+	 CloseModal();
 }
 //---------------------------------------------------------------------------
 void __fastcall TForma_rejestracja::FormClose(TObject *Sender, TCloseAction &Action)
 
 {
+	Forma_ekran_startowy->Visible = true;
 	Close();
 }
 //---------------------------------------------------------------------------
+void __fastcall TForma_rejestracja::FormActivate(TObject *Sender)
+{
+    Forma_ekran_startowy->Visible = false;
+}
+//---------------------------------------------------------------------------
+
