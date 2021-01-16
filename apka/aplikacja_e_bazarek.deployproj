@@ -4,41 +4,8 @@
         <ProjectFileVersion>12</ProjectFileVersion>
     </ProjectExtensions>
     <PropertyGroup>
-        <DeviceId Condition="'$(Platform)'=='Android'">f5cd90e6</DeviceId>
-        <DeviceId Condition="'$(Platform)'=='iOSDevice32'"/>
-        <DeviceId Condition="'$(Platform)'=='iOSDevice64'"/>
+        <DeviceId Condition="'$(Platform)'=='Android'">9WVDU18519009212</DeviceId>
     </PropertyGroup>
-    <ItemGroup Condition="'$(Platform)'=='iOSDevice64'"/>
-    <ItemGroup Condition="'$(Platform)'=='Win64'">
-        <DeployFile Include="$(BDS)\bin64\cc64260mt.dll" Condition="'$(DynamicRTL)'=='true' And '$(Multithreaded)'=='true'">
-            <RemoteDir>aplikacja_e_bazarek\</RemoteDir>
-            <RemoteName>cc64260mt.dll</RemoteName>
-            <DeployClass>DependencyModule</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="$(BDS)\bin64\borlndmm.dll" Condition="'$(UsingDelphiRTL)'=='true'">
-            <RemoteDir>aplikacja_e_bazarek\</RemoteDir>
-            <RemoteName>borlndmm.dll</RemoteName>
-            <DeployClass>DependencyModule</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="$(BDS)\bin64\cc64260.dll" Condition="'$(DynamicRTL)'=='true' And '$(Multithreaded)'!='true'">
-            <RemoteDir>aplikacja_e_bazarek\</RemoteDir>
-            <RemoteName>cc64260.dll</RemoteName>
-            <DeployClass>DependencyModule</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-    </ItemGroup>
-    <ItemGroup Condition="'$(Platform)'=='iOSDevice32'"/>
     <ItemGroup Condition="'$(Platform)'=='Win32'">
         <DeployFile Include="$(BDS)\bin\cc32c260.dll" Condition="'$(DynamicRTL)'=='true' And '$(Multithreaded)'!='true'">
             <RemoteDir>aplikacja_e_bazarek\</RemoteDir>
@@ -96,33 +63,43 @@
             <Overwrite>True</Overwrite>
         </DeployFile>
     </ItemGroup>
-    <ItemGroup Condition="'$(Platform)'=='OSX32'">
-        <DeployFile Include="$(BDS)\Redist\osx32\libcgcrtl.dylib" Condition="'$(DynamicRTL)'=='true'">
-            <RemoteDir>aplikacja_e_bazarek.app\Contents\MacOS\</RemoteDir>
-            <RemoteName>libcgcrtl.dylib</RemoteName>
+    <ItemGroup Condition="'$(Platform)'=='Win64'">
+        <DeployFile Include="$(BDS)\bin64\cc64260mt.dll" Condition="'$(DynamicRTL)'=='true' And '$(Multithreaded)'=='true'">
+            <RemoteDir>aplikacja_e_bazarek\</RemoteDir>
+            <RemoteName>cc64260mt.dll</RemoteName>
             <DeployClass>DependencyModule</DeployClass>
-            <Operation>1</Operation>
+            <Operation>0</Operation>
             <LocalCommand/>
             <RemoteCommand/>
             <Overwrite>True</Overwrite>
         </DeployFile>
-        <DeployFile Include="$(BDS)\Redist\osx32\libcgstl.dylib" Condition="'$(DynamicRTL)'=='true'">
-            <RemoteDir>aplikacja_e_bazarek.app\Contents\MacOS\</RemoteDir>
-            <RemoteName>libcgstl.dylib</RemoteName>
+        <DeployFile Include="$(BDS)\bin64\borlndmm.dll" Condition="'$(UsingDelphiRTL)'=='true'">
+            <RemoteDir>aplikacja_e_bazarek\</RemoteDir>
+            <RemoteName>borlndmm.dll</RemoteName>
             <DeployClass>DependencyModule</DeployClass>
-            <Operation>1</Operation>
+            <Operation>0</Operation>
             <LocalCommand/>
             <RemoteCommand/>
             <Overwrite>True</Overwrite>
         </DeployFile>
-        <DeployFile Include="$(BDS)\Redist\osx32\libcgunwind.1.0.dylib">
-            <RemoteDir>aplikacja_e_bazarek.app\Contents\MacOS\</RemoteDir>
-            <RemoteName>libcgunwind.1.0.dylib</RemoteName>
+        <DeployFile Include="$(BDS)\bin64\cc64260.dll" Condition="'$(DynamicRTL)'=='true' And '$(Multithreaded)'!='true'">
+            <RemoteDir>aplikacja_e_bazarek\</RemoteDir>
+            <RemoteName>cc64260.dll</RemoteName>
             <DeployClass>DependencyModule</DeployClass>
-            <Operation>1</Operation>
+            <Operation>0</Operation>
             <LocalCommand/>
             <RemoteCommand/>
             <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include=".\Win64\Debug\aplikacja_e_bazarek.exe" Condition="'$(Config)'=='Debug'">
+            <RemoteDir>aplikacja_e_bazarek\</RemoteDir>
+            <RemoteName>aplikacja_e_bazarek.exe</RemoteName>
+            <DeployClass>ProjectOutput</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+            <Required>True</Required>
         </DeployFile>
     </ItemGroup>
     <ItemGroup Condition="'$(Platform)'=='Android'">
@@ -347,26 +324,6 @@
             <RemoteDir>aplikacja_e_bazarek\library\lib\armeabi\</RemoteDir>
             <RemoteName>libaplikacja_e_bazarek.so</RemoteName>
             <DeployClass>AndroidLibnativeArmeabiFile</DeployClass>
-            <Operation>1</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-    </ItemGroup>
-    <ItemGroup Condition="'$(Platform)'=='iOSSimulator'">
-        <DeployFile Include="$(BDS)\Redist\iossimulator\libcgunwind.1.0.dylib">
-            <RemoteDir>aplikacja_e_bazarek.app\</RemoteDir>
-            <RemoteName>libcgunwind.1.0.dylib</RemoteName>
-            <DeployClass>DependencyModule</DeployClass>
-            <Operation>1</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="$(BDS)\Redist\iossimulator\libpcre.dylib">
-            <RemoteDir>aplikacja_e_bazarek.app\</RemoteDir>
-            <RemoteName>libpcre.dylib</RemoteName>
-            <DeployClass>DependencyModule</DeployClass>
             <Operation>1</Operation>
             <LocalCommand/>
             <RemoteCommand/>

@@ -71,8 +71,6 @@ void __fastcall TForma_zapomniane_haslo::Button2Click(TObject *Sender)
 
 void __fastcall TForma_zapomniane_haslo::FormClose(TObject *Sender, TCloseAction &Action)
 {
-//   Forma_ekran_startowy->Visible = true;
-
     Close();
 }
 //---------------------------------------------------------------------------
