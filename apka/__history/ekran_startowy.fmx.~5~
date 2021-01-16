@@ -129,8 +129,10 @@ object Forma_ekran_startowy: TForma_ekran_startowy
     TextSettings.Font.Size = 20.000000000000000000
     TintColor = claGreen
     object Text6: TText
+      Align = Scale
+      Anchors = [akLeft, akTop, akRight]
       Position.Y = -25.000000000000000000
-      Size.Width = 401.000000000000000000
+      Size.Width = 409.000000000000000000
       Size.Height = 26.000000000000000000
       Size.PlatformDefault = False
       Text = 'Nie masz jeszcze konta?'

@@ -242,7 +242,6 @@ object Forma_glowne_okno: TForma_glowne_okno
           0000000000000000000000006AF8C73FFE0FD5EA78B618FDA26B000000004945
           4E44AE426082}
       end>
-    Anchors = [akLeft, akTop, akRight]
     Cursor = crHandPoint
     Position.X = 344.000000000000000000
     Position.Y = 16.000000000000000000
@@ -391,7 +390,6 @@ object Forma_glowne_okno: TForma_glowne_okno
           B1A122EF98E003005A1829EC8E0D1B79A7441F0050C2A851772A4DE49D127D00
           C01C59A20E0080F49E9EFE03B77B86537E3C49B90000000049454E44AE426082}
       end>
-    Anchors = [akLeft, akTop, akRight]
     Cursor = crHandPoint
     Position.X = 16.000000000000000000
     Position.Y = 16.000000000000000000

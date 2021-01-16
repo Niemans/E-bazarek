@@ -9,17 +9,20 @@ object Forma_ekran_startowy: TForma_ekran_startowy
   FormFactor.Devices = [Desktop]
   DesignerMasterStyle = 0
   object Text1: TText
+    Anchors = [akTop, akBottom]
     Position.X = 16.000000000000000000
     Position.Y = 112.000000000000000000
     Text = 'login:'
   end
   object Text2: TText
+    Anchors = [akTop, akBottom]
     Position.X = 16.000000000000000000
     Position.Y = 168.000000000000000000
     Text = 'hos'#322'o:'
   end
   object Jasiu2: TEdit
     Touch.InteractiveGestures = [LongTap, DoubleTap]
+    Anchors = [akTop, akBottom]
     TabOrder = 1
     Password = True
     Position.X = 80.000000000000000000
@@ -31,7 +34,7 @@ object Forma_ekran_startowy: TForma_ekran_startowy
     Caret.Color = claGreen
     object Text4: TText
       Align = Scale
-      Anchors = [akLeft, akTop]
+      Anchors = [akTop, akBottom]
       Cursor = crArrow
       Position.Y = 32.000000000000000000
       Size.Width = 137.000000000000000000
@@ -41,9 +44,8 @@ object Forma_ekran_startowy: TForma_ekran_startowy
     end
     object Text5: TText
       Align = Scale
-      Anchors = [akLeft, akTop]
       Cursor = crHandPoint
-      Position.X = 135.000000000000000000
+      Position.X = 119.000000000000000000
       Position.Y = 36.000000000000000000
       Size.Width = 57.000000000000000000
       Size.Height = 25.000000000000000000
@@ -55,6 +57,7 @@ object Forma_ekran_startowy: TForma_ekran_startowy
   end
   object Jasiu: TEdit
     Touch.InteractiveGestures = [LongTap, DoubleTap]
+    Anchors = [akTop, akBottom]
     TabOrder = 0
     Position.X = 80.000000000000000000
     Position.Y = 120.000000000000000000
@@ -66,7 +69,7 @@ object Forma_ekran_startowy: TForma_ekran_startowy
   end
   object CheckBox1: TCheckBox
     Align = Scale
-    Anchors = [akLeft, akTop, akRight]
+    Anchors = [akLeft, akBottom]
     StyledSettings = [Family, Style]
     Position.X = 16.120906829833980000
     Position.Y = 243.070053100585900000
@@ -82,13 +85,13 @@ object Forma_ekran_startowy: TForma_ekran_startowy
   end
   object Button1: TButton
     Align = Scale
-    Anchors = [akLeft, akTop, akRight]
     StyledSettings = [Style, FontColor]
     Padding.Top = 30.000000000000000000
     Padding.Bottom = 30.000000000000000000
-    Position.Y = 309.000000000000000000
-    Size.Width = 404.000000000000000000
-    Size.Height = 76.000000000000000000
+    Position.X = -8.060453414916992000
+    Position.Y = 308.792846679687500000
+    Size.Width = 412.090759277343800000
+    Size.Height = 76.154998779296880000
     Size.PlatformDefault = False
     TabOrder = 3
     Text = 'Zaloguj'
@@ -97,10 +100,11 @@ object Forma_ekran_startowy: TForma_ekran_startowy
     TintColor = claGreen
     OnClick = Button1Click
     object Text3: TText
+      Align = Scale
       Margins.Bottom = 10.000000000000000000
-      Position.Y = -25.000000000000000000
-      Size.Width = 401.000000000000000000
-      Size.Height = 33.000000000000000000
+      Position.Y = -25.037261962890630000
+      Size.Width = 412.090911865234400000
+      Size.Height = 32.771987915039060000
       Size.PlatformDefault = False
       TextSettings.FontColor = claRed
     end
@@ -118,20 +122,21 @@ object Forma_ekran_startowy: TForma_ekran_startowy
   end
   object Button2: TButton
     Align = Scale
-    Anchors = [akLeft, akTop, akRight]
     StyledSettings = [Family, Style, FontColor]
-    Position.Y = 417.000000000000000000
-    Size.Width = 401.000000000000000000
-    Size.Height = 60.000000000000000000
+    Position.X = -40.302272796630860000
+    Position.Y = 417.287628173828100000
+    Size.Width = 476.574371337890600000
+    Size.Height = 59.463500976562500000
     Size.PlatformDefault = False
     TabOrder = 4
     Text = 'Zarejestruj si'#281'!'
     TextSettings.Font.Size = 20.000000000000000000
     TintColor = claGreen
     object Text6: TText
-      Position.Y = -25.000000000000000000
-      Size.Width = 401.000000000000000000
-      Size.Height = 26.000000000000000000
+      Align = Scale
+      Position.Y = -25.037263870239260000
+      Size.Width = 476.574371337890600000
+      Size.Height = 26.080482482910160000
       Size.PlatformDefault = False
       Text = 'Nie masz jeszcze konta?'
     end
@@ -417,7 +422,6 @@ object Forma_ekran_startowy: TForma_ekran_startowy
           1D0000000049454E44AE426082}
       end>
     Align = Scale
-    Anchors = [akLeft, akTop, akRight]
     Position.Y = 8.345752716064453000
     Size.Width = 400.000061035156300000
     Size.Height = 92.846496582031250000
