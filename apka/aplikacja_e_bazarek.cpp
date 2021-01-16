@@ -8,8 +8,9 @@
 #include <System.StartUpCopy.hpp>
 //---------------------------------------------------------------------------
 USEFORM("zapomniane_haslo.cpp", Forma_zapomniane_haslo);
-USEFORM("ekran_startowy.cpp", Forma_ekran_startowy);
 USEFORM("glowne_okno.cpp", Forma_glowne_okno);
+USEFORM("ekran_startowy.cpp", Forma_ekran_startowy);
+USEFORM("ekran_rejestracja.cpp", Forma_rejestracja);
 //---------------------------------------------------------------------------
 extern "C" int FMXmain()
 {
@@ -19,6 +20,7 @@ extern "C" int FMXmain()
 		Application->CreateForm(__classid(TForma_ekran_startowy), &Forma_ekran_startowy);
 		Application->CreateForm(__classid(TForma_zapomniane_haslo), &Forma_zapomniane_haslo);
 		Application->CreateForm(__classid(TForma_glowne_okno), &Forma_glowne_okno);
+		Application->CreateForm(__classid(TForma_rejestracja), &Forma_rejestracja);
 		Application->Run();
 	}
 	catch (Exception &exception)

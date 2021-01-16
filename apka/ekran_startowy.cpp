@@ -6,6 +6,7 @@
 #include "glowne_okno.h"
 #include "ekran_startowy.h"
 #include "zapomniane_haslo.h"
+#include "ekran_rejestracja.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma resource "*.fmx"
@@ -86,4 +87,16 @@ void __fastcall TForma_ekran_startowy::Text5Click(TObject *Sender)
 }
 //---------------------------------------------------------------------------
 
+
+void __fastcall TForma_ekran_startowy::Button2Click(TObject *Sender)
+{
+	TForma_rejestracja * forma = new TForma_rejestracja (this);
+
+		forma->Show();
+
+	//Forma_ekran_startowy->Visible = false;
+	  delete forma;
+
+}
+//---------------------------------------------------------------------------
 

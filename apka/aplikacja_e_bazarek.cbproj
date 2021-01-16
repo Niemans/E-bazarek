@@ -6,7 +6,7 @@
         <MainSource>aplikacja_e_bazarek.cpp</MainSource>
         <Base>True</Base>
         <Config Condition="'$(Config)'==''">Debug</Config>
-        <Platform Condition="'$(Platform)'==''">Android</Platform>
+        <Platform Condition="'$(Platform)'==''">Win32</Platform>
         <TargetedPlatforms>1111</TargetedPlatforms>
         <AppType>Application</AppType>
     </PropertyGroup>
@@ -396,6 +396,12 @@
         <CppCompile Include="aplikacja_e_bazarek.cpp">
             <BuildOrder>0</BuildOrder>
         </CppCompile>
+        <CppCompile Include="ekran_rejestracja.cpp">
+            <Form>Forma_rejestracja</Form>
+            <FormType>fmx</FormType>
+            <DependentOn>ekran_rejestracja.h</DependentOn>
+            <BuildOrder>5</BuildOrder>
+        </CppCompile>
         <CppCompile Include="ekran_startowy.cpp">
             <Form>Forma_ekran_startowy</Form>
             <FormType>fmx</FormType>
@@ -421,6 +427,7 @@
         <FormResources Include="zapomniane_haslo.fmx"/>
         <FormResources Include="glowne_okno.fmx"/>
         <FormResources Include="ekran_startowy.fmx"/>
+        <FormResources Include="ekran_rejestracja.fmx"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

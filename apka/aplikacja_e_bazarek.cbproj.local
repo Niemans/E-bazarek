@@ -1,26 +1,30 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <BorlandProject>
 	<Transactions>
-    <Transaction>1899.12.30 00:00:00.000.911,D:\CppBuilder - zadania\Project1PCH1.h=D:\CppBuilder - zadania\test\Project1PCH1.h</Transaction>
     <Transaction>1899.12.30 00:00:00.000.526,=D:\CppBuilder - zadania\Project1PCH1.h</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.196,D:\CppBuilder - zadania\Unit1.fmx=D:\CppBuilder - zadania\test\Unit1.fmx</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.484,C:\Users\lukas\OneDrive\Pulpit\studia\s3\e-bazarek\repo - beta\Unit1.cpp=C:\Users\lukas\OneDrive\Pulpit\studia\s3\e-bazarek\repo - beta\glowne_okno.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.461,D:\CppBuilder - zadania\test\aplikacja e-bazarek.cbproj=D:\CppBuilder - zadania\test\aplikacja_e_bazarek.cbproj</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.196,D:\CppBuilder - zadania\test\Unit1.h=D:\CppBuilder - zadania\Unit1.h</Transaction>
     <Transaction>1899.12.30 00:00:00.000.319,=C:\Users\lukas\OneDrive\Pulpit\studia\s3\e-bazarek\repo - beta\Unit1.cpp</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.484,C:\Users\lukas\OneDrive\Pulpit\studia\s3\e-bazarek\repo - beta\Unit1.h=C:\Users\lukas\OneDrive\Pulpit\studia\s3\e-bazarek\repo - beta\glowne_okno.h</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.196,D:\CppBuilder - zadania\Unit1.h=D:\CppBuilder - zadania\test\Unit1.h</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.484,C:\Users\lukas\OneDrive\Pulpit\studia\s3\e-bazarek\repo - beta\Unit1.fmx=C:\Users\lukas\OneDrive\Pulpit\studia\s3\e-bazarek\repo - beta\glowne_okno.fmx</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.093,D:\CppBuilder - zadania\test\Unit2.cpp=D:\CppBuilder - zadania\test\zapomniane_haslo.cpp</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.304,=D:\CppBuilder - zadania\test\Unit2.cpp</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.093,D:\CppBuilder - zadania\test\Unit2.fmx=D:\CppBuilder - zadania\test\zapomniane_haslo.fmx</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.815,D:\CppBuilder - zadania\test\Unit1.fmx=D:\CppBuilder - zadania\test\ekran_startowy.fmx</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.093,D:\CppBuilder - zadania\test\Unit2.h=D:\CppBuilder - zadania\test\zapomniane_haslo.h</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.815,D:\CppBuilder - zadania\test\Unit1.cpp=D:\CppBuilder - zadania\test\ekran_startowy.cpp</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.433,D:\CppBuilder - zadania\Project1.cbproj=D:\CppBuilder - zadania\test\Project1.cbproj</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.196,D:\CppBuilder - zadania\Unit1.cpp=D:\CppBuilder - zadania\test\Unit1.cpp</Transaction>
     <Transaction>1899.12.30 00:00:00.000.806,=D:\CppBuilder - zadania\Unit1.cpp</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.815,D:\CppBuilder - zadania\test\Unit1.h=D:\CppBuilder - zadania\test\ekran_startowy.h</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.436,D:\CppBuilder - zadania\test\aplikacja e-bazarek.cbproj=D:\CppBuilder - zadania\test\Project1.cbproj</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.461,D:\CppBuilder - zadania\test\aplikacja_e_bazarek.cbproj=D:\CppBuilder - zadania\test\aplikacja e-bazarek.cbproj</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.484,C:\Users\lukas\OneDrive\Pulpit\studia\s3\e-bazarek\repo - beta\glowne_okno.fmx=C:\Users\lukas\OneDrive\Pulpit\studia\s3\e-bazarek\repo - beta\Unit1.fmx</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.436,D:\CppBuilder - zadania\test\Project1.cbproj=D:\CppBuilder - zadania\test\aplikacja e-bazarek.cbproj</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.433,D:\CppBuilder - zadania\test\Project1.cbproj=D:\CppBuilder - zadania\Project1.cbproj</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.093,D:\CppBuilder - zadania\test\zapomniane_haslo.fmx=D:\CppBuilder - zadania\test\Unit2.fmx</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.304,=D:\CppBuilder - zadania\test\Unit2.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.484,C:\Users\lukas\OneDrive\Pulpit\studia\s3\e-bazarek\repo - beta\glowne_okno.h=C:\Users\lukas\OneDrive\Pulpit\studia\s3\e-bazarek\repo - beta\Unit1.h</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.093,D:\CppBuilder - zadania\test\zapomniane_haslo.cpp=D:\CppBuilder - zadania\test\Unit2.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.196,D:\CppBuilder - zadania\test\Unit1.fmx=D:\CppBuilder - zadania\Unit1.fmx</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.093,D:\CppBuilder - zadania\test\zapomniane_haslo.h=D:\CppBuilder - zadania\test\Unit2.h</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.815,D:\CppBuilder - zadania\test\ekran_startowy.fmx=D:\CppBuilder - zadania\test\Unit1.fmx</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.484,C:\Users\lukas\OneDrive\Pulpit\studia\s3\e-bazarek\repo - beta\glowne_okno.cpp=C:\Users\lukas\OneDrive\Pulpit\studia\s3\e-bazarek\repo - beta\Unit1.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.196,D:\CppBuilder - zadania\test\Unit1.cpp=D:\CppBuilder - zadania\Unit1.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.815,D:\CppBuilder - zadania\test\ekran_startowy.cpp=D:\CppBuilder - zadania\test\Unit1.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.911,D:\CppBuilder - zadania\test\Project1PCH1.h=D:\CppBuilder - zadania\Project1PCH1.h</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.815,D:\CppBuilder - zadania\test\ekran_startowy.h=D:\CppBuilder - zadania\test\Unit1.h</Transaction>
+    <Transaction>2021.01.16 12:27:47.268,=C:\Users\lukas\OneDrive\Pulpit\studia\s3\e-bazarek\repo\E-bazarek\apka\Unit1.cpp</Transaction>
+    <Transaction>2021.01.16 12:29:31.245,C:\Users\lukas\OneDrive\Pulpit\studia\s3\e-bazarek\repo\E-bazarek\apka\ekran_rejestracja.fmx=C:\Users\lukas\OneDrive\Pulpit\studia\s3\e-bazarek\repo\E-bazarek\apka\Unit1.fmx</Transaction>
+    <Transaction>2021.01.16 12:29:31.245,C:\Users\lukas\OneDrive\Pulpit\studia\s3\e-bazarek\repo\E-bazarek\apka\ekran_rejestracja.cpp=C:\Users\lukas\OneDrive\Pulpit\studia\s3\e-bazarek\repo\E-bazarek\apka\Unit1.cpp</Transaction>
+    <Transaction>2021.01.16 12:29:31.245,C:\Users\lukas\OneDrive\Pulpit\studia\s3\e-bazarek\repo\E-bazarek\apka\ekran_rejestracja.h=C:\Users\lukas\OneDrive\Pulpit\studia\s3\e-bazarek\repo\E-bazarek\apka\Unit1.h</Transaction>
   </Transactions>
 	<ActiveMobileDevice>
 		<NoProfile Android="f5cd90e6"/>
