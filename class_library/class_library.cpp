@@ -1,5 +1,69 @@
 #include "class_library.h"
 
+		//metody klasy Przedmiot
+
+	//funkcja zwracajaca id osoby wystawiajacej przedmiot
+bool Przedmiot::sprawdz_id_wlasciciela(unsigned int idOsoby)
+{
+	if (IDWlasciciela == idOsoby)
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+
+	//funkcja wypisujaca przedmiot w okienku - potrzebna wspolpraca z okienkiem
+void wypisz() {}		//do zrobienia, potrzebne okienko
+
+	//funkcja zwracajaca id wlasciciela
+unsigned int Przedmiot::wypisz_id_wlasciciela()
+{
+	return IDWlasciciela;
+}
+
+	//funkcja sprawdzajaca czy produkt jest dostepny
+bool Przedmiot::czy_dostepny()
+{
+	if (ilosc > 0)
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+
+	//funkcja zwracajaca id przedmiotu
+unsigned int Przedmiot::podaj_id()
+{
+	return ID;
+}
+
+	//funkcja usuwajaca egzemplaze przedmiotu
+void Przedmiot::usun_przedmioty(int ilosc_do_usuniecia)			//WAZNE!!! Trzeba zmienic aby dzialalo lepiej - teraz nie sprzawdza czy...
+{																//...nie usuwamy wiecej przedmiotow niz jest, powinna zwracac int
+	ilosc -= ilosc_do_usuniecia;
+}
+
+		//metody klasy licytacja
+	//metoda wkladajaca wygrany przedmiot do koszyka zwyciezcy
+void Licytacja::wygrana() {}		//do zrobienia
+
+	//metoda dodajaca historie (najnowsza cene) do historii
+void Licytacja::dodaj_historie(HistoriaLicytacji* toAdd)
+{
+	toAdd->next = head;		//ustawiamy wskaznik next nowej ceny jako glowe
+	head = toAdd;			//ustawiamy glowe na nowa cene
+}
+
+	//nie wiadomo co funkcja robi
+void Licytacja::dodaj_oferte(){}		//dowiedziec sie co funkcja robi
+
+
 		//metody klasy Osoba
 
 	//konstruktor klasy Osoba
@@ -15,11 +79,11 @@ bool Osoba::sprawdz_dane(std::string compMail, std::string compHaslo)
 {
 	if (mail == compMail && haslo == compHaslo)
 	{
-		return 1;
+		return true;
 	}
 	else
 	{
-		return 0;
+		return false;
 	}
 }
 
@@ -52,10 +116,10 @@ void Klient::usun_licytacje(){}			//do zrobienia
 void Klient::dodaj_do_koszyka(unsigned int id_przedmiotu, int ilosc){}		//do zrobienia
 
 	//funkcja uruchamia procedurê zakupu przedmiotów z koszyka
-Przedmiot* Klient::kup(){}		//do zrobienia
+Przedmiot* Klient::kup() { return NULL; }		//do zrobienia
 
 	//nie wiadomo co funkcja robi
-Przedmiot* Klient::zwroc_koszyk(){}		//dowiedziec sie co funkcja ma robic
+Przedmiot* Klient::zwroc_koszyk() { return NULL; }		//dowiedziec sie co funkcja ma robic
 
 	//usuwa przedmioty z koszyka
 void Klient::oproznij_koszyk(){}		//do zrobienia

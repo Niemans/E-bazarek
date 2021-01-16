@@ -3,10 +3,47 @@
 
 //do zrobienia: mozna przeniesc obsloge wystawionych przedmiotow do osoby
 
-class Przedmiot
-{
+class Przedmiot{
+private:
+	unsigned int ID;
+	std::string nazwa;
+	unsigned int ilosc;
+	unsigned int IDWlasciciela;
+	unsigned int cena;
+	Przedmiot* next;
+	std::string opis;
+
+public:
+	bool sprawdz_id_wlasciciela(unsigned int idOsoby);
+	void wypisz();
+	unsigned int wypisz_id_wlasciciela();
+	bool czy_dostepny();
+	unsigned int podaj_id();
+	void usun_przedmioty(int ilosc);
 	
 };
+
+
+class HistoriaLicytacji {
+public:
+	unsigned int cena;
+	HistoriaLicytacji* next;
+};
+
+
+class Licytacja : public Przedmiot {
+private:
+	unsigned int czasZakonczenia;
+	Klient* uczestnicy;
+	HistoriaLicytacji* head;
+
+public:
+	void wygrana();
+	void dodaj_historie(HistoriaLicytacji* toAdd);
+	void dodaj_oferte();
+	
+};
+
 
 class Osoba {
 private:
@@ -23,7 +60,7 @@ public:
 };
 
 
-class Klient: public Osoba {
+class Klient : public Osoba {
 private:
 	std::string imieINazwisko;
 	Klient* nextKlient;
@@ -70,6 +107,7 @@ public:
 	void usun_licytacje();
 
 };
+
 
 class Admin : public Osoba {
 public:
