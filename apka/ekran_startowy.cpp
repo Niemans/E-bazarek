@@ -6,13 +6,11 @@
 #include "glowne_okno.h"
 #include "ekran_startowy.h"
 #include "zapomniane_haslo.h"
+#include "ekran_rejestracja.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma resource "*.fmx"
-#pragma resource ("*.LgXhdpiTb.fmx", _PLAT_ANDROID)
-#pragma resource ("*.LgXhdpiPh.fmx", _PLAT_ANDROID)
-#pragma resource ("*.XLgXhdpiTb.fmx", _PLAT_ANDROID)
-#pragma resource ("*.NmXhdpiPh.fmx", _PLAT_ANDROID)
+
 TForma_ekran_startowy * Forma_ekran_startowy;
 
 //---------------------------------------------------------------------------
@@ -101,6 +99,14 @@ void __fastcall TForma_ekran_startowy::Text5Click(TObject *Sender)
 void __fastcall TForma_ekran_startowy::FormClose(TObject *Sender, TCloseAction &Action)
 {
 ;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForma_ekran_startowy::Button2Click(TObject *Sender)
+{
+	TForma_rejestracja * forma = new TForma_rejestracja (this);
+	forma->ShowModal();
+	delete forma;
 }
 //---------------------------------------------------------------------------
 

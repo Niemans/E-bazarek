@@ -8,8 +8,6 @@
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma resource "*.fmx"
-#pragma resource ("*.LgXhdpiTb.fmx", _PLAT_ANDROID)
-#pragma resource ("*.LgXhdpiPh.fmx", _PLAT_ANDROID)
 
 TForma_zapomniane_haslo *Forma_zapomniane_haslo;
 //---------------------------------------------------------------------------
