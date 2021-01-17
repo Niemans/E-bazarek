@@ -4,6 +4,7 @@ object Forma_ekran_bazarek: TForma_ekran_bazarek
   Caption = 'E- Bazarek'
   ClientHeight = 700
   ClientWidth = 400
+  Position = ScreenCenter
   FormFactor.Width = 320
   FormFactor.Height = 480
   FormFactor.Devices = [Desktop]

@@ -15,7 +15,7 @@
 #include <FMX.ScrollBox.hpp>
 #include <FMX.StdCtrls.hpp>
 //---------------------------------------------------------------------------
-class TForm_ekran_panelu_admina : public TForm
+class TForm1 : public TForm
 {
 __published:	// IDE-managed Components
 	TImage *paski;
@@ -31,9 +31,9 @@ __published:	// IDE-managed Components
 	void __fastcall Btn_anulujClick(TObject *Sender);
 private:	// User declarations
 public:		// User declarations
-	__fastcall TForm_ekran_panelu_admina(TComponent* Owner);
+	__fastcall TForm1(TComponent* Owner);
 };
 //---------------------------------------------------------------------------
-extern PACKAGE TForm_ekran_panelu_admina *Form_ekran_panelu_admina;
+extern PACKAGE TForm1 *Form1;
 //---------------------------------------------------------------------------
 #endif

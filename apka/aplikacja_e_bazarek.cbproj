@@ -202,7 +202,7 @@
             <BuildOrder>5</BuildOrder>
         </CppCompile>
         <CppCompile Include="ekran_panelu_admina.cpp">
-            <Form>Form1</Form>
+            <Form>Form_ekran_panelu_admina</Form>
             <FormType>fmx</FormType>
             <DependentOn>ekran_panelu_admina.h</DependentOn>
             <BuildOrder>7</BuildOrder>
@@ -235,13 +235,10 @@
             <DependentOn>zapomniane_haslo.h</DependentOn>
             <BuildOrder>3</BuildOrder>
         </CppCompile>
+        <FormResources Include="ekran_rejestracja.fmx"/>
         <FormResources Include="ekran_startowy.fmx"/>
         <FormResources Include="zapomniane_haslo.fmx"/>
-        <FormResources Include="ekran_rejestracja.fmx"/>
         <FormResources Include="ekran_ebazarek.fmx"/>
-        <FormResources Include="ekran_ebazarek.XLgXhdpiTb.fmx"/>
-        <FormResources Include="ekran_ebazarek.LgXhdpiPh.fmx"/>
-        <FormResources Include="ekran_ebazarek.NmXhdpiPh.fmx"/>
         <FormResources Include="ekran_panelu_admina.fmx"/>
         <FormResources Include="ekran_przedmiotu.fmx"/>
         <BuildConfiguration Include="Release">

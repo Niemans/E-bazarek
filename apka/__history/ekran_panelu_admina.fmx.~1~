@@ -1,10 +1,9 @@
-object Form_ekran_panelu_admina: TForm_ekran_panelu_admina
+object Form1: TForm1
   Left = 0
   Top = 0
   Caption = 'Form1'
   ClientHeight = 700
   ClientWidth = 400
-  Position = ScreenCenter
   FormFactor.Width = 320
   FormFactor.Height = 480
   FormFactor.Devices = [Desktop]
