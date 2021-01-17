@@ -49,22 +49,21 @@ void Przedmiot::usun_przedmioty(int ilosc_do_usuniecia)			//WAZNE!!! Trzeba zmie
 	ilosc -= ilosc_do_usuniecia;
 }
 
+	//zwraca nazwe przedmiotu
 std::string Przedmiot::podaj_nazwe()
 {
 	return nazwa;
 }
 
+	//zwraca adres nastepnego przedmiotu
 Przedmiot* Przedmiot::podaj_adres_nastepnego_przedmiotu()
 {
 	return next;
 }
 
-std::string Przedmiot::podaj_nazwe()
-{
-	return nazwa;
-}
 
 		//metody klasy licytacja
+
 	//metoda wkladajaca wygrany przedmiot do koszyka zwyciezcy
 void Licytacja::wygrana() {}		//do zrobienia
 
@@ -87,7 +86,6 @@ Osoba::Osoba(std::string newMail, std::string newHaslo): mail(newMail), haslo(ne
 	licznik++;
 	ID = licznik;
 }
-
 	
 	//funkcja sprawdzajaca czy podane przez uzytkownika dane sa poprawne
 bool Osoba::sprawdz_dane(std::string compMail, std::string compHaslo)
@@ -138,8 +136,11 @@ void Klient::dodaj_do_koszyka(unsigned int id_przedmiotu, int ilosc){}		//do zro
 	//funkcja uruchamia procedurê zakupu przedmiotów z koszyka
 Przedmiot* Klient::kup() { return NULL; }		//do zrobienia
 
-	//nie wiadomo co funkcja robi
-Przedmiot* Klient::zwroc_koszyk() { return NULL; }		//dowiedziec sie co funkcja ma robic
+	//funkcja zwracajaca glowe koszyka
+Przedmiot* Klient::zwroc_koszyk()			
+{
+	return koszyk;
+}
 
 	//usuwa przedmioty z koszyka
 void Klient::oproznij_koszyk(){}		//do zrobienia
@@ -393,7 +394,7 @@ int ObslugaZamowien::przekieruj_na_payu(){}			//do zrobienia wszystkie
 void ObslugaZamowien::wybierz_opcje_platnosci(){}
 void ObslugaZamowien::przekieruj_do_przelewu(){}
 
-
+	//funkcja podajaca koszyk klienta
 void ObslugaZamowien::podaj_koszyk(Przedmiot* koszyk_do_podania)
 {
 	koszyk = koszyk_do_podania;
