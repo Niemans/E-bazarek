@@ -41,11 +41,8 @@ __published:	// IDE-managed Components
 	TIBTransaction *IBTransaction;
 	void __fastcall btn_szukajClick(TObject *Sender);
 	void __fastcall grid_colNazwaTap(TObject *Sender, const TPointF &Point);
-	void __fastcall edit_szukajChange(TObject *Sender);
-	void __fastcall FormClose(TObject *Sender, TCloseAction &Action);
 private:	// User declarations
-	void __fastcall WczytajDane();
-    AnsiString szukaj;
+    void __fastcall WczytajDane();
 public:		// User declarations
 	__fastcall TForma_ekran_bazarek(TComponent* Owner);
 };

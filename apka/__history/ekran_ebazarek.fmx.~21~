@@ -8,7 +8,6 @@ object Forma_ekran_bazarek: TForma_ekran_bazarek
   FormFactor.Width = 320
   FormFactor.Height = 480
   FormFactor.Devices = [Desktop]
-  OnClose = FormClose
   DesignerMasterStyle = 0
   object Panel1: TPanel
     Anchors = [akLeft, akTop, akRight]
@@ -25,7 +24,6 @@ object Forma_ekran_bazarek: TForma_ekran_bazarek
       Size.Height = 22.000000000000000000
       Size.PlatformDefault = False
       Visible = False
-      OnChange = edit_szukajChange
     end
     object Image1: TImage
       MultiResBitmap = <
@@ -393,14 +391,14 @@ object Forma_ekran_bazarek: TForma_ekran_bazarek
     CanFocus = True
     ClipChildren = True
     Position.Y = 80.000000000000000000
-    Size.Width = 400.000000000000000000
+    Size.Width = 401.000000000000000000
     Size.Height = 617.000000000000000000
     Size.PlatformDefault = False
     TabOrder = 3
     RowHeight = 120.000000000000000000
-    RowCount = 0
+    RowCount = 5
     Options = [ColumnResize, ColumnMove, ColLines, RowLines, Tabs, HeaderClick, AutoDisplacement]
-    Viewport.Width = 396.000000000000000000
+    Viewport.Width = 397.000000000000000000
     Viewport.Height = 613.000000000000000000
     object grid_colNazwa: TStringColumn
       OnTap = grid_colNazwaTap
@@ -802,28 +800,18 @@ object Forma_ekran_bazarek: TForma_ekran_bazarek
     Left = 360
     Top = 296
   end
-  object IBDB: TIBDatabase
-    DatabaseName = 'C:\Users\Proman\Desktop\e-bazarek\E-bazarek\apka\baza\PASS.FDB'
-    Params.Strings = (
-      'user_name=SYSDBA'
-      'password=qaz123')
-    LoginPrompt = False
-    ServerType = 'IBServer'
+  object ADOConnection: TADOConnection
+    ConnectionString = 
+      'Provider=Microsoft.ACE.OLEDB.12.0;Data Source=Baza.xlsx;Extended' +
+      ' Properties=Excel 12.0;Persist Security Info=False'
+    Provider = 'Microsoft.ACE.OLEDB.12.0'
     Left = 360
-    Top = 352
+    Top = 344
   end
-  object IBQuery: TIBQuery
-    Database = IBDB
-    Transaction = IBTransaction
-    BufferChunks = 1000
-    CachedUpdates = False
-    ParamCheck = True
+  object ADOQuery: TADOQuery
+    Connection = ADOConnection
+    Parameters = <>
     Left = 360
-    Top = 464
-  end
-  object IBTransaction: TIBTransaction
-    DefaultDatabase = IBDB
-    Left = 360
-    Top = 408
+    Top = 392
   end
 end

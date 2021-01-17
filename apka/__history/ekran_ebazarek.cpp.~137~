@@ -44,7 +44,6 @@ void __fastcall TForma_ekran_bazarek::WczytajDane()
 	int row_count = Grid->RowCount;
 
 //------------  SQL ------------------
-	IBQuery->SQL->Clear();
 	IBQuery->SQL->Text = "select Upper(nazwa) as nazwa,opis,kwota from dane";
 
 	if(szukaj!="")
@@ -65,6 +64,7 @@ void __fastcall TForma_ekran_bazarek::WczytajDane()
 	IBQuery->Next();
 	}
 	IBQuery->Close();
+	IBQuery->Free();
 }
 
 
@@ -80,15 +80,8 @@ void __fastcall TForma_ekran_bazarek::grid_colNazwaTap(TObject *Sender, const TP
 
 void __fastcall TForma_ekran_bazarek::edit_szukajChange(TObject *Sender)
 {
-//	szukaj = edit_szukaj->Text;
-	WczytajDane();
-}
-//---------------------------------------------------------------------------
-
-void __fastcall TForma_ekran_bazarek::FormClose(TObject *Sender, TCloseAction &Action)
-
-{
-    IBQuery->Free();
+	szukaj = edit_szukaj->Text;
+    WczytajDane();
 }
 //---------------------------------------------------------------------------
 

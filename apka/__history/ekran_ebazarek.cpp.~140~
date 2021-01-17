@@ -85,10 +85,3 @@ void __fastcall TForma_ekran_bazarek::edit_szukajChange(TObject *Sender)
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TForma_ekran_bazarek::FormClose(TObject *Sender, TCloseAction &Action)
-
-{
-    IBQuery->Free();
-}
-//---------------------------------------------------------------------------
-

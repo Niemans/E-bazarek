@@ -8,7 +8,6 @@ object Forma_ekran_bazarek: TForma_ekran_bazarek
   FormFactor.Width = 320
   FormFactor.Height = 480
   FormFactor.Devices = [Desktop]
-  OnClose = FormClose
   DesignerMasterStyle = 0
   object Panel1: TPanel
     Anchors = [akLeft, akTop, akRight]

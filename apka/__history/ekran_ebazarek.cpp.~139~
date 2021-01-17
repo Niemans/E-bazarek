@@ -80,15 +80,8 @@ void __fastcall TForma_ekran_bazarek::grid_colNazwaTap(TObject *Sender, const TP
 
 void __fastcall TForma_ekran_bazarek::edit_szukajChange(TObject *Sender)
 {
-//	szukaj = edit_szukaj->Text;
-	WczytajDane();
-}
-//---------------------------------------------------------------------------
-
-void __fastcall TForma_ekran_bazarek::FormClose(TObject *Sender, TCloseAction &Action)
-
-{
-    IBQuery->Free();
+	szukaj = edit_szukaj->Text;
+    WczytajDane();
 }
 //---------------------------------------------------------------------------
 

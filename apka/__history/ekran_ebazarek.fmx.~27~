@@ -8,7 +8,6 @@ object Forma_ekran_bazarek: TForma_ekran_bazarek
   FormFactor.Width = 320
   FormFactor.Height = 480
   FormFactor.Devices = [Desktop]
-  OnClose = FormClose
   DesignerMasterStyle = 0
   object Panel1: TPanel
     Anchors = [akLeft, akTop, akRight]
@@ -25,7 +24,6 @@ object Forma_ekran_bazarek: TForma_ekran_bazarek
       Size.Height = 22.000000000000000000
       Size.PlatformDefault = False
       Visible = False
-      OnChange = edit_szukajChange
     end
     object Image1: TImage
       MultiResBitmap = <
