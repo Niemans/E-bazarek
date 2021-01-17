@@ -2,7 +2,7 @@
 
 		//metody klasy Przedmiot
 
-	//funkcja zwracajaca id osoby wystawiajacej przedmiot
+	//funkcja sprawdzajaca czy podane id zgadza sie z id wlasciciela
 bool Przedmiot::sprawdz_id_wlasciciela(unsigned int idOsoby)
 {
 	if (IDWlasciciela == idOsoby)
@@ -16,7 +16,7 @@ bool Przedmiot::sprawdz_id_wlasciciela(unsigned int idOsoby)
 }
 
 	//funkcja wypisujaca przedmiot w okienku - potrzebna wspolpraca z okienkiem
-void wypisz() {}		//do zrobienia, potrzebne okienko
+void Przedmiot::wypisz() {}		//do zrobienia, potrzebne okienko
 
 	//funkcja zwracajaca id wlasciciela
 unsigned int Przedmiot::wypisz_id_wlasciciela()
@@ -47,6 +47,21 @@ unsigned int Przedmiot::podaj_id()
 void Przedmiot::usun_przedmioty(int ilosc_do_usuniecia)			//WAZNE!!! Trzeba zmienic aby dzialalo lepiej - teraz nie sprzawdza czy...
 {																//...nie usuwamy wiecej przedmiotow niz jest, powinna zwracac int
 	ilosc -= ilosc_do_usuniecia;
+}
+
+std::string Przedmiot::podaj_nazwe()
+{
+	return nazwa;
+}
+
+Przedmiot* Przedmiot::podaj_adres_nastepnego_przedmiotu()
+{
+	return next;
+}
+
+std::string Przedmiot::podaj_nazwe()
+{
+	return nazwa;
 }
 
 		//metody klasy licytacja
@@ -308,4 +323,78 @@ Klient* ListaKlientow::wyszukaj_klienta(std::string nazwa_klienta)
 	}
 
 	return pom;		//jezeli znajdziemy klienta - zwroci jej adres, jezeli nie - NULL
+}
+
+			//metody klasy Bazarek
+		//obsluga wystawionych przedmiotow i licytacji
+	//funkcja dodajaca przedmiot
+void Bazarek::dodaj_przedmiot(){}		//do zrobienia
+
+	//funkcja dodajaca licytacje
+void Bazarek::dodaj_licytacje(){}		//do zrobienia
+	
+	//funkcja usuwajaca przedmiot
+void Bazarek::usun_przedmiot(){}			//do zrobienia
+
+	//funkcja usuwajaca licytacje
+void Bazarek::usun_licytacje(){}			//do zrobienia
+
+	//funkcja wyszukujaca przedmioty
+Przedmiot* Bazarek::szukaj(std::string szukanaOferta)
+{
+	Przedmiot* pom = NULL;		//wskaznik pomocniczy
+	Przedmiot* lista_do_zwrocenia;
+
+	if (listaPrzedmiotow != NULL)		//jezeli nie ma jeszcze klientow na liscie - klient zostaje pierwszy
+	{
+		pom = listaPrzedmiotow;
+
+		while (pom->podaj_adres_nastepnego_przedmiotu() != NULL)
+		{
+			if (pom->podaj_nazwe() == szukanaOferta)
+			{
+						//trzeba dokonczyc
+			}
+		}
+	}
+	return NULL;
+
+}
+
+//funkcje wspolpracojace z okienkami		wszystko do zrobienia!!!
+void Bazarek::wyswietl(){}
+void Bazarek::wyswietl_przedmioty(){}
+void Bazarek::wyswietl_licytacje(){}
+
+//funkcje do obslugi licytacji
+bool Bazarek::sprawdz_czas_licytacji(Licytacja* licytacjaDoSprawdzenia) { return true; }
+void Bazarek::sprawdz_wszystkie_licytacje(){}
+
+
+		//metody klasy ObslogaZamowien
+	//funkcja pobierajaca od uzytkownika dane osobowe
+void ObslugaZamowien::podaj_dane_osobowe(std::string Im, std::string Naz)
+{
+	imie = Im;
+	nazwisko = Naz;
+}
+
+	//funkcja pobierajaca od uzytkownika dane adresowe
+void ObslugaZamowien::podaj_dane_adresowe(std::string Kr, std::string Mi, std::string Ul, std::string Nr)
+{
+	kraj = Kr;
+	miasto = Mi;
+	ulica = Ul;
+	nrDomu = Nr;
+}
+
+	//???
+int ObslugaZamowien::przekieruj_na_payu(){}			//do zrobienia wszystkie
+void ObslugaZamowien::wybierz_opcje_platnosci(){}
+void ObslugaZamowien::przekieruj_do_przelewu(){}
+
+
+void ObslugaZamowien::podaj_koszyk(Przedmiot* koszyk_do_podania)
+{
+	koszyk = koszyk_do_podania;
 }

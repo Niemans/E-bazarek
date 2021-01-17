@@ -20,6 +20,9 @@ public:
 	bool czy_dostepny();
 	unsigned int podaj_id();
 	void usun_przedmioty(int ilosc);
+	std::string podaj_nazwe();
+	Przedmiot* podaj_adres_nastepnego_przedmiotu();
+	std::string podaj_nazwe();
 	
 };
 
@@ -157,4 +160,54 @@ public:
 	Klient* wyszukaj_klienta(unsigned int id_klienta);
 	Klient* wyszukaj_klienta(std::string nazwa_klienta);
 
+};
+
+					//bazarek otrzyma³ dodatkowe pola i metody spoza diagramow klas
+class Bazarek {
+private:
+	unsigned int liczbaPrzedmiotow;
+	unsigned int liczbaLicytacji;		//dodane przeze mnie
+	Przedmiot* listaPrzedmiotow;
+	Licytacja* listaLicytacji;					//dodane przeze mnie
+
+public:
+
+		//obsluga wystawionych przedmiotow i licytacji
+	void dodaj_przedmiot();				
+	void dodaj_licytacje();
+	void usun_przedmiot();
+	void usun_licytacje();
+
+	Przedmiot* szukaj(std::string szukanaOferta);
+	
+		//funkcje wspolpracojace z okienkami
+	void wyswietl();		
+	void wyswietl_przedmioty();
+	void wyswietl_licytacje();
+
+		//funkcje do obslugi licytacji
+	bool sprawdz_czas_licytacji(Licytacja* licytacjaDoSprawdzenia);
+	void sprawdz_wszystkie_licytacje();
+
+};
+
+
+class ObslugaZamowien {
+private:
+	std::string imie;
+	std::string nazwisko;
+	std::string kraj;
+	std::string miasto;
+	std::string ulica;
+	std::string nrDomu;
+	unsigned int kodPocztowy;
+	Przedmiot* koszyk;
+
+public:
+	void podaj_dane_osobowe(std::string Im, std::string Naz);
+	void podaj_dane_adresowe(std::string Kr, std::string Mi, std::string Ul, std::string Nr);
+	int przekieruj_na_payu();
+	void wybierz_opcje_platnosci();
+	void przekieruj_do_przelewu();
+	void podaj_koszyk(Przedmiot* koszyk_do_podania);
 };
