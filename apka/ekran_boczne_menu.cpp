@@ -3,13 +3,13 @@
 #include <fmx.h>
 #pragma hdrstop
 
-#include "ekran_przedmiotu.h"
+#include "ekran_boczne_menu.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma resource "*.fmx"
-TForm1 *Form1;
+TForma_boczne_menu *Forma_boczne_menu;
 //---------------------------------------------------------------------------
-__fastcall TForm1::TForm1(TComponent* Owner)
+__fastcall TForma_boczne_menu::TForma_boczne_menu(TComponent* Owner)
 	: TForm(Owner)
 {
 }

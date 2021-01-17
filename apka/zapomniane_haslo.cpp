@@ -5,6 +5,7 @@
 
 #include "ekran_startowy.h"
 #include "zapomniane_haslo.h"
+#include "../class_library/class_library.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma resource "*.fmx"
@@ -18,49 +19,57 @@ __fastcall TForma_zapomniane_haslo::TForma_zapomniane_haslo(TComponent* Owner)
 //---------------------------------------------------------------------------
 
 
-void __fastcall TForma_zapomniane_haslo::Button1Click(TObject *Sender)
+void __fastcall TForma_zapomniane_haslo::Btn_wyslij_wiadomoscClick(TObject *Sender)
 {
-	if(haslo_jasiu1->Text == "")
+	if(Edit_email->Text == "")
 	{
-		Text3->Visible = true;
-		Text3->Text = "Brak napisanego emaila";
+		Text_blad1->Visible = true;
+		Text_blad1->Text = "Brak napisanego emaila";
 	}
-	else if(haslo_jasiu2->Text == "")
+	else if (/*brak maila w spisie emaili*/false)
 	{
-		Text3->Visible = true;
-		Text3->Text = "Brak napisanego starego hasla";
+		Text_blad1->Visible = true;
+		Text_blad1->Text = "Brak konta pod podanym emailem";
 	}
-	//elsse if (has³o nie pasuje do emaila)
 	else
 	{
-		Text3->Visible = false;
-
+		Text_blad1->Visible = false;
+		wygeneruj_kod();
 	}
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TForma_zapomniane_haslo::Button2Click(TObject *Sender)
+void __fastcall TForma_zapomniane_haslo::Btn_zmien_hasloClick(TObject *Sender)
 {
-	if(haslo_jasiu3->Text == "")
+	if(Edit_kod->Text == "")
 	{
-		Text6->Visible = true;
-		Text6->Text = "Brak kodu";
+		Text_blad2->Visible = true;
+		Text_blad2->Text = "Brak kodu";
 	}
-	else if(haslo_jasiu4->Text == "")
+	else if(Edit_kod->Text != kod)
 	{
-		Text6->Visible = true;
-		Text6->Text = "Brak napisania nowego hasla";
+		Text_blad2->Visible = true;
+		Text_blad2->Text = "Bledny kod";
 	}
-	else if(haslo_jasiu5->Text == "")
+	else if(edit_nhaslo->Text == "")
 	{
-		Text6->Visible = true;
-		Text6->Text = "Brak ponownego napisania nowego hasla";
+		Text_blad2->Visible = true;
+		Text_blad2->Text = "Brak napisania nowego hasla";
 	}
-	//else if (nie by³o wygenerowanego takiego kodu)
+	else if(Edit_pnhaslo->Text == "")
+	{
+		Text_blad2->Visible = true;
+		Text_blad2->Text = "Brak ponownego napisania nowego hasla";
+	}
+	else if(Edit_email->Text == "")
+	{
+		Text_blad2->Visible = true;
+		Text_blad2->Text = "Do zmiany hasla potrzebny jest email";
+	}
 	else
 	{
-		Text6->Visible = false;
-		//zmiana has³a do danego emaila
+		Text_blad2->Visible = false;
+		//zmiana has³a do konta o podanym danego emaila
 	}
 }
 //---------------------------------------------------------------------------
@@ -74,15 +83,36 @@ void __fastcall TForma_zapomniane_haslo::FormClose(TObject *Sender, TCloseAction
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TForma_zapomniane_haslo::Button3Click(TObject *Sender)
+void __fastcall TForma_zapomniane_haslo::Btn_powrotClick(TObject *Sender)
 {
  ModalResult = 1;
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TForma_zapomniane_haslo::FormActivate(TObject *Sender)
+void TForma_zapomniane_haslo::wygeneruj_kod()
 {
-    Forma_ekran_startowy->Visible = false;
+	short int number = 0; //chwilowe przechowanie danych
+	char znak;            //znak na podstawie losowo wybranego numeru
+	for (int i = 0; i < 4; i++)
+	{
+		number = rand()%62;
+		if(number <26)
+		{
+			znak = 'A' + number;
+		}
+		else if(number >= 26 && number < 52)
+		{
+			znak = 'a' + znak - 26;
+		}
+		else
+		{
+			znak = '0' + znak - 52;
+		}
+
+		this->kod += znak;
+	}
 }
-//---------------------------------------------------------------------------
+
+
+
 

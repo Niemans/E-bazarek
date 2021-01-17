@@ -1,4 +1,5 @@
 #include <string>
+#include <vector>
 #include <iostream>
 
 
@@ -20,7 +21,7 @@ public:
 	unsigned int wypisz_id_wlasciciela();					//funkcja zwracajaca id wlasciciela						zrobione
 	bool czy_dostepny();									//funkcja sprawdzajaca czy produkt jest dostepny		zrobione
 	unsigned int podaj_id();								//funkcja zwracajaca id przedmiotu						zrobione
-	void usun_przedmioty(int ilosc);						//funkcja usuwajaca egzemplaze przedmiotu				do zrobienia, potrzebne okienka
+	int usun_przedmioty(unsigned int ilosc);				//funkcja usuwajaca egzemplaze przedmiotu				zrobione, jezeli funkcja zwroci wartosc dodatnia - operacja zostala wykonana, jezeli ujemna - czynnosc nie zostala wykonana
 	std::string podaj_nazwe();								//zwraca nazwe przedmiotu								zrobione
 	Przedmiot* podaj_adres_nastepnego_przedmiotu();			//zwraca adres nastepnego przedmiotu					zrobione
 	
@@ -46,15 +47,16 @@ public:
 	bool sprawdz_dane(std::string compMail, std::string compHaslo);						//funkcja sprawdzajaca czy podane przez uzytkownika dane sa poprawne		zrobione
 	void edytuj_dane(std::string newMail, std::string newHaslo);						//funkcja edytujaca dane					zrobione
 	unsigned int podaj_id();															//nowododana, nie ma w diagramie klas		zrobione
+	std::string podaj_email();															//nowododana, nie ma w diagramie klas		zrobione
 
 };
 
 
-class Klient : public Osoba {
+class Klient : public Osoba {					
 private:
 	std::string imieINazwisko;
 	Klient* next;
-	Przedmiot* koszyk;
+	std::vector<unsigned int> koszyk;
 
 public:
 		//obsluga wystawionych przedmiotow			wszystko do zrobienia, wymaga okienek i kodowania w Bazarku
@@ -66,17 +68,17 @@ public:
 	void dodaj_licytacje();
 	void usun_licytacje();
 
-		//dodawanie przedmiotu do koszyka			do zrobienia
+		//dodawanie przedmiotu do koszyka			zrobione
 	void dodaj_do_koszyka(unsigned int id_przedmiotu, int ilosc);
 
 		//zakup przedmiotow z koszyka				do zrobienia
 	Przedmiot* kup();
 
-		//funkcja zwracajaca glowe koszyka
-	Przedmiot* zwroc_koszyk();
+		//funkcja zwracajaca koszyk
+	std::vector<unsigned int>* zwroc_koszyk();		//zrobione
 		
 		//oproznia koszyk uzytkownika
-	void oproznij_koszyk();							//do zrobienia
+	void oproznij_koszyk();							//zrobione
 
 	//gettery										//po prostu zwracaja dane, zrobione
 	std::string podaj_nazwe_klienta();
@@ -143,7 +145,7 @@ private:
 
 public:
 	void dodaj(Firma* toAdd);											//funkcja dodaje firme do listy							zrobione
-	bool sprawdz(std::string email_firmy, std::string nazwa_firmy);		//funkcja sprawdza czy podana firma juz istnieje		do zrobienia, przedyskutowaæ - czy moga istniec dwie firmy o tej samej nazwie?
+	int sprawdz(std::string email_firmy, std::string nazwa_firmy);		//funkcja sprawdza czy podana firma juz istnieje		zrobione, mozliwy odutput: 0-nic nie zajete, 1-zajeta nazwa, 2-zajety email, 3 zajeta nazwa i email
 	Firma* wyszukaj_firme(unsigned int id_firmy);						//funkcja wyszukuje firme po id							zrobione
 	Firma* wyszukaj_firme(std::string nazwa_firmy);						//funkcja wyszukuje firme po nazwie						zrobione
 		
@@ -156,7 +158,7 @@ private:
 
 public:
 	void dodaj(Klient* toAdd);												//funkcja dodaje klienta do listy						zrobione
-	bool sprawdz(std::string email_klienta, std::string nazwa_klienta);		//funkcja sprawdza czy podany klient juz istnieje		do zrobione, jak w lis.firm
+	int sprawdz(std::string email_klienta, std::string nazwa_klienta);		//funkcja sprawdza czy podany klient juz istnieje		zrobione, mozliwy odutput: 0-nic nie zajete, 1-zajeta nazwa, 2-zajety email, 3 zajeta nazwa i email
 	Klient* wyszukaj_klienta(unsigned int id_klienta);						//funkcja wyszukuje klienta po id						zrobione
 	Klient* wyszukaj_klienta(std::string nazwa_klienta);					//funkcja wyszukuje klienta po nazwie					zrobione
 

@@ -28,7 +28,10 @@ __published:	// IDE-managed Components
 	TMemo *Memo_komentarz;
 	TButton *Btn_usun;
 	TButton *Btn_anuluj;
+	TText *Text_blad;
+	TImage *Image_EB;
 	void __fastcall Btn_anulujClick(TObject *Sender);
+	void __fastcall Btn_usunClick(TObject *Sender);
 private:	// User declarations
 public:		// User declarations
 	__fastcall TForm_ekran_panelu_admina(TComponent* Owner);

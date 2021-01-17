@@ -1,31 +1,37 @@
 //---------------------------------------------------------------------------
 
-#ifndef ekran_przedmiotuH
-#define ekran_przedmiotuH
+#ifndef ekran_boczne_menuH
+#define ekran_boczne_menuH
 //---------------------------------------------------------------------------
 #include <System.Classes.hpp>
 #include <FMX.Controls.hpp>
 #include <FMX.Forms.hpp>
-#include <FMX.Controls.Presentation.hpp>
+#include <FMX.Colors.hpp>
 #include <FMX.Objects.hpp>
-#include <FMX.StdCtrls.hpp>
 #include <FMX.Types.hpp>
+#include <FMX.Controls.Presentation.hpp>
+#include <FMX.StdCtrls.hpp>
 //---------------------------------------------------------------------------
-class TForm_ekran_przedmiotu : public TForm
+class TForma_boczne_menu : public TForm
 {
 __published:	// IDE-managed Components
-	TText *text_nazwa;
-	TText *text_opis;
-	TText *text_kwota;
-	TButton *btn_doKoszyka;
-	TButton *btn_kupTeraz;
-	TButton *btn_licytuj;
-	TImageControl *ImageControl1;
+	TColorBox *ColorBox_biel;
+	TImage *Image_EB;
+	TImage *Image_arrow;
+	TImage *Image_dom;
+	TButton *Btn_rejestracja;
+	TButton *Btn_przedmioty;
+	TButton *Btn_logowanie;
+	TButton *Btn_wyloguj;
+	TButton *Btn_admin;
+	TButton *Btn_profil;
+	TButton *Btn_koszyk;
+	TColorBox *ColorBox4;
 private:	// User declarations
 public:		// User declarations
-	__fastcall TForm_ekran_przedmiotu(TComponent* Owner);
+	__fastcall TForma_boczne_menu(TComponent* Owner);
 };
 //---------------------------------------------------------------------------
-extern PACKAGE TForm_ekran_przedmiotu *Form_ekran_przedmiotu;
+extern PACKAGE TForma_boczne_menu *Forma_boczne_menu;
 //---------------------------------------------------------------------------
 #endif

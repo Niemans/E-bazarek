@@ -38,24 +38,31 @@ Coordinates=325,10,107,58
 Coordinates=10,146,79,58
 
 []
-Coordinates=583,1,91,36
+Coordinates=371,242,91,36
 
 [Text_powtorz_haslo]
-Coordinates=442,10,47,58
+Coordinates=442,10,130,58
 Visible=True
 
 [Edit_email]
-Coordinates=97,10,44,58
+Coordinates=97,10,75,58
 
 [Edit_login]
-Coordinates=10,214,45,58
+Coordinates=10,214,71,58
 
 [Edit_haslo]
-Coordinates=99,146,44,58
+Coordinates=99,146,75,58
 
 [Edit_powtorz_haslo]
-Coordinates=271,10,44,58
+Coordinates=271,10,127,58
 
 [Image_EB]
-Coordinates=98,78,57,58
+Coordinates=98,78,74,58
+
+[Text_wybor]
+Coordinates=470,223,81,58
+
+[ListBox_KF]
+Coordinates=470,300,139,212
+Visible=True
 
