@@ -39,7 +39,6 @@ __published:	// IDE-managed Components
 	void __fastcall Btn_zmien_hasloClick(TObject *Sender);
 	void __fastcall FormClose(TObject *Sender, TCloseAction &Action);
 	void __fastcall Btn_powrotClick(TObject *Sender);
-	void __fastcall FormActivate(TObject *Sender);
 	void __fastcall ListBoxItem_KlientClick(TObject *Sender);
 	void __fastcall ListBoxItem_FirmaClick(TObject *Sender);
 private:	// User declarations

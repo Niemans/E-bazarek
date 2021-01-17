@@ -113,12 +113,6 @@ void TForma_zapomniane_haslo::wygeneruj_kod()
 	}
 }
 
-void __fastcall TForma_zapomniane_haslo::FormActivate(TObject *Sender)
-{
-
-	Forma_ekran_startowy->Visible = false;
-}
-//---------------------------------------------------------------------------
 
 void __fastcall TForma_zapomniane_haslo::ListBoxItem_KlientClick(TObject *Sender)
 

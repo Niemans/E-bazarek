@@ -43,11 +43,6 @@ void __fastcall TForma_rejestracja::FormClose(TObject *Sender, TCloseAction &Act
 	Close();
 }
 //---------------------------------------------------------------------------
-void __fastcall TForma_rejestracja::FormActivate(TObject *Sender)
-{
-    Forma_ekran_startowy->Visible = false;
-}
-//---------------------------------------------------------------------------
 
 void __fastcall TForma_rejestracja::ListBoxItem_KlientClick(TObject *Sender)
 {
