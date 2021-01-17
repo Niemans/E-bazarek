@@ -44,9 +44,14 @@ unsigned int Przedmiot::podaj_id()
 }
 
 	//funkcja usuwajaca egzemplaze przedmiotu
-void Przedmiot::usun_przedmioty(int ilosc_do_usuniecia)			//WAZNE!!! Trzeba zmienic aby dzialalo lepiej - teraz nie sprzawdza czy...
-{																//...nie usuwamy wiecej przedmiotow niz jest, powinna zwracac int
-	ilosc -= ilosc_do_usuniecia;
+int Przedmiot::usun_przedmioty(unsigned int ilosc_do_usuniecia)			
+{		
+	if (ilosc >= ilosc_do_usuniecia)
+	{
+		ilosc -= ilosc_do_usuniecia;
+	}
+
+	return (ilosc - ilosc_do_usuniecia);		//funkcja zwraca roznice miedzy iloscia a usuwanymi przedmiotami. Jezeli ujemna - przedmioty nie zostana odjete
 }
 
 	//zwraca nazwe przedmiotu
@@ -106,10 +111,17 @@ void Osoba::edytuj_dane(std::string newMail, std::string newHaslo)
 	mail = newMail;
 	haslo = newHaslo;
 }
-
+	
+	//funkcja zwracajaca id
 unsigned int Osoba::podaj_id()
 {
 	return ID;
+}
+
+	//funkcja zwracajaca email
+std::string Osoba::podaj_email()
+{
+	return mail;
 }
 
 
@@ -131,19 +143,28 @@ void Klient::dodaj_licytacje(){}		//do zrobienia
 void Klient::usun_licytacje(){}			//do zrobienia
 
 	//funkcja dodaje podany przedmiot do koszyka
-void Klient::dodaj_do_koszyka(unsigned int id_przedmiotu, int ilosc){}		//do zrobienia
+void Klient::dodaj_do_koszyka(unsigned int id_przedmiotu, int ilosc)
+{
+	for (int i = 0; i < ilosc; i++)
+	{
+		koszyk.push_back(id_przedmiotu);
+	}
+}
 
 	//funkcja uruchamia procedurê zakupu przedmiotów z koszyka
 Przedmiot* Klient::kup() { return NULL; }		//do zrobienia
 
-	//funkcja zwracajaca glowe koszyka
-Przedmiot* Klient::zwroc_koszyk()			
+	//funkcja zwracajaca koszyk
+std::vector<unsigned int>* Klient::zwroc_koszyk()
 {
-	return koszyk;
+	return &koszyk;
 }
 
 	//usuwa przedmioty z koszyka
-void Klient::oproznij_koszyk(){}		//do zrobienia
+void Klient::oproznij_koszyk()
+{
+	koszyk.clear();
+}
 
 	//gettery parametrow imieINazwisko oraz next
 std::string Klient::podaj_nazwe_klienta()
@@ -239,10 +260,29 @@ void ListaFirm::dodaj(Firma* toAdd)
 }
 
 	//funkcja sprawdza czy podana firma juz istnieje
-bool ListaFirm::sprawdz(std::string email_firmy, std::string nazwa_firmy)		//mozna zmodyfikowac funkcje aby zwracala informacja czy to email sie duplikuje czy nazwa firmy
+int ListaFirm::sprawdz(std::string email_firmy, std::string nazwa_firmy)		
 {
-	//nalezy do klasy Firma dodac funkcje porownojaca dane firmy z wprowadzonymi przez uzytkownika
-	return true;
+	int returnInt = 0;		//wartosc ktora bedziemy zwracac
+
+	Firma* pom = head;		//wskaznik pomocniczy - ustawiamy najpierw na glowe
+
+	while (pom != NULL)
+	{
+		pom = pom->podaj_wskaznik_next_firmy();		//dopoki nie dotrzemy do konca listy - przechodzimy kolejne welzy
+
+		if (pom->podaj_email() == email_firmy)
+		{
+			returnInt += 2;
+		}
+
+		if (pom->podaj_nazwe_firmy() == nazwa_firmy)
+		{
+			returnInt += 1;
+		}
+
+	}
+
+	return returnInt;		//jezeli nie ma takiej firmy - 0, jezeli jest firma o takiej nazwie - 1, jezeli jest firma zarejestrowana na podany email - 2, jezeli nazwa i email sa zajete - 3
 }
 
 	//funkcja wyszukuje firme po id
@@ -294,10 +334,29 @@ void ListaKlientow::dodaj(Klient* toAdd)
 }
 
 //funkcja sprawdza czy podany klient juz istnieje
-bool ListaKlientow::sprawdz(std::string email_klienta, std::string nazwa_klienta)		//mozna zmodyfikowac funkcje aby zwracala informacja czy to email sie duplikuje czy nazwa klienta
+int ListaKlientow::sprawdz(std::string email_klienta, std::string nazwa_klienta)		
 {
-	//nalezy do klasy Klient dodac funkcje porownojaca dane klienta z wprowadzonymi przez uzytkownika
-	return true;
+	int returnInt = 0;		//wartosc ktora bedziemy zwracac
+
+	Klient* pom = head;		//wskaznik pomocniczy - ustawiamy najpierw na glowe
+
+	while (pom != NULL)
+	{
+		pom = pom->podaj_wskaznik_next_klienta();		//dopoki nie dotrzemy do konca listy - przechodzimy kolejne welzy
+
+		if (pom->podaj_email() == email_klienta)
+		{
+			returnInt += 2;
+		}
+
+		if (pom->podaj_nazwe_klienta() == nazwa_klienta)
+		{
+			returnInt += 1;
+		}
+
+	}
+
+	return returnInt;		//jezeli nie ma takiego klienta - 0, jezeli jest klient o takiej nazwie - 1, jezeli jest klient zarejestrowany na podany email - 2, jezeli nazwa i email sa zajete - 3
 }
 
 //funkcja wyszukuje klienta po id
