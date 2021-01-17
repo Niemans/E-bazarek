@@ -12,10 +12,6 @@
 #include <FMX.Objects.hpp>
 #include <FMX.StdCtrls.hpp>
 #include <FMX.Types.hpp>
-
-#include "../class_library/class_library.h"
-#include <FMX.Layouts.hpp>
-#include <FMX.ListBox.hpp>
 //---------------------------------------------------------------------------
 class TForma_rejestracja : public TForm
 {
@@ -39,37 +35,17 @@ __published:	// IDE-managed Components
 	TColorAnimation *ColorAnimation1;
 	TText *Text_Btn_co_to_email;
 	TText *Text_Btn_co_to_haslo;
-	TText *Text_wybor;
-	TListBox *ListBox_KF;
-	TListBoxItem *ListBoxItem_Klient;
-	TListBoxItem *ListBoxItem_Firma;
-	TCheckBox *CheckBox_KF;
-	TCheckBox *CheckBox_login;
-	TCheckBox *CheckBox_email;
-	TCheckBox *CheckBox_haslo;
-	TCheckBox *CheckBox_phaslo;
-	TText *Text_blad;
 	void __fastcall Btn_co_to_loginClick(TObject *Sender);
 	void __fastcall Btn_co_to_emailClick(TObject *Sender);
 	void __fastcall Btn_co_to_hasloClick(TObject *Sender);
 	void __fastcall Btn_powrotClick(TObject *Sender);
 	void __fastcall FormClose(TObject *Sender, TCloseAction &Action);
 	void __fastcall FormActivate(TObject *Sender);
-	void __fastcall ListBoxItem_KlientClick(TObject *Sender);
-	void __fastcall ListBoxItem_FirmaClick(TObject *Sender);
-	void __fastcall Btn_rejestracjaClick(TObject *Sender);
 private:	// User declarations
-	Firma* Firma_rejestracja;
-	Klient* Klient_rejestracja;
-	void rejestracja_klient(); //by w funkcji po przyciœniêciu przcisku rejestracji nie by³o za du¿o
-	void rejestracja_firma();  //by w funkcji po przyciœniêciu przcisku rejestracji nie by³o za du¿o
 public:		// User declarations
 	__fastcall TForma_rejestracja(TComponent* Owner);
 };
 //---------------------------------------------------------------------------
 extern PACKAGE TForma_rejestracja *Forma_rejestracja;
 //---------------------------------------------------------------------------
-
-
-
 #endif

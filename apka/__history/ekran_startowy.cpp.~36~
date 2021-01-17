@@ -3,16 +3,14 @@
 #include <fmx.h>
 #pragma hdrstop
 
-#include "glowne_okno.h"
 #include "ekran_startowy.h"
 #include "zapomniane_haslo.h"
+#include "ekran_rejestracja.h"
+#include "ekran_ebazarek.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma resource "*.fmx"
-#pragma resource ("*.LgXhdpiTb.fmx", _PLAT_ANDROID)
-#pragma resource ("*.LgXhdpiPh.fmx", _PLAT_ANDROID)
-#pragma resource ("*.XLgXhdpiTb.fmx", _PLAT_ANDROID)
-#pragma resource ("*.NmXhdpiPh.fmx", _PLAT_ANDROID)
+
 TForma_ekran_startowy * Forma_ekran_startowy;
 
 //---------------------------------------------------------------------------
@@ -44,10 +42,9 @@ void __fastcall TForma_ekran_startowy::Button1Click(TObject *Sender)
 
 		Text3->Visible = false;
 		if (/*email i has³o s¹ razem w bazie*/ true) {
-			Forma_glowne_okno->Visible = true;
 			Jasiu->Text = "";
-            Jasiu2->Text = "";
-			Forma_ekran_startowy->Visible = false;
+			Jasiu2->Text = "";
+			CloseModal();
 		}
 
 	}
@@ -86,14 +83,25 @@ void __fastcall TForma_ekran_startowy::Text5Click(TObject *Sender)
 {
 	Jasiu2->Text = "";
 
-     			Forma_ekran_startowy->Visible = false;
-
 	TForma_zapomniane_haslo * frm_zapomniane_haslo = new TForma_zapomniane_haslo(this);
-
 	frm_zapomniane_haslo->ShowModal();
 	delete frm_zapomniane_haslo;
-
 }
 //---------------------------------------------------------------------------
 
+
+void __fastcall TForma_ekran_startowy::FormClose(TObject *Sender, TCloseAction &Action)
+{
+	Forma_ekran_bazarek->Visible = true;
+	Close();
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForma_ekran_startowy::Button2Click(TObject *Sender)
+{
+	TForma_rejestracja * forma = new TForma_rejestracja (this);
+	forma->ShowModal();
+	delete forma;
+}
+//---------------------------------------------------------------------------
 

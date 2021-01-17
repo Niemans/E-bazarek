@@ -19,17 +19,12 @@ __fastcall TForma_zapomniane_haslo::TForma_zapomniane_haslo(TComponent* Owner)
 //---------------------------------------------------------------------------
 
 
-void __fastcall TForma_zapomniane_haslo::Btn_wyslij_wiadomoscClick(TObject *Sender)
+void __fastcall TForma_zapomniane_haslo::Button_wyslij_wiadomoscClick(TObject *Sender)
 {
-	if(Edit_email->Text == "")
+	if(haslo_jasiu1->Text == "")
 	{
 		Text_blad1->Visible = true;
 		Text_blad1->Text = "Brak napisanego emaila";
-	}
-	else if(ListBoxItem_Firma->IsChecked == false && ListBoxItem_Klient->IsChecked == false)
-	{
-        Text_blad1->Visible = true;
-		Text_blad1->Text = "Brak brak zaznaczonego rodzaju konta";
 	}
 	else if (/*brak maila w spisie emaili*/false)
 	{
@@ -44,29 +39,29 @@ void __fastcall TForma_zapomniane_haslo::Btn_wyslij_wiadomoscClick(TObject *Send
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TForma_zapomniane_haslo::Btn_zmien_hasloClick(TObject *Sender)
+void __fastcall TForma_zapomniane_haslo::Button_zmien_hasloClick(TObject *Sender)
 {
-	if(Edit_kod->Text == "")
+	if(haslo_jasiu3->Text == "")
 	{
 		Text_blad2->Visible = true;
 		Text_blad2->Text = "Brak kodu";
 	}
-	else if(Edit_kod->Text != kod)
+	else if(haslo_jasiu3->Text != kod)
 	{
 		Text_blad2->Visible = true;
 		Text_blad2->Text = "Bledny kod";
 	}
-	else if(edit_nhaslo->Text == "")
+	else if(haslo_jasiu4->Text == "")
 	{
 		Text_blad2->Visible = true;
 		Text_blad2->Text = "Brak napisania nowego hasla";
 	}
-	else if(Edit_pnhaslo->Text == "")
+	else if(haslo_jasiu5->Text == "")
 	{
 		Text_blad2->Visible = true;
 		Text_blad2->Text = "Brak ponownego napisania nowego hasla";
 	}
-	else if(Edit_email->Text == "")
+	else if(haslo_jasiu1->Text == "")
 	{
 		Text_blad2->Visible = true;
 		Text_blad2->Text = "Do zmiany hasla potrzebny jest email";
@@ -74,7 +69,7 @@ void __fastcall TForma_zapomniane_haslo::Btn_zmien_hasloClick(TObject *Sender)
 	else
 	{
 		Text_blad2->Visible = false;
-		//zmiana has³a do konta o podanym danego emaila
+		//zmiana has³a do danego emaila
 	}
 }
 //---------------------------------------------------------------------------
@@ -88,7 +83,7 @@ void __fastcall TForma_zapomniane_haslo::FormClose(TObject *Sender, TCloseAction
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TForma_zapomniane_haslo::Btn_powrotClick(TObject *Sender)
+void __fastcall TForma_zapomniane_haslo::Button_powrotClick(TObject *Sender)
 {
  ModalResult = 1;
 }

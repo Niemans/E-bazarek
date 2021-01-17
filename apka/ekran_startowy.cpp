@@ -82,6 +82,7 @@ void __fastcall TForma_ekran_startowy::CheckBox1Click(TObject *Sender)
 void __fastcall TForma_ekran_startowy::Text5Click(TObject *Sender)
 {
 	Jasiu2->Text = "";
+    srand(time(NULL)*time(NULL)-time(NULL));
 
 	TForma_zapomniane_haslo * frm_zapomniane_haslo = new TForma_zapomniane_haslo(this);
 	frm_zapomniane_haslo->ShowModal();
