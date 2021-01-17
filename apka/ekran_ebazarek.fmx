@@ -800,4 +800,14 @@ object Forma_ekran_bazarek: TForma_ekran_bazarek
     Left = 360
     Top = 296
   end
+  object ADOConnection: TADOConnection
+    Left = 360
+    Top = 344
+  end
+  object ADOQuery: TADOQuery
+    Connection = ADOConnection
+    Parameters = <>
+    Left = 360
+    Top = 392
+  end
 end

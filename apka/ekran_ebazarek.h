@@ -18,6 +18,8 @@
 #include <FMX.ScrollBox.hpp>
 #include <System.Rtti.hpp>
 #include <FMX.Objects.hpp>
+#include <Data.DB.hpp>
+#include <Data.Win.ADODB.hpp>
 //---------------------------------------------------------------------------
 class TForma_ekran_bazarek : public TForm
 {
@@ -31,6 +33,8 @@ __published:	// IDE-managed Components
 	TCurrencyColumn *grid_colKwota;
 	TImage *Image1;
 	TImage *Image2;
+	TADOConnection *ADOConnection;
+	TADOQuery *ADOQuery;
 	void __fastcall btn_szukajClick(TObject *Sender);
 	void __fastcall grid_colNazwaTap(TObject *Sender, const TPointF &Point);
 private:	// User declarations
