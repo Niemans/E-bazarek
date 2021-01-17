@@ -114,5 +114,18 @@ void TForma_zapomniane_haslo::wygeneruj_kod()
 }
 
 
+void __fastcall TForma_zapomniane_haslo::ListBoxItem_KlientClick(TObject *Sender)
 
+{
+	ListBoxItem_Firma->IsChecked = false;
+	ListBoxItem_Klient->IsChecked = true;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForma_zapomniane_haslo::ListBoxItem_FirmaClick(TObject *Sender)
+{
+	ListBoxItem_Firma->IsChecked = true;
+	ListBoxItem_Klient->IsChecked = false;
+}
+//---------------------------------------------------------------------------
 

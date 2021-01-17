@@ -114,5 +114,3 @@ void TForma_zapomniane_haslo::wygeneruj_kod()
 }
 
 
-
-
