@@ -398,8 +398,8 @@ object Forma_ekran_bazarek: TForma_ekran_bazarek
     RowHeight = 120.000000000000000000
     RowCount = 5
     Options = [ColumnResize, ColumnMove, ColLines, RowLines, Tabs, HeaderClick, AutoDisplacement]
-    Viewport.Width = 397.000000000000000000
-    Viewport.Height = 613.000000000000000000
+    Viewport.Width = 401.000000000000000000
+    Viewport.Height = 617.000000000000000000
     object grid_colNazwa: TStringColumn
       OnTap = grid_colNazwaTap
       Size.Width = 289.000000000000000000

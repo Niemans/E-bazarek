@@ -17,6 +17,7 @@ TForma_ekran_startowy * Forma_ekran_startowy;
 __fastcall TForma_ekran_startowy::TForma_ekran_startowy(TComponent* Owner)
 	: TForm(Owner)
 {
+
 }
 //---------------------------------------------------------------------------
 
@@ -41,10 +42,11 @@ void __fastcall TForma_ekran_startowy::Button1Click(TObject *Sender)
 	{
 
 		Text3->Visible = false;
-		if (/*email i has³o s¹ razem w bazie*/ true) {
-			Jasiu->Text = "";
-			Jasiu2->Text = "";
-			CloseModal();
+		if (Jasiu->Text=="admin" && Jasiu2->Text == "1234") {
+			ModalResult = 1;
+		}else
+		{
+            ModalResult = 0;
 		}
 
 	}
