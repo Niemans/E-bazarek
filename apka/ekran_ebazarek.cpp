@@ -17,6 +17,8 @@ TForma_ekran_bazarek * Forma_ekran_bazarek;
 __fastcall TForma_ekran_bazarek::TForma_ekran_bazarek(TComponent* Owner)
 	: TForm(Owner)
 {
+	AnsiString a = ExtractFilePath(ParamStr(0)) + "PASS.FDB";
+	IBDB->DatabaseName = ExtractFilePath(ParamStr(0)) + "PASS.FDB";
 //	TStringList *SL = new TStringList;
 //	SL = new TStringList;
 //    ADOConnection->GetTableNames(SL);

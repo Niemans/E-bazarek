@@ -1,0 +1,96 @@
+//---------------------------------------------------------------------------
+
+#include <fmx.h>
+#pragma hdrstop
+
+#include "ekran_ebazarek.h"
+#include "ekran_przedmiotu.h"
+//---------------------------------------------------------------------------
+#pragma package(smart_init)
+#pragma resource "*.fmx"
+#pragma resource ("*.XLgXhdpiTb.fmx", _PLAT_ANDROID)
+#pragma resource ("*.LgXhdpiPh.fmx", _PLAT_ANDROID)
+#pragma resource ("*.NmXhdpiPh.fmx", _PLAT_ANDROID)
+
+TForma_ekran_bazarek * Forma_ekran_bazarek;
+//---------------------------------------------------------------------------
+__fastcall TForma_ekran_bazarek::TForma_ekran_bazarek(TComponent* Owner)
+	: TForm(Owner)
+{
+
+    IBDB->DatabaseName = ExtractFilePath(ParamStr(0)) + "PASS.FDB";
+//	TStringList *SL = new TStringList;
+//	SL = new TStringList;
+//    ADOConnection->GetTableNames(SL);
+
+	WczytajDane();
+}
+//---------------------------------------------------------------------------
+void __fastcall TForma_ekran_bazarek::btn_szukajClick(TObject *Sender)
+{
+	if (edit_szukaj->Visible == true)
+		edit_szukaj->Visible = false;
+	else
+		edit_szukaj->Visible = true;
+}
+//---------------------------------------------------------------------------
+
+
+
+void __fastcall TForma_ekran_bazarek::WczytajDane()
+{
+//------Czyszczenie g³ównego okna---------
+//	for(int x = 0; x < Grid->RowCount; ++x)
+//		Grid->
+
+	int row_count = Grid->RowCount;
+
+//------------  SQL ------------------
+	IBQuery->SQL->Clear();
+	IBQuery->SQL->Text = "select Upper(nazwa) as nazwa,opis,kwota from dane";
+
+	if(szukaj!="")
+		IBQuery->SQL->Text = "where nazwa=Upper("+szukaj+")";
+
+//	IBQuery->ParamByName("nazwa")->AsString = szukaj;
+	IBQuery->Open();
+
+
+	while(!IBQuery->Eof) {
+	Grid->RowCount = row_count + 1;
+    row_count = Grid->RowCount;
+	Grid->Cells[0][row_count-1] =
+	IBQuery->FieldByName("nazwa")->AsString +
+	"\n\n\nOpis:\n" +
+	IBQuery->FieldByName("opis")->AsString ;
+	Grid->Cells[1][row_count-1] = IBQuery->FieldByName("kwota")->AsFloat;
+	IBQuery->Next();
+	}
+	IBQuery->Close();
+}
+
+
+
+void __fastcall TForma_ekran_bazarek::grid_colNazwaTap(TObject *Sender, const TPointF &Point)
+
+{
+	TForm_ekran_przedmiotu *Form_ekran_przedmiotu = new TForm_ekran_przedmiotu(this);
+	Form_ekran_przedmiotu->ShowModal();
+	delete Form_ekran_przedmiotu;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForma_ekran_bazarek::edit_szukajChange(TObject *Sender)
+{
+//	szukaj = edit_szukaj->Text;
+	WczytajDane();
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForma_ekran_bazarek::FormClose(TObject *Sender, TCloseAction &Action)
+
+{
+    IBQuery->Free();
+}
+//---------------------------------------------------------------------------
+
