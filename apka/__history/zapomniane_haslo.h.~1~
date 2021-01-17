@@ -32,21 +32,13 @@ __published:	// IDE-managed Components
 	TText *Text_kod;
 	TText *Text_nhaslo;
 	TEdit *Edit_kod;
-	TEdit *Edit_nhaslo;
+	TEdit *edit_nhaslo;
 	TText *Text_pnhaslo;
 	TEdit *Edit_pnhaslo;
-	TCheckBox *CheckBox_kod;
-	TCheckBox *CheckBox_email;
-	TCheckBox *CheckBox_nhaslo;
-	TCheckBox *CheckBox_pnhaslo;
 	void __fastcall Btn_wyslij_wiadomoscClick(TObject *Sender);
 	void __fastcall Btn_zmien_hasloClick(TObject *Sender);
 	void __fastcall FormClose(TObject *Sender, TCloseAction &Action);
 	void __fastcall Btn_powrotClick(TObject *Sender);
-	void __fastcall Edit_emailChange(TObject *Sender);
-	void __fastcall Edit_kodChange(TObject *Sender);
-	void __fastcall Edit_nhasloChange(TObject *Sender);
-	void __fastcall Edit_pnhasloChange(TObject *Sender);
 private:	// User declarations
 	UnicodeString kod;
 	void wygeneruj_kod();    //generuje kod

@@ -32,29 +32,6 @@ object Forma_ekran_startowy: TForma_ekran_startowy
     Size.PlatformDefault = False
     StyledSettings = [Family, Size, Style]
     Caret.Color = claGreen
-    object Text4: TText
-      Align = Scale
-      Anchors = [akLeft, akTop, akRight]
-      Cursor = crArrow
-      Position.Y = 32.000000000000000000
-      Size.Width = 136.999984741210900000
-      Size.Height = 33.000000000000000000
-      Size.PlatformDefault = False
-      Text = 'Zapomnia'#322'e'#347' has'#322'a?'
-    end
-    object Text5: TText
-      Align = Scale
-      Anchors = [akLeft, akTop, akRight]
-      Cursor = crHandPoint
-      Position.X = 135.000045776367200000
-      Position.Y = 32.000000000000000000
-      Size.Width = 57.000000000000000000
-      Size.Height = 33.000000000000000000
-      Size.PlatformDefault = False
-      Text = 'Kliknij tu!'
-      TextSettings.FontColor = claGreen
-      OnClick = Text5Click
-    end
   end
   object Jasiu: TEdit
     Touch.InteractiveGestures = [LongTap, DoubleTap]
@@ -425,7 +402,7 @@ object Forma_ekran_startowy: TForma_ekran_startowy
   end
   object Text6: TText
     Align = Scale
-    Anchors = [akLeft, akTop, akRight]
+    Anchors = [akLeft, akTop]
     Position.Y = 424.000000000000000000
     Size.Width = 400.000000000000000000
     Size.Height = 25.000000000000000000
@@ -434,12 +411,32 @@ object Forma_ekran_startowy: TForma_ekran_startowy
   end
   object Text3: TText
     Align = Scale
-    Anchors = [akLeft, akTop, akRight]
+    Anchors = [akLeft, akTop]
     Margins.Bottom = 10.000000000000000000
     Position.Y = 312.000000000000000000
     Size.Width = 400.000000000000000000
     Size.Height = 25.000000000000000000
     Size.PlatformDefault = False
     TextSettings.FontColor = claRed
+  end
+  object Text4: TText
+    Cursor = crArrow
+    Position.X = 80.000000000000000000
+    Position.Y = 208.000000000000000000
+    Size.Width = 136.000000000000000000
+    Size.Height = 33.000000000000000000
+    Size.PlatformDefault = False
+    Text = 'Zapomnia'#322'e'#347' has'#322'a?'
+  end
+  object Text5: TText
+    Cursor = crHandPoint
+    Position.X = 215.000000000000000000
+    Position.Y = 208.000000000000000000
+    Size.Width = 58.000000000000000000
+    Size.Height = 33.000000000000000000
+    Size.PlatformDefault = False
+    Text = 'Kliknij tu!'
+    TextSettings.FontColor = claGreen
+    OnClick = Text5Click
   end
 end

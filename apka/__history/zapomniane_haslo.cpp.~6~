@@ -149,7 +149,7 @@ void __fastcall TForma_zapomniane_haslo::Edit_nhasloChange(TObject *Sender)
 	{
 		CheckBox_nhaslo->IsChecked = true;
 
-		if (Edit_pnhaslo->Text != Edit_nhaslo->Text)
+		if (Edit_pnhaslo->Text == Edit_nhaslo->Text)
 		{
 			CheckBox_pnhaslo->IsChecked = false;
 		}
@@ -164,7 +164,7 @@ void __fastcall TForma_zapomniane_haslo::Edit_nhasloChange(TObject *Sender)
 
 void __fastcall TForma_zapomniane_haslo::Edit_pnhasloChange(TObject *Sender)
 {
-	if(Edit_pnhaslo->Text != "" && Edit_pnhaslo->Text == Edit_nhaslo->Text)
+	if(Edit_pnhaslo->Text != "")
 	{
 		CheckBox_pnhaslo->IsChecked = true;
 	}

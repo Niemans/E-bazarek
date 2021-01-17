@@ -39,6 +39,7 @@ __published:	// IDE-managed Components
 	void __fastcall FormClose(TObject *Sender, TCloseAction &Action);
 	void __fastcall Btn_rejestracjaClick(TObject *Sender);
 	void __fastcall Btn_przegladajClick(TObject *Sender);
+	void __fastcall FormDeactivate(TObject *Sender);
 private:	// User declarations
 public:		// User declarations
 	__fastcall TForma_ekran_startowy(TComponent* Owner);

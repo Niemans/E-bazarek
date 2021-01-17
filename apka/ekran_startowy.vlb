@@ -1,38 +1,38 @@
-﻿[Text3]
-Coordinates=255,10,41,51
-
-[Button1]
-Coordinates=186,10,53,51
-Visible=True
-
-[Text2]
-Coordinates=129,10,41,51
-
-[Jasiu]
-Coordinates=10,78,40,51
-
-[Text1]
-Coordinates=72,10,41,51
-
-[Jasiu2]
-Coordinates=10,10,46,51
-
-[CheckBox1]
-Coordinates=65,78,70,51
-
-[]
+﻿[]
 Coordinates=340,50,66,33
 Visible=True
 
-[Button2]
+[Btn_rejestracja]
 Coordinates=114,167,53,51
 
-[Text6]
-Coordinates=173,150,41,51
+[Btn_logowanie]
+Coordinates=186,10,53,51
+Visible=True
 
-[Text5]
+[Edit_login]
+Coordinates=10,78,40,51
+
+[Edit_haslo]
+Coordinates=10,10,46,51
+
+[Text_login]
+Coordinates=72,10,41,51
+
+[Text_haslo]
+Coordinates=129,10,41,51
+
+[Text_blad]
+Coordinates=255,10,41,51
+
+[Text_kliknij]
 Coordinates=173,80,41,51
 
-[Text4]
+[Text_brak_konta]
+Coordinates=173,150,41,51
+
+[Text_zap_haslo]
 Coordinates=65,167,41,51
+
+[CheckBox_robot]
+Coordinates=65,78,70,51
 

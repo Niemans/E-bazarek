@@ -21,28 +21,28 @@ __fastcall TForma_ekran_startowy::TForma_ekran_startowy(TComponent* Owner)
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TForma_ekran_startowy::Button1Click(TObject *Sender)
+void __fastcall TForma_ekran_startowy::Btn_logowanieClick(TObject *Sender)
 {
-	if(Jasiu->Text == "")
+	if(Edit_login->Text == "")
 	{
-		Text3->Visible = true;
-		Text3->Text = "Brak napisanego loginu";
+		Text_blad->Visible = true;
+		Text_blad->Text = "Brak napisanego loginu";
 	}
-	else if(Jasiu2->Text == "")
+	else if(Edit_haslo->Text == "")
 	{
-		Text3->Visible = true;
-		Text3->Text = "Brak napisanego has³a";
+		Text_blad->Visible = true;
+		Text_blad->Text = "Brak napisanego has³a";
 	}
-	else if (CheckBox1->IsChecked == false)
+	else if (CheckBox_robot->IsChecked == false)
 	{
-		Text3->Visible = true;
-		Text3->Text = "Jestes robotem";
+		Text_blad->Visible = true;
+		Text_blad->Text = "Jestes robotem";
 	}
 	else
 	{
 
-		Text3->Visible = false;
-		if (Jasiu->Text=="admin" && Jasiu2->Text == "1234") {
+		Text_blad->Visible = false;
+		if (Edit_login->Text=="admin" && Edit_haslo->Text == "1234") {
 			ModalResult = 1;
 		}else
 		{
@@ -63,16 +63,16 @@ void __fastcall TForma_ekran_startowy::Button1Click(TObject *Sender)
 
 //---------------------------------------------------------------------------
 
-void __fastcall TForma_ekran_startowy::CheckBox1Click(TObject *Sender)
+void __fastcall TForma_ekran_startowy::CheckBox_robotClick(TObject *Sender)
 {
 
-	  if(CheckBox1->IsChecked == true)
+	  if(CheckBox_robot->IsChecked == true)
 	  {
-		CheckBox1->Text = "Czyli jestes jednak robotem?";
+		CheckBox_robot->Text = "Czyli jestes jednak robotem?";
 	  }
 	  else
 	  {
-		CheckBox1->Text = "Dobrze, ze jednak nie.";
+		CheckBox_robot->Text = "Dobrze, ze jednak nie.";
 	  }
 
 }
@@ -81,34 +81,53 @@ void __fastcall TForma_ekran_startowy::CheckBox1Click(TObject *Sender)
 
 
 
-void __fastcall TForma_ekran_startowy::Text5Click(TObject *Sender)
+void __fastcall TForma_ekran_startowy::Text_kliknijClick(TObject *Sender)
 {
-	Jasiu2->Text = "";
+	Edit_haslo->Text = "";
     srand(time(NULL)*time(NULL)-time(NULL));
 
-	TForma_zapomniane_haslo * frm_zapomniane_haslo = new TForma_zapomniane_haslo(this);
-	//Forma_ekran_startowy->Visible = false;
-	frm_zapomniane_haslo->ShowModal();
-	delete frm_zapomniane_haslo;
+	TForma_zapomniane_haslo * forma = new TForma_zapomniane_haslo(this);
+		if (forma->ShowModal())
+	{
+		delete forma;
+	}
+	else
+	{
+		delete forma;
+		Free();
+	}
 }
 //---------------------------------------------------------------------------
 
 
 void __fastcall TForma_ekran_startowy::FormClose(TObject *Sender, TCloseAction &Action)
 {
-	Forma_ekran_bazarek->Visible = true;
 	Close();
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TForma_ekran_startowy::Button2Click(TObject *Sender)
+void __fastcall TForma_ekran_startowy::Btn_rejestracjaClick(TObject *Sender)
 {
-    Jasiu2->Text = "";
+	Edit_haslo->Text = "";
+	Forma_ekran_startowy->Hide();
 
 	TForma_rejestracja * forma = new TForma_rejestracja (this);
-	//Forma_ekran_startowy->Visible = false;
-	forma->ShowModal();
-	delete forma;
+	if (forma->ShowModal())
+	{
+		delete forma;
+	}
+	else
+	{
+		delete forma;
+		Free();
+	}
+}
+//---------------------------------------------------------------------------
+
+
+void __fastcall TForma_ekran_startowy::Btn_przegladajClick(TObject *Sender)
+{
+    ModalResult = 1;
 }
 //---------------------------------------------------------------------------
 

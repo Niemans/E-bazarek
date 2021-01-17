@@ -159,12 +159,12 @@ void __fastcall TForma_rejestracja::Edit_hasloChange(TObject *Sender)
 	{
 		CheckBox_haslo->IsChecked = true;
 		
-		if (Edit_phaslo->Text != Edit_haslo->Text) 
+		if (Edit_phaslo->Text == Edit_haslo->Text) 
 		{
 			CheckBox_phaslo->IsChecked = false;		
 		}
 	}
-	else
+	else if(Edit_haslo->Text != "")
 	{
 		CheckBox_haslo->IsChecked = false;
 	}
@@ -183,5 +183,4 @@ void __fastcall TForma_rejestracja::Edit_phasloChange(TObject *Sender)
 	}
 }
 //---------------------------------------------------------------------------
-
 

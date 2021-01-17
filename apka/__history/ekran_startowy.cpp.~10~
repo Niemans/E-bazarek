@@ -42,13 +42,11 @@ void __fastcall TForma_ekran_startowy::Btn_logowanieClick(TObject *Sender)
 	{
 
 		Text_blad->Visible = false;
-        //trzeba zrobiæ prawdziwe zalogowanie siê do czegoœ
 		if (Edit_login->Text=="admin" && Edit_haslo->Text == "1234") {
 			ModalResult = 1;
 		}else
 		{
-
-			ModalResult = 0;
+            ModalResult = 0;
 		}
 
 	}
@@ -104,6 +102,7 @@ void __fastcall TForma_ekran_startowy::Text_kliknijClick(TObject *Sender)
 
 void __fastcall TForma_ekran_startowy::FormClose(TObject *Sender, TCloseAction &Action)
 {
+	//Forma_ekran_bazarek->Visible = true;
 	Close();
 }
 //---------------------------------------------------------------------------
@@ -122,13 +121,6 @@ void __fastcall TForma_ekran_startowy::Btn_rejestracjaClick(TObject *Sender)
 		delete forma;
 		Free();
 	}
-}
-//---------------------------------------------------------------------------
-
-
-void __fastcall TForma_ekran_startowy::Btn_przegladajClick(TObject *Sender)
-{
-    ModalResult = 1;
 }
 //---------------------------------------------------------------------------
 

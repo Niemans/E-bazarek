@@ -9,6 +9,7 @@ object Forma_ekran_startowy: TForma_ekran_startowy
   FormFactor.Height = 480
   FormFactor.Devices = [Desktop]
   OnClose = FormClose
+  OnDeactivate = FormDeactivate
   DesignerMasterStyle = 0
   object Text_login: TText
     Position.X = 16.000000000000000000

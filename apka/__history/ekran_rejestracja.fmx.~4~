@@ -49,7 +49,7 @@
   object CheckBox_KF: TCheckBox
     Anchors = [akTop, akRight]
     Enabled = False
-    Position.X = 320.000000000000000000
+    Position.X = 360.000000000000000000
     Position.Y = 160.000000000000000000
     Scale.X = 2.000000000000000000
     Scale.Y = 2.000000000000000000
@@ -391,7 +391,6 @@
     Size.PlatformDefault = False
     StyledSettings = [Family, Size, Style]
     Caret.Color = claGreen
-    OnChange = Edit_emailChange
   end
   object Btn_co_to_email: TButton
     Anchors = [akTop, akRight]
@@ -424,7 +423,6 @@
     Touch.InteractiveGestures = [LongTap, DoubleTap]
     Anchors = [akLeft, akTop, akRight]
     TabOrder = 1
-    Password = True
     Position.X = 80.000000000000000000
     Position.Y = 368.000000000000000000
     Size.Width = 233.000000000000000000
@@ -432,7 +430,6 @@
     Size.PlatformDefault = False
     StyledSettings = [Family, Size, Style]
     Caret.Color = claGreen
-    OnChange = Edit_hasloChange
   end
   object Btn_co_to_haslo: TButton
     Anchors = [akTop, akRight]
@@ -456,7 +453,7 @@
       Visible = False
     end
   end
-  object Text_phaslo: TText
+  object Text_powtorz_haslo: TText
     Position.X = 16.000000000000000000
     Position.Y = 424.000000000000000000
     Size.Width = 50.000000000000000000
@@ -464,11 +461,10 @@
     Size.PlatformDefault = False
     Text = 'powt'#243'rz has'#322'o:'
   end
-  object Edit_phaslo: TEdit
+  object Edit_powtorz_haslo: TEdit
     Touch.InteractiveGestures = [LongTap, DoubleTap]
     Anchors = [akLeft, akTop, akRight]
     TabOrder = 0
-    Password = True
     Position.X = 80.000000000000000000
     Position.Y = 432.000000000000000000
     Size.Width = 233.000000000000000000
@@ -476,7 +472,6 @@
     Size.PlatformDefault = False
     StyledSettings = [Family, Size, Style]
     Caret.Color = claGreen
-    OnChange = Edit_phasloChange
   end
   object Btn_rejestracja: TButton
     Anchors = [akLeft, akTop, akRight]
@@ -516,7 +511,7 @@
     Cursor = crHandPoint
     Position.X = 160.000000000000000000
     Position.Y = 144.000000000000000000
-    Size.Width = 153.000000000000000000
+    Size.Width = 193.000000000000000000
     Size.Height = 69.000000000000000000
     Size.PlatformDefault = False
     TabOrder = 12
@@ -524,12 +519,12 @@
     DefaultItemStyles.ItemStyle = ''
     DefaultItemStyles.GroupHeaderStyle = ''
     DefaultItemStyles.GroupFooterStyle = ''
-    Viewport.Width = 149.000000000000000000
+    Viewport.Width = 189.000000000000000000
     Viewport.Height = 65.000000000000000000
     object ListBoxItem_Klient: TListBoxItem
       TextSettings.HorzAlign = Center
       StyledSettings = [Family, Size, Style, FontColor]
-      Size.Width = 149.000000000000000000
+      Size.Width = 189.000000000000000000
       Size.Height = 33.000000000000000000
       Size.PlatformDefault = False
       TabOrder = 0
@@ -540,7 +535,7 @@
       TextSettings.HorzAlign = Center
       StyledSettings = [Family, Size, Style, FontColor]
       Position.Y = 33.000000000000000000
-      Size.Width = 149.000000000000000000
+      Size.Width = 189.000000000000000000
       Size.Height = 32.000000000000000000
       Size.PlatformDefault = False
       TabOrder = 1

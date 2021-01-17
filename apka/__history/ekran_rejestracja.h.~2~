@@ -30,8 +30,8 @@ __published:	// IDE-managed Components
 	TText *Text_has³o;
 	TEdit *Edit_haslo;
 	TButton *Btn_co_to_haslo;
-	TText *Text_phaslo;
-	TEdit *Edit_phaslo;
+	TText *Text_powtorz_haslo;
+	TEdit *Edit_powtorz_haslo;
 	TButton *Btn_powrot;
 	TColorAnimation *ColorAnimation2;
 	TButton *Btn_rejestracja;
@@ -58,9 +58,6 @@ __published:	// IDE-managed Components
 	void __fastcall ListBoxItem_FirmaClick(TObject *Sender);
 	void __fastcall Btn_rejestracjaClick(TObject *Sender);
 	void __fastcall Edit_loginChange(TObject *Sender);
-	void __fastcall Edit_emailChange(TObject *Sender);
-	void __fastcall Edit_hasloChange(TObject *Sender);
-	void __fastcall Edit_phasloChange(TObject *Sender);
 private:	// User declarations
 	Firma* Firma_rejestracja;
 	Klient* Klient_rejestracja;

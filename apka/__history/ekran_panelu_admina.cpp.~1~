@@ -48,16 +48,3 @@ void __fastcall TForm_ekran_panelu_admina::Btn_usunClick(TObject *Sender)
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TForm_ekran_panelu_admina::paskiClick(TObject *Sender)
-{
-    ModalResult = 1;
-}
-//---------------------------------------------------------------------------
-
-void __fastcall TForm_ekran_panelu_admina::FormClose(TObject *Sender, TCloseAction &Action)
-
-{
-    Close();
-}
-//---------------------------------------------------------------------------
-

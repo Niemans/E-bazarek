@@ -32,8 +32,6 @@ __published:	// IDE-managed Components
 	TImage *Image_EB;
 	void __fastcall Btn_anulujClick(TObject *Sender);
 	void __fastcall Btn_usunClick(TObject *Sender);
-	void __fastcall paskiClick(TObject *Sender);
-	void __fastcall FormClose(TObject *Sender, TCloseAction &Action);
 private:	// User declarations
 public:		// User declarations
 	__fastcall TForm_ekran_panelu_admina(TComponent* Owner);

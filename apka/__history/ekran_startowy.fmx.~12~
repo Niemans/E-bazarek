@@ -389,7 +389,6 @@ object Forma_ekran_startowy: TForma_ekran_startowy
     Text = 'Przegl'#261'daj bez konta'
     TextSettings.Font.Size = 20.000000000000000000
     TintColor = claGray
-    OnClick = Btn_przegladajClick
     object ColorAnimation3: TColorAnimation
       AutoReverse = True
       Enabled = True

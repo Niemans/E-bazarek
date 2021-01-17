@@ -7,13 +7,12 @@ object Forma_boczne_menu: TForma_boczne_menu
   FormFactor.Width = 320
   FormFactor.Height = 480
   FormFactor.Devices = [Desktop]
-  OnClose = FormClose
   DesignerMasterStyle = 0
   object ColorBox4: TColorBox
     Color = claGreen
-    Position.X = 16.000000000000000000
+    Position.X = 336.000000000000000000
     Position.Y = 80.000000000000000000
-    Size.Width = 49.000000000000000000
+    Size.Width = 48.000000000000000000
     Size.Height = 625.000000000000000000
     Size.PlatformDefault = False
     TabOrder = 8
@@ -582,7 +581,6 @@ object Forma_boczne_menu: TForma_boczne_menu
           01CCBC3FA03CF558330000000049454E44AE426082}
       end>
     Anchors = [akTop, akRight]
-    Cursor = crHandPoint
     Position.X = 336.000000000000000000
     Position.Y = 16.000000000000000000
     Size.Width = 50.000000000000000000
@@ -704,13 +702,11 @@ object Forma_boczne_menu: TForma_boczne_menu
           E142F3D0598242140000000000000000000000000000000000000000000000C8
           5814FD0F2837C49777711DBA0000000049454E44AE426082}
       end>
-    Cursor = crHandPoint
     Position.X = 15.000000000000000000
     Position.Y = 16.000000000000000000
     Size.Width = 50.000000000000000000
     Size.Height = 50.000000000000000000
     Size.PlatformDefault = False
-    OnClick = Image_domClick
   end
   object Btn_rejestracja: TButton
     Anchors = [akLeft, akTop, akRight]
@@ -722,19 +718,16 @@ object Forma_boczne_menu: TForma_boczne_menu
     TabOrder = 7
     Text = 'Rejestracja'
     TextSettings.Font.Size = 20.000000000000000000
-    OnClick = Btn_rejestracjaClick
   end
   object Btn_przedmioty: TButton
     Anchors = [akLeft, akTop, akRight, akBottom]
-    StyledSettings = [Family, Style, FontColor]
     Position.X = -1.000000000000000000
     Position.Y = 360.000000000000000000
     Size.Width = 401.000000000000000000
     Size.Height = 57.000000000000000000
     Size.PlatformDefault = False
     TabOrder = 4
-    Text = 'Moje przedmioty'
-    TextSettings.Font.Size = 20.000000000000000000
+    Text = 'moje przedmioty'
   end
   object Btn_logowanie: TButton
     Anchors = [akLeft, akTop, akRight]
@@ -747,56 +740,45 @@ object Forma_boczne_menu: TForma_boczne_menu
     TabOrder = 3
     Text = 'Logowanie'
     TextSettings.Font.Size = 20.000000000000000000
-    OnClick = Btn_logowanieClick
   end
   object Btn_wyloguj: TButton
     Anchors = [akLeft, akRight, akBottom]
-    StyledSettings = [Family, Style, FontColor]
     Position.X = -1.000000000000000000
     Position.Y = 648.000000000000000000
     Size.Width = 401.000000000000000000
     Size.Height = 57.000000000000000000
     Size.PlatformDefault = False
     TabOrder = 2
-    Text = 'Wyloguj'
-    TextSettings.Font.Size = 20.000000000000000000
-    OnClick = Btn_wylogujClick
+    Text = 'wyloguj'
   end
   object Btn_admin: TButton
     Anchors = [akLeft, akRight, akBottom]
-    StyledSettings = [Family, Style, FontColor]
     Position.X = -1.000000000000000000
     Position.Y = 576.000000000000000000
     Size.Width = 401.000000000000000000
     Size.Height = 57.000000000000000000
     Size.PlatformDefault = False
     TabOrder = 1
-    Text = 'Panel administratora'
-    TextSettings.Font.Size = 20.000000000000000000
-    OnClick = Btn_adminClick
+    Text = 'panel administratora'
   end
   object Btn_profil: TButton
     Anchors = [akLeft, akTop, akRight]
-    StyledSettings = [Family, Style, FontColor]
     Position.X = -1.000000000000000000
     Position.Y = 280.000000000000000000
     Size.Width = 401.000000000000000000
     Size.Height = 57.000000000000000000
     Size.PlatformDefault = False
     TabOrder = 6
-    Text = 'M'#243'j profil'
-    TextSettings.Font.Size = 20.000000000000000000
+    Text = 'm'#243'j profil'
   end
   object Btn_koszyk: TButton
     Anchors = [akLeft, akRight, akBottom]
-    StyledSettings = [Family, Style, FontColor]
     Position.X = -1.000000000000000000
     Position.Y = 440.000000000000000000
     Size.Width = 401.000000000000000000
     Size.Height = 57.000000000000000000
     Size.PlatformDefault = False
     TabOrder = 5
-    Text = 'M'#243'j koszyk'
-    TextSettings.Font.Size = 20.000000000000000000
+    Text = 'm'#243'j koszyk'
   end
 end

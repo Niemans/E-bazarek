@@ -7,7 +7,6 @@ object Forma_boczne_menu: TForma_boczne_menu
   FormFactor.Width = 320
   FormFactor.Height = 480
   FormFactor.Devices = [Desktop]
-  OnClose = FormClose
   DesignerMasterStyle = 0
   object ColorBox4: TColorBox
     Color = claGreen
@@ -582,7 +581,6 @@ object Forma_boczne_menu: TForma_boczne_menu
           01CCBC3FA03CF558330000000049454E44AE426082}
       end>
     Anchors = [akTop, akRight]
-    Cursor = crHandPoint
     Position.X = 336.000000000000000000
     Position.Y = 16.000000000000000000
     Size.Width = 50.000000000000000000
@@ -704,13 +702,11 @@ object Forma_boczne_menu: TForma_boczne_menu
           E142F3D0598242140000000000000000000000000000000000000000000000C8
           5814FD0F2837C49777711DBA0000000049454E44AE426082}
       end>
-    Cursor = crHandPoint
     Position.X = 15.000000000000000000
     Position.Y = 16.000000000000000000
     Size.Width = 50.000000000000000000
     Size.Height = 50.000000000000000000
     Size.PlatformDefault = False
-    OnClick = Image_domClick
   end
   object Btn_rejestracja: TButton
     Anchors = [akLeft, akTop, akRight]
@@ -722,7 +718,6 @@ object Forma_boczne_menu: TForma_boczne_menu
     TabOrder = 7
     Text = 'Rejestracja'
     TextSettings.Font.Size = 20.000000000000000000
-    OnClick = Btn_rejestracjaClick
   end
   object Btn_przedmioty: TButton
     Anchors = [akLeft, akTop, akRight, akBottom]
@@ -760,7 +755,6 @@ object Forma_boczne_menu: TForma_boczne_menu
     TabOrder = 2
     Text = 'Wyloguj'
     TextSettings.Font.Size = 20.000000000000000000
-    OnClick = Btn_wylogujClick
   end
   object Btn_admin: TButton
     Anchors = [akLeft, akRight, akBottom]
@@ -773,7 +767,6 @@ object Forma_boczne_menu: TForma_boczne_menu
     TabOrder = 1
     Text = 'Panel administratora'
     TextSettings.Font.Size = 20.000000000000000000
-    OnClick = Btn_adminClick
   end
   object Btn_profil: TButton
     Anchors = [akLeft, akTop, akRight]

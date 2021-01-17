@@ -42,13 +42,11 @@ void __fastcall TForma_ekran_startowy::Btn_logowanieClick(TObject *Sender)
 	{
 
 		Text_blad->Visible = false;
-        //trzeba zrobiæ prawdziwe zalogowanie siê do czegoœ
 		if (Edit_login->Text=="admin" && Edit_haslo->Text == "1234") {
 			ModalResult = 1;
 		}else
 		{
-
-			ModalResult = 0;
+            ModalResult = 0;
 		}
 
 	}
@@ -132,4 +130,9 @@ void __fastcall TForma_ekran_startowy::Btn_przegladajClick(TObject *Sender)
 }
 //---------------------------------------------------------------------------
 
+void __fastcall TForma_ekran_startowy::FormDeactivate(TObject *Sender)
+{
+    Forma_ekran_startowy->Visible = false;
+}
+//---------------------------------------------------------------------------
 

@@ -37,10 +37,6 @@ Coordinates=358,10,75,58
 [Edit_kod]
 Coordinates=304,78,65,58
 
-[edit_nhaslo]
-Coordinates=400,78,81,58
-Visible=True
-
 [Edit_pnhaslo]
 Coordinates=193,78,89,58
 
@@ -53,4 +49,8 @@ Visible=True
 
 [Btn_zmien_haslo]
 Coordinates=10,78,131,58
+
+[Edit_nhaslo]
+Coordinates=400,78,81,58
+Visible=True
 
