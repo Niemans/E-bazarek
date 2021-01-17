@@ -86,10 +86,16 @@ void __fastcall TForma_ekran_startowy::Text5Click(TObject *Sender)
 	Jasiu2->Text = "";
     srand(time(NULL)*time(NULL)-time(NULL));
 
-	TForma_zapomniane_haslo * frm_zapomniane_haslo = new TForma_zapomniane_haslo(this);
-	Forma_ekran_startowy->Visible = false;
-	frm_zapomniane_haslo->ShowModal();
-	delete frm_zapomniane_haslo;
+	TForma_zapomniane_haslo * forma = new TForma_zapomniane_haslo(this);
+    	if (forma->ShowModal())
+	{
+		delete forma;
+	}
+	else
+	{
+		delete forma;
+		Free();
+	}
 }
 //---------------------------------------------------------------------------
 
@@ -106,9 +112,15 @@ void __fastcall TForma_ekran_startowy::Button2Click(TObject *Sender)
     Jasiu2->Text = "";
 
 	TForma_rejestracja * forma = new TForma_rejestracja (this);
-	Forma_ekran_startowy->Visible = false;
-	forma->ShowModal();
-	delete forma;
+	if (forma->ShowModal())
+	{
+		delete forma;
+	}
+	else
+	{
+		delete forma;
+		Free();
+	}
 }
 //---------------------------------------------------------------------------
 

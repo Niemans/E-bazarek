@@ -78,14 +78,14 @@ void __fastcall TForma_zapomniane_haslo::Btn_zmien_hasloClick(TObject *Sender)
 
 void __fastcall TForma_zapomniane_haslo::FormClose(TObject *Sender, TCloseAction &Action)
 {
-	Forma_ekran_startowy->Visible = true;
-    Close();
+    //Forma_ekran_startowy->Visible = true;
+	Close();
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TForma_zapomniane_haslo::Btn_powrotClick(TObject *Sender)
 {
- ModalResult = 1;
+	ModalResult = 1;
 }
 //---------------------------------------------------------------------------
 
