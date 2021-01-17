@@ -26,11 +26,6 @@ void __fastcall TForma_zapomniane_haslo::Btn_wyslij_wiadomoscClick(TObject *Send
 		Text_blad1->Visible = true;
 		Text_blad1->Text = "Brak napisanego emaila";
 	}
-	else if(ListBoxItem_Firma->IsChecked == false && ListBoxItem_Klient->IsChecked == false)
-	{
-        Text_blad1->Visible = true;
-		Text_blad1->Text = "Brak brak zaznaczonego rodzaju konta";
-	}
 	else if (/*brak maila w spisie emaili*/false)
 	{
 		Text_blad1->Visible = true;

@@ -35,10 +35,6 @@ __published:	// IDE-managed Components
 	TEdit *edit_nhaslo;
 	TText *Text_pnhaslo;
 	TEdit *Edit_pnhaslo;
-	TText *Text_ListBox_KF;
-	TListBox *ListBox_KF;
-	TListBoxItem *ListBoxItem_Klient;
-	TListBoxItem *ListBoxItem_Firma;
 	void __fastcall Btn_wyslij_wiadomoscClick(TObject *Sender);
 	void __fastcall Btn_zmien_hasloClick(TObject *Sender);
 	void __fastcall FormClose(TObject *Sender, TCloseAction &Action);

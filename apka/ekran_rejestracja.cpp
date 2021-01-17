@@ -101,6 +101,10 @@ void __fastcall TForma_rejestracja::Btn_rejestracjaClick(TObject *Sender)
 	{
 		Text_blad->Text = "brak emaila";
 	}
+	else if (/*jeœli email ju¿ by³*/false)
+	{
+
+	}
 	//coœ jest puste
 	else if (CheckBox_haslo->IsChecked == false)
 	{

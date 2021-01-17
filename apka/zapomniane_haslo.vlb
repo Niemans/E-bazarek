@@ -8,7 +8,7 @@ Coordinates=260,56,110,36
 Coordinates=260,111,110,36
 
 []
-Coordinates=577,56,91,36
+Coordinates=217,155,139,212
 
 [Text_email]
 Coordinates=67,146,78,58
@@ -46,18 +46,6 @@ Coordinates=193,78,89,58
 
 [Btn_powrot]
 Coordinates=175,10,79,58
-
-[ListBoxItem_Firma]
-Coordinates=417,155,122,36
-
-[ListBoxItem_Klient]
-Coordinates=577,1,121,36
-
-[Text_ListBox_KF]
-Coordinates=0,0,112,58
-
-[ListBox_KF]
-Coordinates=217,155,139,212
 
 [Btn_wyslij_wiadomosc]
 Coordinates=10,10,161,58
