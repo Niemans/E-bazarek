@@ -8,9 +8,6 @@
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma resource "*.fmx"
-#pragma resource ("*.XLgXhdpiTb.fmx", _PLAT_ANDROID)
-#pragma resource ("*.LgXhdpiPh.fmx", _PLAT_ANDROID)
-#pragma resource ("*.NmXhdpiPh.fmx", _PLAT_ANDROID)
 
 TForma_ekran_bazarek * Forma_ekran_bazarek;
 //---------------------------------------------------------------------------
