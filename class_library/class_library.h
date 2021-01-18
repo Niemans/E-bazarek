@@ -6,7 +6,7 @@
 //do zrobienia: mozna przeniesc obsloge wystawionych przedmiotow do osoby
 
 class Przedmiot{
-private:
+protected:
 	static unsigned int licznik;
 	unsigned int ID;
 	std::string nazwa;
@@ -106,7 +106,7 @@ public:
 	Licytacja(std::string nazwaLicytacji, unsigned int iloscPrzedmiotow, unsigned int id_wystawiajacego, unsigned int cenaWywolawcza, Przedmiot* nastepnaLicytacja, std::string opisPrzedmiotu, unsigned int czas);
 	void wygrana();										//metoda wkladajaca wygrany przedmiot do koszyka zwyciezcy		do zrobienia
 	void dodaj_historie(HistoriaLicytacji* toAdd);		//metoda dodajaca historie (najnowsza cene) do historii			zrobione
-	void dodaj_oferte();								//nie wiadomo co funkcja robi (do omowienia)					do zrobienia
+	int dodaj_oferte(unsigned int nowaCena, std::string nazwaUczestnika);			//funkcja dodajaca oferte			zrobione
 
 };
 

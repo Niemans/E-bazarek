@@ -83,12 +83,12 @@ Przedmiot* Przedmiot::podaj_adres_nastepnego_przedmiotu()
 
 		//metody klasy licytacja
 
+	//konstruktor klasy Licytacja
 Licytacja::Licytacja(std::string nazwaLicytacji, unsigned int iloscPrzedmiotow, unsigned int id_wystawiajacego, unsigned int cenaWywolawcza, Przedmiot* nastepnaLicytacja, std::string opisPrzedmiotu, unsigned int czas) :
 	Przedmiot(nazwaLicytacji, iloscPrzedmiotow, id_wystawiajacego, cenaWywolawcza, nastepnaLicytacja, opisPrzedmiotu)
 {
 	czasZakonczenia = czas;
 }
-
 
 	//metoda wkladajaca wygrany przedmiot do koszyka zwyciezcy
 void Licytacja::wygrana() {}		//do zrobienia
@@ -100,8 +100,23 @@ void Licytacja::dodaj_historie(HistoriaLicytacji* toAdd)
 	head = toAdd;			//ustawiamy glowe na nowa cene
 }
 
-	//nie wiadomo co funkcja robi
-void Licytacja::dodaj_oferte(){}		//dowiedziec sie co funkcja robi
+	//funkcja dodajaca oferte
+int Licytacja::dodaj_oferte(unsigned int nowaCena, std::string nazwaUczestnika)
+{
+	if (nowaCena < cena)		//trzeba przebic dotychczasowa cene
+	{
+		return -1;
+	}
+
+	HistoriaLicytacji* toAdd = new HistoriaLicytacji;
+
+	toAdd->cena = nowaCena;								//ustawiamy zmienne w nowej historii
+	toAdd->nazwaUczestkina = nazwaUczestnika;
+	toAdd->next = NULL;
+
+	toAdd->next = head;									//oferta wskakuje na pocatek listy
+	head = toAdd;
+}
 
 
 		//metody klasy Osoba
