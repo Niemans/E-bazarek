@@ -2,6 +2,20 @@
 
 		//metody klasy Przedmiot
 
+	//konstruktor klasy Przedmiot
+Przedmiot::Przedmiot(std::string nazwaPrzedmiotu, unsigned int iloscPrzedmiotow, unsigned int id_wystawiajacego, unsigned int cenaPrzedmiotu, Przedmiot* nastepnyPrzedmiot, std::string opisPrzedmiotu)
+{
+	licznik++;			//inkrementujemy licznik przedmiotow
+
+	ID = licznik;
+	nazwa = nazwaPrzedmiotu;
+	ilosc = iloscPrzedmiotow;
+	IDWlasciciela = id_wystawiajacego;
+	cena = cenaPrzedmiotu;
+	next = nastepnyPrzedmiot;
+	opis = opisPrzedmiotu;
+}
+
 	//funkcja sprawdzajaca czy podane id zgadza sie z id wlasciciela
 bool Przedmiot::sprawdz_id_wlasciciela(unsigned int idOsoby)
 {
@@ -69,6 +83,13 @@ Przedmiot* Przedmiot::podaj_adres_nastepnego_przedmiotu()
 
 		//metody klasy licytacja
 
+Licytacja::Licytacja(std::string nazwaLicytacji, unsigned int iloscPrzedmiotow, unsigned int id_wystawiajacego, unsigned int cenaWywolawcza, Przedmiot* nastepnaLicytacja, std::string opisPrzedmiotu, unsigned int czas) :
+	Przedmiot(nazwaLicytacji, iloscPrzedmiotow, id_wystawiajacego, cenaWywolawcza, nastepnaLicytacja, opisPrzedmiotu)
+{
+	czasZakonczenia = czas;
+}
+
+
 	//metoda wkladajaca wygrany przedmiot do koszyka zwyciezcy
 void Licytacja::wygrana() {}		//do zrobienia
 
@@ -126,6 +147,13 @@ std::string Osoba::podaj_email()
 
 
 		//metody klasy Klient
+
+	//konstruktor klasy Klient
+Klient::Klient(std::string nazwaKlienta, Klient* nastepnyKlient, std::string mailKlienta, std::string hasloKlienta): Osoba(mailKlienta, hasloKlienta)
+{
+	imieINazwisko = nazwaKlienta;
+	next = nastepnyKlient;
+}
 
 	//funkcja dodajaca przedmiot na bazarek
 void Klient::dodaj_przedmiot(){}		//do zrobienia
@@ -191,6 +219,13 @@ void Klient::ustaw_wskaznik_next_klienta(Klient* wskaznik_do_ustawienia)
 
 		//metody klasy Firma
 			//praktycznie takie same jak w Kliencie - mozna przeniesc do klasy Osoba
+	
+	//konstruktor klasy Firma
+Firma::Firma(std::string nazwaFirmy, Firma* nastepnaFirma, std::string mailFirmy, std::string hasloFirmy): Osoba(mailFirmy, hasloFirmy)
+{
+	nazwa_firmy = nazwaFirmy;
+	next = nastepnaFirma;
+}
 
 	//funkcja dodajaca przedmiot na bazarek
 void Firma::dodaj_przedmiot(){}		//do zrobienia
@@ -232,6 +267,13 @@ void Firma::ustaw_wskaznik_next_firmy(Firma* wskaznik_do_ustawienia)
 
 		//metody klasy Admin
 
+	//konstruktor			istnieje tylko jeden admin, wiec definiujemy go poza lista klientow
+Admin::Admin(): Osoba("AdminBazarku@gmail.pl", "admin123")
+{
+	licznik--;
+	ID = 0;
+}
+
 	//funkcja usuwajaca nieodpowiedni przedmiot
 void Admin::usun_przedmiot(unsigned int id_przedmiotu){}		//do zrobienia
 	
@@ -239,6 +281,12 @@ void Admin::usun_przedmiot(unsigned int id_przedmiotu){}		//do zrobienia
 void Admin::usun_uzytkownika(unsigned int id_uzytkownika){}	//do zrobienia
 
 		//metody klasy ListaFirm
+
+	//konstruktor klasy ListaFirm
+ListaFirm::ListaFirm()
+{
+	head = NULL;
+}
 
 	//funkcja dodaje firme do listy
 void ListaFirm::dodaj(Firma* toAdd)
@@ -314,6 +362,12 @@ Firma* ListaFirm::wyszukaj_firme(std::string nazwa_firmy)
 
 		//metody klasy ListaKlientow
 
+	//konstruktor klasy ListaKlientow
+ListaKlientow::ListaKlientow()
+{
+	head = NULL;
+}
+
 	//funkcja dodaje klienta do listy
 void ListaKlientow::dodaj(Klient* toAdd)
 {
@@ -386,6 +440,16 @@ Klient* ListaKlientow::wyszukaj_klienta(std::string nazwa_klienta)
 }
 
 			//metody klasy Bazarek
+
+	//konstruktor klasy Bazarek
+Bazarek::Bazarek()
+{
+	liczbaPrzedmiotow = 0;
+	liczbaLicytacji = 0;
+	listaPrzedmiotow = NULL;
+	listaLicytacji = NULL;
+}
+
 		//obsluga wystawionych przedmiotow i licytacji
 	//funkcja dodajaca przedmiot
 void Bazarek::dodaj_przedmiot(){}		//do zrobienia
@@ -400,26 +464,39 @@ void Bazarek::usun_przedmiot(){}			//do zrobienia
 void Bazarek::usun_licytacje(){}			//do zrobienia
 
 	//funkcja wyszukujaca przedmioty
-Przedmiot* Bazarek::szukaj(std::string szukanaOferta)
+std::vector<unsigned int> Bazarek::szukaj(std::string szukanaOferta)
 {
-	Przedmiot* pom = NULL;		//wskaznik pomocniczy
-	Przedmiot* lista_do_zwrocenia;
+	Przedmiot* pomPrzedmiot = listaPrzedmiotow;			//zmienna pomocnicze
+	
+	std::vector<unsigned int> returnVector;				//zmienna zwracana
 
-	if (listaPrzedmiotow != NULL)		//jezeli nie ma jeszcze klientow na liscie - klient zostaje pierwszy
+	while (pomPrzedmiot != NULL)												//przeszukujemy liste przedmiotow w poszukiwaniu przedmiotu z zadana nazwa
 	{
-		pom = listaPrzedmiotow;
-
-		while (pom->podaj_adres_nastepnego_przedmiotu() != NULL)
+		if (pomPrzedmiot->podaj_nazwe() == szukanaOferta)
 		{
-			if (pom->podaj_nazwe() == szukanaOferta)
-			{
-						//trzeba dokonczyc
-			}
+			returnVector.push_back(pomPrzedmiot->podaj_id());					
 		}
+
+		pomPrzedmiot = pomPrzedmiot->podaj_adres_nastepnego_przedmiotu();
 	}
-	return NULL;
+
+	pomPrzedmiot = listaLicytacji;
+
+	while (pomPrzedmiot != NULL)												//podobnie z listami
+	{
+		if (pomPrzedmiot->podaj_nazwe() == szukanaOferta)
+		{
+			returnVector.push_back(pomPrzedmiot->podaj_id());
+		}
+
+		pomPrzedmiot = pomPrzedmiot->podaj_adres_nastepnego_przedmiotu();
+	}
+
+	return returnVector;
 
 }
+
+
 
 //funkcje wspolpracojace z okienkami		wszystko do zrobienia!!!
 void Bazarek::wyswietl(){}
@@ -432,6 +509,19 @@ void Bazarek::sprawdz_wszystkie_licytacje(){}
 
 
 		//metody klasy ObslogaZamowien
+
+	//konstruktor klasy ObslogaZamowien
+ObslugaZamowien::ObslugaZamowien()
+{
+	imie = "brak";
+	nazwisko = "brak";
+	kraj = "brak";
+	miasto = "brak";
+	ulica = "brak";
+	nrDomu = "brak";
+	kodPocztowy = 0;
+}
+
 	//funkcja pobierajaca od uzytkownika dane osobowe
 void ObslugaZamowien::podaj_dane_osobowe(std::string Im, std::string Naz)
 {
@@ -454,7 +544,7 @@ void ObslugaZamowien::wybierz_opcje_platnosci(){}
 void ObslugaZamowien::przekieruj_do_przelewu(){}
 
 	//funkcja podajaca koszyk klienta
-void ObslugaZamowien::podaj_koszyk(Przedmiot* koszyk_do_podania)
+void ObslugaZamowien::podaj_koszyk(std::vector<unsigned int> koszyk_do_podania)
 {
 	koszyk = koszyk_do_podania;
 }

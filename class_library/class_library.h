@@ -7,6 +7,7 @@
 
 class Przedmiot{
 private:
+	static unsigned int licznik;
 	unsigned int ID;
 	std::string nazwa;
 	unsigned int ilosc;
@@ -16,6 +17,7 @@ private:
 	std::string opis;
 
 public:
+	Przedmiot(std::string nazwaPrzedmiotu, unsigned int iloscPrzedmiotow, unsigned int id_wystawiajacego, unsigned int cenaPrzedmiotu, Przedmiot* nastepnyPrzedmiot, std::string opisPrzedmiotu);		//konstruktor			zrobione
 	bool sprawdz_id_wlasciciela(unsigned int idOsoby);		//funkcja sprawdzajaca czy podane id zgadza sie z id wlasciciela				zrobione
 	void wypisz();											//funkcja wypisujaca przedmiot w okienku - potrzebna wspolpraca z okienkiem		do zrobienia, potrzeba okienka
 	unsigned int wypisz_id_wlasciciela();					//funkcja zwracajaca id wlasciciela						zrobione
@@ -31,12 +33,13 @@ public:
 class HistoriaLicytacji {
 public:
 	unsigned int cena;
+	std::string nazwaUczestkina;
 	HistoriaLicytacji* next;
 };
 
 
 class Osoba {
-private:
+protected:
 	std::string mail;
 	std::string haslo;
 	unsigned int ID;
@@ -59,6 +62,9 @@ private:
 	std::vector<unsigned int> koszyk;
 
 public:
+
+	Klient(std::string nazwaKlienta, Klient* nastepnyKlient, std::string mailKlienta, std::string hasloKlienta);		//kosntruktor klienta		zrobione
+
 		//obsluga wystawionych przedmiotow			wszystko do zrobienia, wymaga okienek i kodowania w Bazarku
 	void dodaj_przedmiot();
 	void usun_przedmiot();
@@ -94,10 +100,10 @@ public:
 class Licytacja : public Przedmiot {
 private:
 	unsigned int czasZakonczenia;
-	Klient* uczestnicy;
 	HistoriaLicytacji* head;
 
 public:
+	Licytacja(std::string nazwaLicytacji, unsigned int iloscPrzedmiotow, unsigned int id_wystawiajacego, unsigned int cenaWywolawcza, Przedmiot* nastepnaLicytacja, std::string opisPrzedmiotu, unsigned int czas);
 	void wygrana();										//metoda wkladajaca wygrany przedmiot do koszyka zwyciezcy		do zrobienia
 	void dodaj_historie(HistoriaLicytacji* toAdd);		//metoda dodajaca historie (najnowsza cene) do historii			zrobione
 	void dodaj_oferte();								//nie wiadomo co funkcja robi (do omowienia)					do zrobienia
@@ -111,6 +117,9 @@ private:
 	Firma* next;
 
 public:
+
+	Firma(std::string nazwaFirmy, Firma* nastepnaFirma, std::string mailFirmy, std::string hasloFirmy);		//kosntruktor firmy		zrobione
+
 		//obsluga wystawionych przedmiotow				wszystko do zrobienia, wymaga okienek i kodowania w Bazarku
 	void dodaj_przedmiot();
 	void usun_przedmiot();
@@ -133,6 +142,7 @@ public:
 
 class Admin : public Osoba {
 public:
+	Admin();
 	void usun_przedmiot(unsigned int id_przedmiotu);
 	void usun_uzytkownika(unsigned int id_uzytkownika);
 
@@ -144,6 +154,7 @@ private:
 	Firma* head;
 
 public:
+	ListaFirm();														//konstruktor											zrobione
 	void dodaj(Firma* toAdd);											//funkcja dodaje firme do listy							zrobione
 	int sprawdz(std::string email_firmy, std::string nazwa_firmy);		//funkcja sprawdza czy podana firma juz istnieje		zrobione, mozliwy odutput: 0-nic nie zajete, 1-zajeta nazwa, 2-zajety email, 3 zajeta nazwa i email
 	Firma* wyszukaj_firme(unsigned int id_firmy);						//funkcja wyszukuje firme po id							zrobione
@@ -157,6 +168,7 @@ private:
 	Klient* head;
 
 public:
+	ListaKlientow();														//konstruktor											zrobione
 	void dodaj(Klient* toAdd);												//funkcja dodaje klienta do listy						zrobione
 	int sprawdz(std::string email_klienta, std::string nazwa_klienta);		//funkcja sprawdza czy podany klient juz istnieje		zrobione, mozliwy odutput: 0-nic nie zajete, 1-zajeta nazwa, 2-zajety email, 3 zajeta nazwa i email
 	Klient* wyszukaj_klienta(unsigned int id_klienta);						//funkcja wyszukuje klienta po id						zrobione
@@ -174,13 +186,14 @@ private:
 
 public:
 
+	Bazarek();
 		//obsluga wystawionych przedmiotow i licytacji				tutaj wszystko do zrobienia
 	void dodaj_przedmiot();		//funkcja dodajaca przedmiot		
 	void dodaj_licytacje();		//funkcja dodajaca licytacje
 	void usun_przedmiot();		//funkcja usuwajaca przedmiot
 	void usun_licytacje();		//funkcja usuwajaca licytacje
 
-	Przedmiot* szukaj(std::string szukanaOferta);					//funkcja wyszukujaca przedmioty		do zrobienia
+	std::vector<unsigned int> szukaj(std::string szukanaOferta);	//funkcja wyszukujaca przedmioty		zrobione
 	
 		//funkcje wspolpracojace z okienkami						tutaj wszystko do zrobienia
 	void wyswietl();		
@@ -203,13 +216,14 @@ private:
 	std::string ulica;
 	std::string nrDomu;
 	unsigned int kodPocztowy;
-	Przedmiot* koszyk;
+	std::vector<unsigned int> koszyk;
 
 public:
+	ObslugaZamowien();																			//konstruktor klasy ObslugaZamowien						zrobione
 	void podaj_dane_osobowe(std::string Im, std::string Naz);									//funkcja pobierajaca od uzytkownika dane osobowe		zrobione
 	void podaj_dane_adresowe(std::string Kr, std::string Mi, std::string Ul, std::string Nr);	//funkcja pobierajaca od uzytkownika dane adresowe		zrobione
 	int przekieruj_na_payu();				//wszystkie te opcje wymagaja okienek
 	void wybierz_opcje_platnosci();
 	void przekieruj_do_przelewu();
-	void podaj_koszyk(Przedmiot* koszyk_do_podania);		//funkcja podajaca koszyk klienta		zrobione
+	void podaj_koszyk(std::vector<unsigned int> koszyk_do_podania);		//funkcja podajaca koszyk klienta		zrobione
 };
