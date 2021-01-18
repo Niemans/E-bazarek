@@ -6,6 +6,7 @@
 #include "ekran_ebazarek.h"
 #include "ekran_przedmiotu.h"
 #include "ekran_startowy.h"
+#include "ekran_boczne_menu.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma resource "*.fmx"
@@ -55,6 +56,14 @@ void __fastcall TForma_ekran_bazarek::grid_colNazwaTap(TObject *Sender, const TP
 	TForm_ekran_przedmiotu *Form_ekran_przedmiotu = new TForm_ekran_przedmiotu(this);
 	Form_ekran_przedmiotu->ShowModal();
 	delete Form_ekran_przedmiotu;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForma_ekran_bazarek::Image1Click(TObject *Sender)
+{
+	TForma_boczne_menu *Form_boczne_menu = new TForma_boczne_menu(this);
+	Form_boczne_menu->ShowModal();
+	delete Form_boczne_menu;
 }
 //---------------------------------------------------------------------------
 

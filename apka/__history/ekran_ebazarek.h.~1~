@@ -33,7 +33,6 @@ __published:	// IDE-managed Components
 	TImage *Image2;
 	void __fastcall btn_szukajClick(TObject *Sender);
 	void __fastcall grid_colNazwaTap(TObject *Sender, const TPointF &Point);
-	void __fastcall Image1Click(TObject *Sender);
 private:	// User declarations
     void __fastcall WczytajDane();
 public:		// User declarations

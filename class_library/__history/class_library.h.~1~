@@ -143,6 +143,15 @@ public:
 };
 
 
+class Admin : public Osoba {
+public:
+	Admin();
+	void usun_przedmiot(unsigned int id_przedmiotu);
+	//void usun_licytacje();
+	int usun_uzytkownika(unsigned int id_uzytkownika, ListaKlientow* listaUzytkownikow);		//funkcja usuwajaca uzytkownika o zadanym id z listy uzytkownikow
+
+};
+
 
 class ListaFirm {
 private:
@@ -160,7 +169,7 @@ public:
 
 class ListaKlientow {
 
-	friend class Admin;
+	friend int Admin::usun_uzytkownika(unsigned int id_uzytkownika, ListaKlientow* listaUzytkownikow);
 
 private:
 	Klient* head;
@@ -226,13 +235,4 @@ public:
 	void wybierz_opcje_platnosci();
 	void przekieruj_do_przelewu();
 	void podaj_koszyk(std::vector<unsigned int> koszyk_do_podania);		//funkcja podajaca koszyk klienta		zrobione
-};
-
-class Admin : public Osoba {
-public:
-	Admin();
-	void usun_przedmiot(unsigned int id_przedmiotu);
-	//void usun_licytacje();
-	int usun_uzytkownika(unsigned int id_uzytkownika, ListaKlientow* listaUzytkownikow);		//funkcja usuwajaca uzytkownika o zadanym id z listy uzytkownikow
-
 };

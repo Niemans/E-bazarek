@@ -30,10 +30,6 @@ void __fastcall TForm_ekran_panelu_admina::Btn_usunClick(TObject *Sender)
 	{
 		Text_blad->Text = "brak wpisanego ID";
 	}
-	else
-	{
-		Text_blad->Text = "";
-	}
 
 	//szukanie ID
 

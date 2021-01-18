@@ -160,7 +160,7 @@ public:
 
 class ListaKlientow {
 
-	friend class Admin;
+	friend int Admin;
 
 private:
 	Klient* head;

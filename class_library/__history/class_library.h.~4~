@@ -160,7 +160,7 @@ public:
 
 class ListaKlientow {
 
-	friend class Admin;
+	friend int Admin::usun_uzytkownika(unsigned int id_uzytkownika, ListaKlientow* listaUzytkownikow);
 
 private:
 	Klient* head;

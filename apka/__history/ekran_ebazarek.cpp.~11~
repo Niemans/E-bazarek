@@ -5,6 +5,7 @@
 
 #include "ekran_ebazarek.h"
 #include "ekran_przedmiotu.h"
+#include "ekran_startowy.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma resource "*.fmx"
@@ -14,7 +15,17 @@ TForma_ekran_bazarek * Forma_ekran_bazarek;
 __fastcall TForma_ekran_bazarek::TForma_ekran_bazarek(TComponent* Owner)
 	: TForm(Owner)
 {
-    WczytajDane();
+	TForma_ekran_startowy * form_ekran_startowy = new TForma_ekran_startowy(this);
+
+	if (form_ekran_startowy->ShowModal()) {
+		delete form_ekran_startowy;
+		WczytajDane();
+	}
+	else
+	{
+		delete form_ekran_startowy;
+		Free();
+	}
 }
 //---------------------------------------------------------------------------
 void __fastcall TForma_ekran_bazarek::btn_szukajClick(TObject *Sender)

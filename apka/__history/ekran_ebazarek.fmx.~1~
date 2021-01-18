@@ -154,10 +154,8 @@ object Forma_ekran_bazarek: TForma_ekran_bazarek
             B1A122EF98E003005A1829EC8E0D1B79A7441F0050C2A851772A4DE49D127D00
             C01C59A20E0080F49E9EFE03B77B86537E3C49B90000000049454E44AE426082}
         end>
-      Cursor = crHandPoint
       Position.X = 16.000000000000000000
       Position.Y = 16.000000000000000000
-      OnClick = Image1Click
     end
     object Image2: TImage
       MultiResBitmap = <
@@ -384,7 +382,6 @@ object Forma_ekran_bazarek: TForma_ekran_bazarek
             0000000000000000000000006AF8C73FFE0FD5EA78B618FDA26B000000004945
             4E44AE426082}
         end>
-      Cursor = crHandPoint
       Position.X = 336.000000000000000000
       Position.Y = 16.000000000000000000
       OnClick = btn_szukajClick
@@ -401,8 +398,8 @@ object Forma_ekran_bazarek: TForma_ekran_bazarek
     RowHeight = 120.000000000000000000
     RowCount = 5
     Options = [ColumnResize, ColumnMove, ColLines, RowLines, Tabs, HeaderClick, AutoDisplacement]
-    Viewport.Width = 397.000000000000000000
-    Viewport.Height = 613.000000000000000000
+    Viewport.Width = 401.000000000000000000
+    Viewport.Height = 617.000000000000000000
     object grid_colNazwa: TStringColumn
       OnTap = grid_colNazwaTap
       Size.Width = 289.000000000000000000
