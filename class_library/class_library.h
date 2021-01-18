@@ -17,7 +17,7 @@ protected:
 	std::string opis;
 
 public:
-	Przedmiot(std::string nazwaPrzedmiotu, unsigned int iloscPrzedmiotow, unsigned int id_wystawiajacego, unsigned int cenaPrzedmiotu, Przedmiot* nastepnyPrzedmiot, std::string opisPrzedmiotu);		//konstruktor			zrobione
+	Przedmiot(std::string nazwaPrzedmiotu, unsigned int iloscPrzedmiotow, unsigned int id_wystawiajacego, unsigned int cenaPrzedmiotu, std::string opisPrzedmiotu);		//konstruktor			zrobione
 	bool sprawdz_id_wlasciciela(unsigned int idOsoby);		//funkcja sprawdzajaca czy podane id zgadza sie z id wlasciciela				zrobione
 	void wypisz();											//funkcja wypisujaca przedmiot w okienku - potrzebna wspolpraca z okienkiem		do zrobienia, potrzeba okienka
 	unsigned int wypisz_id_wlasciciela();					//funkcja zwracajaca id wlasciciela						zrobione
@@ -26,6 +26,7 @@ public:
 	int usun_przedmioty(unsigned int ilosc);				//funkcja usuwajaca egzemplaze przedmiotu				zrobione, jezeli funkcja zwroci wartosc dodatnia - operacja zostala wykonana, jezeli ujemna - czynnosc nie zostala wykonana
 	std::string podaj_nazwe();								//zwraca nazwe przedmiotu								zrobione
 	Przedmiot* podaj_adres_nastepnego_przedmiotu();			//zwraca adres nastepnego przedmiotu					zrobione
+	void ustaw_nastepny_przedmiot(Przedmiot* nastepnyPrzedmiot);
 	
 };
 
@@ -100,14 +101,16 @@ public:
 class Licytacja : public Przedmiot {
 private:
 	unsigned int czasZakonczenia;
+	Licytacja* next;
 	HistoriaLicytacji* head;
 
 public:
-	Licytacja(std::string nazwaLicytacji, unsigned int iloscPrzedmiotow, unsigned int id_wystawiajacego, unsigned int cenaWywolawcza, Przedmiot* nastepnaLicytacja, std::string opisPrzedmiotu, unsigned int czas);
+	Licytacja(std::string nazwaLicytacji, unsigned int iloscPrzedmiotow, unsigned int id_wystawiajacego, unsigned int cenaWywolawcza, std::string opisPrzedmiotu, unsigned int czas);		//zrobione
+	Licytacja* podaj_adres_nastepnej_licytacji();		//zwraca next													zrobione
 	void wygrana();										//metoda wkladajaca wygrany przedmiot do koszyka zwyciezcy		do zrobienia
 	void dodaj_historie(HistoriaLicytacji* toAdd);		//metoda dodajaca historie (najnowsza cene) do historii			zrobione
 	int dodaj_oferte(unsigned int nowaCena, std::string nazwaUczestnika);			//funkcja dodajaca oferte			zrobione
-
+	void ustaw_nastepna_licytacje(Licytacja* nastepnaLicytacja);
 };
 
 
@@ -144,7 +147,8 @@ class Admin : public Osoba {
 public:
 	Admin();
 	void usun_przedmiot(unsigned int id_przedmiotu);
-	void usun_uzytkownika(unsigned int id_uzytkownika);
+	//void usun_licytacje();
+	int usun_uzytkownika(unsigned int id_uzytkownika, ListaKlientow* listaUzytkownikow);		//funkcja usuwajaca uzytkownika o zadanym id z listy uzytkownikow
 
 };
 
@@ -164,8 +168,13 @@ public:
 
 
 class ListaKlientow {
+
+	friend int Admin::usun_uzytkownika(unsigned int id_uzytkownika, ListaKlientow* listaUzytkownikow);
+
 private:
 	Klient* head;
+		//funkcja prywatna - mozna ja uruchomic tylko dzieki funkcji usun_uzytkownika Admina
+	int usun(unsigned int idKlientaDoUsuniecia);							//funkcja usuwajaca klienta o danym id z listy			zrobione
 
 public:
 	ListaKlientow();														//konstruktor											zrobione
@@ -188,12 +197,12 @@ public:
 
 	Bazarek();
 		//obsluga wystawionych przedmiotow i licytacji				tutaj wszystko do zrobienia
-	void dodaj_przedmiot();		//funkcja dodajaca przedmiot		
-	void dodaj_licytacje();		//funkcja dodajaca licytacje
-	void usun_przedmiot();		//funkcja usuwajaca przedmiot
-	void usun_licytacje();		//funkcja usuwajaca licytacje
+	int dodaj_przedmiot(Przedmiot* toAdd);				//funkcja dodajaca przedmiot		zrobione
+	int dodaj_licytacje(Licytacja* toAdd);				//funkcja dodajaca licytacje		zrobione
+	int usun_przedmiot(unsigned int idPrzedmiotu);		//funkcja usuwajaca przedmiot		zrobione
+	int usun_licytacje(unsigned int idLicytacji);		//funkcja usuwajaca licytacje		zrobione
 
-	std::vector<unsigned int> szukaj(std::string szukanaOferta);	//funkcja wyszukujaca przedmioty		zrobione
+	std::vector<unsigned int> szukaj(std::string szukanaOferta);	//funkcja wyszukujaca przedmioty		do przerobienia
 	
 		//funkcje wspolpracojace z okienkami						tutaj wszystko do zrobienia
 	void wyswietl();		

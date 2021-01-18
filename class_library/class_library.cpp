@@ -3,7 +3,7 @@
 		//metody klasy Przedmiot
 
 	//konstruktor klasy Przedmiot
-Przedmiot::Przedmiot(std::string nazwaPrzedmiotu, unsigned int iloscPrzedmiotow, unsigned int id_wystawiajacego, unsigned int cenaPrzedmiotu, Przedmiot* nastepnyPrzedmiot, std::string opisPrzedmiotu)
+Przedmiot::Przedmiot(std::string nazwaPrzedmiotu, unsigned int iloscPrzedmiotow, unsigned int id_wystawiajacego, unsigned int cenaPrzedmiotu, std::string opisPrzedmiotu)
 {
 	licznik++;			//inkrementujemy licznik przedmiotow
 
@@ -12,7 +12,7 @@ Przedmiot::Przedmiot(std::string nazwaPrzedmiotu, unsigned int iloscPrzedmiotow,
 	ilosc = iloscPrzedmiotow;
 	IDWlasciciela = id_wystawiajacego;
 	cena = cenaPrzedmiotu;
-	next = nastepnyPrzedmiot;
+	next = NULL;
 	opis = opisPrzedmiotu;
 }
 
@@ -80,14 +80,28 @@ Przedmiot* Przedmiot::podaj_adres_nastepnego_przedmiotu()
 	return next;
 }
 
+	//ustawia wskaznik na nasteny przedmiot
+void Przedmiot::ustaw_nastepny_przedmiot(Przedmiot* nastepnyPrzedmiot)
+{
+	next = nastepnyPrzedmiot;
+}
+
 
 		//metody klasy licytacja
 
 	//konstruktor klasy Licytacja
-Licytacja::Licytacja(std::string nazwaLicytacji, unsigned int iloscPrzedmiotow, unsigned int id_wystawiajacego, unsigned int cenaWywolawcza, Przedmiot* nastepnaLicytacja, std::string opisPrzedmiotu, unsigned int czas) :
-	Przedmiot(nazwaLicytacji, iloscPrzedmiotow, id_wystawiajacego, cenaWywolawcza, nastepnaLicytacja, opisPrzedmiotu)
+Licytacja::Licytacja(std::string nazwaLicytacji, unsigned int iloscPrzedmiotow, unsigned int id_wystawiajacego, unsigned int cenaWywolawcza, std::string opisPrzedmiotu, unsigned int czas) :
+	Przedmiot(nazwaLicytacji, iloscPrzedmiotow, id_wystawiajacego, cenaWywolawcza, opisPrzedmiotu)
 {
 	czasZakonczenia = czas;
+	head = NULL;
+	next = NULL;
+}
+
+	//metoda zwracajaca next
+Licytacja* Licytacja::podaj_adres_nastepnej_licytacji()
+{
+	return next;
 }
 
 	//metoda wkladajaca wygrany przedmiot do koszyka zwyciezcy
@@ -116,6 +130,11 @@ int Licytacja::dodaj_oferte(unsigned int nowaCena, std::string nazwaUczestnika)
 
 	toAdd->next = head;									//oferta wskakuje na pocatek listy
 	head = toAdd;
+}
+
+void Licytacja::ustaw_nastepna_licytacje(Licytacja* nastepnaLicytacja)
+{
+	next = nastepnaLicytacja;
 }
 
 
@@ -293,7 +312,10 @@ Admin::Admin(): Osoba("AdminBazarku@gmail.pl", "admin123")
 void Admin::usun_przedmiot(unsigned int id_przedmiotu){}		//do zrobienia
 	
 	//funkcja usuwajaca uzytkownika
-void Admin::usun_uzytkownika(unsigned int id_uzytkownika){}	//do zrobienia
+int Admin::usun_uzytkownika(unsigned int id_uzytkownika, ListaKlientow* listaUzytkownikow)
+{
+	return listaUzytkownikow->usun(id_uzytkownika);		//zwraca wynik funkcji usun
+}
 
 		//metody klasy ListaFirm
 
@@ -402,6 +424,33 @@ void ListaKlientow::dodaj(Klient* toAdd)
 	pom->ustaw_wskaznik_next_klienta(toAdd);				//dodany klient staje sie ogonem
 }
 
+	//funkcja usuwa z listy klienta o zadanym ID
+int ListaKlientow::usun(unsigned int idKlientaDoUsuniecia)
+{
+	Klient* pom = head;			//ustawiamy wskaznik pomocniczy na poczatek listy
+
+	if (pom == NULL)
+	{
+		return -1;				//jezeli lista jest pusta zwracamy -1
+	}
+
+	while (pom->podaj_wskaznik_next_klienta() != NULL)		//petla dziala dopoki nastepnik zmiennej pomocniczej istnieje
+	{
+		if ((pom->podaj_wskaznik_next_klienta())->podaj_id() == idKlientaDoUsuniecia)		//jezeli ten nastepnik istnieje i jego id jest rowne id klienta do usuniecia to usuwamy ten obiekt
+		{
+			Klient* KlientDoUsuniecia = pom->podaj_wskaznik_next_klienta();							//ustawiamy kolejna zmienna pomocnicza na element do usuniecia
+			pom->ustaw_wskaznik_next_klienta(KlientDoUsuniecia->podaj_wskaznik_next_klienta());		//next pomocniczego ustawiany jest na next klienta do usuniecia
+
+			delete KlientDoUsuniecia;		//usuwamy klienta o zadanym id
+			return idKlientaDoUsuniecia;	//jako znak poprawnego usuniecia klienta zwracamy jego id
+		}
+
+		pom = pom->podaj_wskaznik_next_klienta();			//na koncu petli wskaznik pomocniczy ustawiany jest na nastepny obiekt
+	}
+
+	return 0;		//jezeli nie znaleziono klienta o takim id to zwracane jest 0
+}
+
 //funkcja sprawdza czy podany klient juz istnieje
 int ListaKlientow::sprawdz(std::string email_klienta, std::string nazwa_klienta)		
 {
@@ -467,16 +516,118 @@ Bazarek::Bazarek()
 
 		//obsluga wystawionych przedmiotow i licytacji
 	//funkcja dodajaca przedmiot
-void Bazarek::dodaj_przedmiot(){}		//do zrobienia
+int Bazarek::dodaj_przedmiot(Przedmiot* toAdd)
+{
+	if (toAdd == NULL)
+	{
+		return -1;
+	}
+
+	Przedmiot* pom = listaPrzedmiotow;
+
+	if (pom == NULL)
+	{
+		listaPrzedmiotow = toAdd;		//jezeli glowa listy == NULL to pom staje sie pierwszym przedmiotem na liscie	
+	}
+	else
+	{
+		while (pom->podaj_adres_nastepnego_przedmiotu() != NULL)		//petla skacze po liscie az nie trafi na jej koniec
+		{
+			pom = pom->podaj_adres_nastepnego_przedmiotu();
+		}
+
+		listaPrzedmiotow = toAdd;		//po zakonczeniu petli przedmiot dopisywany jest na koniec listy
+	}
+
+	return toAdd->podaj_id();			//na znak poprawnego dodania przedmiotu zwracane jest jego id
+	
+}
 
 	//funkcja dodajaca licytacje
-void Bazarek::dodaj_licytacje(){}		//do zrobienia
+int Bazarek::dodaj_licytacje(Licytacja* toAdd)
+{
+	if (toAdd == NULL)
+	{
+		return -1;
+	}
+
+	Licytacja* pom = listaLicytacji;
+
+	if (pom == NULL)
+	{
+		listaLicytacji = toAdd;		//jezeli glowa listy == NULL to pom staje sie pierwszym przedmiotem na liscie	
+	}
+	else
+	{
+		while (pom->podaj_adres_nastepnej_licytacji() != NULL)		//petla skacze po liscie az nie trafi na jej koniec
+		{
+			pom = pom->podaj_adres_nastepnej_licytacji();
+		}
+
+		listaLicytacji = toAdd;		//po zakonczeniu petli przedmiot dopisywany jest na koniec listy
+	}
+
+	return toAdd->podaj_id();			//na znak poprawnego dodania przedmiotu zwracane jest jego id
+
+
+}		//do zrobienia
 	
 	//funkcja usuwajaca przedmiot
-void Bazarek::usun_przedmiot(){}			//do zrobienia
+int Bazarek::usun_przedmiot(unsigned int idPrzedmiotu)
+{
+	Przedmiot* pom = listaPrzedmiotow;
+
+	if (listaPrzedmiotow == NULL)
+	{
+		return -1;																						//jezeli lista jest pusta zwracamy -1
+	}
+
+	while (pom->podaj_adres_nastepnego_przedmiotu() != NULL)											//petla dziala dopoki nie dojdzie do konca listy
+	{
+		if ((pom->podaj_adres_nastepnego_przedmiotu())->podaj_id() == idPrzedmiotu)						//jezeli nastepnik biezacego przedmiotu ma zadane id to go usuwamy
+		{
+			Przedmiot* przedmiotDoUsuniecia = pom->podaj_adres_nastepnego_przedmiotu();					//wskaznik nakierowany na nastepnik biezacego przedmiotu 
+			pom->ustaw_nastepny_przedmiot(przedmiotDoUsuniecia->podaj_adres_nastepnego_przedmiotu());	//next biezacego przedmiotu ustawiony na next jego nastepnika
+
+			delete przedmiotDoUsuniecia;																//usuwamy zadany przedmiot
+			return idPrzedmiotu;																		//zwracamy id usunietego przedmiotu na znak prawidlowego wykonania funkcji
+		}
+
+		pom = pom->podaj_adres_nastepnego_przedmiotu();
+	}
+
+	return 0;																							//jezeli nie ma przedmiotu o podanym id to zwracamy 0
+}
 
 	//funkcja usuwajaca licytacje
-void Bazarek::usun_licytacje(){}			//do zrobienia
+int Bazarek::usun_licytacje(unsigned int idLicytacji)
+{
+	Licytacja* pom = listaLicytacji;
+
+	if (listaLicytacji == NULL)
+	{
+		return -1;																						//jezeli lista jest pusta zwracamy -1
+	}
+
+	while (pom->podaj_adres_nastepnej_licytacji() != NULL)												//petla dziala dopoki nie dojdzie do konca listy
+	{
+		if ((pom->podaj_adres_nastepnej_licytacji())->podaj_id() == idLicytacji)						//jezeli nastepnik biezacegj licytacji ma zadane id to go usuwamy
+		{
+			Licytacja* licytacjaDoUsuniecia = pom->podaj_adres_nastepnej_licytacji();					//wskaznik nakierowany na nastepnik biezacej licytacji
+			pom->ustaw_nastepna_licytacje(licytacjaDoUsuniecia->podaj_adres_nastepnej_licytacji());		//next biezacej licytacji ustawiony na next jego nastepnika
+
+			delete licytacjaDoUsuniecia;																//usuwamy zadana licytacje
+			return idLicytacji;																			//zwracamy id usunietej licytacji na znak prawidlowego wykonania funkcji
+		}
+
+		pom = pom->podaj_adres_nastepnej_licytacji();
+	}
+
+	return 0;																							//jezeli nie ma licytacji o podanym id zwracamy 0
+}
+
+	//funkcja usuwajaca licytacje
+int Bazarek::usun_licytacje(unsigned int idLicytacji){}			//do zrobienia
 
 	//funkcja wyszukujaca przedmioty
 std::vector<unsigned int> Bazarek::szukaj(std::string szukanaOferta)
