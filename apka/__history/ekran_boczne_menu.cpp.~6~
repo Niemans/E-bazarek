@@ -7,7 +7,6 @@
 #include "ekran_startowy.h"
 #include "ekran_rejestracja.h"
 #include "ekran_panelu_admina.h"
-#include "ekran_ebazarek.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma resource "*.fmx"
@@ -16,7 +15,6 @@ TForma_boczne_menu *Forma_boczne_menu;
 __fastcall TForma_boczne_menu::TForma_boczne_menu(TComponent* Owner)
 	: TForm(Owner)
 {
-
 }
 //---------------------------------------------------------------------------
 
@@ -68,8 +66,8 @@ void __fastcall TForma_boczne_menu::Btn_adminClick(TObject *Sender)
 
 void __fastcall TForma_boczne_menu::Btn_wylogujClick(TObject *Sender)
 {
-	Forma_ekran_bazarek->zmien_zalogowane(0);
-	TForma_ekran_startowy * form_ekran_startowy = new TForma_ekran_startowy(this);
+	//wylogowywanie potrzebne!!!
+    TForma_ekran_startowy * form_ekran_startowy = new TForma_ekran_startowy(this);
 	if (form_ekran_startowy->ShowModal())
 	{
 		delete form_ekran_startowy;
@@ -92,59 +90,7 @@ void __fastcall TForma_boczne_menu::FormClose(TObject *Sender, TCloseAction &Act
 
 void __fastcall TForma_boczne_menu::Image_domClick(TObject *Sender)
 {
-    //reset ekranu e-bazarka
-	ModalResult = 1;
-}
-//---------------------------------------------------------------------------
-
-void __fastcall TForma_boczne_menu::FormActivate(TObject *Sender)
-{
-	switch (Forma_ekran_bazarek->zalogowanie())
-	{
-	case 1: //klient
-		Btn_logowanie->Visible 		= false;
-		Btn_rejestracja->Visible 	= false;
-		Btn_profil->Visible 		= true;
-		Btn_koszyk->Visible 		= true;
-		Btn_przedmioty->Visible 	= true;
-		Btn_admin->Visible          = false;
-		Btn_wyloguj->Visible        = true;
-		break;
-	case 2: //firma
-		Btn_logowanie->Visible 		= false;
-		Btn_rejestracja->Visible 	= false;
-		Btn_profil->Visible 		= true;
-		Btn_koszyk->Visible 		= false;
-		Btn_przedmioty->Visible 	= true;
-		Btn_admin->Visible          = false;
-		Btn_wyloguj->Visible        = true;
-		break;
-	case 3: //admin
-		Btn_logowanie->Visible 		= false;
-		Btn_rejestracja->Visible 	= false;
-		Btn_profil->Visible 		= true;
-		Btn_koszyk->Visible 		= false;
-		Btn_przedmioty->Visible 	= false;
-		Btn_admin->Visible          = true;
-		Btn_wyloguj->Visible        = true;
-		break;
-	default: //brak zalogowania
-		Btn_logowanie->Visible 		= true;
-		Btn_rejestracja->Visible 	= true;
-		Btn_profil->Visible 		= false;
-		Btn_koszyk->Visible 		= false;
-		Btn_przedmioty->Visible 	= false;
-		Btn_admin->Visible          = false;
-		Btn_wyloguj-> Visible       = false;
-		break;
-	}
-
-}
-//---------------------------------------------------------------------------
-
-void __fastcall TForma_boczne_menu::Image_arrowClick(TObject *Sender)
-{
-	ModalResult = 1;
+    ModalResult = 1;
 }
 //---------------------------------------------------------------------------
 

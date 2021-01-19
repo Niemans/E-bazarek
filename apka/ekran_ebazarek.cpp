@@ -16,6 +16,7 @@ TForma_ekran_bazarek * Forma_ekran_bazarek;
 __fastcall TForma_ekran_bazarek::TForma_ekran_bazarek(TComponent* Owner)
 	: TForm(Owner)
 {
+    zalogowane = 0;
 	TForma_ekran_startowy * form_ekran_startowy = new TForma_ekran_startowy(this);
 
 	if (form_ekran_startowy->ShowModal()) {
@@ -67,3 +68,20 @@ void __fastcall TForma_ekran_bazarek::Image1Click(TObject *Sender)
 }
 //---------------------------------------------------------------------------
 
+void TForma_ekran_bazarek::zmien_zalogowane(short int zmiana) //Klient = 1,	Firma = 2,	Admin = 3, bez = 0
+{
+	if(zmiana >=0 && zmiana <=3)
+	{
+		zalogowane = zmiana;
+	}
+	else
+	{
+		zalogowane = 0;
+    }
+}
+
+//----------------------------------------------------------------------------
+short int TForma_ekran_bazarek::zalogowanie()
+{
+	return zalogowane;
+}

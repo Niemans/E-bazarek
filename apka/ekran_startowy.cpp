@@ -23,34 +23,46 @@ __fastcall TForma_ekran_startowy::TForma_ekran_startowy(TComponent* Owner)
 
 void __fastcall TForma_ekran_startowy::Btn_logowanieClick(TObject *Sender)
 {
-	if(Edit_login->Text == "")
+	bool blad = 0;
+	if(Edit_email->Text == "")
 	{
 		Text_blad->Visible = true;
-		Text_blad->Text = "Brak napisanego loginu";
+		Text_blad->Text = "Brak napisanego emaila";
+		blad = 1;
 	}
 	else if(Edit_haslo->Text == "")
 	{
 		Text_blad->Visible = true;
 		Text_blad->Text = "Brak napisanego has³a";
+		blad = 1;
+	}
+	else if(ListBoxItem_Klient->IsChecked == false && ListBoxItem_Firma->IsChecked == false)
+	{
+		Text_blad->Visible = true;
+		Text_blad->Text = "Brak wybranego rodzaju konta";
+		blad = 1;
 	}
 	else if (CheckBox_robot->IsChecked == false)
 	{
 		Text_blad->Visible = true;
 		Text_blad->Text = "Jestes robotem";
+		blad = 1;
 	}
 	else
 	{
-
 		Text_blad->Visible = false;
-        //trzeba zrobiæ prawdziwe zalogowanie siê do czegoœ
-		if (Edit_login->Text=="admin" && Edit_haslo->Text == "1234") {
-			ModalResult = 1;
-		}else
-		{
+        blad = 0;
+	}
 
-			ModalResult = 0;
-		}
-
+	if((Edit_email->Text == "admin" && Edit_haslo->Text == "1234"))
+	{
+		Forma_ekran_bazarek->zmien_zalogowane(3);
+		ModalResult = 1;
+	}
+	else if(blad == 0)
+	{
+		//trzeba zrobiæ prawdziwe zalogowanie siê do czegoœ
+		ModalResult = 0;
 	}
 }
 //---------------------------------------------------------------------------
@@ -132,4 +144,18 @@ void __fastcall TForma_ekran_startowy::Btn_przegladajClick(TObject *Sender)
 }
 //---------------------------------------------------------------------------
 
+
+void __fastcall TForma_ekran_startowy::ListBoxItem_KlientClick(TObject *Sender)
+{
+	ListBoxItem_Klient->IsChecked = true;
+	ListBoxItem_Firma->IsChecked = false;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForma_ekran_startowy::ListBoxItem_FirmaClick(TObject *Sender)
+{
+	ListBoxItem_Klient->IsChecked = false;
+	ListBoxItem_Firma->IsChecked = true;
+}
+//---------------------------------------------------------------------------
 

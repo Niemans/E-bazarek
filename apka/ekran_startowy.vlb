@@ -9,14 +9,8 @@ Coordinates=114,167,53,51
 Coordinates=186,10,53,51
 Visible=True
 
-[Edit_login]
-Coordinates=10,78,40,51
-
 [Edit_haslo]
 Coordinates=10,10,46,51
-
-[Text_login]
-Coordinates=72,10,41,51
 
 [Text_haslo]
 Coordinates=129,10,41,51
@@ -35,4 +29,10 @@ Coordinates=65,167,41,51
 
 [CheckBox_robot]
 Coordinates=65,78,70,51
+
+[Text_email]
+Coordinates=72,10,41,51
+
+[Edit_email]
+Coordinates=10,78,40,51
 

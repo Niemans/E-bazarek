@@ -68,8 +68,8 @@ void __fastcall TForma_boczne_menu::Btn_adminClick(TObject *Sender)
 
 void __fastcall TForma_boczne_menu::Btn_wylogujClick(TObject *Sender)
 {
-	Forma_ekran_bazarek->zmien_zalogowane(0);
-	TForma_ekran_startowy * form_ekran_startowy = new TForma_ekran_startowy(this);
+	//wylogowywanie potrzebne!!!
+    TForma_ekran_startowy * form_ekran_startowy = new TForma_ekran_startowy(this);
 	if (form_ekran_startowy->ShowModal())
 	{
 		delete form_ekran_startowy;
@@ -92,8 +92,7 @@ void __fastcall TForma_boczne_menu::FormClose(TObject *Sender, TCloseAction &Act
 
 void __fastcall TForma_boczne_menu::Image_domClick(TObject *Sender)
 {
-    //reset ekranu e-bazarka
-	ModalResult = 1;
+    ModalResult = 1;
 }
 //---------------------------------------------------------------------------
 
@@ -139,12 +138,6 @@ void __fastcall TForma_boczne_menu::FormActivate(TObject *Sender)
 		break;
 	}
 
-}
-//---------------------------------------------------------------------------
-
-void __fastcall TForma_boczne_menu::Image_arrowClick(TObject *Sender)
-{
-	ModalResult = 1;
 }
 //---------------------------------------------------------------------------
 

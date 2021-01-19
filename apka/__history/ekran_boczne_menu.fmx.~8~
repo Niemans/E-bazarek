@@ -4,7 +4,6 @@ object Forma_boczne_menu: TForma_boczne_menu
   Caption = 'Forma_boczne_menu'
   ClientHeight = 700
   ClientWidth = 400
-  Position = ScreenCenter
   FormFactor.Width = 320
   FormFactor.Height = 480
   FormFactor.Devices = [Desktop]
