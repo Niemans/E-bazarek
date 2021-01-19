@@ -4,7 +4,7 @@
 #pragma hdrstop
 
 #include "ekran_rejestracja.h"
-
+#include "ekran_ebazarek.h"
 
 //---------------------------------------------------------------------------
 #pragma package(smart_init)

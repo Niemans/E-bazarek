@@ -12,10 +12,10 @@
 #include <FMX.Objects.hpp>
 #include <FMX.StdCtrls.hpp>
 #include <FMX.Types.hpp>
+
+#include "../class_library/class_library.h"
 #include <FMX.Layouts.hpp>
 #include <FMX.ListBox.hpp>
-
-#include "ekran_ebazarek.h"
 //---------------------------------------------------------------------------
 class TForma_rejestracja : public TForm
 {

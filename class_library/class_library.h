@@ -52,7 +52,7 @@ public:
 	void edytuj_dane(std::string newMail, std::string newHaslo);						//funkcja edytujaca dane					zrobione
 	unsigned int podaj_id();															//nowododana, nie ma w diagramie klas		zrobione
 	std::string podaj_email();															//nowododana, nie ma w diagramie klas		zrobione
-
+	std::string podaj_haslo();
 };
 
 
@@ -154,7 +154,7 @@ public:
 	int sprawdz(std::string email_firmy, std::string nazwa_firmy);		//funkcja sprawdza czy podana firma juz istnieje		zrobione, mozliwy odutput: 0-nic nie zajete, 1-zajeta nazwa, 2-zajety email, 3 zajeta nazwa i email
 	Firma* wyszukaj_firme(unsigned int id_firmy);						//funkcja wyszukuje firme po id							zrobione
 	Firma* wyszukaj_firme(std::string nazwa_firmy);						//funkcja wyszukuje firme po nazwie						zrobione
-		
+	int usun(unsigned int idFirmyDoUsuniecia);							//funkcja usuwajaca klienta o danym id z listy			zrobione	
 };
 
 
@@ -164,16 +164,13 @@ class ListaKlientow {
 
 private:
 	Klient* head;
-		//funkcja prywatna - mozna ja uruchomic tylko dzieki funkcji usun_uzytkownika Admina
-	int usun(unsigned int idKlientaDoUsuniecia);							//funkcja usuwajaca klienta o danym id z listy			zrobione
-
 public:
 	ListaKlientow();														//konstruktor											zrobione
 	void dodaj(Klient* toAdd);												//funkcja dodaje klienta do listy						zrobione
 	int sprawdz(std::string email_klienta, std::string nazwa_klienta);		//funkcja sprawdza czy podany klient juz istnieje		zrobione, mozliwy odutput: 0-nic nie zajete, 1-zajeta nazwa, 2-zajety email, 3 zajeta nazwa i email
 	Klient* wyszukaj_klienta(unsigned int id_klienta);						//funkcja wyszukuje klienta po id						zrobione
 	Klient* wyszukaj_klienta(std::string nazwa_klienta);					//funkcja wyszukuje klienta po nazwie					zrobione
-
+	int usun(unsigned int idKlientaDoUsuniecia);							//funkcja usuwajaca klienta o danym id z listy			zrobione
 };
 
 					//bazarek otrzyma³ dodatkowe pola i metody spoza diagramow klas

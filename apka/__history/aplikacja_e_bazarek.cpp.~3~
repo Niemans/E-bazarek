@@ -27,7 +27,6 @@ extern "C" int FMXmain()
 		Application->CreateForm(__classid(TForm_ekran_panelu_admina), &Form_ekran_panelu_admina);
 		Application->CreateForm(__classid(TForma_rejestracja), &Forma_rejestracja);
 		Application->CreateForm(__classid(TForma_boczne_menu), &Forma_boczne_menu);
-		Application->CreateForm(__classid(TForm1), &Form1);
 		Application->Run();
 	}
 	catch (Exception &exception)

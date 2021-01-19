@@ -1,7 +1,7 @@
 #include "class_library.h"
 
 		//metody klasy Przedmiot
-unsigned int Przedmiot::licznik;
+
 	//konstruktor klasy Przedmiot
 Przedmiot::Przedmiot(std::string nazwaPrzedmiotu, unsigned int iloscPrzedmiotow, unsigned int id_wystawiajacego, unsigned int cenaPrzedmiotu, std::string opisPrzedmiotu)
 {
@@ -139,7 +139,7 @@ void Licytacja::ustaw_nastepna_licytacje(Licytacja* nastepnaLicytacja)
 
 
 		//metody klasy Osoba
-unsigned int Osoba::licznik;
+
 	//konstruktor klasy Osoba
 Osoba::Osoba(std::string newMail, std::string newHaslo): mail(newMail), haslo(newHaslo)
 {
@@ -179,11 +179,11 @@ std::string Osoba::podaj_email()
 	return mail;
 }
 
+	//funkcja zwracajaca haslo
 std::string Osoba::podaj_haslo()
 {
 	return haslo;
 }
-
 
 		//metody klasy Klient
 
@@ -389,42 +389,16 @@ Firma* ListaFirm::wyszukaj_firme(unsigned int id_firmy)
 }
 
 	//funkcja wyszukuje firme po nazwie
-Firma* ListaFirm::wyszukaj_firme(std::string nazwa_firmy)
+Firma* ListaFirm::wyszukaj_firme(std::string mail_firmy)
 {
 	Firma* pom = head;		//wskaznik pomocniczy - ustawiamy najpierw na glowe
 
-	while (pom != NULL && pom->podaj_nazwe_firmy() != nazwa_firmy)
+	while (pom != NULL && pom->podaj_email() != mail_firmy)
 	{
 		pom = pom->podaj_wskaznik_next_firmy();		//dopoki nie znajdziemy firmy o danej nazwie lub nie dotrzemy do konca listy - przechodzimy kolejne welzy
 	}
 
 	return pom;		//jezeli znajdziemy firme - zwroci jej adres, jezeli nie - NULL
-}
-
-int ListaFirm::usun(unsigned int idFirmyDoUsuniecia)
-{
-	Firma* pom = head;			//ustawiamy wskaznik pomocniczy na poczatek listy
-
-	if (pom == NULL)
-	{
-		return -1;				//jezeli lista jest pusta zwracamy -1
-	}
-
-	while (pom->podaj_wskaznik_next_firmy() != NULL)		//petla dziala dopoki nastepnik zmiennej pomocniczej istnieje
-	{
-		if ((pom->podaj_wskaznik_next_firmy())->podaj_id() == idFirmyDoUsuniecia)		//jezeli ten nastepnik istnieje i jego id jest rowne id klienta do usuniecia to usuwamy ten obiekt
-		{
-			Firma* FirmaDoUsuniecia = pom->podaj_wskaznik_next_firmy();							//ustawiamy kolejna zmienna pomocnicza na element do usuniecia
-			pom->ustaw_wskaznik_next_firmy(FirmaDoUsuniecia->podaj_wskaznik_next_firmy());		//next pomocniczego ustawiany jest na next klienta do usuniecia
-
-			delete FirmaDoUsuniecia;		//usuwamy klienta o zadanym id
-			return idFirmyDoUsuniecia;	//jako znak poprawnego usuniecia klienta zwracamy jego id
-		}
-
-		pom = pom->podaj_wskaznik_next_firmy();			//na koncu petli wskaznik pomocniczy ustawiany jest na nastepny obiekt
-	}
-
-	return 0;		//jezeli nie znaleziono firmy o takim id to zwracane jest 0
 }
 
 
@@ -522,11 +496,11 @@ Klient* ListaKlientow::wyszukaj_klienta(unsigned int id_klienta)
 }
 
 //funkcja wyszukuje klienta po nazwie
-Klient* ListaKlientow::wyszukaj_klienta(std::string nazwa_klienta)
+Klient* ListaKlientow::wyszukaj_klienta(std::string mail_klienta)
 {
 	Klient* pom = head;		//wskaznik pomocniczy - ustawiamy najpierw na glowe
 
-	while (pom != NULL && pom->podaj_nazwe_klienta() != nazwa_klienta)
+	while (pom != NULL && pom->podaj_email() != mail_klienta)
 	{
 		pom = pom->podaj_wskaznik_next_klienta();		//dopoki nie znajdziemy klienta o danej nazwie lub nie dotrzemy do konca listy - przechodzimy kolejne welzy
 	}
@@ -657,6 +631,9 @@ int Bazarek::usun_licytacje(unsigned int idLicytacji)
 	return 0;																							//jezeli nie ma licytacji o podanym id zwracamy 0
 }
 
+	//funkcja usuwajaca licytacje
+int Bazarek::usun_licytacje(unsigned int idLicytacji)
+{}			//do zrobienia
 
 	//funkcja wyszukujaca przedmioty
 std::vector<unsigned int> Bazarek::szukaj(std::string szukanaOferta)

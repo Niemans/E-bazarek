@@ -39,11 +39,9 @@ __published:	// IDE-managed Components
 private:	// User declarations
 	void __fastcall WczytajDane();
 	short int zalogowane;   //Klient = 1,	Firma = 2,	Admin = 3
+	Klient* MojKlient;
+	Firma* MojaFirma;
 public:		// User declarations
-	Klient* MojKlient;  //klient zalogowany
-	Firma* MojaFirma;   //firma zalogowana
-	ListaKlientow* ListaK; //wskaŸnik na listê klientów
-    ListaFirm* ListaF; //wskaŸnik na listê firm
 	short int zalogowanie(); //jaki to rodzaj zalogowania
 	void zmien_zalogowane(short int zmiana); //zmiana zalogowania
 	__fastcall TForma_ekran_bazarek(TComponent* Owner);

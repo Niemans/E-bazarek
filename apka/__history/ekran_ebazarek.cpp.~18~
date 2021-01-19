@@ -85,4 +85,3 @@ short int TForma_ekran_bazarek::zalogowanie()
 {
 	return zalogowane;
 }
-

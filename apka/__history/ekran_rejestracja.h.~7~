@@ -15,7 +15,7 @@
 #include <FMX.Layouts.hpp>
 #include <FMX.ListBox.hpp>
 
-#include "ekran_ebazarek.h"
+//#include "ekran_ebazarek.h"
 //---------------------------------------------------------------------------
 class TForma_rejestracja : public TForm
 {
@@ -62,8 +62,8 @@ __published:	// IDE-managed Components
 	void __fastcall Edit_hasloChange(TObject *Sender);
 	void __fastcall Edit_phasloChange(TObject *Sender);
 private:	// User declarations
-	Firma* Firma_rejestracja;
-	Klient* Klient_rejestracja;
+	//Firma* Firma_rejestracja;
+	//Klient* Klient_rejestracja;
 	void rejestracja_klient(); //by w funkcji po przyciœniêciu przcisku rejestracji nie by³o za du¿o
 	void rejestracja_firma();  //by w funkcji po przyciœniêciu przcisku rejestracji nie by³o za du¿o
 public:		// User declarations

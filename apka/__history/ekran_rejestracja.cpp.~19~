@@ -4,7 +4,7 @@
 #pragma hdrstop
 
 #include "ekran_rejestracja.h"
-
+#include "ekran_ebazarek.h"
 
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
@@ -65,25 +65,16 @@ void __fastcall TForma_rejestracja::ListBoxItem_FirmaClick(TObject *Sender)
 void TForma_rejestracja::rejestracja_klient()
 {
 	Klient* Klient_rejestracja = new Klient("brak_danych",NULL,"brak_danych","brak_danych");
-	Klient_rejestracja->edytuj_dane(AnsiString(Edit_email->Text).c_str(),AnsiString(Edit_haslo->Text).c_str());
-	Klient_rejestracja->ustaw_nazwe_klienta(AnsiString(Edit_login->Text).c_str());
-
-
-
-	 //!!!
+	//Klient_rejestracja->edytuj_dane(AnsiString(Edit_email->Text).c_str(),AnsiString(Edit_haslo->Text).c_str());
+	//Klient_rejestracja->ustaw_nazwe_klienta(AnsiString(Edit_login->Text).c_str());
 	delete Klient_rejestracja;
 }
 
 void TForma_rejestracja::rejestracja_firma()
 {
-	Firma* Firma_rejestracja = new Firma("brak_danych",NULL,"brak_danych","brak_danych");
-	Firma_rejestracja->edytuj_dane(AnsiString(Edit_email->Text).c_str(),AnsiString(Edit_haslo->Text).c_str());
-	Firma_rejestracja->ustaw_nazwe_firmy(AnsiString(Edit_login->Text).c_str());
-
-
-
-	//!!!
-	delete Firma_rejestracja;
+	//Firma_rejestracja = new Firma;
+	//Firma_rejestracja->edytuj_dane(AnsiString(Edit_email->Text).c_str(),AnsiString(Edit_haslo->Text).c_str());
+	//Firma_rejestracja->ustaw_nazwe_firmy(AnsiString(Edit_login->Text).c_str());
 	//dodaæ do listy firm
 }
 

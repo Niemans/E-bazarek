@@ -85,4 +85,14 @@ short int TForma_ekran_bazarek::zalogowanie()
 {
 	return zalogowane;
 }
+void __fastcall TForma_ekran_bazarek::FormClose(TObject *Sender, TCloseAction &Action)
+
+{
+
+	delete MojaFirma;
+	MojaFirma = NULL;
+	delete MojKlient;
+	MojKlient = NULL;
+}
+//---------------------------------------------------------------------------
 

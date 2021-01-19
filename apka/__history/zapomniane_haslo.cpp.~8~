@@ -5,6 +5,7 @@
 
 #include "ekran_startowy.h"
 #include "zapomniane_haslo.h"
+#include "../class_library/class_library.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma resource "*.fmx"
