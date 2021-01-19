@@ -36,9 +36,7 @@ __published:	// IDE-managed Components
 	TCurrencyColumn *grid_colKwota;
 	TImage *Image1;
 	TImage *Image2;
-	TIBDatabase *IBDB;
-	TIBQuery *IBQuery;
-	TIBTransaction *IBTransaction;
+	TADOConnection *ADOConnection;
 	void __fastcall btn_szukajClick(TObject *Sender);
 	void __fastcall grid_colNazwaTap(TObject *Sender, const TPointF &Point);
 	void __fastcall edit_szukajChange(TObject *Sender);

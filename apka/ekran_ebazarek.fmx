@@ -802,28 +802,12 @@ object Forma_ekran_bazarek: TForma_ekran_bazarek
     Left = 360
     Top = 296
   end
-  object IBDB: TIBDatabase
-    DatabaseName = 'C:\Users\Proman\Desktop\e-bazarek\E-bazarek\apka\baza\PASS.FDB'
-    Params.Strings = (
-      'user_name=SYSDBA'
-      'password=qaz123')
-    LoginPrompt = False
-    ServerType = 'IBServer'
+  object ADOConnection: TADOConnection
+    ConnectionString = 
+      'Provider=SQLOLEDB.1;Persist Security Info=False;User ID=SYSDBA;D' +
+      'ata Source=ebazarek.database.windows.net'
+    Provider = 'SQLOLEDB.1'
     Left = 360
     Top = 352
-  end
-  object IBQuery: TIBQuery
-    Database = IBDB
-    Transaction = IBTransaction
-    BufferChunks = 1000
-    CachedUpdates = False
-    ParamCheck = True
-    Left = 360
-    Top = 464
-  end
-  object IBTransaction: TIBTransaction
-    DefaultDatabase = IBDB
-    Left = 360
-    Top = 408
   end
 end
