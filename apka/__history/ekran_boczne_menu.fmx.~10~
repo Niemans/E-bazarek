@@ -12,7 +12,7 @@ object Forma_boczne_menu: TForma_boczne_menu
   OnClose = FormClose
   DesignerMasterStyle = 0
   object ColorBox4: TColorBox
-    Color = xFF319F48
+    Color = claGreen
     Position.X = 16.000000000000000000
     Position.Y = 80.000000000000000000
     Size.Width = 49.000000000000000000
@@ -585,10 +585,10 @@ object Forma_boczne_menu: TForma_boczne_menu
       end>
     Anchors = [akTop, akRight]
     Cursor = crHandPoint
-    Position.X = 328.000000000000000000
-    Position.Y = 8.000000000000000000
-    Size.Width = 65.000000000000000000
-    Size.Height = 65.000000000000000000
+    Position.X = 336.000000000000000000
+    Position.Y = 16.000000000000000000
+    Size.Width = 50.000000000000000000
+    Size.Height = 49.000000000000000000
     Size.PlatformDefault = False
     OnClick = Image_arrowClick
   end
@@ -708,10 +708,10 @@ object Forma_boczne_menu: TForma_boczne_menu
           96A6B86EDA0000000049454E44AE426082}
       end>
     Cursor = crHandPoint
-    Position.X = 8.000000000000000000
-    Position.Y = 8.000000000000000000
-    Size.Width = 65.000000000000000000
-    Size.Height = 65.000000000000000000
+    Position.X = 15.000000000000000000
+    Position.Y = 16.000000000000000000
+    Size.Width = 50.000000000000000000
+    Size.Height = 50.000000000000000000
     Size.PlatformDefault = False
     OnClick = Image_domClick
   end

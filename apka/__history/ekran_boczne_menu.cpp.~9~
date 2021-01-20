@@ -151,14 +151,15 @@ void __fastcall TForma_boczne_menu::Image_arrowClick(TObject *Sender)
 
 void __fastcall TForma_boczne_menu::Btn_koszykClick(TObject *Sender)
 {
-	TForma_koszyka * form_koszyk = new TForma_koszyka(this);
-	if (form_koszyk->ShowModal())
+	TForma_koszyka * form_ekran_startowy = new TForma_ekran_startowy(this);
+	if (form_ekran_startowy->ShowModal())
 	{
-		delete form_koszyk;
+		delete form_ekran_startowy;
+		ModalResult = 1;
 	}
 	else
 	{
-		delete form_koszyk;
+		delete form_ekran_startowy;
 		Free();
 	}
 }
