@@ -19,6 +19,12 @@ __fastcall TForma_ekran_bazarek::TForma_ekran_bazarek(TComponent* Owner)
     zalogowane = 0;
 	TForma_ekran_startowy * form_ekran_startowy = new TForma_ekran_startowy(this);
 
+    ADOConnection->Connected = true;
+//    if()
+//	{
+//		ShowMessage("Brak po³¹czenia z internetem");
+//        Application->Terminate();
+//	}
 	if (form_ekran_startowy->ShowModal()) {
 		delete form_ekran_startowy;
 		WczytajDane();
@@ -26,7 +32,7 @@ __fastcall TForma_ekran_bazarek::TForma_ekran_bazarek(TComponent* Owner)
 	else
 	{
 		delete form_ekran_startowy;
-		Free();
+		Application->Terminate();
 	}
 }
 //---------------------------------------------------------------------------
@@ -43,10 +49,36 @@ void __fastcall TForma_ekran_bazarek::btn_szukajClick(TObject *Sender)
 
 void __fastcall TForma_ekran_bazarek::WczytajDane()
 {
-	for (int i=0; i < 5; i++) {
-	Grid->Cells[0][i] = "czeœæ";
-	Grid->Cells[1][i] = "50";
+	int count = 0;
+//----------Usuwanie wszystkich przedmiotów z tabeli by wczytaæ je od nowa
+	if (Grid->RowCount > 0) {
+       ((TStringGridAccess*)Grid)->RemoveAll();
 	}
+
+//----------Inicjowanie SQL i select
+	TADOQuery * Query = new TADOQuery(this);
+	Query -> Connection = ADOConnection;
+
+	Query -> SQL -> Clear();
+//	Query -> SQL -> Text = "USE [ebazarek] ";
+	Query -> SQL -> Text = "SELECT nazwa ,opis,kwota,id,id_parent from dbo.dane;";
+
+	Query -> Open();
+
+//---------Wczytywanie wszystkich danych do tabeli grid
+	while (!Query->Eof)
+	{
+		Grid->RowCount = count + 1;
+        count = Grid->RowCount;
+
+		Grid->Cells[0][count - 1] =
+			Query -> FieldByName("nazwa") -> AsString + "\n\n\nOpis:\n" + Query -> FieldByName("Opis")->AsString;
+		Grid->Cells[1][count - 1] =
+			Query -> FieldByName("kwota") -> AsFloat;
+
+        Query -> Next();
+	}
+	delete Query;
 }
 
 

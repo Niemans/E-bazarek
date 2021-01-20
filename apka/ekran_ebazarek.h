@@ -20,6 +20,8 @@
 #include <FMX.Objects.hpp>
 
 #include "../class_library/class_library.h"
+#include <Data.DB.hpp>
+#include <Data.Win.ADODB.hpp>
 //---------------------------------------------------------------------------
 class TForma_ekran_bazarek : public TForm
 {
@@ -33,6 +35,7 @@ __published:	// IDE-managed Components
 	TCurrencyColumn *grid_colKwota;
 	TImage *Image1;
 	TImage *Image2;
+	TADOConnection *ADOConnection;
 	void __fastcall btn_szukajClick(TObject *Sender);
 	void __fastcall grid_colNazwaTap(TObject *Sender, const TPointF &Point);
 	void __fastcall Image1Click(TObject *Sender);
@@ -47,6 +50,12 @@ public:		// User declarations
 	short int zalogowanie(); //jaki to rodzaj zalogowania
 	void zmien_zalogowane(short int zmiana); //zmiana zalogowania
 	__fastcall TForma_ekran_bazarek(TComponent* Owner);
+};
+
+class TStringGridAccess : public TStringGrid
+{
+public:
+    void RemoveAll() { TStringGrid::DeleteChildren(); }
 };
 //---------------------------------------------------------------------------
 extern PACKAGE TForma_ekran_bazarek *Forma_ekran_bazarek;

@@ -399,7 +399,7 @@ object Forma_ekran_bazarek: TForma_ekran_bazarek
     Size.PlatformDefault = False
     TabOrder = 3
     RowHeight = 120.000000000000000000
-    RowCount = 5
+    RowCount = 0
     Options = [ColumnResize, ColumnMove, ColLines, RowLines, Tabs, HeaderClick, AutoDisplacement]
     Viewport.Width = 397.000000000000000000
     Viewport.Height = 613.000000000000000000
@@ -802,5 +802,14 @@ object Forma_ekran_bazarek: TForma_ekran_bazarek
     Sensitivity = 80.000000000000000000
     Left = 360
     Top = 296
+  end
+  object ADOConnection: TADOConnection
+    ConnectionString = 
+      'Provider=SQLOLEDB.1;Password=Qwerty123;Persist Security Info=Tru' +
+      'e;User ID=SYSDBA;Initial Catalog=ebazarek;Data Source=ebazarek.d' +
+      'atabase.windows.net'
+    Provider = 'SQLOLEDB.1'
+    Left = 360
+    Top = 352
   end
 end

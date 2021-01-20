@@ -1,0 +1,120 @@
+//---------------------------------------------------------------------------
+
+#include <fmx.h>
+#pragma hdrstop
+
+#include "ekran_ebazarek.h"
+#include "ekran_przedmiotu.h"
+#include "ekran_startowy.h"
+#include "ekran_boczne_menu.h"
+//---------------------------------------------------------------------------
+#pragma package(smart_init)
+#pragma resource "*.fmx"
+
+TForma_ekran_bazarek * Forma_ekran_bazarek;
+//---------------------------------------------------------------------------
+__fastcall TForma_ekran_bazarek::TForma_ekran_bazarek(TComponent* Owner)
+	: TForm(Owner)
+{
+    zalogowane = 0;
+	TForma_ekran_startowy * form_ekran_startowy = new TForma_ekran_startowy(this);
+
+    ADOConnection->Connected = true;
+//    if()
+//	{
+//		ShowMessage("Brak po³¹czenia z internetem");
+//        Application->Terminate();
+//	}
+	if (form_ekran_startowy->ShowModal()) {
+		delete form_ekran_startowy;
+		WczytajDane();
+	}
+	else
+	{
+		delete form_ekran_startowy;
+		Application->Terminate();
+	}
+}
+//---------------------------------------------------------------------------
+void __fastcall TForma_ekran_bazarek::btn_szukajClick(TObject *Sender)
+{
+	if (edit_szukaj->Visible == true)
+		edit_szukaj->Visible = false;
+	else
+		edit_szukaj->Visible = true;
+}
+//---------------------------------------------------------------------------
+
+
+
+void __fastcall TForma_ekran_bazarek::WczytajDane()
+{
+	int count = 1;
+//----------Usuwanie wszystkich przedmiotów z tabeli by wczytaæ je od nowa
+	if (Grid->RowCount > 0) {
+       ((TStringGridAccess*)Grid)->RemoveAll();
+	}
+
+//----------Inicjowanie SQL i select
+	TADOQuery * Query = new TADOQuery(this);
+	Query -> Connection = ADOConnection;
+
+	Query -> SQL -> Clear();
+//	Query -> SQL -> Text = "USE [ebazarek] ";
+	Query -> SQL -> Text = "SELECT nazwa ,opis,kwota,id,id_parent from dbo.dane;";
+
+	Query -> Open();
+
+//---------Wczytywanie wszystkich danych do tabeli grid
+	while (!Query->Eof)
+	{
+		Grid->RowCount = Grid->RowCount++;
+
+		Grid->Cells[1][Grid->RowCount] =
+			Query -> FieldByName("nazwa") -> AsString + "\n\n\nOpis:\n" + Query -> FieldByName("Opis")->AsString;
+		Grid->Cells[2][Grid->RowCount] =
+			Query -> FieldByName("kwota") -> AsFloat;
+
+		count++;
+        Query -> Next();
+	}
+	delete Query;
+}
+
+
+
+void __fastcall TForma_ekran_bazarek::grid_colNazwaTap(TObject *Sender, const TPointF &Point)
+
+{
+	TForm_ekran_przedmiotu *Form_ekran_przedmiotu = new TForm_ekran_przedmiotu(this);
+	Form_ekran_przedmiotu->ShowModal();
+	delete Form_ekran_przedmiotu;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForma_ekran_bazarek::Image1Click(TObject *Sender)
+{
+	TForma_boczne_menu *Form_boczne_menu = new TForma_boczne_menu(this);
+	Form_boczne_menu->ShowModal();
+	delete Form_boczne_menu;
+}
+//---------------------------------------------------------------------------
+
+void TForma_ekran_bazarek::zmien_zalogowane(short int zmiana) //Klient = 1,	Firma = 2,	Admin = 3, bez = 0
+{
+	if(zmiana >=0 && zmiana <=3)
+	{
+		zalogowane = zmiana;
+	}
+	else
+	{
+		zalogowane = 0;
+    }
+}
+
+//----------------------------------------------------------------------------
+short int TForma_ekran_bazarek::zalogowanie()
+{
+	return zalogowane;
+}
+
