@@ -38,6 +38,7 @@ void __fastcall TForm1::FormActivate(TObject *Sender)
 		Edit_haslo->Text = "1234";
 		Image_admin->Visible = true;
 		Btn_usun_konto->Visible = false;
+		Btn_zmien_dane->Visible = false;
 	}
 
 }
@@ -58,6 +59,9 @@ void __fastcall TForm1::Image_okoClick(TObject *Sender)
 void __fastcall TForm1::Image_paskiClick(TObject *Sender)
 {
 
+	Edit_email->Enabled = false;
+	Edit_login->Enabled = false;
+	Edit_haslo->Enabled = false;
 	Btn_usun_konto->Visible = true;
 	Image_firma->Visible = false;
 	Image_klient->Visible = false;
@@ -69,13 +73,69 @@ void __fastcall TForm1::Image_paskiClick(TObject *Sender)
 
 void __fastcall TForm1::Btn_usun_kontoClick(TObject *Sender)
 {
-    if (Forma_ekran_bazarek->zalogowanie() == 1)
+	if (Forma_ekran_bazarek->zalogowanie() == 1)
 	{
-		Forma_ekran_bazarek->ListaK
+		//Forma_ekran_bazarek->ListaK->usun(Forma_ekran_bazarek->MojKlient->podaj_id());
 	}
 	else if (Forma_ekran_bazarek->zalogowanie() == 2)
 	{
+		//Forma_ekran_bazarek->ListaF->usun(Forma_ekran_bazarek->MojaFirma->podaj_id());
+	}
+}
+//---------------------------------------------------------------------------
 
+
+void __fastcall TForm1::Btn_zmien_daneClick(TObject *Sender)
+{
+	Edit_email->Enabled = true;
+	Edit_login->Enabled = true;
+	Edit_haslo->Enabled = true;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::Edit_loginChange(TObject *Sender)
+{
+
+	if (Forma_ekran_bazarek->zalogowanie() == 1)
+	{
+		Forma_ekran_bazarek->MojKlient->ustaw_nazwe_klienta(AnsiString(Edit_login->Text).c_str());
+	}
+	else if (Forma_ekran_bazarek->zalogowanie() == 2)
+	{
+		Forma_ekran_bazarek->MojaFirma->ustaw_nazwe_firmy(AnsiString(Edit_login->Text).c_str());
+	}
+
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::Edit_emailChange(TObject *Sender)
+{
+	if (Forma_ekran_bazarek->zalogowanie() == 1)
+	{
+		if(Forma_ekran_bazarek->ListaK->wyszukaj_klienta(AnsiString(Edit_email->Text).c_str()) == NULL)
+		{
+			//Forma_ekran_bazarek->MojKlient->edytuj_dane(AnsiString(Edit_email->Text).c_str(),Forma_ekran_bazarek->MojKlient->podaj_haslo());
+		}
+	}
+	else if (Forma_ekran_bazarek->zalogowanie() == 2)
+	{
+		if(Forma_ekran_bazarek->ListaF->wyszukaj_firme(AnsiString(Edit_email->Text).c_str()) == NULL)
+		{
+			//Forma_ekran_bazarek->MojaFirma->edytuj_dane(AnsiString(Edit_email->Text).c_str(),Forma_ekran_bazarek->MojaFirma->podaj_haslo());
+		}
+	}
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::Edit_hasloChange(TObject *Sender)
+{
+    if (Forma_ekran_bazarek->zalogowanie() == 1)
+	{
+		Forma_ekran_bazarek->MojKlient->edytuj_dane(Forma_ekran_bazarek->MojKlient->podaj_email(),AnsiString(Edit_login->Text).c_str());
+	}
+	else if (Forma_ekran_bazarek->zalogowanie() == 2)
+	{
+		Forma_ekran_bazarek->MojaFirma->edytuj_dane(Forma_ekran_bazarek->MojaFirma->podaj_email(),AnsiString(Edit_email->Text).c_str());
 	}
 }
 //---------------------------------------------------------------------------

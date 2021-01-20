@@ -7,16 +7,17 @@
 #pragma hdrstop
 #include <System.StartUpCopy.hpp>
 //---------------------------------------------------------------------------
-USEFORM("ekran_rejestracja.cpp", Forma_rejestracja);
+USEFORM("ekran_zakupu.cpp", Forma_zakupu);
 USEFORM("ekran_startowy.cpp", Forma_ekran_startowy);
+USEFORM("ekran_rejestracja.cpp", Forma_rejestracja);
 USEFORM("zapomniane_haslo.cpp", Forma_zapomniane_haslo);
 USEFORM("ekran_przedmiotu.cpp", Form_ekran_przedmiotu);
-USEFORM("ekran_boczne_menu.cpp", Forma_boczne_menu);
 USEFORM("ekran_ebazarek.cpp", Forma_ekran_bazarek);
-USEFORM("ekran_panelu_admina.cpp", Form_ekran_panelu_admina);
+USEFORM("ekran_boczne_menu.cpp", Forma_boczne_menu);
 USEFORM("ekran_profilu.cpp", Form1);
+USEFORM("ekran_panelu_admina.cpp", Form_ekran_panelu_admina);
 USEFORM("ekran_kaszyka.cpp", Forma_koszyka);
-USEFORM("ekran_zakupu.cpp", Forma_zakupu);
+USEFORM("ekran_licytacji.cpp", Forma_licytacji);
 //---------------------------------------------------------------------------
 extern "C" int FMXmain()
 {
@@ -32,6 +33,7 @@ extern "C" int FMXmain()
 		Application->CreateForm(__classid(TForm1), &Form1);
 		Application->CreateForm(__classid(TForma_koszyka), &Forma_koszyka);
 		Application->CreateForm(__classid(TForma_zakupu), &Forma_zakupu);
+		Application->CreateForm(__classid(TForma_licytacji), &Forma_licytacji);
 		Application->Run();
 	}
 	catch (Exception &exception)

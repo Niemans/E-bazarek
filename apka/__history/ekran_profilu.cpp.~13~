@@ -21,14 +21,14 @@ void __fastcall TForm1::FormActivate(TObject *Sender)
 	{
 		Edit_login->Text = (Forma_ekran_bazarek->MojKlient->podaj_nazwe_klienta()).c_str();
 		Edit_email->Text = (Forma_ekran_bazarek->MojKlient->podaj_email()).c_str();
-		//Edit_haslo->Text = (Forma_ekran_bazarek->MojKlient->podaj_haslo()).c_str();			   potrzebna funkcja
+		Edit_haslo->Text = (Forma_ekran_bazarek->MojKlient->podaj_haslo()).c_str();			   potrzebna funkcja
 		Image_klient->Visible = true;
 	}
 	else if (Forma_ekran_bazarek->zalogowanie() == 2)
 	{
 		Edit_login->Text = (Forma_ekran_bazarek->MojaFirma->podaj_nazwe_firmy()).c_str();
 		Edit_email->Text = (Forma_ekran_bazarek->MojaFirma->podaj_email()).c_str();
-		//Edit_haslo->Text = (Forma_ekran_bazarek->MojaFirma->podaj_haslo()).c_str();                 potrzebna funkcja
+		Edit_haslo->Text = (Forma_ekran_bazarek->MojaFirma->podaj_haslo()).c_str();                 potrzebna funkcja
 		Image_firma->Visible = true;
 	}
 	else if (Forma_ekran_bazarek->zalogowanie() == 3)

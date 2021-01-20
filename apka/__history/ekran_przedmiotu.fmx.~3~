@@ -1,6 +1,7 @@
 object Form_ekran_przedmiotu: TForm_ekran_przedmiotu
   Left = 0
   Top = 0
+  Caption = 'Przedmiot'
   ClientHeight = 700
   ClientWidth = 400
   Position = ScreenCenter
@@ -34,7 +35,6 @@ object Form_ekran_przedmiotu: TForm_ekran_przedmiotu
     Size.Height = 33.000000000000000000
     Size.PlatformDefault = False
     Text = '100z'#322
-    TextSettings.HorzAlign = Leading
   end
   object btn_doKoszyka: TButton
     Align = Scale

@@ -445,6 +445,7 @@ object Form1: TForm1
     Touch.InteractiveGestures = [LongTap, DoubleTap]
     Anchors = [akLeft, akTop, akRight]
     TabOrder = 1
+    Cursor = crDefault
     ReadOnly = True
     Position.X = 80.000000000000000000
     Position.Y = 336.000000000000000000
@@ -464,6 +465,7 @@ object Form1: TForm1
     Touch.InteractiveGestures = [LongTap, DoubleTap]
     Anchors = [akLeft, akTop, akRight]
     TabOrder = 2
+    Cursor = crDefault
     Password = True
     ReadOnly = True
     Position.X = 80.000000000000000000
@@ -484,6 +486,7 @@ object Form1: TForm1
     Touch.InteractiveGestures = [LongTap, DoubleTap]
     Anchors = [akLeft, akTop, akRight]
     TabOrder = 0
+    Cursor = crDefault
     ReadOnly = True
     Position.X = 80.000000000000000000
     Position.Y = 264.000000000000000000

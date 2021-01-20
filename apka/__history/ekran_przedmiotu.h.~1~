@@ -21,12 +21,9 @@ __published:	// IDE-managed Components
 	TButton *btn_kupTeraz;
 	TButton *btn_licytuj;
 	TImageControl *ImageControl1;
-	TImage *Image1;
-	TText *Text_napisa_nazwa;
-	TText *Text_napis_kwota;
+	TButton *Button1;
+	void __fastcall Button1Click(TObject *Sender);
 	void __fastcall FormClose(TObject *Sender, TCloseAction &Action);
-	void __fastcall Image1DblClick(TObject *Sender);
-	void __fastcall FormActivate(TObject *Sender);
 private:	// User declarations
 public:		// User declarations
 	__fastcall TForm_ekran_przedmiotu(TComponent* Owner);
