@@ -29,8 +29,6 @@ bool Przedmiot::sprawdz_id_wlasciciela(unsigned int idOsoby)
 	}
 }
 
-	//funkcja wypisujaca przedmiot w okienku - potrzebna wspolpraca z okienkiem
-void Przedmiot::wypisz() {}		//do zrobienia, potrzebne okienko
 
 	//funkcja zwracajaca id wlasciciela
 unsigned int Przedmiot::wypisz_id_wlasciciela()
@@ -152,12 +150,12 @@ int Licytacja::dodaj_oferte(unsigned int nowaCena, std::string nazwaUczestnika)
 
 	toAdd->cena = nowaCena;								//ustawiamy zmienne w nowej historii
 	toAdd->nazwaUczestkina = nazwaUczestnika;
-	toAdd->next = NULL;
 
-	toAdd->next = head;									//oferta wskakuje na pocatek listy
+	toAdd->next = head;									//oferta wskakuje na poczatek listy
 	head = toAdd;
 }
 
+	//ustawia next licytacji
 void Licytacja::ustaw_nastepna_licytacje(Licytacja* nastepnaLicytacja)
 {
 	next = nastepnaLicytacja;
@@ -744,38 +742,45 @@ int Bazarek::usun_licytacje(unsigned int idLicytacji)
 	return 0;																							//jezeli nie ma licytacji o podanym id zwracamy 0
 }
 
-	//funkcja wyszukujaca przedmioty
-std::vector<unsigned int> Bazarek::szukaj(std::string szukanaOferta)
+	//funkcja szukajaca przedmiotow po nazwie
+std::vector<unsigned int>* Bazarek::szukaj_przedmiotow_po_nazwie(std::string szukanaOferta)
 {
-	Przedmiot* pomPrzedmiot = listaPrzedmiotow;			//zmienna pomocnicze
-	
-	std::vector<unsigned int> returnVector;				//zmienna zwracana
+	Przedmiot* pom = listaPrzedmiotow;													//przedmiot pomocniczy - hlowa listy
+	std::vector<unsigned int>* zwracanyWektor = new std::vector<unsigned int>;			//wektor ktory bedziemy zwracac
 
-	while (pomPrzedmiot != NULL)												//przeszukujemy liste przedmiotow w poszukiwaniu przedmiotu z zadana nazwa
+	while (pom != NULL)																	//przechodzimy cala liste
 	{
-		if (pomPrzedmiot->podaj_nazwe() == szukanaOferta)
+		if (pom->podaj_nazwe() == szukanaOferta)										//jezeli nazwa przedmiotu rowna sie szukanej nazwie
 		{
-			returnVector.push_back(pomPrzedmiot->podaj_id());					
+			zwracanyWektor->push_back(pom->podaj_id());									//wk³adamy id tego przedmiotu do wektora
 		}
 
-		pomPrzedmiot = pomPrzedmiot->podaj_adres_nastepnego_przedmiotu();
+		pom = pom->podaj_adres_nastepnego_przedmiotu();									//przechodzimy dalej w liscie
 	}
 
-	pomPrzedmiot = listaLicytacji;
-
-	while (pomPrzedmiot != NULL)												//podobnie z listami
-	{
-		if (pomPrzedmiot->podaj_nazwe() == szukanaOferta)
-		{
-			returnVector.push_back(pomPrzedmiot->podaj_id());
-		}
-
-		pomPrzedmiot = pomPrzedmiot->podaj_adres_nastepnego_przedmiotu();
-	}
-
-	return returnVector;
+	return zwracanyWektor;																//zwracamy wektor
 
 }
+
+	//funkcja szukajaca licytacji po nazwie
+std::vector<unsigned int>* Bazarek::szukaj_licytacji_po_nazwie(std::string szukanaLicytacja)
+{
+	Licytacja* pom = listaLicytacji;													//przedmiot pomocniczy - glowa listy
+	std::vector<unsigned int>* zwracanyWektor = new std::vector<unsigned int>;			//wektor ktory bedziemy zwracac
+
+	while (pom != NULL)																	//przechodzimy cala liste
+	{
+		if (pom->podaj_nazwe() == szukanaLicytacja)										//jezeli nazwa licytacji rowna sie szukanej nazwie
+		{
+			zwracanyWektor->push_back(pom->podaj_id());									//wk³adamy id tej licytacji do wektora
+		}
+
+		pom = pom->podaj_adres_nastepnej_licytacji();									//przechodzimy dalej w liscie
+	}
+
+	return zwracanyWektor;
+}
+
 	//funkcja szukajaca przedmiotu o danym id
 Przedmiot* Bazarek::szukaj_przedmiotu_po_id(unsigned int idPrzedmiotu)
 {
@@ -818,6 +823,44 @@ Licytacja* Bazarek::szukaj_licytacji_po_id(unsigned int idLicytacji)
 void Bazarek::wyswietl(){}
 void Bazarek::wyswietl_przedmioty(){}
 void Bazarek::wyswietl_licytacje(){}
+
+	//funkcja szukajaca wszystkich przedmiotow osoby
+std::vector<unsigned int>* Bazarek::wyszukaj_przedmioty_osoby(unsigned int idOsoby)
+{
+	Przedmiot* pom = listaPrzedmiotow;
+	std::vector<unsigned int>* wektorDoZwrocenia = new std::vector<unsigned int>;
+
+	while (pom != NULL)
+	{
+		if (pom->sprawdz_id_wlasciciela(idOsoby))
+		{
+			wektorDoZwrocenia->push_back(pom->podaj_id());
+		}
+
+		pom = pom->podaj_adres_nastepnego_przedmiotu();
+	}
+
+	return wektorDoZwrocenia;
+}
+
+	//funkcja szukajaca wszystkich licytacji osoby
+std::vector<unsigned int>* Bazarek::wyszukaj_licytacje_osoby(unsigned int idOsoby)
+{
+	Licytacja* pom = listaLicytacji;
+	std::vector<unsigned int>* wektorDoZwrocenia = new std::vector<unsigned int>;
+
+	while (pom != NULL)
+	{
+		if (pom->sprawdz_id_wlasciciela(idOsoby))
+		{
+			wektorDoZwrocenia->push_back(pom->podaj_id());
+		}
+
+		pom = pom->podaj_adres_nastepnej_licytacji();
+	}
+
+	return wektorDoZwrocenia;
+}
 
 //funkcje do obslugi licytacji
 bool Bazarek::sprawdz_czas_licytacji(Licytacja* licytacjaDoSprawdzenia) { return true; }

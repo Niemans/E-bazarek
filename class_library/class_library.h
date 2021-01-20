@@ -17,7 +17,6 @@ protected:
 public:
 	Przedmiot(std::string nazwaPrzedmiotu, unsigned int iloscPrzedmiotow, unsigned int id_wystawiajacego, unsigned int cenaPrzedmiotu, std::string opisPrzedmiotu);		//konstruktor			zrobione
 	bool sprawdz_id_wlasciciela(unsigned int idOsoby);		//funkcja sprawdzajaca czy podane id zgadza sie z id wlasciciela				zrobione
-	void wypisz();											//funkcja wypisujaca przedmiot w okienku - potrzebna wspolpraca z okienkiem		do zrobienia, potrzeba okienka
 	unsigned int wypisz_id_wlasciciela();					//funkcja zwracajaca id wlasciciela						zrobione
 	bool czy_dostepny();									//funkcja sprawdzajaca czy produkt jest dostepny		zrobione
 	unsigned int podaj_id();								//funkcja zwracajaca id przedmiotu						zrobione
@@ -28,11 +27,11 @@ public:
 	unsigned int podaj_ilosc();								//zwraca ilosc produktow								zrobione
 	unsigned int podaj_cene();								//zwraca cene produktu									zrobione
 	std::string podaj_opis();								//zwraca opis produktu									zrobione
-	void edytuj(std::string nowaNazwa, unsigned int nowaIlosc, unsigned int nowaCena, std::string nowyOpis);
+	void edytuj(std::string nowaNazwa, unsigned int nowaIlosc, unsigned int nowaCena, std::string nowyOpis);		//zrobione
 };
 
 
-class HistoriaLicytacji {
+class HistoriaLicytacji {				//pojemnik na dane, nie wymaga konstruktora
 public:
 	unsigned int cena;
 	std::string nazwaUczestkina;
@@ -55,7 +54,7 @@ public:
 	void ustaw_nastepna_licytacje(Licytacja* nastepnaLicytacja);
 };
 
-//bazarek otrzyma³ dodatkowe pola i metody spoza diagramow klas
+
 class Bazarek {
 private:
 	unsigned int liczbaPrzedmiotow;
@@ -72,14 +71,18 @@ public:
 	int usun_przedmiot(unsigned int idPrzedmiotu);		//funkcja usuwajaca przedmiot		zrobione
 	int usun_licytacje(unsigned int idLicytacji);		//funkcja usuwajaca licytacje		zrobione
 
-	std::vector<unsigned int> szukaj(std::string szukanaOferta);	//funkcja wyszukujaca przedmioty		do przerobienia
-	Przedmiot* szukaj_przedmiotu_po_id(unsigned int idPrzedmiotu);		//zrobione
-	Licytacja* szukaj_licytacji_po_id(unsigned int idLicytacji);		//zrobione
+	std::vector<unsigned int>* szukaj_przedmiotow_po_nazwie(std::string szukanaOferta);			//funkcja szukajaca przedmiotow po nazwie		zrobione
+	std::vector<unsigned int>* szukaj_licytacji_po_nazwie(std::string szukanaLicytacja);		//funkcja szukajaca licytacji po nazwie			zrobione
+	Przedmiot* szukaj_przedmiotu_po_id(unsigned int idPrzedmiotu);								//funkcja szukajaca przedmiotow po id			zrobione
+	Licytacja* szukaj_licytacji_po_id(unsigned int idLicytacji);								//funkcja szukajaca licytacji po id				zrobione
 
 		//funkcje wspolpracojace z okienkami						tutaj wszystko do zrobienia
 	void wyswietl();
 	void wyswietl_przedmioty();
 	void wyswietl_licytacje();
+
+	std::vector<unsigned int>* wyszukaj_przedmioty_osoby(unsigned int idOsoby);			//funkcja szukajaca wszystkich przedmiotow osoby		zrobione
+	std::vector<unsigned int>* wyszukaj_licytacje_osoby(unsigned int idOsoby);			//funkcja szukajaca wszystkich licytacji osoby			zrobione
 
 	//funkcje do obslugi licytacji								i tu tez
 	bool sprawdz_czas_licytacji(Licytacja* licytacjaDoSprawdzenia);
@@ -174,8 +177,8 @@ class ListaFirm {
 
 private:
 	Firma* head;
-
-	int usun(unsigned int idFirmyDoUsuniecia);
+		//funkcja prywatna - mozna ja uruchomic tylko dzieki funkcji usun_uzytkownika Admina
+	int usun(unsigned int idFirmyDoUsuniecia);							//funkcja usuwajaca firme o danym id z listy			zrobione
 
 public:
 	ListaFirm();														//konstruktor											zrobione
