@@ -803,8 +803,4 @@ object Forma_ekran_bazarek: TForma_ekran_bazarek
     Left = 360
     Top = 296
   end
-  object ADOConnection: TADOConnection
-    Left = 360
-    Top = 352
-  end
 end
