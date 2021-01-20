@@ -7,11 +7,13 @@
 #include "ekran_przedmiotu.h"
 #include "ekran_startowy.h"
 #include "ekran_boczne_menu.h"
+#include "ekran_rejestracja.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma resource "*.fmx"
 
 TForma_ekran_bazarek * Forma_ekran_bazarek;
+UnicodeString szukaj = "";
 //---------------------------------------------------------------------------
 __fastcall TForma_ekran_bazarek::TForma_ekran_bazarek(TComponent* Owner)
 	: TForm(Owner)
@@ -47,22 +49,30 @@ void __fastcall TForma_ekran_bazarek::btn_szukajClick(TObject *Sender)
 
 
 
+
 void __fastcall TForma_ekran_bazarek::WczytajDane()
 {
 	int count = 0;
-//----------Usuwanie wszystkich przedmiotów z tabeli by wczytaæ je od nowa
-	if (Grid->RowCount > 0) {
-       ((TStringGridAccess*)Grid)->RemoveAll();
-	}
+
 
 //----------Inicjowanie SQL i select
-	TADOQuery * Query = new TADOQuery(this);
+	TADOQuery * Query = new TADOQuery(NULL);
 	Query -> Connection = ADOConnection;
 
 	Query -> SQL -> Clear();
-	Query -> SQL -> Text = "SELECT nazwa ,opis,kwota,id,id_parent from dbo.dane;";
+	Query -> SQL -> Add("SELECT trim(nazwa) as nazwa ,trim(opis) as opis,kwota,id,id_parent from dbo.dane");
+
+	if (szukaj != "")
+	Query -> SQL -> Add("where (upper(nazwa) like upper('"+szukaj+"%')) or (upper(nazwa) = trim(upper('"+szukaj+"')))");
+
 
 	Query -> Open();
+
+	Grid -> BeginUpdate();
+
+    //----------Usuwanie wszystkich przedmiotów z tabeli by wczytaæ je od nowa
+	if (Grid->RowCount > 0)
+		Grid->RowCount = 0;
 
 //---------Wczytywanie wszystkich danych do tabeli grid
 	while (!Query->Eof)
@@ -71,12 +81,13 @@ void __fastcall TForma_ekran_bazarek::WczytajDane()
         count = Grid->RowCount;
 
 		Grid->Cells[0][count - 1] =
-			Query -> FieldByName("nazwa") -> AsString + "\n\n\nOpis:\n" + Query -> FieldByName("Opis")->AsString;
+			Query -> FieldByName("nazwa") -> AsString + "\n\nOpis:\n" + Query -> FieldByName("Opis")->AsString;
 		Grid->Cells[1][count - 1] =
 			Query -> FieldByName("kwota") -> AsFloat;
 
         Query -> Next();
 	}
+	Grid -> EndUpdate();
 	delete Query;
 }
 
@@ -93,7 +104,7 @@ void __fastcall TForma_ekran_bazarek::grid_colNazwaTap(TObject *Sender, const TP
 
 void __fastcall TForma_ekran_bazarek::Image1Click(TObject *Sender)
 {
-	TForma_boczne_menu *Form_boczne_menu = new TForma_boczne_menu(this);
+	TForma_boczne_menu *Form_boczne_menu = new TForma_boczne_menu(this, ADOConnection);
 	Form_boczne_menu->ShowModal();
 	delete Form_boczne_menu;
 }
@@ -121,7 +132,16 @@ void __fastcall TForma_ekran_bazarek::FormClose(TObject *Sender, TCloseAction &A
 
 {
 	if(MojKlient != NULL) delete MojKlient;
-    if(MojaFirma != NULL) delete MojaFirma;
+	if(MojaFirma != NULL) delete MojaFirma;
 }
 //---------------------------------------------------------------------------
+
+void __fastcall TForma_ekran_bazarek::edit_szukajChange(TObject *Sender)
+{
+	szukaj = edit_szukaj->Text;
+	WczytajDane();
+}
+//---------------------------------------------------------------------------
+
+
 

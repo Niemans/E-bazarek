@@ -64,10 +64,10 @@ __published:	// IDE-managed Components
 private:	// User declarations
 	Firma* Firma_rejestracja;
 	Klient* Klient_rejestracja;
-	void rejestracja_klient(); //by w funkcji po przyciœniêciu przcisku rejestracji nie by³o za du¿o
-	void rejestracja_firma();  //by w funkcji po przyciœniêciu przcisku rejestracji nie by³o za du¿o
+	void rejestracja(int typ); //rejestracja osoby, typ to 1 = klient 2 = firma
+	bool sprawdzEmail();
 public:		// User declarations
-	__fastcall TForma_rejestracja(TComponent* Owner);
+	__fastcall TForma_rejestracja(TComponent* Owner, TADOConnection* a_ADOConnection);
 };
 //---------------------------------------------------------------------------
 extern PACKAGE TForma_rejestracja *Forma_rejestracja;

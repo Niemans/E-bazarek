@@ -48,10 +48,9 @@ __published:	// IDE-managed Components
 	void __fastcall Edit_nhasloChange(TObject *Sender);
 	void __fastcall Edit_pnhasloChange(TObject *Sender);
 private:	// User declarations
-	UnicodeString kod;          //kod do zamiany hasla
-	void wygeneruj_kod();    	//generuje kod
+	UnicodeString kod;
+	void wygeneruj_kod();    //generuje kod
 public:		// User declarations
-	short int k_f; 					//0 -> nikt, 1->klient, 2->firma
 	__fastcall TForma_zapomniane_haslo(TComponent* Owner);
 };
 //---------------------------------------------------------------------------

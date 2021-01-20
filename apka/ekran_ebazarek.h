@@ -22,6 +22,10 @@
 #include "../class_library/class_library.h"
 #include <Data.DB.hpp>
 #include <Data.Win.ADODB.hpp>
+#include <FMX.ListView.Adapters.Base.hpp>
+#include <FMX.ListView.Appearances.hpp>
+#include <FMX.ListView.hpp>
+#include <FMX.ListView.Types.hpp>
 //---------------------------------------------------------------------------
 class TForma_ekran_bazarek : public TForm
 {
@@ -40,6 +44,7 @@ __published:	// IDE-managed Components
 	void __fastcall grid_colNazwaTap(TObject *Sender, const TPointF &Point);
 	void __fastcall Image1Click(TObject *Sender);
 	void __fastcall FormClose(TObject *Sender, TCloseAction &Action);
+	void __fastcall edit_szukajChange(TObject *Sender);
 private:	// User declarations
 	void __fastcall WczytajDane();
 	short int zalogowane;   //Klient = 1,	Firma = 2,	Admin = 3
