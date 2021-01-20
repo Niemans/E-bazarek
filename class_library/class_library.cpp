@@ -368,7 +368,6 @@ void Firma::ustaw_wskaznik_next_firmy(Firma* wskaznik_do_ustawienia)
 	next = wskaznik_do_ustawienia;
 }
 
-
 		//metody klasy Admin
 
 	//konstruktor			istnieje tylko jeden admin, wiec definiujemy go poza lista klientow
@@ -395,20 +394,29 @@ int Admin::usun_uzytkownika(unsigned int id_uzytkownika, ListaKlientow* listaUzy
 }
 
 	//funkcja usuwajaca firme
-int Admin::usun_firme(unsigned int id_firmy, ListaFirm* listaFirm)
+int Admin::usun_firme(unsigned int id_firmy, ListaFirm* listaFirm, Bazarek* sklep)
 {
-	return listaFirm->usun(id_firmy);
+	return listaFirm->usun(id_firmy, sklep);
 }
 
 		//metody klasy ListaFirm
 
-int ListaFirm::usun(unsigned int idFirmyDoUsuniecia)
+int ListaFirm::usun(unsigned int idFirmyDoUsuniecia, Bazarek* sklep)
 {
 	Firma* pom = head;			//ustawiamy wskaznik pomocniczy na poczatek listy
 
 	if (pom == NULL)
 	{
 		return -1;				//jezeli lista jest pusta zwracamy -1
+	}
+
+	if (pom->podaj_id() == idFirmyDoUsuniecia)				//jezeli szukana firma to head
+	{
+		head = pom->podaj_wskaznik_next_firmy();
+		sklep->usun_wszystkie_przedmioty_i_licytacje_wlasciciela(idFirmyDoUsuniecia);		//usuwamy wszystkie przedmioty i licytacje tej firmy z bazarku
+		delete pom;		//usuwamy firme o zadanym id
+		return idFirmyDoUsuniecia;		//jako znak poprawnego usuniecia klienta zwracamy jej id
+
 	}
 
 	while (pom->podaj_wskaznik_next_firmy() != NULL)		//petla dziala dopoki nastepnik zmiennej pomocniczej istnieje
@@ -418,6 +426,7 @@ int ListaFirm::usun(unsigned int idFirmyDoUsuniecia)
 			Firma* FirmaDoUsuniecia = pom->podaj_wskaznik_next_firmy();							//ustawiamy kolejna zmienna pomocnicza na element do usuniecia
 			pom->ustaw_wskaznik_next_firmy(FirmaDoUsuniecia->podaj_wskaznik_next_firmy());		//next pomocniczego ustawiany jest na next firmy do usuniecia
 
+			sklep->usun_wszystkie_przedmioty_i_licytacje_wlasciciela(idFirmyDoUsuniecia);		//usuwamy wszystkie przedmioty i licytacje tej firmy z bazarku
 			delete FirmaDoUsuniecia;		//usuwamy firme o zadanym id
 			return idFirmyDoUsuniecia;		//jako znak poprawnego usuniecia klienta zwracamy jej id
 		}
@@ -691,6 +700,13 @@ int Bazarek::usun_przedmiot(unsigned int idPrzedmiotu)
 		return -1;																						//jezeli lista jest pusta zwracamy -1
 	}
 
+	if (pom->podaj_id() == idPrzedmiotu)																//jezeli glowa to szukany przedmiot to ja usuwamy
+	{
+		listaPrzedmiotow = pom->podaj_adres_nastepnego_przedmiotu();
+		delete pom;
+		return idPrzedmiotu;
+	}
+
 	while (pom->podaj_adres_nastepnego_przedmiotu() != NULL)											//petla dziala dopoki nie dojdzie do konca listy
 	{
 		if ((pom->podaj_adres_nastepnego_przedmiotu())->podaj_id() == idPrzedmiotu)						//jezeli nastepnik biezacego przedmiotu ma zadane id to go usuwamy
@@ -716,6 +732,13 @@ int Bazarek::usun_licytacje(unsigned int idLicytacji)
 	if (listaLicytacji == NULL)
 	{
 		return -1;																						//jezeli lista jest pusta zwracamy -1
+	}
+
+	if (pom->podaj_id() == idLicytacji)																	//jezeli glowa to szukana licytacja to ja usuwamy
+	{
+		listaLicytacji = pom->podaj_adres_nastepnej_licytacji();
+		delete pom;
+		return idLicytacji;
 	}
 
 	while (pom->podaj_adres_nastepnej_licytacji() != NULL)												//petla dziala dopoki nie dojdzie do konca listy
@@ -853,6 +876,33 @@ std::vector<unsigned int>* Bazarek::wyszukaj_licytacje_osoby(unsigned int idOsob
 	}
 
 	return wektorDoZwrocenia;
+}
+
+	//funkcja uzywana przy usuwaniu konta
+void Bazarek::usun_wszystkie_przedmioty_i_licytacje_wlasciciela(unsigned int idWlasciciela)
+{
+	Licytacja* licPom = listaLicytacji;		//zmienne pomocnicze
+	Przedmiot* przedPom = listaPrzedmiotow;
+
+	while (licPom != NULL)
+	{
+		if (licPom->sprawdz_id_wlasciciela(idWlasciciela))
+		{
+			usun_licytacje(licPom->podaj_id());
+		}
+
+		licPom = licPom->podaj_adres_nastepnej_licytacji();
+	}
+
+	while (przedPom!= NULL)
+	{
+		if (przedPom->sprawdz_id_wlasciciela(idWlasciciela))
+		{
+			usun_przedmiot(przedPom->podaj_id());
+		}
+
+		przedPom = przedPom->podaj_adres_nastepnego_przedmiotu();
+	}
 }
 
 //funkcje do obslugi licytacji
