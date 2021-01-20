@@ -1,7 +1,7 @@
 #include "class_library.h"
 
 		//metody klasy Przedmiot
-unsigned int Przedmiot::licznik;
+
 	//konstruktor klasy Przedmiot
 Przedmiot::Przedmiot(std::string nazwaPrzedmiotu, unsigned int iloscPrzedmiotow, unsigned int id_wystawiajacego, unsigned int cenaPrzedmiotu, std::string opisPrzedmiotu)
 {
@@ -86,6 +86,32 @@ void Przedmiot::ustaw_nastepny_przedmiot(Przedmiot* nastepnyPrzedmiot)
 	next = nastepnyPrzedmiot;
 }
 
+	//zwraca ilosc przedmiotow
+unsigned int Przedmiot::podaj_ilosc()
+{
+	return ilosc;
+}
+	
+	//zwraca cene przedmiotu
+unsigned int Przedmiot::podaj_cene()
+{
+	return cena;
+}
+
+	//zwraca opis przedmiotu
+std::string Przedmiot::podaj_opis()
+{
+	return opis;
+}
+
+	//edytuje parametry przedmiotu
+void Przedmiot::edytuj(std::string nowaNazwa, unsigned int nowaIlosc, unsigned int nowaCena, std::string nowyOpis)
+{
+	nazwa = nowaNazwa;
+	ilosc = nowaIlosc;
+	cena = nowaCena;
+	opis = nowyOpis;
+}
 
 		//metody klasy licytacja
 
@@ -139,7 +165,7 @@ void Licytacja::ustaw_nastepna_licytacje(Licytacja* nastepnaLicytacja)
 
 
 		//metody klasy Osoba
-unsigned int Osoba::licznik;
+
 	//konstruktor klasy Osoba
 Osoba::Osoba(std::string newMail, std::string newHaslo): mail(newMail), haslo(newHaslo)
 {
@@ -179,11 +205,86 @@ std::string Osoba::podaj_email()
 	return mail;
 }
 
-std::string Osoba::podaj_haslo()
+	//funkcja dodajaca przedmiot na bazarek			//zrobione
+void Osoba::dodaj_przedmiot(Bazarek* adresBazarku, std::string nazwaPrzedmiotu, unsigned int iloscPrzedmiotow, unsigned int cenaPrzedmiotu, std::string opisPrzedmiotu)
 {
-	return haslo;
+	unsigned int idOsoby = this->podaj_id();
+	Przedmiot* przedmiotDoDodania = new Przedmiot(nazwaPrzedmiotu, iloscPrzedmiotow, idOsoby, cenaPrzedmiotu, opisPrzedmiotu);
+	adresBazarku->dodaj_przedmiot(przedmiotDoDodania);
+
 }
 
+	//funkcja usuwajaca przedmiot z bazarku			//zrobione
+int Osoba::usun_przedmiot(Bazarek* adresBazarku, unsigned int idPrzedmiotu)
+{
+	Przedmiot* przedmiotDoUsuniecia = adresBazarku->szukaj_przedmiotu_po_id(idPrzedmiotu);
+
+	if (przedmiotDoUsuniecia == NULL)
+	{
+		return -1;					//kiedy przedmiot o podanym id nie istnieje
+	}
+
+	if (przedmiotDoUsuniecia->wypisz_id_wlasciciela() != ID)
+	{
+		return 0;					//kiedy osoba nie jest wlascicielem przedmiotu
+	}
+	else
+	{
+		adresBazarku->usun_przedmiot(idPrzedmiotu);		
+		return idPrzedmiotu;		//w przypadku prawidlowego usuniecia zwracane jest id przedmiotu
+	}
+
+}
+
+	//funkcja zmieniajaca dane wystawionego przedmiotu
+int Osoba::edytuj_przedmiot(Bazarek* adresBazarku, unsigned int idPrzedmiotu, std::string nowaNazwa, unsigned int nowaIlosc, unsigned int nowaCena, std::string nowyOpis)
+{
+	Przedmiot* przedmiotDoEdycji = adresBazarku->szukaj_przedmiotu_po_id(idPrzedmiotu);
+
+	if (przedmiotDoEdycji == NULL)
+	{
+		return -1;					//kiedy przedmiot o podanym id nie istnieje
+	}
+
+	if (przedmiotDoEdycji->wypisz_id_wlasciciela() != ID)
+	{
+		return 0;					//kiedy osoba nie jest wlascicielem przedmiotu
+	}
+	else
+	{
+		przedmiotDoEdycji->edytuj(nowaNazwa, nowaIlosc, nowaCena, nowyOpis);
+	}
+
+}
+
+	//funkcja dodajaca licytacje na bazarek			//zrobione
+void Osoba::dodaj_licytacje(Bazarek* adresBazarku, std::string nazwaLicytacji, unsigned int iloscPrzedmiotow, unsigned int cenaWywolawcza, std::string opisPrzedmiotu, unsigned int czasZakonczenia)
+{
+	unsigned int idOsoby = this->podaj_id();
+	Licytacja* LicytacjaDoDodania = new Licytacja(nazwaLicytacji, iloscPrzedmiotow, idOsoby, cenaWywolawcza, opisPrzedmiotu, czasZakonczenia);
+	adresBazarku->dodaj_przedmiot(LicytacjaDoDodania);
+}
+
+	//funkcja usuwajaca licytacje z bazarku			//zrobione
+int Osoba::usun_licytacje(Bazarek* adresBazarku, unsigned int idLicytacji)
+{
+	Licytacja* licytacjaDoUsuniecia = adresBazarku->szukaj_licytacji_po_id(idLicytacji);
+
+	if (licytacjaDoUsuniecia == NULL)
+	{
+		return -1;					//kiedy przedmiot o podanym id nie istnieje
+	}
+
+	if (licytacjaDoUsuniecia->wypisz_id_wlasciciela() != ID)
+	{
+		return 0;					//kiedy osoba nie jest wlascicielem przedmiotu
+	}
+	else
+	{
+		adresBazarku->usun_licytacje(idLicytacji);
+		return idLicytacji;		//w przypadku prawidlowego usuniecia zwracane jest id przedmiotu
+	}
+}
 
 		//metody klasy Klient
 
@@ -193,21 +294,6 @@ Klient::Klient(std::string nazwaKlienta, Klient* nastepnyKlient, std::string mai
 	imieINazwisko = nazwaKlienta;
 	next = nastepnyKlient;
 }
-
-	//funkcja dodajaca przedmiot na bazarek
-void Klient::dodaj_przedmiot(){}		//do zrobienia
-
-	//funkcja usuwajaca przedmiot z bazarku
-void Klient::usun_przedmiot(){}			//do zrobienia
-
-	//funkcja zmieniajaca dane wystawionego przedmiotu
-void Klient::edytuj_przedmiot(){}		//do zrobienia
-
-	//funkcja dodajaca licytacje na bazarek
-void Klient::dodaj_licytacje(){}		//do zrobienia
-
-	//funkcja usuwajaca licytacje z bazarku
-void Klient::usun_licytacje(){}			//do zrobienia
 
 	//funkcja dodaje podany przedmiot do koszyka
 void Klient::dodaj_do_koszyka(unsigned int id_przedmiotu, int ilosc)
@@ -266,20 +352,6 @@ Firma::Firma(std::string nazwaFirmy, Firma* nastepnaFirma, std::string mailFirmy
 	next = nastepnaFirma;
 }
 
-	//funkcja dodajaca przedmiot na bazarek
-void Firma::dodaj_przedmiot(){}		//do zrobienia
-
-	//funkcja usuwajaca przedmiot z bazarku
-void Firma::usun_przedmiot(){}			//do zrobienia
-
-	//funkcja zmieniajaca dane wystawionego przedmiotu
-void Firma::edytuj_przedmiot(){}		//do zrobienia
-
-	//funkcja dodajaca licytacje na bazarek
-void Firma::dodaj_licytacje(){}		//do zrobienia
-
-	//funkcja usuwajaca licytacje z bazarku
-void Firma::usun_licytacje(){}			//do zrobienia
 
 	//gettery parametrow nazwa i next
 std::string Firma::podaj_nazwe_firmy()
@@ -314,7 +386,16 @@ Admin::Admin(): Osoba("AdminBazarku@gmail.pl", "admin123")
 }
 
 	//funkcja usuwajaca nieodpowiedni przedmiot
-void Admin::usun_przedmiot(unsigned int id_przedmiotu){}		//do zrobienia
+int Admin::usun_przedmiot(Bazarek* adresBazarku, unsigned int id_przedmiotu)
+{
+	return adresBazarku->usun_przedmiot(id_przedmiotu);
+}
+
+	//funkcja usuwajaca nieodpowiednie licytacje
+int Admin::usun_licytacje(Bazarek* adresBazarku, unsigned int id_licytacji)
+{
+	return adresBazarku->usun_licytacje(id_licytacji);
+}
 	
 	//funkcja usuwajaca uzytkownika
 int Admin::usun_uzytkownika(unsigned int id_uzytkownika, ListaKlientow* listaUzytkownikow)
@@ -322,7 +403,39 @@ int Admin::usun_uzytkownika(unsigned int id_uzytkownika, ListaKlientow* listaUzy
 	return listaUzytkownikow->usun(id_uzytkownika);		//zwraca wynik funkcji usun
 }
 
+	//funkcja usuwajaca firme
+int Admin::usun_firme(unsigned int id_firmy, ListaFirm* listaFirm)
+{
+	return listaFirm->usun(id_firmy);
+}
+
 		//metody klasy ListaFirm
+
+int ListaFirm::usun(unsigned int idFirmyDoUsuniecia)
+{
+	Firma* pom = head;			//ustawiamy wskaznik pomocniczy na poczatek listy
+
+	if (pom == NULL)
+	{
+		return -1;				//jezeli lista jest pusta zwracamy -1
+	}
+
+	while (pom->podaj_wskaznik_next_firmy() != NULL)		//petla dziala dopoki nastepnik zmiennej pomocniczej istnieje
+	{
+		if ((pom->podaj_wskaznik_next_firmy())->podaj_id() == idFirmyDoUsuniecia)		//jezeli ten nastepnik istnieje i jego id jest rowne id firmy do usuniecia to usuwamy ten obiekt
+		{
+			Firma* FirmaDoUsuniecia = pom->podaj_wskaznik_next_firmy();							//ustawiamy kolejna zmienna pomocnicza na element do usuniecia
+			pom->ustaw_wskaznik_next_firmy(FirmaDoUsuniecia->podaj_wskaznik_next_firmy());		//next pomocniczego ustawiany jest na next firmy do usuniecia
+
+			delete FirmaDoUsuniecia;		//usuwamy firme o zadanym id
+			return idFirmyDoUsuniecia;		//jako znak poprawnego usuniecia klienta zwracamy jej id
+		}
+
+		pom = pom->podaj_wskaznik_next_firmy();			//na koncu petli wskaznik pomocniczy ustawiany jest na nastepny obiekt
+	}
+
+	return 0;		//jezeli nie znaleziono firmy o takim id to zwracane jest 0
+}
 
 	//konstruktor klasy ListaFirm
 ListaFirm::ListaFirm()
@@ -399,32 +512,6 @@ Firma* ListaFirm::wyszukaj_firme(std::string nazwa_firmy)
 	}
 
 	return pom;		//jezeli znajdziemy firme - zwroci jej adres, jezeli nie - NULL
-}
-
-int ListaFirm::usun(unsigned int idFirmyDoUsuniecia)
-{
-	Firma* pom = head;			//ustawiamy wskaznik pomocniczy na poczatek listy
-
-	if (pom == NULL)
-	{
-		return -1;				//jezeli lista jest pusta zwracamy -1
-	}
-
-	while (pom->podaj_wskaznik_next_firmy() != NULL)		//petla dziala dopoki nastepnik zmiennej pomocniczej istnieje
-	{
-		if ((pom->podaj_wskaznik_next_firmy())->podaj_id() == idFirmyDoUsuniecia)		//jezeli ten nastepnik istnieje i jego id jest rowne id klienta do usuniecia to usuwamy ten obiekt
-		{
-			Firma* FirmaDoUsuniecia = pom->podaj_wskaznik_next_firmy();							//ustawiamy kolejna zmienna pomocnicza na element do usuniecia
-			pom->ustaw_wskaznik_next_firmy(FirmaDoUsuniecia->podaj_wskaznik_next_firmy());		//next pomocniczego ustawiany jest na next klienta do usuniecia
-
-			delete FirmaDoUsuniecia;		//usuwamy klienta o zadanym id
-			return idFirmyDoUsuniecia;	//jako znak poprawnego usuniecia klienta zwracamy jego id
-		}
-
-		pom = pom->podaj_wskaznik_next_firmy();			//na koncu petli wskaznik pomocniczy ustawiany jest na nastepny obiekt
-	}
-
-	return 0;		//jezeli nie znaleziono firmy o takim id to zwracane jest 0
 }
 
 
@@ -657,7 +744,6 @@ int Bazarek::usun_licytacje(unsigned int idLicytacji)
 	return 0;																							//jezeli nie ma licytacji o podanym id zwracamy 0
 }
 
-
 	//funkcja wyszukujaca przedmioty
 std::vector<unsigned int> Bazarek::szukaj(std::string szukanaOferta)
 {
@@ -689,6 +775,41 @@ std::vector<unsigned int> Bazarek::szukaj(std::string szukanaOferta)
 
 	return returnVector;
 
+}
+	//funkcja szukajaca przedmiotu o danym id
+Przedmiot* Bazarek::szukaj_przedmiotu_po_id(unsigned int idPrzedmiotu)
+{
+	Przedmiot* pom = listaPrzedmiotow;
+	Przedmiot* zwracanyWskaznik = NULL;
+
+	while (pom != NULL)
+	{
+		if (pom->podaj_id() == idPrzedmiotu)
+		{
+			zwracanyWskaznik = pom;
+			break;
+		}
+	}
+
+	return zwracanyWskaznik;
+}
+
+	//funkcja szukajaca licytacji o danym id
+Licytacja* Bazarek::szukaj_licytacji_po_id(unsigned int idLicytacji)
+{
+	Licytacja* pom = listaLicytacji;
+	Licytacja* zwracanyWskaznik = NULL;
+
+	while (pom != NULL)
+	{
+		if (pom->podaj_id() == idLicytacji)
+		{
+			zwracanyWskaznik = pom;
+			break;
+		}
+	}
+
+	return zwracanyWskaznik;
 }
 
 
