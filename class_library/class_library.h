@@ -102,6 +102,8 @@ public:
 	Osoba(std::string newMail = "brak_danych", std::string newHaslo = "brak_danych");	//konstruktor klasy Osoba					zrobione	
 	bool sprawdz_dane(std::string compMail, std::string compHaslo);						//funkcja sprawdzajaca czy podane przez uzytkownika dane sa poprawne		zrobione
 	void edytuj_dane(std::string newMail, std::string newHaslo);						//funkcja edytujaca dane					zrobione
+	void edytuj_email(std::string newMail);												//funkcja edytujaca email
+	void edytuj_haslo(std::string newHaslo);											//funkcja edytujaca haslo
 	unsigned int podaj_id();															//nowododana, nie ma w diagramie klas		zrobione
 	std::string podaj_email();															//nowododana, nie ma w diagramie klas		zrobione
 
@@ -185,7 +187,7 @@ public:
 	void dodaj(Firma* toAdd);											//funkcja dodaje firme do listy							zrobione
 	int sprawdz(std::string email_firmy, std::string nazwa_firmy);		//funkcja sprawdza czy podana firma juz istnieje		zrobione, mozliwy odutput: 0-nic nie zajete, 1-zajeta nazwa, 2-zajety email, 3 zajeta nazwa i email
 	Firma* wyszukaj_firme(unsigned int id_firmy);						//funkcja wyszukuje firme po id							zrobione
-	Firma* wyszukaj_firme(std::string nazwa_firmy);						//funkcja wyszukuje firme po nazwie						zrobione
+	Firma* wyszukaj_firme(std::string email_firmy);						//funkcja wyszukuje firme po nazwie						zrobione
 		
 };
 
@@ -204,7 +206,7 @@ public:
 	void dodaj(Klient* toAdd);												//funkcja dodaje klienta do listy						zrobione
 	int sprawdz(std::string email_klienta, std::string nazwa_klienta);		//funkcja sprawdza czy podany klient juz istnieje		zrobione, mozliwy odutput: 0-nic nie zajete, 1-zajeta nazwa, 2-zajety email, 3 zajeta nazwa i email
 	Klient* wyszukaj_klienta(unsigned int id_klienta);						//funkcja wyszukuje klienta po id						zrobione
-	Klient* wyszukaj_klienta(std::string nazwa_klienta);					//funkcja wyszukuje klienta po nazwie					zrobione
+	Klient* wyszukaj_klienta(std::string email_klienta);					//funkcja wyszukuje klienta po nazwie					zrobione
 
 };
 

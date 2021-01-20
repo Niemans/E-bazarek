@@ -5,7 +5,6 @@
 
 #include "ekran_startowy.h"
 #include "zapomniane_haslo.h"
-#include "../class_library/class_library.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma resource "*.fmx"
@@ -35,6 +34,7 @@ void __fastcall TForma_zapomniane_haslo::Btn_wyslij_wiadomoscClick(TObject *Send
 	{
 		Text_blad1->Visible = false;
 		wygeneruj_kod();
+		ShowMessage("Tu by siê wysy³a³a wiadomoœæ na maila. Kod");
 	}
 }
 //---------------------------------------------------------------------------
@@ -164,7 +164,7 @@ void __fastcall TForma_zapomniane_haslo::Edit_nhasloChange(TObject *Sender)
 
 void __fastcall TForma_zapomniane_haslo::Edit_pnhasloChange(TObject *Sender)
 {
-	if(Edit_pnhaslo->Text != "")
+	if(Edit_pnhaslo->Text != "" && Edit_pnhaslo->Text == Edit_nhaslo->Text)
 	{
 		CheckBox_pnhaslo->IsChecked = true;
 	}
