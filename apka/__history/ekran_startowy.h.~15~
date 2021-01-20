@@ -40,6 +40,7 @@ __published:	// IDE-managed Components
 	TListBox *ListBox_KF;
 	TListBoxItem *ListBoxItem_Klient;
 	TListBoxItem *ListBoxItem_Firma;
+
 	void __fastcall Btn_logowanieClick(TObject *Sender);
 	void __fastcall CheckBox_robotClick(TObject *Sender);
 	void __fastcall Text_kliknijClick(TObject *Sender);

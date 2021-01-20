@@ -29,7 +29,7 @@ __fastcall TForma_ekran_bazarek::TForma_ekran_bazarek(TComponent* Owner)
 		delete form_ekran_startowy;
 		WczytajDane();
 	}
-	else if (form_ekran_startowy->ShowModal()==0)
+	else
 	{
 		delete form_ekran_startowy;
 		Application->Terminate();
@@ -60,6 +60,7 @@ void __fastcall TForma_ekran_bazarek::WczytajDane()
 	Query -> Connection = ADOConnection;
 
 	Query -> SQL -> Clear();
+//	Query -> SQL -> Text = "USE [ebazarek] ";
 	Query -> SQL -> Text = "SELECT nazwa ,opis,kwota,id,id_parent from dbo.dane;";
 
 	Query -> Open();
@@ -116,12 +117,4 @@ short int TForma_ekran_bazarek::zalogowanie()
 {
 	return zalogowane;
 }
-
-void __fastcall TForma_ekran_bazarek::FormClose(TObject *Sender, TCloseAction &Action)
-
-{
-	if(MojKlient != NULL) delete MojKlient;
-    if(MojaFirma != NULL) delete MojaFirma;
-}
-//---------------------------------------------------------------------------
 

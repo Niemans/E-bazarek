@@ -70,12 +70,12 @@ void __fastcall TForma_ekran_startowy::Btn_logowanieClick(TObject *Sender)
 
 		AnsiString login = Query -> FieldByName("login")->AsString;
 		AnsiString haslo = Query -> FieldByName("haslo")->AsString;
-		AnsiString email  = Query -> FieldByName("email")->AsString;
+		AnsiString mail  = Query -> FieldByName("mail")->AsString;
 
 		Forma_ekran_bazarek->zmien_zalogowane(typ);
 
-		if(typ == 1) Forma_ekran_bazarek -> MojKlient = new Klient(login.c_str(), NULL, email.c_str(), haslo.c_str());
-		else if (typ == 2) Forma_ekran_bazarek -> MojKlient = new Klient(login.c_str(), NULL, email.c_str(), haslo.c_str());
+		if(typ == 1) Forma_ekran_bazarek -> MojKlient = new Klient(login.c_str(), NULL, mail.c_str(), haslo.c_str());
+		else if (typ == 2) Forma_ekran_bazarek -> MojKlient = new Klient(login.c_str(), NULL, mail.c_str(), haslo.c_str());
 
 		delete Query;
 

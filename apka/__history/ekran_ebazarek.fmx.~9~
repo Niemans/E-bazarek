@@ -8,7 +8,6 @@ object Forma_ekran_bazarek: TForma_ekran_bazarek
   FormFactor.Width = 320
   FormFactor.Height = 480
   FormFactor.Devices = [Desktop]
-  OnClose = FormClose
   DesignerMasterStyle = 0
   object Panel1: TPanel
     Anchors = [akLeft, akTop, akRight]
@@ -402,14 +401,13 @@ object Forma_ekran_bazarek: TForma_ekran_bazarek
     RowHeight = 120.000000000000000000
     RowCount = 0
     Options = [ColumnResize, ColumnMove, ColLines, RowLines, Tabs, HeaderClick, AutoDisplacement]
-    Viewport.Width = 401.000000000000000000
-    Viewport.Height = 617.000000000000000000
+    Viewport.Width = 397.000000000000000000
+    Viewport.Height = 613.000000000000000000
     object grid_colNazwa: TStringColumn
       OnTap = grid_colNazwaTap
       Size.Width = 289.000000000000000000
     end
     object grid_colKwota: TCurrencyColumn
-      Size.Width = 95.000000000000000000
     end
   end
   object ImageList1: TImageList
@@ -812,6 +810,6 @@ object Forma_ekran_bazarek: TForma_ekran_bazarek
       'atabase.windows.net'
     Provider = 'SQLOLEDB.1'
     Left = 360
-    Top = 344
+    Top = 352
   end
 end

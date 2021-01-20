@@ -69,7 +69,7 @@ void __fastcall TForma_boczne_menu::Btn_adminClick(TObject *Sender)
 void __fastcall TForma_boczne_menu::Btn_wylogujClick(TObject *Sender)
 {
 	Forma_ekran_bazarek->zmien_zalogowane(0);
-	TForma_ekran_startowy * form_ekran_startowy = new TForma_ekran_startowy(this, NULL);
+	TForma_ekran_startowy * form_ekran_startowy = new TForma_ekran_startowy(this);
 	if (form_ekran_startowy->ShowModal())
 	{
 		delete form_ekran_startowy;

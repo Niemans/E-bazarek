@@ -15,7 +15,7 @@
 #include <FMX.Ani.hpp>
 #include <FMX.Layouts.hpp>
 #include <FMX.ListBox.hpp>
-#include "ekran_ebazarek.h"
+#include <ekran_ebazarek.h>
 //---------------------------------------------------------------------------
 class TForma_ekran_startowy : public TForm
 {
@@ -50,7 +50,7 @@ __published:	// IDE-managed Components
 	void __fastcall ListBoxItem_FirmaClick(TObject *Sender);
 private:	// User declarations
 public:		// User declarations
-	__fastcall TForma_ekran_startowy(TComponent* Owner, TADOConnection* a_ADOConnection);
+	__fastcall TForma_ekran_startowy(TComponent* Owner, TADOConnection* ADOConnection);
 };
 //---------------------------------------------------------------------------
 extern PACKAGE TForma_ekran_startowy *Forma_ekran_startowy;

@@ -1,7 +1,6 @@
 #include <string>
 #include <vector>
 #include <iostream>
-#include <fmx.h>
 
 
 class Przedmiot{

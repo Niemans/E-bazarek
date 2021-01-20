@@ -56,10 +56,11 @@ void __fastcall TForma_ekran_bazarek::WczytajDane()
 	}
 
 //----------Inicjowanie SQL i select
-	TADOQuery * Query = new TADOQuery(this);
-	Query -> Connection = ADOConnection;
+	TIBQuery * Query = new TIBQuery(this);
+	Query -> Database = ADOConnection;
 
 	Query -> SQL -> Clear();
+//	Query -> SQL -> Text = "USE [ebazarek] ";
 	Query -> SQL -> Text = "SELECT nazwa ,opis,kwota,id,id_parent from dbo.dane;";
 
 	Query -> Open();

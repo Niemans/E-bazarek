@@ -18,6 +18,7 @@
 #include <FMX.ScrollBox.hpp>
 #include <System.Rtti.hpp>
 #include <FMX.Objects.hpp>
+#include <IBX.IBQuery>
 
 #include "../class_library/class_library.h"
 #include <Data.DB.hpp>

@@ -39,7 +39,6 @@ __published:	// IDE-managed Components
 	void __fastcall btn_szukajClick(TObject *Sender);
 	void __fastcall grid_colNazwaTap(TObject *Sender, const TPointF &Point);
 	void __fastcall Image1Click(TObject *Sender);
-	void __fastcall FormClose(TObject *Sender, TCloseAction &Action);
 private:	// User declarations
 	void __fastcall WczytajDane();
 	short int zalogowane;   //Klient = 1,	Firma = 2,	Admin = 3

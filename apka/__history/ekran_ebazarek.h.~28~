@@ -18,10 +18,12 @@
 #include <FMX.ScrollBox.hpp>
 #include <System.Rtti.hpp>
 #include <FMX.Objects.hpp>
+#include <IBX.IBQuery.hpp>
 
 #include "../class_library/class_library.h"
 #include <Data.DB.hpp>
 #include <Data.Win.ADODB.hpp>
+#include <IBX.IBCustomDataSet.hpp>
 //---------------------------------------------------------------------------
 class TForma_ekran_bazarek : public TForm
 {
