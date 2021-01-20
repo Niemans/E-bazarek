@@ -83,6 +83,7 @@ public:
 
 	std::vector<unsigned int>* wyszukaj_przedmioty_osoby(unsigned int idOsoby);			//funkcja szukajaca wszystkich przedmiotow osoby		zrobione
 	std::vector<unsigned int>* wyszukaj_licytacje_osoby(unsigned int idOsoby);			//funkcja szukajaca wszystkich licytacji osoby			zrobione
+	void usun_wszystkie_przedmioty_i_licytacje_wlasciciela(unsigned int idWlasciciela);	//funkcja uzywana przy usuwaniu konta
 
 	//funkcje do obslugi licytacji								i tu tez
 	bool sprawdz_czas_licytacji(Licytacja* licytacjaDoSprawdzenia);
@@ -173,12 +174,8 @@ public:
 
 class ListaFirm {
 
-	friend class Admin;
-
 private:
 	Firma* head;
-		//funkcja prywatna - mozna ja uruchomic tylko dzieki funkcji usun_uzytkownika Admina
-	int usun(unsigned int idFirmyDoUsuniecia);							//funkcja usuwajaca firme o danym id z listy			zrobione
 
 public:
 	ListaFirm();														//konstruktor											zrobione
@@ -186,18 +183,14 @@ public:
 	int sprawdz(std::string email_firmy, std::string nazwa_firmy);		//funkcja sprawdza czy podana firma juz istnieje		zrobione, mozliwy odutput: 0-nic nie zajete, 1-zajeta nazwa, 2-zajety email, 3 zajeta nazwa i email
 	Firma* wyszukaj_firme(unsigned int id_firmy);						//funkcja wyszukuje firme po id							zrobione
 	Firma* wyszukaj_firme(std::string nazwa_firmy);						//funkcja wyszukuje firme po nazwie						zrobione
+	int usun(unsigned int idFirmyDoUsuniecia, Bazarek* sklep);			//funkcja usuwajaca firme o danym id z listy			zrobione
 		
 };
 
 
 class ListaKlientow {
-
-	friend class Admin;
-
 private:
 	Klient* head;
-		//funkcja prywatna - mozna ja uruchomic tylko dzieki funkcji usun_uzytkownika Admina
-	int usun(unsigned int idKlientaDoUsuniecia);							//funkcja usuwajaca klienta o danym id z listy			zrobione
 
 public:
 	ListaKlientow();														//konstruktor											zrobione
@@ -205,6 +198,7 @@ public:
 	int sprawdz(std::string email_klienta, std::string nazwa_klienta);		//funkcja sprawdza czy podany klient juz istnieje		zrobione, mozliwy odutput: 0-nic nie zajete, 1-zajeta nazwa, 2-zajety email, 3 zajeta nazwa i email
 	Klient* wyszukaj_klienta(unsigned int id_klienta);						//funkcja wyszukuje klienta po id						zrobione
 	Klient* wyszukaj_klienta(std::string nazwa_klienta);					//funkcja wyszukuje klienta po nazwie					zrobione
+	int usun(unsigned int idKlientaDoUsuniecia);							//funkcja usuwajaca klienta o danym id z listy			zrobione
 
 };
 
@@ -237,6 +231,6 @@ public:
 	int usun_przedmiot(Bazarek* adresBazarku, unsigned int id_przedmiotu);		//usuwa wybrany przedmiot		zrobione
 	int usun_licytacje(Bazarek* adresBazarku, unsigned int id_licytacji);		//usuwa wybrana licytacje		zrobione
 	int usun_uzytkownika(unsigned int id_uzytkownika, ListaKlientow* listaUzytkownikow);		//funkcja usuwajaca uzytkownika o zadanym id z listy uzytkownikow		zrobione
-	int usun_firme(unsigned int id_firmy, ListaFirm* listaFirm);								//funkcja usuwajaca firme o zadanym id z listy firm						zrobione
+	int usun_firme(unsigned int id_firmy, ListaFirm* listaFirm, Bazarek* sklep);								//funkcja usuwajaca firme o zadanym id z listy firm						zrobione
 
 };
