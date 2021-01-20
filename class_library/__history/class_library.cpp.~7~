@@ -374,6 +374,8 @@ void Firma::ustaw_wskaznik_next_firmy(Firma* wskaznik_do_ustawienia)
 	//konstruktor			istnieje tylko jeden admin, wiec definiujemy go poza lista klientow
 Admin::Admin(): Osoba("AdminBazarku@gmail.pl", "admin123")
 {
+	licznik--;
+	ID = 0;
 }
 
 	//funkcja usuwajaca nieodpowiedni przedmiot

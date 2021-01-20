@@ -5,6 +5,9 @@
 	//konstruktor klasy Przedmiot
 Przedmiot::Przedmiot(std::string nazwaPrzedmiotu, unsigned int iloscPrzedmiotow, unsigned int id_wystawiajacego, unsigned int cenaPrzedmiotu, std::string opisPrzedmiotu)
 {
+	licznik++;			//inkrementujemy licznik przedmiotow
+
+	ID = licznik;
 	nazwa = nazwaPrzedmiotu;
 	ilosc = iloscPrzedmiotow;
 	IDWlasciciela = id_wystawiajacego;
@@ -164,6 +167,8 @@ void Licytacja::ustaw_nastepna_licytacje(Licytacja* nastepnaLicytacja)
 	//konstruktor klasy Osoba
 Osoba::Osoba(std::string newMail, std::string newHaslo): mail(newMail), haslo(newHaslo)
 {
+	licznik++;
+	ID = licznik;
 }
 	
 	//funkcja sprawdzajaca czy podane przez uzytkownika dane sa poprawne
@@ -374,6 +379,8 @@ void Firma::ustaw_wskaznik_next_firmy(Firma* wskaznik_do_ustawienia)
 	//konstruktor			istnieje tylko jeden admin, wiec definiujemy go poza lista klientow
 Admin::Admin(): Osoba("AdminBazarku@gmail.pl", "admin123")
 {
+	licznik--;
+	ID = 0;
 }
 
 	//funkcja usuwajaca nieodpowiedni przedmiot
