@@ -388,9 +388,9 @@ int Admin::usun_licytacje(Bazarek* adresBazarku, unsigned int id_licytacji)
 }
 	
 	//funkcja usuwajaca uzytkownika
-int Admin::usun_uzytkownika(unsigned int id_uzytkownika, ListaKlientow* listaUzytkownikow)
+int Admin::usun_uzytkownika(unsigned int id_uzytkownika, ListaKlientow* listaUzytkownikow, Bazarek* sklep)
 {
-	return listaUzytkownikow->usun(id_uzytkownika);		//zwraca wynik funkcji usun
+	return listaUzytkownikow->usun(id_uzytkownika, sklep);		//zwraca wynik funkcji usun
 }
 
 	//funkcja usuwajaca firme
@@ -543,7 +543,7 @@ void ListaKlientow::dodaj(Klient* toAdd)
 }
 
 	//funkcja usuwa z listy klienta o zadanym ID
-int ListaKlientow::usun(unsigned int idKlientaDoUsuniecia)
+int ListaKlientow::usun(unsigned int idKlientaDoUsuniecia, Bazarek* sklep)
 {
 	Klient* pom = head;			//ustawiamy wskaznik pomocniczy na poczatek listy
 
@@ -552,15 +552,24 @@ int ListaKlientow::usun(unsigned int idKlientaDoUsuniecia)
 		return -1;				//jezeli lista jest pusta zwracamy -1
 	}
 
+	if (pom->podaj_id() == idKlientaDoUsuniecia)
+	{
+		head = pom->podaj_wskaznik_next_klienta();
+		sklep->usun_wszystkie_przedmioty_i_licytacje_wlasciciela(idKlientaDoUsuniecia);			//usuwamy wszystkie przedmioty i licytacje klienta z bazarku
+		delete pom;																				//usuwamy klienta o zadanym id
+		return idKlientaDoUsuniecia;															//jako znak poprawnego usuniecia klienta zwracamy jego id
+	}
+
 	while (pom->podaj_wskaznik_next_klienta() != NULL)		//petla dziala dopoki nastepnik zmiennej pomocniczej istnieje
 	{
-		if ((pom->podaj_wskaznik_next_klienta())->podaj_id() == idKlientaDoUsuniecia)		//jezeli ten nastepnik istnieje i jego id jest rowne id klienta do usuniecia to usuwamy ten obiekt
+		if ((pom->podaj_wskaznik_next_klienta())->podaj_id() == idKlientaDoUsuniecia)				//jezeli ten nastepnik istnieje i jego id jest rowne id klienta do usuniecia to usuwamy ten obiekt
 		{
 			Klient* KlientDoUsuniecia = pom->podaj_wskaznik_next_klienta();							//ustawiamy kolejna zmienna pomocnicza na element do usuniecia
 			pom->ustaw_wskaznik_next_klienta(KlientDoUsuniecia->podaj_wskaznik_next_klienta());		//next pomocniczego ustawiany jest na next klienta do usuniecia
 
-			delete KlientDoUsuniecia;		//usuwamy klienta o zadanym id
-			return idKlientaDoUsuniecia;	//jako znak poprawnego usuniecia klienta zwracamy jego id
+			sklep->usun_wszystkie_przedmioty_i_licytacje_wlasciciela(idKlientaDoUsuniecia);			//usuwamy wszystkie przedmioty i licytacje klienta z bazarku
+			delete KlientDoUsuniecia;																//usuwamy klienta o zadanym id
+			return idKlientaDoUsuniecia;															//jako znak poprawnego usuniecia klienta zwracamy jego id
 		}
 
 		pom = pom->podaj_wskaznik_next_klienta();			//na koncu petli wskaznik pomocniczy ustawiany jest na nastepny obiekt

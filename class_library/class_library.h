@@ -198,7 +198,7 @@ public:
 	int sprawdz(std::string email_klienta, std::string nazwa_klienta);		//funkcja sprawdza czy podany klient juz istnieje		zrobione, mozliwy odutput: 0-nic nie zajete, 1-zajeta nazwa, 2-zajety email, 3 zajeta nazwa i email
 	Klient* wyszukaj_klienta(unsigned int id_klienta);						//funkcja wyszukuje klienta po id						zrobione
 	Klient* wyszukaj_klienta(std::string nazwa_klienta);					//funkcja wyszukuje klienta po nazwie					zrobione
-	int usun(unsigned int idKlientaDoUsuniecia);							//funkcja usuwajaca klienta o danym id z listy			zrobione
+	int usun(unsigned int idKlientaDoUsuniecia, Bazarek* sklep);			//funkcja usuwajaca klienta o danym id z listy			zrobione
 
 };
 
@@ -230,7 +230,7 @@ public:
 	Admin();
 	int usun_przedmiot(Bazarek* adresBazarku, unsigned int id_przedmiotu);		//usuwa wybrany przedmiot		zrobione
 	int usun_licytacje(Bazarek* adresBazarku, unsigned int id_licytacji);		//usuwa wybrana licytacje		zrobione
-	int usun_uzytkownika(unsigned int id_uzytkownika, ListaKlientow* listaUzytkownikow);		//funkcja usuwajaca uzytkownika o zadanym id z listy uzytkownikow		zrobione
+	int usun_uzytkownika(unsigned int id_uzytkownika, ListaKlientow* listaUzytkownikow, Bazarek* sklep);		//funkcja usuwajaca uzytkownika o zadanym id z listy uzytkownikow		zrobione
 	int usun_firme(unsigned int id_firmy, ListaFirm* listaFirm, Bazarek* sklep);								//funkcja usuwajaca firme o zadanym id z listy firm						zrobione
 
 };
