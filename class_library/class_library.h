@@ -50,9 +50,10 @@ public:
 	Licytacja(std::string nazwaLicytacji, unsigned int iloscPrzedmiotow, unsigned int id_wystawiajacego, unsigned int cenaWywolawcza, std::string opisPrzedmiotu, unsigned int czas);		//zrobione
 	Licytacja* podaj_adres_nastepnej_licytacji();		//zwraca next													zrobione
 	void wygrana();										//metoda wkladajaca wygrany przedmiot do koszyka zwyciezcy		do zrobienia
-	void dodaj_historie(HistoriaLicytacji* toAdd);		//metoda dodajaca historie (najnowsza cene) do historii			zrobione
+	void dodaj_historie(HistoriaLicytacji* toAdd);		//metoda dodajaca historie (najnowsza cene) do historii			zrobione, w zasadzie bezuzyteczne bo mamy dodaj oferte
 	int dodaj_oferte(unsigned int nowaCena, std::string nazwaUczestnika);			//funkcja dodajaca oferte			zrobione
-	void ustaw_nastepna_licytacje(Licytacja* nastepnaLicytacja);
+	void ustaw_nastepna_licytacje(Licytacja* nastepnaLicytacja);					//ustawia next						zrobione
+	HistoriaLicytacji* zwroc_historie_licytacji();									//zwraca head, slozy do wypisywania historii w okienku		zrobione
 };
 
 
@@ -199,7 +200,7 @@ public:
 	int sprawdz(std::string email_klienta, std::string nazwa_klienta);		//funkcja sprawdza czy podany klient juz istnieje		zrobione, mozliwy odutput: 0-nic nie zajete, 1-zajeta nazwa, 2-zajety email, 3 zajeta nazwa i email
 	Klient* wyszukaj_klienta(unsigned int id_klienta);						//funkcja wyszukuje klienta po id						zrobione
 	Klient* wyszukaj_klienta(std::string nazwa_klienta);					//funkcja wyszukuje klienta po nazwie					zrobione
-	int usun(unsigned int idKlientaDoUsuniecia);							//funkcja usuwajaca klienta o danym id z listy			zrobione
+	int usun(unsigned int idKlientaDoUsuniecia, Bazarek* sklep);			//funkcja usuwajaca klienta o danym id z listy			zrobione
 
 };
 
@@ -231,7 +232,7 @@ public:
 	Admin();
 	int usun_przedmiot(Bazarek* adresBazarku, unsigned int id_przedmiotu);		//usuwa wybrany przedmiot		zrobione
 	int usun_licytacje(Bazarek* adresBazarku, unsigned int id_licytacji);		//usuwa wybrana licytacje		zrobione
-	int usun_uzytkownika(unsigned int id_uzytkownika, ListaKlientow* listaUzytkownikow);		//funkcja usuwajaca uzytkownika o zadanym id z listy uzytkownikow		zrobione
+	int usun_uzytkownika(unsigned int id_uzytkownika, ListaKlientow* listaUzytkownikow, Bazarek* sklep);		//funkcja usuwajaca uzytkownika o zadanym id z listy uzytkownikow		zrobione
 	int usun_firme(unsigned int id_firmy, ListaFirm* listaFirm, Bazarek* sklep);								//funkcja usuwajaca firme o zadanym id z listy firm						zrobione
 
 };
