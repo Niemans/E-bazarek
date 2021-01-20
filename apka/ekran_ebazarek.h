@@ -51,6 +51,12 @@ public:		// User declarations
 	void zmien_zalogowane(short int zmiana); //zmiana zalogowania
 	__fastcall TForma_ekran_bazarek(TComponent* Owner);
 };
+
+class TStringGridAccess : public TStringGrid
+{
+public:
+    void RemoveAll() { TStringGrid::DeleteChildren(); }
+};
 //---------------------------------------------------------------------------
 extern PACKAGE TForma_ekran_bazarek *Forma_ekran_bazarek;
 //---------------------------------------------------------------------------
