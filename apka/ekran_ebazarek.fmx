@@ -25,6 +25,8 @@ object Forma_ekran_bazarek: TForma_ekran_bazarek
       Size.Height = 22.000000000000000000
       Size.PlatformDefault = False
       Visible = False
+      OnChange = edit_szukajChange
+      OnTyping = edit_szukajChange
     end
     object Image1: TImage
       MultiResBitmap = <
@@ -394,6 +396,7 @@ object Forma_ekran_bazarek: TForma_ekran_bazarek
   object Grid: TStringGrid
     CanFocus = True
     ClipChildren = True
+    Locked = True
     Position.Y = 80.000000000000000000
     Size.Width = 401.000000000000000000
     Size.Height = 617.000000000000000000
@@ -406,10 +409,10 @@ object Forma_ekran_bazarek: TForma_ekran_bazarek
     Viewport.Height = 617.000000000000000000
     object grid_colNazwa: TStringColumn
       OnTap = grid_colNazwaTap
-      Size.Width = 289.000000000000000000
+      Size.Width = 257.000000000000000000
     end
     object grid_colKwota: TCurrencyColumn
-      Size.Width = 95.000000000000000000
+      Size.Width = 117.000000000000000000
     end
   end
   object ImageList1: TImageList
@@ -797,13 +800,13 @@ object Forma_ekran_bazarek: TForma_ekran_bazarek
             SourceRect.Bottom = 529.000000000000000000
           end>
       end>
-    Left = 360
-    Top = 240
+    Left = 336
+    Top = 88
   end
   object GestureManager1: TGestureManager
     Sensitivity = 80.000000000000000000
-    Left = 360
-    Top = 296
+    Left = 336
+    Top = 144
   end
   object ADOConnection: TADOConnection
     ConnectionString = 
@@ -811,7 +814,7 @@ object Forma_ekran_bazarek: TForma_ekran_bazarek
       'e;User ID=SYSDBA;Initial Catalog=ebazarek;Data Source=ebazarek.d' +
       'atabase.windows.net'
     Provider = 'SQLOLEDB.1'
-    Left = 360
-    Top = 344
+    Left = 336
+    Top = 200
   end
 end

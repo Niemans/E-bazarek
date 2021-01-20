@@ -10,7 +10,6 @@
 #include <FMX.Objects.hpp>
 #include <FMX.StdCtrls.hpp>
 #include <FMX.Types.hpp>
-#include <FMX.Colors.hpp>
 //---------------------------------------------------------------------------
 class TForm_ekran_przedmiotu : public TForm
 {
@@ -22,18 +21,9 @@ __published:	// IDE-managed Components
 	TButton *btn_kupTeraz;
 	TButton *btn_licytuj;
 	TImageControl *ImageControl1;
-	TImage *Image_paski;
-	TText *Text_napisa_nazwa;
-	TText *Text_napis_kwota;
-	TImage *Image_EB;
-	TColorBox *ColorBox_biel;
-	TImage *Image_przedmiot;
+	TButton *Button1;
+	void __fastcall Button1Click(TObject *Sender);
 	void __fastcall FormClose(TObject *Sender, TCloseAction &Action);
-	void __fastcall Image_paskiDblClick(TObject *Sender);
-	void __fastcall FormActivate(TObject *Sender);
-	void __fastcall btn_kupTerazClick(TObject *Sender);
-	void __fastcall btn_doKoszykaClick(TObject *Sender);
-	void __fastcall btn_licytujClick(TObject *Sender);
 private:	// User declarations
 public:		// User declarations
 	__fastcall TForm_ekran_przedmiotu(TComponent* Owner);

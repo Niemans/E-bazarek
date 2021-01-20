@@ -11,13 +11,13 @@
 #pragma resource "*.fmx"
 
 TForma_ekran_startowy * Forma_ekran_startowy;
-TADOConnection * ADOConnection;
+TADOConnection * ADOConnection1;
 
 //---------------------------------------------------------------------------
 __fastcall TForma_ekran_startowy::TForma_ekran_startowy(TComponent* Owner, TADOConnection *a_ADOConnection)
 	: TForm(Owner)
 {
-   ADOConnection = a_ADOConnection;
+   ADOConnection1 = a_ADOConnection;
 }
 //---------------------------------------------------------------------------
 
@@ -56,8 +56,8 @@ void __fastcall TForma_ekran_startowy::Btn_logowanieClick(TObject *Sender)
 
 	if(blad == 0)
 	{
-	TADOQuery * Query = new TADOQuery(this);
-	Query -> Connection = ADOConnection;
+	TADOQuery * Query = new TADOQuery(NULL);
+	Query -> Connection = ADOConnection1;
 	Query -> SQL -> Clear();
 	Query -> SQL -> Text = "select trim(login) as login, trim(haslo) as haslo, email, id, typ from dbo.uzytkownicy where email = trim('"+Edit_email->Text+"')";
 
@@ -70,12 +70,13 @@ void __fastcall TForma_ekran_startowy::Btn_logowanieClick(TObject *Sender)
 
 		AnsiString login = Query -> FieldByName("login")->AsString;
 		AnsiString haslo = Query -> FieldByName("haslo")->AsString;
-		AnsiString email  = Query -> FieldByName("email")->AsString;
+		AnsiString email = Query -> FieldByName("email")->AsString;
+		int 	   id    = Query -> FieldByName("id")->AsInteger;
 
 		Forma_ekran_bazarek->zmien_zalogowane(typ);
 
-		if(typ == 1) Forma_ekran_bazarek -> MojKlient = new Klient(login.c_str(), NULL, email.c_str(), haslo.c_str());
-		else if (typ == 2) Forma_ekran_bazarek -> MojKlient = new Klient(login.c_str(), NULL, email.c_str(), haslo.c_str());
+		if(typ == 1) Forma_ekran_bazarek -> MojKlient = new Klient(login.c_str(), NULL, email.c_str(), haslo.c_str(), id);
+		else if (typ == 2) Forma_ekran_bazarek -> MojKlient = new Klient(login.c_str(), NULL, email.c_str(), haslo.c_str(), id);
 
 		delete Query;
 
@@ -89,14 +90,6 @@ void __fastcall TForma_ekran_startowy::Btn_logowanieClick(TObject *Sender)
    }
 }
 //---------------------------------------------------------------------------
-
-
-
-
-
-
-
-
 
 //---------------------------------------------------------------------------
 
@@ -131,7 +124,6 @@ void __fastcall TForma_ekran_startowy::Text_kliknijClick(TObject *Sender)
 	else
 	{
 		delete forma;
-		Free();
 	}
 }
 //---------------------------------------------------------------------------
@@ -147,7 +139,7 @@ void __fastcall TForma_ekran_startowy::Btn_rejestracjaClick(TObject *Sender)
 {
 	Edit_haslo->Text = "";
 
-	TForma_rejestracja * forma = new TForma_rejestracja (this);
+	TForma_rejestracja * forma = new TForma_rejestracja (this, ADOConnection1);
 	if (forma->ShowModal())
 	{
 		delete forma;
@@ -155,7 +147,6 @@ void __fastcall TForma_ekran_startowy::Btn_rejestracjaClick(TObject *Sender)
 	else
 	{
 		delete forma;
-		Free();
 	}
 }
 //---------------------------------------------------------------------------

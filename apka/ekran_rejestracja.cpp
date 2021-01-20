@@ -5,15 +5,16 @@
 
 #include "ekran_rejestracja.h"
 
-
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma resource "*.fmx"
 TForma_rejestracja *Forma_rejestracja;
+TADOConnection* ADOConnection;
 //---------------------------------------------------------------------------
-__fastcall TForma_rejestracja::TForma_rejestracja(TComponent* Owner)
+__fastcall TForma_rejestracja::TForma_rejestracja(TComponent* Owner, TADOConnection* a_ADOConnection)
 	: TForm(Owner)
 {
+	ADOConnection = a_ADOConnection;
 }
 //---------------------------------------------------------------------------
 void __fastcall TForma_rejestracja::Btn_co_to_loginClick(TObject *Sender)
@@ -62,30 +63,45 @@ void __fastcall TForma_rejestracja::ListBoxItem_FirmaClick(TObject *Sender)
 }
 //---------------------------------------------------------------------------
 
-void TForma_rejestracja::rejestracja_klient()
+void TForma_rejestracja::rejestracja(int typ)
 {
-	Klient* Klient_rejestracja = new Klient("brak_danych",NULL,"brak_danych","brak_danych");
-	Klient_rejestracja->edytuj_dane(AnsiString(Edit_email->Text).c_str(),AnsiString(Edit_haslo->Text).c_str());
-	Klient_rejestracja->ustaw_nazwe_klienta(AnsiString(Edit_login->Text).c_str());
+	TADOQuery* Query = new TADOQuery(NULL);
+	Query -> Connection = ADOConnection;
 
+	Query -> SQL -> Clear();
+	Query -> SQL -> Add("INSERT into dbo.uzytkownicy ");
+	Query -> SQL -> Add("(login, haslo, email, typ) ");
+	Query -> SQL -> Add("VALUES (trim(:login), trim(:haslo), trim(:email), :typ )");
 
+	Query -> Parameters -> ParamByName("login") -> Value = Edit_login -> Text;
+	Query -> Parameters -> ParamByName("haslo") -> Value = Edit_haslo -> Text;
+	Query -> Parameters -> ParamByName("email") -> Value = Edit_email -> Text;
+	Query -> Parameters -> ParamByName("typ") 	-> Value = typ;
 
-	 //!!!
-	delete Klient_rejestracja;
+    Query -> ExecSQL();
+
+    delete Query;
 }
 
-void TForma_rejestracja::rejestracja_firma()
+bool TForma_rejestracja::sprawdzEmail()
 {
-	Firma* Firma_rejestracja = new Firma("brak_danych",NULL,"brak_danych","brak_danych");
-	Firma_rejestracja->edytuj_dane(AnsiString(Edit_email->Text).c_str(),AnsiString(Edit_haslo->Text).c_str());
-	Firma_rejestracja->ustaw_nazwe_firmy(AnsiString(Edit_login->Text).c_str());
+	TADOQuery* Query = new TADOQuery(NULL);
+	Query -> Connection = ADOConnection;
 
+	Query -> SQL -> Clear();
+	Query -> SQL -> Add("SELECT trim(email) as email from dbo.dane where email = trim('"+Edit_email->Text+"')");
 
-
-	//!!!
-	delete Firma_rejestracja;
-	//dodaæ do listy firm
+	if (Query -> FieldByName("email")->AsString != "")
+	{
+        delete Query;
+		return true;
+	}else
+	{
+		delete Query;
+		return false;
+	}
 }
+
 
 void __fastcall TForma_rejestracja::Btn_rejestracjaClick(TObject *Sender)
 {
@@ -104,9 +120,9 @@ void __fastcall TForma_rejestracja::Btn_rejestracjaClick(TObject *Sender)
 	{
 		Text_blad->Text = "brak emaila";
 	}
-	else if (/*jeœli email ju¿ by³*/false)
+	else if (false)//!sprawdzEmail())
 	{
-
+        Text_blad->Text = "podany email istenieje";
 	}
 	//coœ jest puste
 	else if (CheckBox_haslo->IsChecked == false)
@@ -121,15 +137,15 @@ void __fastcall TForma_rejestracja::Btn_rejestracjaClick(TObject *Sender)
 	//jeœli to klient
 	else if(ListBoxItem_Klient->IsChecked == true)
 	{
-		rejestracja_klient();
+		rejestracja(1);
+		ModalResult = 1;
 	}
 	//jeœli to firma
 	else if(ListBoxItem_Firma->IsChecked == true)
 	{
-		rejestracja_firma();
+		rejestracja(2);
+		ModalResult = 1;
 	}
-
-
 }
 //---------------------------------------------------------------------------
 

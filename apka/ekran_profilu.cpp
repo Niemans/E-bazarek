@@ -87,9 +87,9 @@ void __fastcall TForm1::Btn_usun_kontoClick(TObject *Sender)
 
 void __fastcall TForm1::Btn_zmien_daneClick(TObject *Sender)
 {
-	Edit_email->ReadOnly = false;
-	Edit_login->ReadOnly = false;
-	Edit_haslo->ReadOnly = false;
+	Edit_email->Enabled = true;
+	Edit_login->Enabled = true;
+	Edit_haslo->Enabled = true;
 }
 //---------------------------------------------------------------------------
 
