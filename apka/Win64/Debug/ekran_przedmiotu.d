@@ -346,4 +346,4 @@
   c:\program\ files\ (x86)\embarcadero\studio\20.0\include\windows\fmx\FMX.Memo.hpp \
   c:\program\ files\ (x86)\embarcadero\studio\20.0\include\windows\fmx\FMX.Memo.Types.hpp \
   c:\program\ files\ (x86)\embarcadero\studio\20.0\include\windows\fmx\FMX.TreeView.hpp \
-  A:\Patryk\E-bazarek-backup\E-bazarek\apka/ekran_przedmiotu.h
+  C:\Users\lukas\OneDrive\Pulpit\studia\s3\e-bazarek\repo\E-bazarek\apka/ekran_przedmiotu.h

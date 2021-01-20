@@ -346,12 +346,12 @@
   c:\program\ files\ (x86)\embarcadero\studio\20.0\include\windows\fmx\FMX.Memo.hpp \
   c:\program\ files\ (x86)\embarcadero\studio\20.0\include\windows\fmx\FMX.Memo.Types.hpp \
   c:\program\ files\ (x86)\embarcadero\studio\20.0\include\windows\fmx\FMX.TreeView.hpp \
-  A:\Patryk\E-bazarek-backup\E-bazarek\apka/ekran_ebazarek.h \
+  C:\Users\lukas\OneDrive\Pulpit\studia\s3\e-bazarek\repo\E-bazarek\apka/ekran_ebazarek.h \
   c:\program\ files\ (x86)\embarcadero\studio\20.0\include\windows\fmx\FMX.Gestures.hpp \
   c:\program\ files\ (x86)\embarcadero\studio\20.0\include\windows\fmx\FMX.Grid.Style.hpp \
   c:\program\ files\ (x86)\embarcadero\studio\20.0\include\windows\fmx\FMX.Presentation.Style.hpp \
   c:\program\ files\ (x86)\embarcadero\studio\20.0\include\windows\fmx\FMX.ScrollBox.Style.hpp \
-  A:\Patryk\E-bazarek-backup\E-bazarek\apka/../class_library/class_library.h \
+  C:\Users\lukas\OneDrive\Pulpit\studia\s3\e-bazarek\repo\E-bazarek\apka/../class_library/class_library.h \
   c:\program\ files\ (x86)\embarcadero\studio\20.0\include\dinkumware64\string \
   c:\program\ files\ (x86)\embarcadero\studio\20.0\include\dinkumware64\vector \
   c:\program\ files\ (x86)\embarcadero\studio\20.0\include\dinkumware64\xmemory \
@@ -379,8 +379,8 @@
   c:\program\ files\ (x86)\embarcadero\studio\20.0\include\windows\sdk/transact.h \
   c:\program\ files\ (x86)\embarcadero\studio\20.0\include\windows\sdk\accctrl.h \
   c:\program\ files\ (x86)\embarcadero\studio\20.0\include\windows\rtl\Winapi.ADOInt.hpp \
-  A:\Patryk\E-bazarek-backup\E-bazarek\apka/ekran_przedmiotu.h \
-  A:\Patryk\E-bazarek-backup\E-bazarek\apka/ekran_startowy.h \
+  C:\Users\lukas\OneDrive\Pulpit\studia\s3\e-bazarek\repo\E-bazarek\apka/ekran_przedmiotu.h \
+  C:\Users\lukas\OneDrive\Pulpit\studia\s3\e-bazarek\repo\E-bazarek\apka/ekran_startowy.h \
   c:\program\ files\ (x86)\embarcadero\studio\20.0\include\windows\fmx\FMX.Colors.hpp \
-  A:\Patryk\E-bazarek-backup\E-bazarek\apka/ekran_boczne_menu.h \
-  A:\Patryk\E-bazarek-backup\E-bazarek\apka/ekran_rejestracja.h
+  C:\Users\lukas\OneDrive\Pulpit\studia\s3\e-bazarek\repo\E-bazarek\apka/ekran_boczne_menu.h \
+  C:\Users\lukas\OneDrive\Pulpit\studia\s3\e-bazarek\repo\E-bazarek\apka/ekran_rejestracja.h

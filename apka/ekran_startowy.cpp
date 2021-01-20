@@ -75,9 +75,6 @@ void __fastcall TForma_ekran_startowy::Btn_logowanieClick(TObject *Sender)
 
 		Forma_ekran_bazarek->zmien_zalogowane(typ);
 
-		if(typ == 1) Forma_ekran_bazarek -> MojKlient = new Klient(login.c_str(), NULL, email.c_str(), haslo.c_str(), id);
-		else if (typ == 2) Forma_ekran_bazarek -> MojKlient = new Klient(login.c_str(), NULL, email.c_str(), haslo.c_str(), id);
-
 		delete Query;
 
 		ModalResult = 1;
