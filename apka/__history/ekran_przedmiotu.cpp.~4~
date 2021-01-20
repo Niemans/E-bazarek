@@ -20,7 +20,7 @@ void __fastcall TForm_ekran_przedmiotu::FormClose(TObject *Sender, TCloseAction 
     Close();
 }
 //---------------------------------------------------------------------------
-void __fastcall TForm_ekran_przedmiotu::Image_paskiDblClick(TObject *Sender)
+void __fastcall TForm_ekran_przedmiotu::Image1DblClick(TObject *Sender)
 {
     ModalResult = 1;
 }
