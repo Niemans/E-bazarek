@@ -49,9 +49,10 @@ public:
 	Licytacja(std::string nazwaLicytacji, unsigned int iloscPrzedmiotow, unsigned int id_wystawiajacego, unsigned int cenaWywolawcza, std::string opisPrzedmiotu, unsigned int czas);		//zrobione
 	Licytacja* podaj_adres_nastepnej_licytacji();		//zwraca next													zrobione
 	void wygrana();										//metoda wkladajaca wygrany przedmiot do koszyka zwyciezcy		do zrobienia
-	void dodaj_historie(HistoriaLicytacji* toAdd);		//metoda dodajaca historie (najnowsza cene) do historii			zrobione
+	void dodaj_historie(HistoriaLicytacji* toAdd);		//metoda dodajaca historie (najnowsza cene) do historii			zrobione, w zasadzie bezuzyteczne bo mamy dodaj oferte
 	int dodaj_oferte(unsigned int nowaCena, std::string nazwaUczestnika);			//funkcja dodajaca oferte			zrobione
-	void ustaw_nastepna_licytacje(Licytacja* nastepnaLicytacja);
+	void ustaw_nastepna_licytacje(Licytacja* nastepnaLicytacja);					//ustawia next						zrobione
+	HistoriaLicytacji* zwroc_historie_licytacji();									//zwraca head, slozy do wypisywania historii w okienku		zrobione
 };
 
 

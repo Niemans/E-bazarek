@@ -158,6 +158,12 @@ void Licytacja::ustaw_nastepna_licytacje(Licytacja* nastepnaLicytacja)
 	next = nastepnaLicytacja;
 }
 
+	//zwraca head, slozy do wypisywania historii w okienku
+HistoriaLicytacji* Licytacja::zwroc_historie_licytacji()
+{
+	return head;
+}
+
 
 		//metody klasy Osoba
 
