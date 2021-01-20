@@ -191,6 +191,17 @@ void Osoba::edytuj_dane(std::string newMail, std::string newHaslo)
 	mail = newMail;
 	haslo = newHaslo;
 }
+
+void Osoba::edytuj_email(std::string newMail)
+{
+	mail = newMail;
+}
+
+void Osoba::edytuj_haslo(std::string newHaslo)
+{
+	haslo = newHaslo;
+}
+
 	
 	//funkcja zwracajaca id
 unsigned int Osoba::podaj_id()
@@ -508,11 +519,11 @@ Firma* ListaFirm::wyszukaj_firme(unsigned int id_firmy)
 }
 
 	//funkcja wyszukuje firme po nazwie
-Firma* ListaFirm::wyszukaj_firme(std::string nazwa_firmy)
+Firma* ListaFirm::wyszukaj_firme(std::string email_firmy)
 {
 	Firma* pom = head;		//wskaznik pomocniczy - ustawiamy najpierw na glowe
 
-	while (pom != NULL && pom->podaj_nazwe_firmy() != nazwa_firmy)
+	while (pom != NULL && pom->podaj_email() != email_firmy)
 	{
 		pom = pom->podaj_wskaznik_next_firmy();		//dopoki nie znajdziemy firmy o danej nazwie lub nie dotrzemy do konca listy - przechodzimy kolejne welzy
 	}
@@ -624,11 +635,11 @@ Klient* ListaKlientow::wyszukaj_klienta(unsigned int id_klienta)
 }
 
 //funkcja wyszukuje klienta po nazwie
-Klient* ListaKlientow::wyszukaj_klienta(std::string nazwa_klienta)
+Klient* ListaKlientow::wyszukaj_klienta(std::string email_klienta)
 {
 	Klient* pom = head;		//wskaznik pomocniczy - ustawiamy najpierw na glowe
 
-	while (pom != NULL && pom->podaj_nazwe_klienta() != nazwa_klienta)
+	while (pom != NULL && pom->podaj_email() != email_klienta)
 	{
 		pom = pom->podaj_wskaznik_next_klienta();		//dopoki nie znajdziemy klienta o danej nazwie lub nie dotrzemy do konca listy - przechodzimy kolejne welzy
 	}

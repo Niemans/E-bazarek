@@ -14,14 +14,47 @@ __fastcall TForm_ekran_przedmiotu::TForm_ekran_przedmiotu(TComponent* Owner)
 {
 }
 //---------------------------------------------------------------------------
-void __fastcall TForm_ekran_przedmiotu::Button1Click(TObject *Sender)
-{
- ModalResult = 1;
-}
-//---------------------------------------------------------------------------
 void __fastcall TForm_ekran_przedmiotu::FormClose(TObject *Sender, TCloseAction &Action)
 
 {
     Close();
 }
 //---------------------------------------------------------------------------
+void __fastcall TForm_ekran_przedmiotu::Image_paskiDblClick(TObject *Sender)
+{
+    ModalResult = 1;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm_ekran_przedmiotu::FormActivate(TObject *Sender)
+{
+	/*
+	jeœli to licytacja, to:
+	Text_napis_kwota->Text = "aktualna cena";
+	btn_kupTeraz->Visible = false;
+	btn_doKoszyka->Visible = false;
+	btn_licytuj->Visible = true;
+	*/
+
+
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm_ekran_przedmiotu::btn_kupTerazClick(TObject *Sender)
+{
+    //po³¹czenie z zakupieniem
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm_ekran_przedmiotu::btn_doKoszykaClick(TObject *Sender)
+{
+    //dodanie do koszyka i wyjœcie
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm_ekran_przedmiotu::btn_licytujClick(TObject *Sender)
+{
+    //przejœcie do licytacji
+}
+//---------------------------------------------------------------------------
+

@@ -1,12 +1,6 @@
 ﻿[Image_arrow]
 Coordinates=304,10,89,58
 
-[Image_EB]
-Coordinates=301,78,74,58
-
-[ColorBox_biel]
-Coordinates=254,146,95,36
-
 [Image_dom]
 Coordinates=119,78,82,58
 
@@ -23,7 +17,7 @@ Coordinates=218,10,76,58
 Coordinates=10,78,99,58
 
 []
-Coordinates=35,173,91,36
+Coordinates=301,78,74,58
 
 [Btn_przedmioty]
 Coordinates=122,146,104,58

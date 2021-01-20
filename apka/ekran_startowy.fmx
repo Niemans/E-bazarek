@@ -46,7 +46,6 @@ object Forma_ekran_startowy: TForma_ekran_startowy
     Caret.Color = claGreen
   end
   object CheckBox_robot: TCheckBox
-    Align = Scale
     Anchors = [akLeft, akTop, akRight]
     StyledSettings = [Family, Style]
     Position.X = 16.000000000000000000
@@ -403,8 +402,7 @@ object Forma_ekran_startowy: TForma_ekran_startowy
     end
   end
   object Text_brak_konta: TText
-    Align = Scale
-    Anchors = [akLeft, akTop]
+    Anchors = [akLeft, akTop, akRight]
     Position.Y = 504.000000000000000000
     Size.Width = 400.000000000000000000
     Size.Height = 25.000000000000000000
@@ -412,8 +410,7 @@ object Forma_ekran_startowy: TForma_ekran_startowy
     Text = 'Nie masz jeszcze konta?'
   end
   object Text_blad: TText
-    Align = Scale
-    Anchors = [akLeft, akTop]
+    Anchors = [akLeft, akTop, akRight]
     Margins.Bottom = 10.000000000000000000
     Position.Y = 392.000000000000000000
     Size.Width = 400.000000000000000000
