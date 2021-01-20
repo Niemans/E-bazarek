@@ -804,10 +804,6 @@ object Forma_ekran_bazarek: TForma_ekran_bazarek
     Top = 296
   end
   object ADOConnection: TADOConnection
-    ConnectionString = 
-      'Provider=SQLOLEDB.1;Password=Qwerty123;Persist Security Info=Tru' +
-      'e;User ID=SYSDBA;Data Source=ebazarek.database.windows.net'
-    Provider = 'SQLOLEDB.1'
     Left = 360
     Top = 352
   end
