@@ -117,6 +117,7 @@ void __fastcall TForma_ekran_bazarek::Image1Click(TObject *Sender)
 	TForma_boczne_menu *Form_boczne_menu = new TForma_boczne_menu(this, ADOConnection);
 	Form_boczne_menu->ShowModal();
 	delete Form_boczne_menu;
+    WczytajDane();
 }
 //---------------------------------------------------------------------------
 

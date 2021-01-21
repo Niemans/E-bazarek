@@ -88,10 +88,12 @@ void __fastcall TForma_ekran_bazarek::WczytajDane()
 		Grid->RowCount = count + 1;
 		count = Grid->RowCount;
 
-		Grid->Cells[grid_colNazwa->Ite][count - 1] =
+		Grid->Cells[grid_colNazwa->Index][count - 1] =
 			Query -> FieldByName("nazwa") -> AsString + "\n\nOpis:\n" + Query -> FieldByName("Opis")->AsString;
-		Grid->Cells[1][count - 1] =
+		Grid->Cells[grid_colKwota->Index][count - 1] =
 			Query -> FieldByName("kwota") -> AsFloat;
+		Grid->Cells[grid_colId->Index][count - 1] =
+			Query -> FieldByName("id") -> AsString;
 
         Query -> Next();
 	}
@@ -104,9 +106,9 @@ void __fastcall TForma_ekran_bazarek::WczytajDane()
 void __fastcall TForma_ekran_bazarek::grid_colNazwaTap(TObject *Sender, const TPointF &Point)
 
 {
-	TForm_ekran_przedmiotu *Form_ekran_przedmiotu = new TForm_ekran_przedmiotu(this);
-	Form_ekran_przedmiotu->ShowModal();
-	delete Form_ekran_przedmiotu;
+//	TForm_ekran_przedmiotu *Form_ekran_przedmiotu = new TForm_ekran_przedmiotu(this);
+//	Form_ekran_przedmiotu->ShowModal();
+//	delete Form_ekran_przedmiotu;
 }
 //---------------------------------------------------------------------------
 
@@ -153,4 +155,14 @@ void __fastcall TForma_ekran_bazarek::edit_szukajChange(TObject *Sender)
 
 
 
+
+void __fastcall TForma_ekran_bazarek::GridCellClick(TColumn * const Column, const int Row)
+
+{
+	int id = Grid->Cells[grid_colId->Index][Row].ToInt();
+	TForm_ekran_przedmiotu * ekran_przedmiotu = new TForm_ekran_przedmiotu(this, ADOConnection, id);
+	ekran_przedmiotu -> ShowModal();
+    delete ekran_przedmiotu;
+}
+//---------------------------------------------------------------------------
 
