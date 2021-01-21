@@ -1,7 +1,4 @@
-﻿[text_opis]
-Coordinates=164,78,66,58
-
-[Image_paski]
+﻿[Image_paski]
 Coordinates=237,10,87,58
 
 [Btn_doKoszyka]
@@ -28,9 +25,6 @@ Coordinates=240,78,94,58
 [Image_EB]
 Coordinates=344,78,74,58
 
-[Text_nazwa]
-Coordinates=10,146,84,58
-
 []
 Coordinates=322,269,91,36
 
@@ -43,4 +37,10 @@ Coordinates=97,78,57,58
 
 [ImageControl_przedmiot]
 Coordinates=128,10,99,58
+
+[Text_nazwa]
+Coordinates=10,146,84,58
+
+[Text_opis]
+Coordinates=164,78,66,58
 

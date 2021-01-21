@@ -12,6 +12,8 @@
 #include <FMX.Objects.hpp>
 #include <FMX.Types.hpp>
 #include <FMX.StdCtrls.hpp>
+
+#include "ekran_ebazarek.h"
 //---------------------------------------------------------------------------
 class TForm_profil : public TForm
 {
@@ -33,17 +35,16 @@ __published:	// IDE-managed Components
 	TButton *Btn_zmien_dane;
 	TButton *Btn_usun_konto;
 	TText *Text_informacja;
+	TButton *btn_potwierdz;
 	void __fastcall FormActivate(TObject *Sender);
 	void __fastcall Image_okoClick(TObject *Sender);
 	void __fastcall Image_paskiClick(TObject *Sender);
 	void __fastcall Btn_usun_kontoClick(TObject *Sender);
 	void __fastcall Btn_zmien_daneClick(TObject *Sender);
-	void __fastcall Edit_loginChange(TObject *Sender);
-	void __fastcall Edit_emailChange(TObject *Sender);
-	void __fastcall Edit_hasloChange(TObject *Sender);
+	void __fastcall btn_potwierdzClick(TObject *Sender);
 private:	// User declarations
 public:		// User declarations
-	__fastcall TForm_profil(TComponent* Owner);
+	__fastcall TForm_profil(TComponent* Owner, TADOConnection * a_ADOConnection);
 };
 //---------------------------------------------------------------------------
 extern PACKAGE TForm_profil *Form_profil;

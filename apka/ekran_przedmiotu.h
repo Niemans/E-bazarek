@@ -12,12 +12,14 @@
 #include <FMX.Types.hpp>
 #include <FMX.Colors.hpp>
 #include <FMX.Edit.hpp>
+
+#include "ekran_ebazarek.h"
 //---------------------------------------------------------------------------
 class TForm_ekran_przedmiotu : public TForm
 {
 __published:	// IDE-managed Components
 	TText *text_napis_nazwa;
-	TText *text_opis;
+	TText *Text_opis;
 	TButton *Btn_doKoszyka;
 	TButton *Btn_kupTeraz;
 	TButton *Btn_licytuj;
@@ -43,7 +45,7 @@ __published:	// IDE-managed Components
 	void __fastcall Btn_doKoszykaClick(TObject *Sender);
 private:	// User declarations
 public:		// User declarations
-	__fastcall TForm_ekran_przedmiotu(TComponent* Owner);
+	__fastcall TForm_ekran_przedmiotu(TComponent* Owner, TADOConnection * a_ADOConnection, int a_id);
 };
 //---------------------------------------------------------------------------
 extern PACKAGE TForm_ekran_przedmiotu *Form_ekran_przedmiotu;

@@ -14,6 +14,9 @@
 #include <FMX.Grid.Style.hpp>
 #include <FMX.ScrollBox.hpp>
 #include <System.Rtti.hpp>
+#include <FMX.StdCtrls.hpp>
+
+#include "ekran_ebazarek.h"
 //---------------------------------------------------------------------------
 class TForma_listy_przedmiotow : public TForm
 {
@@ -29,11 +32,15 @@ __published:	// IDE-managed Components
 	TText *Text_przedmiot;
 	TText *Text_koszt;
 	TText *Text_edycja;
+	TButton *btn_przedmiot;
+	TButton *btn_licytacja;
+	TStringColumn *grid_colId;
 	void __fastcall Image_paskiClick(TObject *Sender);
 	void __fastcall FormClose(TObject *Sender, TCloseAction &Action);
 private:	// User declarations
+	void __fastcall WczytajDane();
 public:		// User declarations
-	__fastcall TForma_listy_przedmiotow(TComponent* Owner);
+	__fastcall TForma_listy_przedmiotow(TComponent* Owner, TADOConnection* a_ADOConnection);
 };
 //---------------------------------------------------------------------------
 extern PACKAGE TForma_listy_przedmiotow *Forma_listy_przedmiotow;

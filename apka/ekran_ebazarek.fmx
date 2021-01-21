@@ -401,10 +401,12 @@ object Forma_ekran_bazarek: TForma_ekran_bazarek
     Size.Width = 401.000000000000000000
     Size.Height = 617.000000000000000000
     Size.PlatformDefault = False
+    TextSettings.VertAlign = Leading
     TabOrder = 3
     RowHeight = 120.000000000000000000
     RowCount = 0
     Options = [ColumnResize, ColumnMove, ColLines, RowLines, Tabs, HeaderClick, AutoDisplacement]
+    OnCellClick = GridCellClick
     Viewport.Width = 401.000000000000000000
     Viewport.Height = 617.000000000000000000
     object grid_colNazwa: TStringColumn
@@ -413,6 +415,9 @@ object Forma_ekran_bazarek: TForma_ekran_bazarek
     end
     object grid_colKwota: TCurrencyColumn
       Size.Width = 117.000000000000000000
+    end
+    object grid_colId: TStringColumn
+      Visible = False
     end
   end
   object ImageList1: TImageList

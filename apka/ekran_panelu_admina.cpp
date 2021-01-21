@@ -4,15 +4,17 @@
 #pragma hdrstop
 
 #include "ekran_panelu_admina.h"
-#include "../class_library/class_library.h"
+
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma resource "*.fmx"
 TForm_ekran_panelu_admina *Form_ekran_panelu_admina;
+TADOConnection * ADOConnection_admin;
 //---------------------------------------------------------------------------
-__fastcall TForm_ekran_panelu_admina::TForm_ekran_panelu_admina(TComponent* Owner)
+__fastcall TForm_ekran_panelu_admina::TForm_ekran_panelu_admina(TComponent* Owner, TADOConnection* a_ADOConnection)
 	: TForm(Owner)
 {
+	ADOConnection_admin= a_ADOConnection;
 }
 //---------------------------------------------------------------------------
 void __fastcall TForm_ekran_panelu_admina::Btn_anulujClick(TObject *Sender)
@@ -22,33 +24,106 @@ void __fastcall TForm_ekran_panelu_admina::Btn_anulujClick(TObject *Sender)
     Memo_komentarz->Text = "";
 }
 //---------------------------------------------------------------------------
+bool TForm_ekran_panelu_admina::sprawdzIDprzedm()
+{
+	TADOQuery* Query = new TADOQuery(NULL);
+	Query -> Connection = ADOConnection_admin;
+
+	Query -> SQL -> Clear();
+
+	Query -> SQL -> Add("SELECT id from dbo.dane where id = :idK");
+	Query -> Parameters -> ParamByName("idK") -> Value = Edit_usun_przedmiot->Text.ToInt();
+
+	Query -> Open();
+
+	if (Query -> FieldByName("id")->AsInteger > 0)
+	{
+		delete Query;
+		return true;
+	}
+	else
+	{
+		delete Query;
+		return false;
+	}
+
+}
+//--------------------------------------------------------------------------
+bool TForm_ekran_panelu_admina::sprawdzIDu()
+{
+    TADOQuery* Query = new TADOQuery(NULL);
+	Query -> Connection = ADOConnection_admin;
+
+	Query -> SQL -> Clear();
+
+	Query -> SQL -> Add("SELECT id,email from dbo.uzytkownicy where id = :idK");
+	Query -> Parameters -> ParamByName("idK") -> Value = Edit_usun_uzytkownika->Text.ToInt();
+
+	Query -> Open();
+
+	if (Query -> FieldByName("email")->AsString != "")
+	{
+		delete Query;
+		return true;
+	}
+	else
+	{
+		delete Query;
+		return false;
+	}
+}
+//---------------------------------------------------------------------------
 void __fastcall TForm_ekran_panelu_admina::Btn_usunClick(TObject *Sender)
 {
+	TADOQuery* Query = new TADOQuery(NULL);
+	Query -> Connection = ADOConnection_admin;
 
+	Query -> SQL -> Clear();
 
-	if (Edit_usun_przedmiot->Text == "" && Edit_usun_uzytkownika->Text == "")
+	if (Edit_usun_przedmiot->Text == "")
 	{
 		Text_blad->Text = "brak wpisanego ID";
 	}
 	else
 	{
 		Text_blad->Text = "";
+		if(!sprawdzIDprzedm())   //czy istnieje id
+		{
+			Text_blad->Text = "brak takiego ID";
+		}
+		else
+		{
+			Query -> SQL -> Add("DELETE FROM dbo.dane WHERE id = :idK");
+			Query -> Parameters -> ParamByName("idK") -> Value = Edit_usun_przedmiot->Text.ToInt();
+			Query -> ExecSQL();
+			ShowMessage("Usuniêto przedmiot");
+		}
+
 	}
 
-	//szukanie ID
+	if(Edit_usun_uzytkownika->Text == "")
+	{
 
-	if(/*brak podaneo ID*/false)
-	{
-		Text_blad->Text = "brak takiego ID";
 	}
-	else if(Edit_usun_przedmiot->Text != "")
+    else
 	{
-	 //usuwanie przedmiotu
+		Text_blad->Text = "";
+		if(!sprawdzIDu())    //czy istnieje id
+		{
+			Text_blad->Text = "brak takiego ID";
+		}
+		else
+		{
+			Query -> SQL -> Add("DELETE FROM dbo.uzytkownicy WHERE id = :idK");
+			Query -> Parameters -> ParamByName("idK") -> Value = Edit_usun_uzytkownika->Text.ToInt();
+			Query -> ExecSQL();
+			ShowMessage("Usuniêto u¿ytkownika");
+		}
+
 	}
-	else if(Edit_usun_uzytkownika->Text != "")
-	{
-	 //usuwa u¿ytkownika i jego przedmioty
-	}
+
+
+	delete Query;
 }
 //---------------------------------------------------------------------------
 

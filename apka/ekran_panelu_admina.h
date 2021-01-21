@@ -14,6 +14,8 @@
 #include <FMX.Memo.hpp>
 #include <FMX.ScrollBox.hpp>
 #include <FMX.StdCtrls.hpp>
+
+#include "ekran_ebazarek.h"
 //---------------------------------------------------------------------------
 class TForm_ekran_panelu_admina : public TForm
 {
@@ -36,7 +38,9 @@ __published:	// IDE-managed Components
 	void __fastcall FormClose(TObject *Sender, TCloseAction &Action);
 private:	// User declarations
 public:		// User declarations
-	__fastcall TForm_ekran_panelu_admina(TComponent* Owner);
+	__fastcall TForm_ekran_panelu_admina(TComponent* Owner, TADOConnection* a_ADOConnection);
+	bool sprawdzIDprzedm();
+	bool sprawdzIDu();
 };
 //---------------------------------------------------------------------------
 extern PACKAGE TForm_ekran_panelu_admina *Form_ekran_panelu_admina;

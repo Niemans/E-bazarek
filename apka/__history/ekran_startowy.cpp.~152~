@@ -33,7 +33,7 @@ void __fastcall TForma_ekran_startowy::Btn_logowanieClick(TObject *Sender)
 	else if(Edit_haslo->Text == "")
 	{
 		Text_blad->Visible = true;
-		Text_blad->Text = "Brak napisanego has³a";
+		Text_blad->Text = "Brak napisanego hasï¿½a";
 		blad = 1;
 	}
 	else if(ListBoxItem_Klient->IsChecked == false && ListBoxItem_Firma->IsChecked == false)
@@ -83,7 +83,7 @@ void __fastcall TForma_ekran_startowy::Btn_logowanieClick(TObject *Sender)
 		ModalResult = 1;
 	}else
 	{
-		ShowMessage("B³êdne dane");
+		ShowMessage("Bï¿½ï¿½dne dane");
         delete Query;
 	}
 

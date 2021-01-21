@@ -12,10 +12,40 @@
 #pragma package(smart_init)
 #pragma resource "*.fmx"
 TForm_ekran_przedmiotu *Form_ekran_przedmiotu;
+TADOConnection * ADOConnection3;
+int id;
+float koszt_baza;
+int licytacja;
 //---------------------------------------------------------------------------
-__fastcall TForm_ekran_przedmiotu::TForm_ekran_przedmiotu(TComponent* Owner)
+__fastcall TForm_ekran_przedmiotu::TForm_ekran_przedmiotu(TComponent* Owner, TADOConnection * a_ADOConnection, int a_id)
 	: TForm(Owner)
 {
+	id 			  = a_id;
+	ADOConnection3 = a_ADOConnection;
+
+	TADOQuery * Query = new TADOQuery(NULL);
+	Query -> Connection = ADOConnection3;
+
+	Query -> SQL -> Clear();
+	Query -> SQL -> Add("SELECT trim(nazwa) as nazwa ,trim(opis) as opis,kwota,id,id_parent,ilosc,licytacja from dbo.dane ");
+	Query -> SQL -> Add("where id = :id");
+
+	Query -> Parameters -> ParamByName("id") -> Value = id;
+
+	Query -> Open();
+
+	licytacja 		   = Query -> FieldByName("licytacja") -> Value;
+
+	koszt_baza		   = Query -> FieldByName("kwota") -> AsFloat * Edit_kupowana_liczba->Text.ToInt();
+
+	Text_nazwa -> Text = Query -> FieldByName("nazwa") -> AsString;
+    Text_ilosc -> Text = Query -> FieldByName("ilosc") -> AsInteger;
+	Text_opis  -> Text = Query -> FieldByName("opis")  -> AsString;
+    Edit_koszt -> Text = koszt_baza;
+
+	Query -> Close();
+
+	delete Query;
 }
 //---------------------------------------------------------------------------
 void __fastcall TForm_ekran_przedmiotu::FormClose(TObject *Sender, TCloseAction &Action)
@@ -42,10 +72,11 @@ void __fastcall TForm_ekran_przedmiotu::Btn_licytujClick(TObject *Sender)
 void __fastcall TForm_ekran_przedmiotu::FormActivate(TObject *Sender)
 {
 	//Jeœli to licytacja, to:
-
-	//Btn_licytuj->Visible = true;
-	//Btn_kupTeraz->Visible = false;
-	//Btn_doKoszyka->Visible = false;
+	if (licytacja) {
+		Btn_licytuj->Visible = true;
+		Btn_kupTeraz->Visible = false;
+		Btn_doKoszyka->Visible = false;
+	}
 }
 //---------------------------------------------------------------------------
 
@@ -68,15 +99,13 @@ void __fastcall TForm_ekran_przedmiotu::Btn_kupTerazClick(TObject *Sender)
 
 void __fastcall TForm_ekran_przedmiotu::Edit_kupowana_liczbaChange(TObject *Sender)
 {
-	char pomoc;
-	for(int i = 0; Edit_kupowana_liczba->Text[i] != '\0' ; i++)
+	if (Edit_kupowana_liczba -> Text.ToInt() > Text_ilosc -> Text.ToInt())
+        ShowMessage("Nie ma tylu sztuk");
+	else
 	{
-		pomoc = Edit_kupowana_liczba->Text[i];
-		if (pomoc < '0' || pomoc > '9')
-		{
-			Edit_kupowana_liczba->Text[i] = '0';
-        }
-	}
+		if(Edit_koszt -> Text != NULL)
+		Edit_koszt -> Text = (koszt_baza) * (Edit_kupowana_liczba -> Text.ToInt());
+    }
 }
 //---------------------------------------------------------------------------
 

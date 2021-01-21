@@ -12,6 +12,7 @@
 
 TForma_ekran_startowy * Forma_ekran_startowy;
 TADOConnection * ADOConnection1;
+bool bez_konta = false;
 
 //---------------------------------------------------------------------------
 __fastcall TForma_ekran_startowy::TForma_ekran_startowy(TComponent* Owner, TADOConnection *a_ADOConnection)
@@ -80,6 +81,7 @@ void __fastcall TForma_ekran_startowy::Btn_logowanieClick(TObject *Sender)
 
 		delete Query;
 
+		bez_konta = true;
 		ModalResult = 1;
 	}else
 	{
@@ -131,6 +133,9 @@ void __fastcall TForma_ekran_startowy::Text_kliknijClick(TObject *Sender)
 
 void __fastcall TForma_ekran_startowy::FormClose(TObject *Sender, TCloseAction &Action)
 {
+	if (!bez_konta) {
+		Application -> Terminate();
+	}else
     Close();
 }
 //---------------------------------------------------------------------------
@@ -154,6 +159,7 @@ void __fastcall TForma_ekran_startowy::Btn_rejestracjaClick(TObject *Sender)
 
 void __fastcall TForma_ekran_startowy::Btn_przegladajClick(TObject *Sender)
 {
+	bez_konta = true;
     ModalResult = 1;
 }
 //---------------------------------------------------------------------------

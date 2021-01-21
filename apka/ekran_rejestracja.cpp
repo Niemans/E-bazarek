@@ -49,7 +49,7 @@ void __fastcall TForma_rejestracja::ListBoxItem_KlientClick(TObject *Sender)
 	CheckBox_KF->IsChecked = true;
 	ListBoxItem_Klient->IsChecked = true;
 	ListBoxItem_Firma->IsChecked = false;
-	Text_Btn_co_to_login->Text = "Nazwa, pod któr¹ widz¹ ciê inni u¿ytkownicy";
+	Text_Btn_co_to_login->Text = "Nazwa, pod ktï¿½rï¿½ widzï¿½ ciï¿½ inni uï¿½ytkownicy";
 }
 //---------------------------------------------------------------------------
 
@@ -88,21 +88,21 @@ bool TForma_rejestracja::sprawdzEmail()
 	TADOQuery* Query = new TADOQuery(NULL);
     Query -> Connection = ADOConnection;
 
-    Query -> SQL -> Clear();
-    Query -> SQL -> Add("SELECT email from dbo.uzytkownicy where trim(email) = trim('"+Edit_email->Text+"');");
+	Query -> SQL -> Clear();
+	Query -> SQL -> Add("SELECT email from dbo.uzytkownicy where trim(email) = trim('"+Edit_email->Text+"');");
 
-    Query -> Open();
+	Query -> Open();
 
-    AnsiString x = Query -> FieldByName("email")->AsString;
+	AnsiString x = Query -> FieldByName("email")->AsString;
 
-    if (Query -> FieldByName("email")->AsString != "")
-    {
-        delete Query;
-        return true;
-    }else
-    {
-        delete Query;
-        return false;
+	if (Query -> FieldByName("email")->AsString != "")
+	{
+		delete Query;
+		return true;
+	}else
+	{
+		delete Query;
+		return false;
 	}
 }
 //--------------------------------------------------------------------
@@ -113,12 +113,12 @@ void __fastcall TForma_rejestracja::Btn_rejestracjaClick(TObject *Sender)
 	{
 		Text_blad->Text = "brak zaznaczonego rodzaju konta";
 	}
-	//coœ jest puste
+	//coï¿½ jest puste
 	else if(CheckBox_login->IsChecked == false)
 	{
 		Text_blad->Text = "brak loginu";
 	}
-	//coœ jest puste
+	//coï¿½ jest puste
 	else if (CheckBox_email->IsChecked == false)
 	{
 		Text_blad->Text = "brak emaila";
@@ -127,23 +127,23 @@ void __fastcall TForma_rejestracja::Btn_rejestracjaClick(TObject *Sender)
 	{
         Text_blad->Text = "podany email istenieje";
 	}
-	//coœ jest puste
+	//coï¿½ jest puste
 	else if (CheckBox_haslo->IsChecked == false)
 	{
 		Text_blad->Text = "brak hasla";
 	}
-	//coœ jest puste
+	//coï¿½ jest puste
 	else if (CheckBox_phaslo->IsChecked == false)
 	{
 		Text_blad->Text = "potwierdz haslo powtarzajac je";
 	}
-	//jeœli to klient
+	//jeï¿½li to klient
 	else if(ListBoxItem_Klient->IsChecked == true)
 	{
 		rejestracja(1);
 		ModalResult = 1;
 	}
-	//jeœli to firma
+	//jeï¿½li to firma
 	else if(ListBoxItem_Firma->IsChecked == true)
 	{
 		rejestracja(2);

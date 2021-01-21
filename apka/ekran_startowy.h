@@ -15,6 +15,7 @@
 #include <FMX.Ani.hpp>
 #include <FMX.Layouts.hpp>
 #include <FMX.ListBox.hpp>
+
 #include "ekran_ebazarek.h"
 //---------------------------------------------------------------------------
 class TForma_ekran_startowy : public TForm
