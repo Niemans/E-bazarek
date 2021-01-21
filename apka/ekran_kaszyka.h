@@ -17,6 +17,8 @@
 #include <FMX.Types.hpp>
 #include <System.Rtti.hpp>
 #include <FMX.Edit.hpp>
+
+#include "ekran_ebazarek.h"
 //---------------------------------------------------------------------------
 class TForma_koszyka : public TForm
 {
@@ -31,7 +33,7 @@ __published:	// IDE-managed Components
 	TGestureManager *GestureManager1;
 	TButton *Btn_kup;
 	TButton *Btn_wyczysc_koszyk;
-	TCurrencyColumn *CurrencyColumn1;
+	TCurrencyColumn *grid_colId;
 	TText *Text1;
 	TText *Text2;
 	TEdit *Edit1;
@@ -39,8 +41,9 @@ __published:	// IDE-managed Components
 	void __fastcall FormClose(TObject *Sender, TCloseAction &Action);
 	void __fastcall Image_paskiClick(TObject *Sender);
 private:	// User declarations
+  	void __fastcall WczytajDane();
 public:		// User declarations
-	__fastcall TForma_koszyka(TComponent* Owner);
+	__fastcall TForma_koszyka(TComponent* Owner, TADOConnection* a_ADOConnection);
 };
 //---------------------------------------------------------------------------
 extern PACKAGE TForma_koszyka *Forma_koszyka;

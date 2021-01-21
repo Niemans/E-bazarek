@@ -14,6 +14,8 @@
 #include <FMX.Types.hpp>
 #include <FMX.Memo.hpp>
 #include <FMX.ScrollBox.hpp>
+
+#include "ekran_ebazarek.h"
 //---------------------------------------------------------------------------
 class TForma_edycji : public TForm
 {
@@ -33,15 +35,15 @@ __published:	// IDE-managed Components
 	TText *Text_napis_opis;
 	TEdit *Edit_nazwa;
 	TEdit *Edit_liczba;
-	TMemo *Memo_opis;
+	TEdit *Edit_opis;
 	void __fastcall Image_paskiClick(TObject *Sender);
 	void __fastcall FormClose(TObject *Sender, TCloseAction &Action);
 	void __fastcall Btn_edytujClick(TObject *Sender);
-	void __fastcall Edit_liczbaChange(TObject *Sender);
-	void __fastcall Edit_kosztChange(TObject *Sender);
+	void __fastcall Btn_usunClick(TObject *Sender);
 private:	// User declarations
+    int id;
 public:		// User declarations
-	__fastcall TForma_edycji(TComponent* Owner);
+	__fastcall TForma_edycji(TComponent* Owner, TADOConnection* a_ADOConnection, int a_tryb, int a_id);
 };
 //---------------------------------------------------------------------------
 extern PACKAGE TForma_edycji *Forma_edycji;

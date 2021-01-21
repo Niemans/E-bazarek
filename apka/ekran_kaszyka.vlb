@@ -4,9 +4,6 @@ Coordinates=347,78,118,36
 [Image_paski]
 Coordinates=10,10,87,58
 
-[CurrencyColumn1]
-Coordinates=10,192,118,36
-
 [grid_colNazwa]
 Coordinates=200,146,99,36
 
@@ -37,4 +34,7 @@ Visible=True
 
 []
 Coordinates=130,174,91,36
+
+[grid_colId]
+Coordinates=10,192,118,36
 

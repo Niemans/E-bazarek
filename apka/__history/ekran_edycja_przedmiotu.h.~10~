@@ -1,0 +1,50 @@
+//---------------------------------------------------------------------------
+
+#ifndef ekran_edycja_przedmiotuH
+#define ekran_edycja_przedmiotuH
+//---------------------------------------------------------------------------
+#include <System.Classes.hpp>
+#include <FMX.Controls.hpp>
+#include <FMX.Forms.hpp>
+#include <FMX.Colors.hpp>
+#include <FMX.Controls.Presentation.hpp>
+#include <FMX.Edit.hpp>
+#include <FMX.Objects.hpp>
+#include <FMX.StdCtrls.hpp>
+#include <FMX.Types.hpp>
+#include <FMX.Memo.hpp>
+#include <FMX.ScrollBox.hpp>
+
+#include "ekran_ebazarek.h"
+//---------------------------------------------------------------------------
+class TForma_edycji : public TForm
+{
+__published:	// IDE-managed Components
+	TButton *Btn_usun;
+	TButton *Btn_edytuj;
+	TButton *Btn_licytuj;
+	TColorBox *ColorBox1;
+	TEdit *Edit_koszt;
+	TImage *Image_EB;
+	TImage *Image_paski;
+	TImage *Image_edycja;
+	TImageControl *ImageControl_przedmiot;
+	TText *Text_koszt;
+	TText *Text_napis_ilosc;
+	TText *text_napis_nazwa;
+	TText *Text_napis_opis;
+	TEdit *Edit_nazwa;
+	TEdit *Edit_liczba;
+	TMemo *Memo_opis;
+	void __fastcall Image_paskiClick(TObject *Sender);
+	void __fastcall FormClose(TObject *Sender, TCloseAction &Action);
+	void __fastcall Btn_edytujClick(TObject *Sender);
+	void __fastcall Edit_kosztChange(TObject *Sender);
+private:	// User declarations
+public:		// User declarations
+	__fastcall TForma_edycji(TComponent* Owner, TADOConnection* a_ADOConnection, int a_tryb, int a_id);
+};
+//---------------------------------------------------------------------------
+extern PACKAGE TForma_edycji *Forma_edycji;
+//---------------------------------------------------------------------------
+#endif

@@ -9,10 +9,59 @@
 #pragma package(smart_init)
 #pragma resource "*.fmx"
 TForma_koszyka *Forma_koszyka;
+TADOConnection* ADOConnection8;
 //---------------------------------------------------------------------------
-__fastcall TForma_koszyka::TForma_koszyka(TComponent* Owner)
+__fastcall TForma_koszyka::TForma_koszyka(TComponent* Owner, TADOConnection* a_ADOConnection)
 	: TForm(Owner)
 {
+   ADOConnection8 = a_ADOConnection;
+   WczytajDane();
+}
+
+//---------------------------------------------------------------------------
+
+void __fastcall TForma_koszyka::WczytajDane()
+{
+	int count = 0;
+	if(!Forma_ekran_bazarek -> MojKlient -> koszyk.empty()) {
+
+//----------Inicjowanie SQL i select
+	TADOQuery * Query = new TADOQuery(NULL);
+	Query -> Connection = ADOConnection8;
+
+	Query -> SQL -> Clear();
+	Query -> SQL -> Add("SELECT trim(nazwa) as nazwa ,trim(opis) as opis,kwota,id,id_parent from dbo.dane");
+	Query -> SQL -> Add("where id=:id");
+
+	Query -> Parameters -> ParamByName("id") -> Value = Forma_ekran_bazarek -> MojKlient -> koszyk[0];
+
+	Query -> Open();
+
+	UnicodeString opis = Query -> FieldByName("opis") -> AsString;
+
+	Grid -> BeginUpdate();
+
+    //----------Usuwanie wszystkich przedmiotów z tabeli by wczytaæ je od nowa
+	if (Grid->RowCount > 0)
+		Grid->RowCount = 0;
+
+//---------Wczytywanie wszystkich danych do tabeli grid
+	while (!Query->Eof)
+	{
+		Grid->RowCount = count + 1;
+		count = Grid->RowCount;
+
+		Grid->Cells[grid_colNazwa->Index][count - 1]  =	Query -> FieldByName("nazwa") -> AsString;
+
+		Grid->Cells[grid_colKwota->Index][count - 1]  =	Query -> FieldByName("kwota") -> AsFloat;
+
+		Grid->Cells[grid_colId->Index][count - 1] 	  = Query -> FieldByName("id") -> AsString;
+
+        Query -> Next();
+	}
+	Grid -> EndUpdate();
+	delete Query;
+    }
 }
 //---------------------------------------------------------------------------
 

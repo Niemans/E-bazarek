@@ -13,14 +13,13 @@
 #pragma resource "*.fmx"
 TForm_ekran_przedmiotu *Form_ekran_przedmiotu;
 TADOConnection * ADOConnection3;
-int id;
 float koszt_baza;
 int licytacja;
 //---------------------------------------------------------------------------
 __fastcall TForm_ekran_przedmiotu::TForm_ekran_przedmiotu(TComponent* Owner, TADOConnection * a_ADOConnection, int a_id)
 	: TForm(Owner)
 {
-	id 			  = a_id;
+	id 			   = a_id;
 	ADOConnection3 = a_ADOConnection;
 
 	TADOQuery * Query = new TADOQuery(NULL);
@@ -113,9 +112,11 @@ void __fastcall TForm_ekran_przedmiotu::Btn_doKoszykaClick(TObject *Sender)
 {
 	//przedmiot dodawany do koszyka!!!
 
-	TForma_koszyka *form_koszyka = new TForma_koszyka(this);
-	form_koszyka->ShowModal();
-    delete form_koszyka;
+    Forma_ekran_bazarek -> MojKlient -> dodaj_do_koszyka(id,1);
+
+//	TForma_koszyka *form_koszyka = new TForma_koszyka(this);
+//	form_koszyka->ShowModal();
+//    delete form_koszyka;
 
 }
 //---------------------------------------------------------------------------

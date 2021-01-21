@@ -8,10 +8,37 @@
 #pragma package(smart_init)
 #pragma resource "*.fmx"
 TForma_edycji *Forma_edycji;
+TADOConnection* ADOConnection7;
+int tryb;
 //---------------------------------------------------------------------------
-__fastcall TForma_edycji::TForma_edycji(TComponent* Owner)
+__fastcall TForma_edycji::TForma_edycji(TComponent* Owner, TADOConnection* a_ADOConnection, int a_tryb, int a_id)
 	: TForm(Owner)
 {
+	tryb 		   = a_tryb;
+	id   		   = a_id;
+	ADOConnection7 = a_ADOConnection;
+
+	if(tryb == 3){
+
+    TADOQuery * Query = new TADOQuery(NULL);
+	Query -> Connection = ADOConnection7;
+
+	Query -> SQL -> Clear();
+	Query -> SQL -> Add("SELECT trim(nazwa) as nazwa ,trim(opis) as opis,kwota,id,id_parent, ilosc from dbo.dane");
+	Query -> SQL -> Add("where id=:id");
+
+	Query -> Parameters -> ParamByName("id") -> Value = id;
+
+    Query -> Open();
+
+	Edit_nazwa 	-> Text = Query -> FieldByName("nazwa") -> AsString;
+	Edit_liczba -> Text = Query -> FieldByName("ilosc") -> AsInteger;
+	Edit_opis   -> Text = Query -> FieldByName("opis")  -> AsString;
+    Edit_koszt  -> Text = Query -> FieldByName("kwota") -> AsFloat;
+
+	delete Query;
+	}
+	else	Btn_edytuj -> Text = "Dodaj";
 }
 //---------------------------------------------------------------------------
 void __fastcall TForma_edycji::Image_paskiClick(TObject *Sender)
@@ -26,37 +53,60 @@ void __fastcall TForma_edycji::FormClose(TObject *Sender, TCloseAction &Action)
 //---------------------------------------------------------------------------
 void __fastcall TForma_edycji::Btn_edytujClick(TObject *Sender)
 {
-	Edit_nazwa->ReadOnly = false;
-	Edit_koszt->ReadOnly = false;
-	Edit_liczba->ReadOnly = false;
-    Memo_opis->ReadOnly = false;
-}
-//---------------------------------------------------------------------------
-void __fastcall TForma_edycji::Edit_liczbaChange(TObject *Sender)
-{
-	char pomoc;
-	for(int i = 0; Edit_liczba->Text[i] != '\0' ; i++)
-	{
-		pomoc = Edit_liczba->Text[i];
-		if (pomoc < '0' || pomoc > '9')
-		{
-			Edit_liczba->Text[i] = '0';
-		}
+   TADOQuery * Query = new TADOQuery(NULL);
+   Query -> Connection = ADOConnection7;
+   Query -> SQL -> Clear();
+
+   if (tryb == 1 || tryb == 2) {
+	Query -> SQL -> Add("INSERT INTO dbo.dane (nazwa, ilosc, opis, kwota, licytacja, id_parent) ");
+	Query -> SQL -> Add("VALUES (:nazwa, :ilosc, :opis, :kwota, :licytacja, :id_parent);");
+
+	Query -> Parameters -> ParamByName("licytacja") -> Value = tryb - 1;
+	Query -> Parameters -> ParamByName("id_parent") -> Value = Forma_ekran_bazarek -> MojKlient -> podaj_id();
+
+   }else
+   if (tryb == 3)
+   {
+	Query -> SQL -> Add("UPDATE dbo.dane set nazwa=:nazwa, ilosc=:ilosc, opis=:opis, kwota=:kwota");
+	Query -> SQL -> Add("where id=:id");
+
+	Query -> Parameters -> ParamByName("id") 	-> Value = id;
+
 	}
+	Query -> Parameters -> ParamByName("nazwa") -> Value = Edit_nazwa  -> Text;
+	Query -> Parameters -> ParamByName("ilosc") -> Value = Edit_liczba -> Text.ToInt();
+	Query -> Parameters -> ParamByName("opis") 	-> Value = Edit_opis   -> Text;
+	Query -> Parameters -> ParamByName("kwota")	-> Value = Edit_koszt  -> Text.ToDouble();
+
+	Query -> ExecSQL();
+
+	if (tryb == 1 || tryb == 2) {
+			ShowMessage("Przedmiot zosta³ dodany");
+	}
+	else    ShowMessage("Przedmiot zosta³ edytowany");
+
+	delete Query;
+    ModalResult = 1;
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TForma_edycji::Edit_kosztChange(TObject *Sender)
+
+void __fastcall TForma_edycji::Btn_usunClick(TObject *Sender)
 {
-	char pomoc;
-	for(int i = 0; Edit_koszt->Text[i] != '\0' ; i++)
-	{
-		pomoc = Edit_koszt->Text[i];
-		if (pomoc < '0' || pomoc > '9')
-		{
-			Edit_koszt->Text[i] = '0';
-		}
-	}
+	TADOQuery* Query = new TADOQuery(NULL);
+    Query -> Connection = ADOConnection7;
+
+    Query -> SQL -> Clear();
+
+	Query -> SQL -> Add("DELETE FROM dbo.dane WHERE id = :id");
+	Query -> Parameters -> ParamByName("id") -> Value = id;
+	Query -> ExecSQL();
+
+	ShowMessage("Usuniêto przedmiot");
+
+	delete Query;
+
+    ModalResult = 1;
 }
 //---------------------------------------------------------------------------
 

@@ -17,6 +17,7 @@
 #include <FMX.StdCtrls.hpp>
 
 #include "ekran_ebazarek.h"
+#include "ekran_edycja_przedmiotu.h"
 //---------------------------------------------------------------------------
 class TForma_listy_przedmiotow : public TForm
 {
@@ -37,8 +38,12 @@ __published:	// IDE-managed Components
 	TStringColumn *grid_colId;
 	void __fastcall Image_paskiClick(TObject *Sender);
 	void __fastcall FormClose(TObject *Sender, TCloseAction &Action);
+	void __fastcall btn_przedmiotClick(TObject *Sender);
+	void __fastcall btn_licytacjaClick(TObject *Sender);
+	void __fastcall GridCellClick(TColumn * const Column, const int Row);
 private:	// User declarations
 	void __fastcall WczytajDane();
+    void __fastcall dodaj(int a_tryb, int a_id);
 public:		// User declarations
 	__fastcall TForma_listy_przedmiotow(TComponent* Owner, TADOConnection* a_ADOConnection);
 };

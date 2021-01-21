@@ -407,8 +407,8 @@ object Forma_ekran_bazarek: TForma_ekran_bazarek
     RowCount = 0
     Options = [ColumnResize, ColumnMove, ColLines, RowLines, Tabs, HeaderClick, AutoDisplacement]
     OnCellClick = GridCellClick
-    Viewport.Width = 401.000000000000000000
-    Viewport.Height = 617.000000000000000000
+    Viewport.Width = 397.000000000000000000
+    Viewport.Height = 613.000000000000000000
     object grid_colNazwa: TStringColumn
       OnTap = grid_colNazwaTap
       Size.Width = 257.000000000000000000

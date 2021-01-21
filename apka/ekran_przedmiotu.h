@@ -44,6 +44,7 @@ __published:	// IDE-managed Components
 	void __fastcall Edit_kupowana_liczbaChange(TObject *Sender);
 	void __fastcall Btn_doKoszykaClick(TObject *Sender);
 private:	// User declarations
+	int id;
 public:		// User declarations
 	__fastcall TForm_ekran_przedmiotu(TComponent* Owner, TADOConnection * a_ADOConnection, int a_id);
 };

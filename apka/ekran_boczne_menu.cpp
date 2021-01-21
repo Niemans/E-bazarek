@@ -153,7 +153,7 @@ void __fastcall TForma_boczne_menu::Btn_przedmiotyClick(TObject *Sender)
 void __fastcall TForma_boczne_menu::Btn_koszykClick(TObject *Sender)
 {
 
-	TForma_koszyka *form_koszyk = new TForma_koszyka(this);
+	TForma_koszyka *form_koszyk = new TForma_koszyka(this, ADOConnection2);
 	form_koszyk->ShowModal();
 	delete form_koszyk;
 }

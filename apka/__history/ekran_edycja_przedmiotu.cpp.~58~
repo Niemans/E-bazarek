@@ -1,0 +1,102 @@
+//---------------------------------------------------------------------------
+
+#include <fmx.h>
+#pragma hdrstop
+
+#include "ekran_edycja_przedmiotu.h"
+//---------------------------------------------------------------------------
+#pragma package(smart_init)
+#pragma resource "*.fmx"
+TForma_edycji *Forma_edycji;
+TADOConnection* ADOConnection7;
+int tryb;
+//---------------------------------------------------------------------------
+__fastcall TForma_edycji::TForma_edycji(TComponent* Owner, TADOConnection* a_ADOConnection, int a_tryb, int a_id)
+	: TForm(Owner)
+{
+	tryb 		   = a_tryb;
+	id   		   = a_id;
+	ADOConnection7 = a_ADOConnection;
+
+	if(tryb == 3){
+
+    TADOQuery * Query = new TADOQuery(NULL);
+	Query -> Connection = ADOConnection7;
+
+	Query -> SQL -> Clear();
+	Query -> SQL -> Add("SELECT trim(nazwa) as nazwa ,trim(opis) as opis,kwota,id,id_parent, ilosc from dbo.dane");
+	Query -> SQL -> Add("where id=:id");
+
+	Query -> Parameters -> ParamByName("id") -> Value = id;
+
+    Query -> Open();
+
+	Edit_nazwa 	-> Text = Query -> FieldByName("nazwa") -> AsString;
+	Edit_liczba -> Text = Query -> FieldByName("ilosc") -> AsInteger;
+	Edit_opis   -> Text = Query -> FieldByName("opis")  -> AsString;
+    Edit_koszt  -> Text = Query -> FieldByName("kwota") -> AsFloat;
+
+	delete Query;
+	}
+	else	Btn_edytuj -> Text = "Dodaj";
+}
+//---------------------------------------------------------------------------
+void __fastcall TForma_edycji::Image_paskiClick(TObject *Sender)
+{
+     ModalResult = 1;
+}
+//---------------------------------------------------------------------------
+void __fastcall TForma_edycji::FormClose(TObject *Sender, TCloseAction &Action)
+{
+    Close();
+}
+//---------------------------------------------------------------------------
+void __fastcall TForma_edycji::Btn_edytujClick(TObject *Sender)
+{
+   TADOQuery * Query = new TADOQuery(NULL);
+   Query -> Connection = ADOConnection7;
+   Query -> SQL -> Clear();
+
+   if (tryb == 1 || tryb == 2) {
+	Query -> SQL -> Add("INSERT INTO dbo.dane (nazwa, ilosc, opis, kwota, licytacja) ");
+	Query -> SQL -> Add("VALUES (:nazwa, :ilosc, :opis, :kwota, :licytacja)");
+
+    Query -> Parameters -> ParamByName("licytacja") -> Value = tryb - 1;
+
+   }else
+   if (tryb == 3)
+   {
+	Query -> SQL -> Add("UPDATE dbo.dane set nazwa=:nazwa, ilosc=:ilosc, opis=:opis, kwota=:kwota");
+	Query -> SQL -> Add("where id=:id");
+
+	Query -> Parameters -> ParamByName("id") 	-> Value = id;
+
+	}
+	Query -> Parameters -> ParamByName("nazwa") -> Value = Edit_nazwa  -> Text;
+	Query -> Parameters -> ParamByName("ilosc") -> Value = Edit_liczba -> Text.ToInt();
+	Query -> Parameters -> ParamByName("opis") 	-> Value = Edit_opis   -> Text;
+	Query -> Parameters -> ParamByName("kwota")	-> Value = Edit_koszt  -> Text.ToDouble();
+
+	Query -> ExecSQL();
+	delete Query;
+}
+//---------------------------------------------------------------------------
+
+
+void __fastcall TForma_edycji::Btn_usunClick(TObject *Sender)
+{
+	TADOQuery* Query = new TADOQuery(NULL);
+    Query -> Connection = ADOConnection7;
+
+    Query -> SQL -> Clear();
+
+	Query -> SQL -> Add("DELETE FROM dbo.dane WHERE id = :id");
+	Query -> Parameters -> ParamByName("id") -> Value = id;
+	Query -> ExecSQL();
+
+	ShowMessage("Usuniêto przedmiot");
+
+    delete Query;
+}
+//---------------------------------------------------------------------------
+

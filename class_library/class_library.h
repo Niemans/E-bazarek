@@ -127,7 +127,6 @@ class Klient : public Osoba {
 private:
 	std::string imieINazwisko;
 	Klient* next;
-	std::vector<unsigned int> koszyk;
 
 public:
 
@@ -141,7 +140,8 @@ public:
 
 		//funkcja zwracajaca koszyk
 	std::vector<unsigned int>* zwroc_koszyk();		//zrobione
-		
+
+    std::vector<unsigned int> koszyk;
 		//oproznia koszyk uzytkownika
 	void oproznij_koszyk();							//zrobione
 

@@ -1,0 +1,49 @@
+//---------------------------------------------------------------------------
+
+#ifndef ekran_kaszykaH
+#define ekran_kaszykaH
+//---------------------------------------------------------------------------
+#include <System.Classes.hpp>
+#include <FMX.Controls.hpp>
+#include <FMX.Forms.hpp>
+#include <FMX.Colors.hpp>
+#include <FMX.Controls.Presentation.hpp>
+#include <FMX.Gestures.hpp>
+#include <FMX.Grid.hpp>
+#include <FMX.Grid.Style.hpp>
+#include <FMX.Objects.hpp>
+#include <FMX.ScrollBox.hpp>
+#include <FMX.StdCtrls.hpp>
+#include <FMX.Types.hpp>
+#include <System.Rtti.hpp>
+#include <FMX.Edit.hpp>
+//---------------------------------------------------------------------------
+class TForma_koszyka : public TForm
+{
+__published:	// IDE-managed Components
+	TImage *Image_paski;
+	TColorBox *ColorBox1;
+	TImage *Image_EB;
+	TImage *Image_koszyk;
+	TStringGrid *Grid;
+	TStringColumn *grid_colNazwa;
+	TCurrencyColumn *grid_colKwota;
+	TGestureManager *GestureManager1;
+	TButton *Btn_kup;
+	TButton *Btn_wyczysc_koszyk;
+	TCurrencyColumn *CurrencyColumn1;
+	TText *Text1;
+	TText *Text2;
+	TEdit *Edit1;
+	void __fastcall Btn_kupClick(TObject *Sender);
+	void __fastcall FormClose(TObject *Sender, TCloseAction &Action);
+	void __fastcall Image_paskiClick(TObject *Sender);
+private:	// User declarations
+    WczytajDane()
+public:		// User declarations
+	__fastcall TForma_koszyka(TComponent* Owner);
+};
+//---------------------------------------------------------------------------
+extern PACKAGE TForma_koszyka *Forma_koszyka;
+//---------------------------------------------------------------------------
+#endif
