@@ -89,11 +89,15 @@ bool TForma_rejestracja::sprawdzEmail()
 	Query -> Connection = ADOConnection;
 
 	Query -> SQL -> Clear();
-	Query -> SQL -> Add("SELECT trim(email) as email from dbo.dane where email = trim('"+Edit_email->Text+"')");
+	Query -> SQL -> Add("SELECT email from dbo.uzytkownicy where trim(email) = trim('"+Edit_email->Text+"');");
+
+	Query -> Open();
+
+	AnsiString x = Query -> FieldByName("email")->AsString;
 
 	if (Query -> FieldByName("email")->AsString != "")
 	{
-        delete Query;
+		delete Query;
 		return true;
 	}else
 	{
@@ -120,7 +124,7 @@ void __fastcall TForma_rejestracja::Btn_rejestracjaClick(TObject *Sender)
 	{
 		Text_blad->Text = "brak emaila";
 	}
-	else if (false)//!sprawdzEmail())
+	else if (sprawdzEmail())//!sprawdzEmail())
 	{
         Text_blad->Text = "podany email istenieje";
 	}

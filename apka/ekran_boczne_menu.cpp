@@ -135,7 +135,7 @@ void __fastcall TForma_boczne_menu::Image_arrowClick(TObject *Sender)
 
 void __fastcall TForma_boczne_menu::Btn_profilClick(TObject *Sender)
 {
-	TForm_profil *form_profil = new TForm_profil (this);
+	TForm_profil *form_profil = new TForm_profil (this, ADOConnection2);
 	form_profil->ShowModal();
 	delete form_profil;
 }
@@ -144,7 +144,7 @@ void __fastcall TForma_boczne_menu::Btn_profilClick(TObject *Sender)
 void __fastcall TForma_boczne_menu::Btn_przedmiotyClick(TObject *Sender)
 {
 
-	TForma_listy_przedmiotow *form_listyp = new TForma_listy_przedmiotow  (this);
+	TForma_listy_przedmiotow *form_listyp = new TForma_listy_przedmiotow (this, ADOConnection2);
 	form_listyp->ShowModal();
 	delete form_listyp;
 }

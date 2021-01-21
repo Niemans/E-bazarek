@@ -4,15 +4,18 @@
 #pragma hdrstop
 
 #include "ekran_profilu.h"
-#include "ekran_ebazarek.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma resource "*.fmx"
 TForm_profil *Form_profil;
+TADOConnection * ADOConnection4;
+UnicodeString email_stary;
+
 //---------------------------------------------------------------------------
-__fastcall TForm_profil::TForm_profil(TComponent* Owner)
+__fastcall TForm_profil::TForm_profil(TComponent* Owner, TADOConnection * a_ADOConnection)
 	: TForm(Owner)
 {
+   ADOConnection4 = a_ADOConnection;
 }
 //---------------------------------------------------------------------------
 void __fastcall TForm_profil::FormActivate(TObject *Sender)
@@ -20,14 +23,16 @@ void __fastcall TForm_profil::FormActivate(TObject *Sender)
 	if (Forma_ekran_bazarek->zalogowanie() == 1)
 	{
 		Edit_login->Text = (Forma_ekran_bazarek->MojKlient->podaj_nazwe_klienta()).c_str();
-				//Edit_email->Text = (Forma_ekran_bazarek->MojKlient->podaj_email()).c_str();   //wywala b³¹d!
+		Edit_email->Text = (Forma_ekran_bazarek->MojKlient->podaj_email()).c_str();   //wywala b³¹d!
+		email_stary		 = (Forma_ekran_bazarek->MojKlient->podaj_email()).c_str();
 		Edit_haslo->Text = (Forma_ekran_bazarek->MojKlient->podaj_haslo()).c_str();
 		Image_klient->Visible = true;
 	}
 	else if (Forma_ekran_bazarek->zalogowanie() == 2)
 	{
 		Edit_login->Text = (Forma_ekran_bazarek->MojaFirma->podaj_nazwe_firmy()).c_str();
-				//Edit_email->Text = (Forma_ekran_bazarek->MojaFirma->podaj_email()).c_str();   //wywala b³¹d!
+		Edit_email->Text = (Forma_ekran_bazarek->MojaFirma->podaj_email()).c_str();   //wywala b³¹d!
+		email_stary		 = (Forma_ekran_bazarek->MojKlient->podaj_email()).c_str();
 		Edit_haslo->Text = (Forma_ekran_bazarek->MojaFirma->podaj_haslo()).c_str();
 		Image_firma->Visible = true;
 	}
@@ -87,57 +92,38 @@ void __fastcall TForm_profil::Btn_usun_kontoClick(TObject *Sender) //usuñ
 
 void __fastcall TForm_profil::Btn_zmien_daneClick(TObject *Sender)
 {
-    Text_informacja->Visible = true;
-	Edit_email->ReadOnly = false;
-	Edit_login->ReadOnly = false;
-	Edit_haslo->ReadOnly = false;
+	Text_informacja-> Visible = true;
+	btn_potwierdz  -> Visible = true;
+	Edit_email	   ->ReadOnly = false;
+	Edit_login	   ->ReadOnly = false;
+	Edit_haslo	   ->ReadOnly = false;
 }
 //---------------------------------------------------------------------------    // zapis tego do bazy danych!!!!
+    // zapis tego do bazy danych!!!!
+   // zapis tego do bazy danych!!!!
 
-void __fastcall TForm_profil::Edit_loginChange(TObject *Sender)
+
+void __fastcall TForm_profil::btn_potwierdzClick(TObject *Sender)
 {
+	TADOQuery * Query = new TADOQuery(NULL);
+	Query -> Connection = ADOConnection4;
 
-	if (Forma_ekran_bazarek->zalogowanie() == 1)
-	{
-		Forma_ekran_bazarek->MojKlient->ustaw_nazwe_klienta(AnsiString(Edit_login->Text).c_str());
-	}
-	else if (Forma_ekran_bazarek->zalogowanie() == 2)
-	{
-		Forma_ekran_bazarek->MojaFirma->ustaw_nazwe_firmy(AnsiString(Edit_login->Text).c_str());
-	}
+	Query -> SQL -> Clear();
+	Query -> SQL -> Add("UPDATE uzytkownicy ");
+	Query -> SQL -> Add("SET login=trim(:login), haslo=trim(:haslo), email=trim(:email)");
+	Query -> SQL -> Add("WHERE email = trim(:email_stary)");
 
-}
-//---------------------------------------------------------------------------    // zapis tego do bazy danych!!!!
+	Query -> Parameters -> ParamByName("email_stary") -> Value = email_stary;
 
-void __fastcall TForm_profil::Edit_emailChange(TObject *Sender) 					//wywala b³¹d!
-{
-	if (Forma_ekran_bazarek->zalogowanie() == 1)
-	{
-		if(Forma_ekran_bazarek->ListaK->wyszukaj_klienta(AnsiString(Edit_email->Text).c_str()) == NULL)
-		{
-			Forma_ekran_bazarek->MojKlient->edytuj_email(AnsiString(Edit_email->Text).c_str());
-		}
-	}
-	else if (Forma_ekran_bazarek->zalogowanie() == 2)
-	{
-		if(Forma_ekran_bazarek->ListaF->wyszukaj_firme(AnsiString(Edit_email->Text).c_str()) == NULL)
-		{
-			Forma_ekran_bazarek->MojaFirma->edytuj_email(AnsiString(Edit_email->Text).c_str());
-		}
-	}
-}
-//---------------------------------------------------------------------------   // zapis tego do bazy danych!!!!
+	Query -> Parameters -> ParamByName("login") -> Value = Edit_login -> Text;
+	Query -> Parameters -> ParamByName("email") -> Value = Edit_email -> Text;
+	Query -> Parameters -> ParamByName("haslo") -> Value = Edit_haslo -> Text;
 
-void __fastcall TForm_profil::Edit_hasloChange(TObject *Sender)
-{
-    if (Forma_ekran_bazarek->zalogowanie() == 1)
-	{
-		Forma_ekran_bazarek->MojKlient->edytuj_haslo(AnsiString(Edit_login->Text).c_str());
-	}
-	else if (Forma_ekran_bazarek->zalogowanie() == 2)
-	{
-		Forma_ekran_bazarek->MojaFirma->edytuj_haslo(AnsiString(Edit_email->Text).c_str());
-	}
+	Query -> ExecSQL();
+
+	delete Query;
+
+    ShowMessage("Dane zosta³y zmienione");
 }
 //---------------------------------------------------------------------------
 

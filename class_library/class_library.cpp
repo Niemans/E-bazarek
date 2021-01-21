@@ -307,6 +307,9 @@ int Osoba::usun_licytacje(Bazarek* adresBazarku, unsigned int idLicytacji)
 Klient::Klient(std::string nazwaKlienta, Klient* nastepnyKlient, std::string mailKlienta, std::string hasloKlienta,unsigned int idKlienta): Osoba(mailKlienta, hasloKlienta, idKlienta)
 {
 	imieINazwisko = nazwaKlienta;
+	mail = mailKlienta;
+	haslo = hasloKlienta;
+    ID = idKlienta;
 	next = nastepnyKlient;
 }
 
@@ -364,6 +367,9 @@ void Klient::ustaw_wskaznik_next_klienta(Klient* wskaznik_do_ustawienia)
 Firma::Firma(std::string nazwaFirmy, Firma* nastepnaFirma, std::string mailFirmy, std::string hasloFirmy,unsigned int idFirmy): Osoba(mailFirmy, hasloFirmy, idFirmy)
 {
 	nazwa_firmy = nazwaFirmy;
+	mail = mailFirmy;
+    haslo = hasloFirmy;
+	ID = idFirmy;
 	next = nastepnaFirma;
 }
 
@@ -513,27 +519,27 @@ int ListaFirm::sprawdz(std::string email_firmy, std::string nazwa_firmy)
 	//funkcja wyszukuje firme po id
 Firma* ListaFirm::wyszukaj_firme(unsigned int id_firmy)
 {
-	Firma* pom = head;		//wskaznik pomocniczy - ustawiamy najpierw na glowe
-
-	while (pom != NULL && pom->podaj_id() != id_firmy)		
-	{
-		pom = pom->podaj_wskaznik_next_firmy();		//dopoki nie znajdziemy firmy o danym ID lub nie dotrzemy do konca listy - przechodzimy kolejne welzy
-	}
-
-	return pom;		//jezeli znajdziemy firme - zwroci jej adres, jezeli nie - NULL
+//	Firma* pom = head;		//wskaznik pomocniczy - ustawiamy najpierw na glowe
+//
+//	while (pom != NULL && pom->podaj_id() != id_firmy)
+//	{
+//		pom = pom->podaj_wskaznik_next_firmy();		//dopoki nie znajdziemy firmy o danym ID lub nie dotrzemy do konca listy - przechodzimy kolejne welzy
+//	}
+//
+//	return pom;		//jezeli znajdziemy firme - zwroci jej adres, jezeli nie - NULL
 }
 
 	//funkcja wyszukuje firme po nazwie
 Firma* ListaFirm::wyszukaj_firme(std::string email_firmy)
 {
-	Firma* pom = head;		//wskaznik pomocniczy - ustawiamy najpierw na glowe
-
-	while (pom != NULL && pom->podaj_email() != email_firmy)
-	{
-		pom = pom->podaj_wskaznik_next_firmy();		//dopoki nie znajdziemy firmy o danej nazwie lub nie dotrzemy do konca listy - przechodzimy kolejne welzy
-	}
-
-	return pom;		//jezeli znajdziemy firme - zwroci jej adres, jezeli nie - NULL
+//	Firma* pom = head;		//wskaznik pomocniczy - ustawiamy najpierw na glowe
+//
+//	while (pom != NULL && pom->podaj_email() != email_firmy)
+//	{
+//		pom = pom->podaj_wskaznik_next_firmy();		//dopoki nie znajdziemy firmy o danej nazwie lub nie dotrzemy do konca listy - przechodzimy kolejne welzy
+//	}
+//
+//	return pom;		//jezeli znajdziemy firme - zwroci jej adres, jezeli nie - NULL
 }
 
 
@@ -629,27 +635,27 @@ int ListaKlientow::sprawdz(std::string email_klienta, std::string nazwa_klienta)
 //funkcja wyszukuje klienta po id
 Klient* ListaKlientow::wyszukaj_klienta(unsigned int id_klienta)
 {
-	Klient* pom = head;		//wskaznik pomocniczy - ustawiamy najpierw na glowe
-
-	while (pom != NULL && pom->podaj_id() != id_klienta)
-	{
-		pom = pom->podaj_wskaznik_next_klienta();	//dopoki nie znajdziemy klienta o danym ID lub nie dotrzemy do konca listy - przechodzimy kolejne welzy
-	}
-
-	return pom;		//jezeli znajdziemy klienta - zwroci jego adres, jezeli nie - NULL
+//	Klient* pom = head;		//wskaznik pomocniczy - ustawiamy najpierw na glowe
+//
+//	while (pom != NULL && pom->podaj_id() != id_klienta)
+//	{
+//		pom = pom->podaj_wskaznik_next_klienta();	//dopoki nie znajdziemy klienta o danym ID lub nie dotrzemy do konca listy - przechodzimy kolejne welzy
+//	}
+//
+//	return pom;		//jezeli znajdziemy klienta - zwroci jego adres, jezeli nie - NULL
 }
 
 //funkcja wyszukuje klienta po nazwie
 Klient* ListaKlientow::wyszukaj_klienta(std::string email_klienta)
 {
-	Klient* pom = head;		//wskaznik pomocniczy - ustawiamy najpierw na glowe
-
-	while (pom != NULL && pom->podaj_email() != email_klienta)
-	{
-		pom = pom->podaj_wskaznik_next_klienta();		//dopoki nie znajdziemy klienta o danej nazwie lub nie dotrzemy do konca listy - przechodzimy kolejne welzy
-	}
-
-	return pom;		//jezeli znajdziemy klienta - zwroci jej adres, jezeli nie - NULL
+//	Klient* pom = head;		//wskaznik pomocniczy - ustawiamy najpierw na glowe
+//
+//	while (pom != NULL && pom->podaj_email() != email_klienta)
+//	{
+//		pom = pom->podaj_wskaznik_next_klienta();		//dopoki nie znajdziemy klienta o danej nazwie lub nie dotrzemy do konca listy - przechodzimy kolejne welzy
+//	}
+//
+//	return pom;		//jezeli znajdziemy klienta - zwroci jej adres, jezeli nie - NULL
 }
 
 			//metody klasy Bazarek
