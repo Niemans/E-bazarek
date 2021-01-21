@@ -524,8 +524,8 @@
     DefaultItemStyles.ItemStyle = ''
     DefaultItemStyles.GroupHeaderStyle = ''
     DefaultItemStyles.GroupFooterStyle = ''
-    Viewport.Width = 153.000000000000000000
-    Viewport.Height = 69.000000000000000000
+    Viewport.Width = 149.000000000000000000
+    Viewport.Height = 65.000000000000000000
     object ListBoxItem_Klient: TListBoxItem
       TextSettings.HorzAlign = Center
       StyledSettings = [Family, Size, Style, FontColor]

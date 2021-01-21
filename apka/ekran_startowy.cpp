@@ -118,7 +118,7 @@ void __fastcall TForma_ekran_startowy::Text_kliknijClick(TObject *Sender)
 	Edit_haslo->Text = "";
     srand(time(NULL)*time(NULL)-time(NULL));
 
-	TForma_zapomniane_haslo * forma = new TForma_zapomniane_haslo(this);
+	TForma_zapomniane_haslo * forma = new TForma_zapomniane_haslo(this,ADOConnection1);
 		if (forma->ShowModal())
 	{
 		delete forma;

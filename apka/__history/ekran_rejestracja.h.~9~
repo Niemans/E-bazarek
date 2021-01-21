@@ -1,0 +1,79 @@
+//---------------------------------------------------------------------------
+
+#ifndef ekran_rejestracjaH
+#define ekran_rejestracjaH
+//---------------------------------------------------------------------------
+#include <System.Classes.hpp>
+#include <FMX.Controls.hpp>
+#include <FMX.Forms.hpp>
+#include <FMX.Ani.hpp>
+#include <FMX.Controls.Presentation.hpp>
+#include <FMX.Edit.hpp>
+#include <FMX.Objects.hpp>
+#include <FMX.StdCtrls.hpp>
+#include <FMX.Types.hpp>
+#include <FMX.Layouts.hpp>
+#include <FMX.ListBox.hpp>
+
+#include "ekran_ebazarek.h"
+//---------------------------------------------------------------------------
+class TForma_rejestracja : public TForm
+{
+__published:	// IDE-managed Components
+	TImage *Image_EB;
+	TText *Text_login;
+	TEdit *Edit_login;
+	TButton *Btn_co_to_login;
+	TText *Text_email;
+	TEdit *Edit_email;
+	TButton *Btn_co_to_email;
+	TText *Text_has³o;
+	TEdit *Edit_haslo;
+	TButton *Btn_co_to_haslo;
+	TText *Text_phaslo;
+	TEdit *Edit_phaslo;
+	TButton *Btn_powrot;
+	TColorAnimation *ColorAnimation2;
+	TButton *Btn_rejestracja;
+	TText *Text_Btn_co_to_login;
+	TColorAnimation *ColorAnimation1;
+	TText *Text_Btn_co_to_email;
+	TText *Text_Btn_co_to_haslo;
+	TText *Text_wybor;
+	TListBox *ListBox_KF;
+	TListBoxItem *ListBoxItem_Klient;
+	TListBoxItem *ListBoxItem_Firma;
+	TCheckBox *CheckBox_KF;
+	TCheckBox *CheckBox_login;
+	TCheckBox *CheckBox_email;
+	TCheckBox *CheckBox_haslo;
+	TCheckBox *CheckBox_phaslo;
+	TText *Text_blad;
+	void __fastcall Btn_co_to_loginClick(TObject *Sender);
+	void __fastcall Btn_co_to_emailClick(TObject *Sender);
+	void __fastcall Btn_co_to_hasloClick(TObject *Sender);
+	void __fastcall Btn_powrotClick(TObject *Sender);
+	void __fastcall FormClose(TObject *Sender, TCloseAction &Action);
+	void __fastcall ListBoxItem_KlientClick(TObject *Sender);
+	void __fastcall ListBoxItem_FirmaClick(TObject *Sender);
+	void __fastcall Btn_rejestracjaClick(TObject *Sender);
+	void __fastcall Edit_loginChange(TObject *Sender);
+	void __fastcall Edit_emailChange(TObject *Sender);
+	void __fastcall Edit_hasloChange(TObject *Sender);
+	void __fastcall Edit_phasloChange(TObject *Sender);
+private:	// User declarations
+	Firma* Firma_rejestracja;
+	Klient* Klient_rejestracja;
+	void rejestracja(int typ); //rejestracja osoby, typ to 1 = klient 2 = firma
+
+public:		// User declarations
+	__fastcall TForma_rejestracja(TComponent* Owner, TADOConnection* a_ADOConnection);
+    bool sprawdzEmail();
+};
+//---------------------------------------------------------------------------
+extern PACKAGE TForma_rejestracja *Forma_rejestracja;
+//---------------------------------------------------------------------------
+
+
+
+#endif

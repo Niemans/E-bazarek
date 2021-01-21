@@ -50,8 +50,9 @@ __published:	// IDE-managed Components
 private:	// User declarations
 	UnicodeString kod;
 	void wygeneruj_kod();    //generuje kod
+    bool sprawdzEmail();
 public:		// User declarations
-	__fastcall TForma_zapomniane_haslo(TComponent* Owner);
+	__fastcall TForma_zapomniane_haslo(TComponent* Owner, TADOConnection *a_ADOConnection);
 };
 //---------------------------------------------------------------------------
 extern PACKAGE TForma_zapomniane_haslo *Forma_zapomniane_haslo;
