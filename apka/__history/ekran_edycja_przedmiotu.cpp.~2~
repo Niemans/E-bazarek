@@ -1,0 +1,26 @@
+//---------------------------------------------------------------------------
+
+#include <fmx.h>
+#pragma hdrstop
+
+#include "ekran_edycja_przedmiotu.h"
+//---------------------------------------------------------------------------
+#pragma package(smart_init)
+#pragma resource "*.fmx"
+TForma_edycji *Forma_edycji;
+//---------------------------------------------------------------------------
+__fastcall TForma_edycji::TForma_edycji(TComponent* Owner)
+	: TForm(Owner)
+{
+}
+//---------------------------------------------------------------------------
+void __fastcall TForma_edycji::Image_paskiClick(TObject *Sender)
+{
+     ModalResult = 1;
+}
+//---------------------------------------------------------------------------
+void __fastcall TForma_edycji::FormClose(TObject *Sender, TCloseAction &Action)
+{
+    Close();
+}
+//---------------------------------------------------------------------------

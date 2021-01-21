@@ -35,9 +35,9 @@ __published:	// IDE-managed Components
 	TText *Text1;
 	TText *Text2;
 	TEdit *Edit1;
-	void __fastcall Image_paskiDblClick(TObject *Sender);
 	void __fastcall Btn_kupClick(TObject *Sender);
 	void __fastcall FormClose(TObject *Sender, TCloseAction &Action);
+	void __fastcall Image_paskiClick(TObject *Sender);
 private:	// User declarations
 public:		// User declarations
 	__fastcall TForma_koszyka(TComponent* Owner);

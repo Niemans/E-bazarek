@@ -8,6 +8,14 @@
 #include "ekran_startowy.h"
 #include "ekran_boczne_menu.h"
 #include "ekran_rejestracja.h"
+#include "ekran_licytacji.h"
+#include "ekran_kaszyka.h"
+#include "ekran_panelu_admina.h"
+#include "ekran_profilu.h"
+#include "ekran_zakupu.h"
+#include "zapomniane_haslo.h"
+#include "ekran_edycja_przedmiotu.h"
+#include "ekran_listy_przedmiotow.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma resource "*.fmx"

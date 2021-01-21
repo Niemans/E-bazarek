@@ -15,11 +15,6 @@ __fastcall TForma_koszyka::TForma_koszyka(TComponent* Owner)
 {
 }
 //---------------------------------------------------------------------------
-void __fastcall TForma_koszyka::Image_paskiDblClick(TObject *Sender)
-{
-	ModalResult = 1;
-}
-//---------------------------------------------------------------------------
 
 void __fastcall TForma_koszyka::Btn_kupClick(TObject *Sender)
 {
@@ -32,6 +27,12 @@ void __fastcall TForma_koszyka::Btn_kupClick(TObject *Sender)
 void __fastcall TForma_koszyka::FormClose(TObject *Sender, TCloseAction &Action)
 {
 	Close();
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForma_koszyka::Image_paskiClick(TObject *Sender)
+{
+	ModalResult = 1;
 }
 //---------------------------------------------------------------------------
 

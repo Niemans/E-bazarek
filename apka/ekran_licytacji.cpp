@@ -20,10 +20,32 @@ void __fastcall TForma_licytacji::Edit_nowa_cenaChange(TObject *Sender)
 	for(int i = 0; Edit_nowa_cena->Text[i] != '\0' ; i++)
 	{
 		pomoc = Edit_nowa_cena->Text[i];
-		if (pomoc < '0' && pomoc > '9')
+		if (pomoc < '0' || pomoc > '9')
 		{
-            Edit_nowa_cena->Text[i] = '0';
+			Edit_nowa_cena->Text[i] = '0';
         }
     }
 }
 //---------------------------------------------------------------------------
+void __fastcall TForma_licytacji::FormClose(TObject *Sender, TCloseAction &Action)
+
+{
+    Close();
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForma_licytacji::Image_paskiClick(TObject *Sender)
+{
+	ModalResult = 1;
+
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForma_licytacji::Button_licytujClick(TObject *Sender)
+{
+	//if(Edit_nowa_cena->Text)
+	//dodaje go na listê
+	//podwy¿sza kowtê licytacji o podan¹ kwotê
+}
+//---------------------------------------------------------------------------
+

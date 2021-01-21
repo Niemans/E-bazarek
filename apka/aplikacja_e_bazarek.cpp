@@ -7,14 +7,19 @@
 #pragma hdrstop
 #include <System.StartUpCopy.hpp>
 //---------------------------------------------------------------------------
-USEFORM("ekran_przedmiotu.cpp", Form_ekran_przedmiotu);
-USEFORM("ekran_rejestracja.cpp", Forma_rejestracja);
 USEFORM("ekran_startowy.cpp", Forma_ekran_startowy);
+USEFORM("ekran_rejestracja.cpp", Forma_rejestracja);
+USEFORM("ekran_przedmiotu.cpp", Form_ekran_przedmiotu);
+USEFORM("ekran_zakupu.cpp", Forma_zakupu);
 USEFORM("zapomniane_haslo.cpp", Forma_zapomniane_haslo);
-USEFORM("ekran_boczne_menu.cpp", Forma_boczne_menu);
 USEFORM("ekran_ebazarek.cpp", Forma_ekran_bazarek);
+USEFORM("ekran_boczne_menu.cpp", Forma_boczne_menu);
+USEFORM("ekran_kaszyka.cpp", Forma_koszyka);
+USEFORM("ekran_profilu.cpp", Form_profil);
 USEFORM("ekran_panelu_admina.cpp", Form_ekran_panelu_admina);
-USEFORM("ekran_profilu.cpp", Form1);
+USEFORM("ekran_licytacji.cpp", Forma_licytacji);
+USEFORM("ekran_listy_przedmiotow.cpp", Forma_listy_przedmiotow);
+USEFORM("ekran_edycja_przedmiotu.cpp", Forma_edycji);
 //---------------------------------------------------------------------------
 extern "C" int FMXmain()
 {

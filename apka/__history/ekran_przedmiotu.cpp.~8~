@@ -1,0 +1,39 @@
+//---------------------------------------------------------------------------
+
+#include <fmx.h>
+#pragma hdrstop
+
+#include "ekran_przedmiotu.h"
+#include "ekran_ebazarek.h"
+#include "ekran_licytacji.h"
+//---------------------------------------------------------------------------
+#pragma package(smart_init)
+#pragma resource "*.fmx"
+TForm_ekran_przedmiotu *Form_ekran_przedmiotu;
+//---------------------------------------------------------------------------
+__fastcall TForm_ekran_przedmiotu::TForm_ekran_przedmiotu(TComponent* Owner)
+	: TForm(Owner)
+{
+}
+//---------------------------------------------------------------------------
+void __fastcall TForm_ekran_przedmiotu::FormClose(TObject *Sender, TCloseAction &Action)
+
+{
+    Close();
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm_ekran_przedmiotu::Image_paskiClick(TObject *Sender)
+{
+     ModalResult = 1;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm_ekran_przedmiotu::btn_licytujClick(TObject *Sender)
+{
+	TForma_licytacji *form_licytacja = new TForma_licytacji(this);
+	form_licytacja->ShowModal();
+	delete form_licytacja;
+}
+//---------------------------------------------------------------------------
+

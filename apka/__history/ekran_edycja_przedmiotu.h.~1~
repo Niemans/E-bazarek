@@ -1,0 +1,44 @@
+//---------------------------------------------------------------------------
+
+#ifndef ekran_edycja_przedmiotuH
+#define ekran_edycja_przedmiotuH
+//---------------------------------------------------------------------------
+#include <System.Classes.hpp>
+#include <FMX.Controls.hpp>
+#include <FMX.Forms.hpp>
+#include <FMX.Colors.hpp>
+#include <FMX.Controls.Presentation.hpp>
+#include <FMX.Edit.hpp>
+#include <FMX.Objects.hpp>
+#include <FMX.StdCtrls.hpp>
+#include <FMX.Types.hpp>
+//---------------------------------------------------------------------------
+class TForma_edycji : public TForm
+{
+__published:	// IDE-managed Components
+	TButton *Btn_doKoszyka;
+	TButton *Btn_kupTeraz;
+	TButton *Btn_licytuj;
+	TColorBox *ColorBox1;
+	TEdit *Edit_koszt;
+	TEdit *Edit_kupowana_liczba;
+	TImage *Image_EB;
+	TImage *Image_paski;
+	TImage *Image_edycja;
+	TImageControl *ImageControl_przedmiot;
+	TText *Text_ilosc;
+	TText *Text_koszt;
+	TText *Text_kupowana_liczba;
+	TText *Text_napis_ilosc;
+	TText *text_napis_nazwa;
+	TText *Text_napis_opis;
+	TText *Text_nazwa;
+	TText *text_opis;
+private:	// User declarations
+public:		// User declarations
+	__fastcall TForma_edycji(TComponent* Owner);
+};
+//---------------------------------------------------------------------------
+extern PACKAGE TForma_edycji *Forma_edycji;
+//---------------------------------------------------------------------------
+#endif

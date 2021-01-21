@@ -168,7 +168,7 @@ HistoriaLicytacji* Licytacja::zwroc_historie_licytacji()
 		//metody klasy Osoba
 
 	//konstruktor klasy Osoba
-Osoba::Osoba(std::string newMail, std::string newHaslo): mail(newMail), haslo(newHaslo)
+Osoba::Osoba(std::string newMail, std::string newHaslo, unsigned int idOsoby): mail(newMail), haslo(newHaslo), ID(idOsoby)
 {
 }
 	
@@ -213,6 +213,11 @@ unsigned int Osoba::podaj_id()
 std::string Osoba::podaj_email()
 {
 	return mail;
+}
+	 //funkcja zwracajaca haslo
+std::string Osoba::podaj_haslo()
+{
+   return haslo;
 }
 
 	//funkcja dodajaca przedmiot na bazarek			//zrobione
@@ -299,7 +304,7 @@ int Osoba::usun_licytacje(Bazarek* adresBazarku, unsigned int idLicytacji)
 		//metody klasy Klient
 
 	//konstruktor klasy Klient
-Klient::Klient(std::string nazwaKlienta, Klient* nastepnyKlient, std::string mailKlienta, std::string hasloKlienta): Osoba(mailKlienta, hasloKlienta)
+Klient::Klient(std::string nazwaKlienta, Klient* nastepnyKlient, std::string mailKlienta, std::string hasloKlienta,unsigned int idKlienta): Osoba(mailKlienta, hasloKlienta, idKlienta)
 {
 	imieINazwisko = nazwaKlienta;
 	next = nastepnyKlient;
@@ -356,7 +361,7 @@ void Klient::ustaw_wskaznik_next_klienta(Klient* wskaznik_do_ustawienia)
 			//praktycznie takie same jak w Kliencie - mozna przeniesc do klasy Osoba
 	
 	//konstruktor klasy Firma
-Firma::Firma(std::string nazwaFirmy, Firma* nastepnaFirma, std::string mailFirmy, std::string hasloFirmy): Osoba(mailFirmy, hasloFirmy)
+Firma::Firma(std::string nazwaFirmy, Firma* nastepnaFirma, std::string mailFirmy, std::string hasloFirmy,unsigned int idFirmy): Osoba(mailFirmy, hasloFirmy, idFirmy)
 {
 	nazwa_firmy = nazwaFirmy;
 	next = nastepnaFirma;

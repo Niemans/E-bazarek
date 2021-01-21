@@ -8,27 +8,27 @@
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma resource "*.fmx"
-TForm1 *Form1;
+TForm_profil *Form_profil;
 //---------------------------------------------------------------------------
-__fastcall TForm1::TForm1(TComponent* Owner)
+__fastcall TForm_profil::TForm_profil(TComponent* Owner)
 	: TForm(Owner)
 {
 }
 //---------------------------------------------------------------------------
-void __fastcall TForm1::FormActivate(TObject *Sender)
+void __fastcall TForm_profil::FormActivate(TObject *Sender)
 {
 	if (Forma_ekran_bazarek->zalogowanie() == 1)
 	{
 		Edit_login->Text = (Forma_ekran_bazarek->MojKlient->podaj_nazwe_klienta()).c_str();
-		Edit_email->Text = (Forma_ekran_bazarek->MojKlient->podaj_email()).c_str();
-		//Edit_haslo->Text = (Forma_ekran_bazarek->MojKlient->podaj_haslo()).c_str();			   potrzebna funkcja
+				//Edit_email->Text = (Forma_ekran_bazarek->MojKlient->podaj_email()).c_str();   //wywala b³¹d!
+		Edit_haslo->Text = (Forma_ekran_bazarek->MojKlient->podaj_haslo()).c_str();
 		Image_klient->Visible = true;
 	}
 	else if (Forma_ekran_bazarek->zalogowanie() == 2)
 	{
 		Edit_login->Text = (Forma_ekran_bazarek->MojaFirma->podaj_nazwe_firmy()).c_str();
-		Edit_email->Text = (Forma_ekran_bazarek->MojaFirma->podaj_email()).c_str();
-		//Edit_haslo->Text = (Forma_ekran_bazarek->MojaFirma->podaj_haslo()).c_str();                 potrzebna funkcja
+				//Edit_email->Text = (Forma_ekran_bazarek->MojaFirma->podaj_email()).c_str();   //wywala b³¹d!
+		Edit_haslo->Text = (Forma_ekran_bazarek->MojaFirma->podaj_haslo()).c_str();
 		Image_firma->Visible = true;
 	}
 	else if (Forma_ekran_bazarek->zalogowanie() == 3)
@@ -43,7 +43,7 @@ void __fastcall TForm1::FormActivate(TObject *Sender)
 
 }
 //---------------------------------------------------------------------------
-void __fastcall TForm1::Image_okoClick(TObject *Sender)
+void __fastcall TForm_profil::Image_okoClick(TObject *Sender)
 {
 	if(Edit_haslo->Password == true)
 	{
@@ -56,7 +56,7 @@ void __fastcall TForm1::Image_okoClick(TObject *Sender)
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TForm1::Image_paskiClick(TObject *Sender)
+void __fastcall TForm_profil::Image_paskiClick(TObject *Sender)
 {
 
 	Edit_email->Enabled = false;
@@ -71,7 +71,7 @@ void __fastcall TForm1::Image_paskiClick(TObject *Sender)
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TForm1::Btn_usun_kontoClick(TObject *Sender)
+void __fastcall TForm_profil::Btn_usun_kontoClick(TObject *Sender) //usuñ
 {
 	if (Forma_ekran_bazarek->zalogowanie() == 1)
 	{
@@ -79,21 +79,22 @@ void __fastcall TForm1::Btn_usun_kontoClick(TObject *Sender)
 	}
 	else if (Forma_ekran_bazarek->zalogowanie() == 2)
 	{
-		//Forma_ekran_bazarek->ListaF->usun(Forma_ekran_bazarek->MojaFirma->podaj_id());
+	   //Forma_ekran_bazarek->ListaF->usun(Forma_ekran_bazarek->MojaFirma->podaj_id());
 	}
 }
 //---------------------------------------------------------------------------
 
 
-void __fastcall TForm1::Btn_zmien_daneClick(TObject *Sender)
+void __fastcall TForm_profil::Btn_zmien_daneClick(TObject *Sender)
 {
-	Edit_email->Enabled = true;
-	Edit_login->Enabled = true;
-	Edit_haslo->Enabled = true;
+    Text_informacja->Visible = true;
+	Edit_email->ReadOnly = false;
+	Edit_login->ReadOnly = false;
+	Edit_haslo->ReadOnly = false;
 }
-//---------------------------------------------------------------------------
+//---------------------------------------------------------------------------    // zapis tego do bazy danych!!!!
 
-void __fastcall TForm1::Edit_loginChange(TObject *Sender)
+void __fastcall TForm_profil::Edit_loginChange(TObject *Sender)
 {
 
 	if (Forma_ekran_bazarek->zalogowanie() == 1)
@@ -106,36 +107,36 @@ void __fastcall TForm1::Edit_loginChange(TObject *Sender)
 	}
 
 }
-//---------------------------------------------------------------------------
+//---------------------------------------------------------------------------    // zapis tego do bazy danych!!!!
 
-void __fastcall TForm1::Edit_emailChange(TObject *Sender)
+void __fastcall TForm_profil::Edit_emailChange(TObject *Sender) 					//wywala b³¹d!
 {
 	if (Forma_ekran_bazarek->zalogowanie() == 1)
 	{
 		if(Forma_ekran_bazarek->ListaK->wyszukaj_klienta(AnsiString(Edit_email->Text).c_str()) == NULL)
 		{
-			//Forma_ekran_bazarek->MojKlient->edytuj_dane(AnsiString(Edit_email->Text).c_str(),Forma_ekran_bazarek->MojKlient->podaj_haslo());
+			Forma_ekran_bazarek->MojKlient->edytuj_email(AnsiString(Edit_email->Text).c_str());
 		}
 	}
 	else if (Forma_ekran_bazarek->zalogowanie() == 2)
 	{
 		if(Forma_ekran_bazarek->ListaF->wyszukaj_firme(AnsiString(Edit_email->Text).c_str()) == NULL)
 		{
-			//Forma_ekran_bazarek->MojaFirma->edytuj_dane(AnsiString(Edit_email->Text).c_str(),Forma_ekran_bazarek->MojaFirma->podaj_haslo());
+			Forma_ekran_bazarek->MojaFirma->edytuj_email(AnsiString(Edit_email->Text).c_str());
 		}
 	}
 }
-//---------------------------------------------------------------------------
+//---------------------------------------------------------------------------   // zapis tego do bazy danych!!!!
 
-void __fastcall TForm1::Edit_hasloChange(TObject *Sender)
+void __fastcall TForm_profil::Edit_hasloChange(TObject *Sender)
 {
     if (Forma_ekran_bazarek->zalogowanie() == 1)
 	{
-		Forma_ekran_bazarek->MojKlient->edytuj_dane(Forma_ekran_bazarek->MojKlient->podaj_email(),AnsiString(Edit_login->Text).c_str());
+		Forma_ekran_bazarek->MojKlient->edytuj_haslo(AnsiString(Edit_login->Text).c_str());
 	}
 	else if (Forma_ekran_bazarek->zalogowanie() == 2)
 	{
-		Forma_ekran_bazarek->MojaFirma->edytuj_dane(Forma_ekran_bazarek->MojaFirma->podaj_email(),AnsiString(Edit_email->Text).c_str());
+		Forma_ekran_bazarek->MojaFirma->edytuj_haslo(AnsiString(Edit_email->Text).c_str());
 	}
 }
 //---------------------------------------------------------------------------

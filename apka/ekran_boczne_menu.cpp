@@ -8,6 +8,9 @@
 #include "ekran_rejestracja.h"
 #include "ekran_panelu_admina.h"
 #include "ekran_ebazarek.h"
+#include "ekran_profilu.h"
+#include "ekran_kaszyka.h"
+#include "ekran_listy_przedmiotow.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma resource "*.fmx"
@@ -127,6 +130,32 @@ void __fastcall TForma_boczne_menu::FormActivate(TObject *Sender)
 void __fastcall TForma_boczne_menu::Image_arrowClick(TObject *Sender)
 {
 	ModalResult = 1;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForma_boczne_menu::Btn_profilClick(TObject *Sender)
+{
+	TForm_profil *form_profil = new TForm_profil (this);
+	form_profil->ShowModal();
+	delete form_profil;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForma_boczne_menu::Btn_przedmiotyClick(TObject *Sender)
+{
+
+	TForma_listy_przedmiotow *form_listyp = new TForma_listy_przedmiotow  (this);
+	form_listyp->ShowModal();
+	delete form_listyp;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForma_boczne_menu::Btn_koszykClick(TObject *Sender)
+{
+
+	TForma_koszyka *form_koszyk = new TForma_koszyka(this);
+	form_koszyk->ShowModal();
+	delete form_koszyk;
 }
 //---------------------------------------------------------------------------
 

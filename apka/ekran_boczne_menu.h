@@ -36,6 +36,9 @@ __published:	// IDE-managed Components
 	void __fastcall Image_domClick(TObject *Sender);
 	void __fastcall FormActivate(TObject *Sender);
 	void __fastcall Image_arrowClick(TObject *Sender);
+	void __fastcall Btn_profilClick(TObject *Sender);
+	void __fastcall Btn_przedmiotyClick(TObject *Sender);
+	void __fastcall Btn_koszykClick(TObject *Sender);
 private:	// User declarations
 public:		// User declarations
 	__fastcall TForma_boczne_menu(TComponent* Owner, TADOConnection* a_ADOConnection);

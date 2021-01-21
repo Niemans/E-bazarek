@@ -102,13 +102,14 @@ protected:
 	static unsigned int licznik;
 
 public:
-	Osoba(std::string newMail = "brak_danych", std::string newHaslo = "brak_danych");	//konstruktor klasy Osoba					zrobione	
+	Osoba(std::string newMail = "brak_danych", std::string newHaslo = "brak_danych",unsigned int idOsoby = 0);	//konstruktor klasy Osoba					zrobione
 	bool sprawdz_dane(std::string compMail, std::string compHaslo);						//funkcja sprawdzajaca czy podane przez uzytkownika dane sa poprawne		zrobione
 	void edytuj_dane(std::string newMail, std::string newHaslo);						//funkcja edytujaca dane					zrobione
 	void edytuj_email(std::string newMail);												//funkcja edytujaca email
 	void edytuj_haslo(std::string newHaslo);											//funkcja edytujaca haslo
 	unsigned int podaj_id();															//nowododana, nie ma w diagramie klas		zrobione
 	std::string podaj_email();															//nowododana, nie ma w diagramie klas		zrobione
+	std::string podaj_haslo();                                                          //nowododana, nie ma w diagramie klas		zrobione
 
 			//obsluga wystawionych przedmiotow			wszystko zrobione
 	void dodaj_przedmiot(Bazarek* adresBazarku, std::string nazwaPrzedmiotu, unsigned int iloscPrzedmiotow, unsigned int cenaPrzedmiotu, std::string opisPrzedmiotu);
@@ -130,7 +131,7 @@ private:
 
 public:
 
-	Klient(std::string nazwaKlienta, Klient* nastepnyKlient, std::string mailKlienta, std::string hasloKlienta);		//kosntruktor klienta		zrobione
+	Klient(std::string nazwaKlienta, Klient* nastepnyKlient, std::string mailKlienta, std::string hasloKlienta, unsigned int idKlienta);		//kosntruktor klienta		zrobione
 
 		//dodawanie przedmiotu do koszyka			zrobione
 	void dodaj_do_koszyka(unsigned int id_przedmiotu, int ilosc);
@@ -162,7 +163,7 @@ private:
 
 public:
 
-	Firma(std::string nazwaFirmy, Firma* nastepnaFirma, std::string mailFirmy, std::string hasloFirmy);		//kosntruktor firmy		zrobione
+	Firma(std::string nazwaFirmy, Firma* nastepnaFirma, std::string mailFirmy, std::string hasloFirmy, unsigned int idFirmy);		//kosntruktor firmy		zrobione
 
 
 		//gettery										//po prostu zwracaja dane, zrobione

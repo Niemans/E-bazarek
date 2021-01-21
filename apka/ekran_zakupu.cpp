@@ -27,7 +27,17 @@ void __fastcall TForma_zakupu::FormClose(TObject *Sender, TCloseAction &Action)
 
 void __fastcall TForma_zakupu::Btn_finalizacjaClick(TObject *Sender)
 {
-	ShowMessage("Tu by siê przechodzi³o do osobnej strony, a osoby sprzedaj¹ce dosta³yby wiadomoœæ na maila");
+	if(Edit_imie->Text != "" && Edit_nazwisko->Text != "" && Edit_kraj->Text != "" && Edit_miasto->Text != "" && Edit_ulica->Text != "" && Edit_nrdomu->Text != "" && Edit_kod_pocztowy->Text != "")
+	{
+		Text_blad->Visible = false;
+		ShowMessage("Tu by siê przechodzi³o do osobnej strony, a osoby sprzedaj¹ce dosta³yby wiadomoœæ na maila");
+		ModalResult = 1;
+	}
+	else
+	{
+		Text_blad->Visible = true;
+    }
+
 }
 //---------------------------------------------------------------------------
 

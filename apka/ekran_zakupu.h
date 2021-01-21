@@ -12,6 +12,8 @@
 #include <FMX.Objects.hpp>
 #include <FMX.Types.hpp>
 #include <FMX.StdCtrls.hpp>
+#include <FMX.Layouts.hpp>
+#include <FMX.ListBox.hpp>
 //---------------------------------------------------------------------------
 class TForma_zakupu : public TForm
 {
@@ -36,6 +38,11 @@ __published:	// IDE-managed Components
 	TText *Text_nrdomu;
 	TText *Text_kod_pocztowy;
 	TButton *Btn_finalizacja;
+	TText *Text_typ_platnosci;
+	TListBox *ListBox_typ;
+	TListBoxItem *ListBoxItem_PayU;
+	TListBoxItem *ListBoxItem_Przelew;
+	TText *Text_blad;
 	void __fastcall Image_arrowClick(TObject *Sender);
 	void __fastcall FormClose(TObject *Sender, TCloseAction &Action);
 	void __fastcall Btn_finalizacjaClick(TObject *Sender);

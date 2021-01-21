@@ -209,6 +209,30 @@
             <DependentOn>ekran_ebazarek.h</DependentOn>
             <BuildOrder>5</BuildOrder>
         </CppCompile>
+        <CppCompile Include="ekran_edycja_przedmiotu.cpp">
+            <Form>Forma_edycji</Form>
+            <FormType>fmx</FormType>
+            <DependentOn>ekran_edycja_przedmiotu.h</DependentOn>
+            <BuildOrder>15</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="ekran_kaszyka.cpp">
+            <Form>Forma_koszyka</Form>
+            <FormType>fmx</FormType>
+            <DependentOn>ekran_kaszyka.h</DependentOn>
+            <BuildOrder>12</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="ekran_licytacji.cpp">
+            <Form>Forma_licytacji</Form>
+            <FormType>fmx</FormType>
+            <DependentOn>ekran_licytacji.h</DependentOn>
+            <BuildOrder>13</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="ekran_listy_przedmiotow.cpp">
+            <Form>Forma_listy_przedmiotow</Form>
+            <FormType>fmx</FormType>
+            <DependentOn>ekran_listy_przedmiotow.h</DependentOn>
+            <BuildOrder>14</BuildOrder>
+        </CppCompile>
         <CppCompile Include="ekran_panelu_admina.cpp">
             <Form>Form_ekran_panelu_admina</Form>
             <FormType>fmx</FormType>
@@ -216,7 +240,7 @@
             <BuildOrder>7</BuildOrder>
         </CppCompile>
         <CppCompile Include="ekran_profilu.cpp">
-            <Form>Form1</Form>
+            <Form>Form_profil</Form>
             <FormType>fmx</FormType>
             <DependentOn>ekran_profilu.h</DependentOn>
             <BuildOrder>9</BuildOrder>
@@ -239,6 +263,12 @@
             <DependentOn>ekran_startowy.h</DependentOn>
             <BuildOrder>1</BuildOrder>
         </CppCompile>
+        <CppCompile Include="ekran_zakupu.cpp">
+            <Form>Forma_zakupu</Form>
+            <FormType>fmx</FormType>
+            <DependentOn>ekran_zakupu.h</DependentOn>
+            <BuildOrder>11</BuildOrder>
+        </CppCompile>
         <PCHCompile Include="Project1PCH1.h">
             <BuildOrder>2</BuildOrder>
             <PCH>true</PCH>
@@ -252,14 +282,19 @@
         <CppCompile Include="..\class_library\class_library.cpp">
             <BuildOrder>10</BuildOrder>
         </CppCompile>
-        <FormResources Include="ekran_rejestracja.fmx"/>
         <FormResources Include="ekran_startowy.fmx"/>
-        <FormResources Include="zapomniane_haslo.fmx"/>
+        <FormResources Include="ekran_rejestracja.fmx"/>
         <FormResources Include="ekran_przedmiotu.fmx"/>
-        <FormResources Include="ekran_boczne_menu.fmx"/>
-        <FormResources Include="ekran_ebazarek.fmx"/>
-        <FormResources Include="ekran_panelu_admina.fmx"/>
         <FormResources Include="ekran_profilu.fmx"/>
+        <FormResources Include="zapomniane_haslo.fmx"/>
+        <FormResources Include="ekran_zakupu.fmx"/>
+        <FormResources Include="ekran_edycja_przedmiotu.fmx"/>
+        <FormResources Include="ekran_ebazarek.fmx"/>
+        <FormResources Include="ekran_boczne_menu.fmx"/>
+        <FormResources Include="ekran_panelu_admina.fmx"/>
+        <FormResources Include="ekran_listy_przedmiotow.fmx"/>
+        <FormResources Include="ekran_licytacji.fmx"/>
+        <FormResources Include="ekran_kaszyka.fmx"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

@@ -13,7 +13,7 @@
 #include <FMX.Types.hpp>
 #include <FMX.StdCtrls.hpp>
 //---------------------------------------------------------------------------
-class TForm1 : public TForm
+class TForm_profil : public TForm
 {
 __published:	// IDE-managed Components
 	TImage *Image_paski;
@@ -32,6 +32,7 @@ __published:	// IDE-managed Components
 	TImage *Image_admin;
 	TButton *Btn_zmien_dane;
 	TButton *Btn_usun_konto;
+	TText *Text_informacja;
 	void __fastcall FormActivate(TObject *Sender);
 	void __fastcall Image_okoClick(TObject *Sender);
 	void __fastcall Image_paskiClick(TObject *Sender);
@@ -42,9 +43,9 @@ __published:	// IDE-managed Components
 	void __fastcall Edit_hasloChange(TObject *Sender);
 private:	// User declarations
 public:		// User declarations
-	__fastcall TForm1(TComponent* Owner);
+	__fastcall TForm_profil(TComponent* Owner);
 };
 //---------------------------------------------------------------------------
-extern PACKAGE TForm1 *Form1;
+extern PACKAGE TForm_profil *Form_profil;
 //---------------------------------------------------------------------------
 #endif

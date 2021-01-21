@@ -35,6 +35,9 @@ __published:	// IDE-managed Components
 	TEdit *Edit_cala_cena;
 	TButton *Button_licytuj;
 	void __fastcall Edit_nowa_cenaChange(TObject *Sender);
+	void __fastcall FormClose(TObject *Sender, TCloseAction &Action);
+	void __fastcall Image_paskiClick(TObject *Sender);
+	void __fastcall Button_licytujClick(TObject *Sender);
 private:	// User declarations
 public:		// User declarations
 	__fastcall TForma_licytacji(TComponent* Owner);
