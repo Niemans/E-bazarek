@@ -724,7 +724,6 @@ int ListaFirm::sprawdz(std::string email_firmy, std::string nazwa_firmy)
 
 	while (pom != NULL)
 	{
-		pom = pom->podaj_wskaznik_next_firmy();		//dopoki nie dotrzemy do konca listy - przechodzimy kolejne welzy
 
 		if (pom->podaj_email() == email_firmy)
 		{
@@ -735,6 +734,8 @@ int ListaFirm::sprawdz(std::string email_firmy, std::string nazwa_firmy)
 		{
 			returnInt += 1;
 		}
+
+		pom = pom->podaj_wskaznik_next_firmy();		//dopoki nie dotrzemy do konca listy - przechodzimy kolejne welzy
 
 	}
 

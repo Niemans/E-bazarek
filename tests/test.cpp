@@ -268,3 +268,55 @@ TEST(TestKlienta, Test_podaj_nazwe_klienta)
 	EXPECT_EQ(klientTestowy.podaj_nazwe_klienta(), "Grzmislaw");
 }
 
+
+			
+			//test klasy Firma
+
+Firma firmaTestowa("Januszex", nullptr, "januszex@gmail.com.pl", "halyna123");
+
+	//test pokrywa funkcje podaj_nazwe_firmy, ustaw_nazwe_firmy, ustaw_wskaznik_next_firmy i podaj_wskaznik_next_firmy
+TEST(TestFirmy, Test_podaj_nazwe_firmy)
+{
+	EXPECT_EQ(firmaTestowa.podaj_nazwe_firmy(), "Januszex");
+	firmaTestowa.ustaw_nazwe_firmy("Januszpol");
+	EXPECT_EQ(firmaTestowa.podaj_nazwe_firmy(), "Januszpol");
+
+	Firma f1("f1", nullptr, "f1", "123");
+	Firma f2("f2", nullptr, "f2", "222");
+
+	firmaTestowa.ustaw_wskaznik_next_firmy(&f1);
+	f1.ustaw_wskaznik_next_firmy(&f2);
+
+	EXPECT_EQ(firmaTestowa.podaj_wskaznik_next_firmy()->podaj_wskaznik_next_firmy(), &f2);
+
+}
+
+
+
+			//test klasy ListaFirm
+
+ListaFirm listaFirmTestowa;
+
+	//test pokrywa funkcje dodaj, sprawdz i wyszukaj_firme
+TEST(TestListyFirm, Test_dodaj)
+{
+	Firma f1("f1", nullptr, "f1", "123");
+	Firma f2("f2", nullptr, "f2", "222");
+	Firma f3("f3", nullptr, "f3", "000");
+	Firma f4("f4", nullptr, "f4", "555");
+	Firma f5("chchch", nullptr, "ch@gmail.com", "555");
+
+	listaFirmTestowa.dodaj(&f1);
+	listaFirmTestowa.dodaj(&f2);
+	listaFirmTestowa.dodaj(&f3);
+	listaFirmTestowa.dodaj(&f4);
+	listaFirmTestowa.dodaj(&f5);
+
+	EXPECT_EQ(listaFirmTestowa.sprawdz("f0", "f55"), 0);
+	EXPECT_EQ(listaFirmTestowa.sprawdz("f0", "f2"), 1);
+	EXPECT_EQ(listaFirmTestowa.sprawdz("f2", "f55"), 2);
+	EXPECT_EQ(listaFirmTestowa.sprawdz("f2", "f3"), 3);
+
+	EXPECT_EQ(listaFirmTestowa.wyszukaj_firme("ch@gmail.com")->podaj_nazwe_firmy(), "chchch");
+
+}
