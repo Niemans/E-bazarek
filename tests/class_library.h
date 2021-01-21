@@ -841,8 +841,7 @@ int ListaKlientow::sprawdz(std::string email_klienta, std::string nazwa_klienta)
 
 	while (pom != NULL)
 	{
-		pom = pom->podaj_wskaznik_next_klienta();		//dopoki nie dotrzemy do konca listy - przechodzimy kolejne welzy
-
+		
 		if (pom->podaj_email() == email_klienta)
 		{
 			returnInt += 2;
@@ -852,6 +851,8 @@ int ListaKlientow::sprawdz(std::string email_klienta, std::string nazwa_klienta)
 		{
 			returnInt += 1;
 		}
+
+		pom = pom->podaj_wskaznik_next_klienta();		//dopoki nie dotrzemy do konca listy - przechodzimy kolejne welzy
 
 	}
 

@@ -25,7 +25,7 @@ TEST(TestPrzedmiotu, Test_sprawdz_id_wlasciciela) {
 
 }
 
-	//pokrywa metody edytuj, podaj_nazwe, podaj_ilosc, podaj_cene, podaj_opis
+	//pokrywa metody edytuj, podaj_nazwe, podaj_ilosc, podaj_cene i podaj_opis
 TEST(TestPrzedmiotu, Test_edytuj) {
 
 	PrzedmiotTestowy.edytuj("Nowy Mercedes", 2, 50000, "Dobra jakosc prosto z Niemiec");
@@ -320,3 +320,37 @@ TEST(TestListyFirm, Test_dodaj)
 	EXPECT_EQ(listaFirmTestowa.wyszukaj_firme("ch@gmail.com")->podaj_nazwe_firmy(), "chchch");
 
 }
+
+
+
+			//test klasy ListaKlientow
+
+ListaKlientow listaKlientowTestowa;
+
+	//test pokrywa funkcje dodaj, sprawdz i wyszukaj_klienta
+TEST(TestListyKlientow, Test_dodaj)
+{
+	Klient f1("f1", nullptr, "f1", "123");
+	Klient f2("f2", nullptr, "f2", "222");
+	Klient f3("f3", nullptr, "f3", "000");
+	Klient f4("f4", nullptr, "f4", "555");
+	Klient f5("chchch", nullptr, "ch@gmail.com", "555");
+
+	listaKlientowTestowa.dodaj(&f1);
+	listaKlientowTestowa.dodaj(&f2);
+	listaKlientowTestowa.dodaj(&f3);
+	listaKlientowTestowa.dodaj(&f4);
+	listaKlientowTestowa.dodaj(&f5);
+
+	EXPECT_EQ(listaKlientowTestowa.sprawdz("f0", "f55"), 0);
+	EXPECT_EQ(listaKlientowTestowa.sprawdz("f0", "f2"), 1);
+	EXPECT_EQ(listaKlientowTestowa.sprawdz("f2", "f55"), 2);
+	EXPECT_EQ(listaKlientowTestowa.sprawdz("f2", "f3"), 3);
+
+	EXPECT_EQ(listaKlientowTestowa.wyszukaj_klienta("ch@gmail.com")->podaj_nazwe_klienta(), "chchch");
+
+}
+
+
+
+
