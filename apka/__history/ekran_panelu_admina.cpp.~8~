@@ -96,7 +96,6 @@ void __fastcall TForm_ekran_panelu_admina::Btn_usunClick(TObject *Sender)
 			Query -> SQL -> Add("DELETE FROM dbo.dane WHERE id = :idK");
 			Query -> Parameters -> ParamByName("idK") -> Value = Edit_usun_przedmiot->Text.ToInt();
 			Query -> ExecSQL();
-			ShowMessage("Usuniêto przedmiot");
 		}
 
 	}
@@ -117,7 +116,6 @@ void __fastcall TForm_ekran_panelu_admina::Btn_usunClick(TObject *Sender)
 			Query -> SQL -> Add("DELETE FROM dbo.uzytkownicy WHERE id = :idK");
 			Query -> Parameters -> ParamByName("idK") -> Value = Edit_usun_uzytkownika->Text.ToInt();
 			Query -> ExecSQL();
-			ShowMessage("Usuniêto u¿ytkownika");
 		}
 
 	}
