@@ -10,14 +10,39 @@
 #pragma resource "*.fmx"
 
 TForma_zapomniane_haslo *Forma_zapomniane_haslo;
+TADOConnection * ADOConnection_zaph;
+
 //---------------------------------------------------------------------------
-__fastcall TForma_zapomniane_haslo::TForma_zapomniane_haslo(TComponent* Owner)
+__fastcall TForma_zapomniane_haslo::TForma_zapomniane_haslo(TComponent* Owner, TADOConnection *a_ADOConnection)
 	: TForm(Owner)
 {
+	ADOConnection_zaph = a_ADOConnection;
 }
 //---------------------------------------------------------------------------
+bool TForma_zapomniane_haslo::sprawdzEmail()
+{
+	TADOQuery* Query = new TADOQuery(NULL);
+	Query -> Connection = ADOConnection_zaph;
 
+    Query -> SQL -> Clear();
+	Query -> SQL -> Add("SELECT email from dbo.uzytkownicy where trim(email) = trim('"+Edit_email->Text+"');");
 
+    Query -> Open();
+
+    AnsiString x = Query -> FieldByName("email")->AsString;
+
+    if (Query -> FieldByName("email")->AsString != "")
+    {
+        delete Query;
+        return true;
+    }else
+    {
+        delete Query;
+        return false;
+	}
+}
+
+//----------------------------------------------------------------------
 void __fastcall TForma_zapomniane_haslo::Btn_wyslij_wiadomoscClick(TObject *Sender)
 {
 	if(CheckBox_email->IsChecked == false)
@@ -25,7 +50,7 @@ void __fastcall TForma_zapomniane_haslo::Btn_wyslij_wiadomoscClick(TObject *Send
 		Text_blad1->Visible = true;
 		Text_blad1->Text = "Brak napisanego emaila";
 	}
-	else if (/*brak maila w spisie emaili*/false)
+	else if (!sprawdzEmail())
 	{
 		Text_blad1->Visible = true;
 		Text_blad1->Text = "Brak konta pod podanym emailem";
@@ -33,8 +58,7 @@ void __fastcall TForma_zapomniane_haslo::Btn_wyslij_wiadomoscClick(TObject *Send
 	else
 	{
 		Text_blad1->Visible = false;
-		wygeneruj_kod();
-		ShowMessage("Tu by siê wysy³a³a wiadomoœæ na maila. Kod");
+		ShowMessage("nie wysy³amy na maila, wiêc... Kod = " + kod);
 	}
 }
 //---------------------------------------------------------------------------
@@ -69,7 +93,16 @@ void __fastcall TForma_zapomniane_haslo::Btn_zmien_hasloClick(TObject *Sender)
 	else
 	{
 		Text_blad2->Visible = false;
-		//zmiana has³a do konta o podanym danego emaila
+
+		TADOQuery* Query = new TADOQuery(NULL);
+		Query -> Connection = ADOConnection_zaph;
+
+		Query -> SQL -> Clear();
+		Query -> SQL -> Add("UPDATE dbo.uzytkownicy SET haslo = '" +Edit_nhaslo->Text+"' WHERE trim(email) = '"+Edit_email->Text+"'");
+		Query -> ExecSQL();
+
+		delete Query;
+		ModalResult = 1;
 	}
 }
 //---------------------------------------------------------------------------
@@ -78,7 +111,6 @@ void __fastcall TForma_zapomniane_haslo::Btn_zmien_hasloClick(TObject *Sender)
 
 void __fastcall TForma_zapomniane_haslo::FormClose(TObject *Sender, TCloseAction &Action)
 {
-    //Forma_ekran_startowy->Visible = true;
 	Close();
 }
 //---------------------------------------------------------------------------
@@ -102,11 +134,11 @@ void TForma_zapomniane_haslo::wygeneruj_kod()
 		}
 		else if(number >= 26 && number < 52)
 		{
-			znak = 'a' + znak - 26;
+			znak = 'a' + number - 26;
 		}
 		else
 		{
-			znak = '0' + znak - 52;
+			znak = '0' + number - 52;
 		}
 
 		this->kod += znak;
@@ -127,6 +159,7 @@ void __fastcall TForma_zapomniane_haslo::Edit_emailChange(TObject *Sender)
 	{
 		CheckBox_email->IsChecked = false;
 	}
+    wygeneruj_kod();
 }
 //---------------------------------------------------------------------------
 

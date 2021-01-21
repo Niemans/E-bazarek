@@ -65,10 +65,10 @@ private:	// User declarations
 	Firma* Firma_rejestracja;
 	Klient* Klient_rejestracja;
 	void rejestracja(int typ); //rejestracja osoby, typ to 1 = klient 2 = firma
-    bool sprawdzEmail();       //sprawdza, czy email istnieje
+
 public:		// User declarations
 	__fastcall TForma_rejestracja(TComponent* Owner, TADOConnection* a_ADOConnection);
-
+    bool sprawdzEmail();
 };
 //---------------------------------------------------------------------------
 extern PACKAGE TForma_rejestracja *Forma_rejestracja;
