@@ -48,7 +48,7 @@ void __fastcall TForma_boczne_menu::Btn_rejestracjaClick(TObject *Sender)
 
 void __fastcall TForma_boczne_menu::Btn_adminClick(TObject *Sender)
 {
-	TForm_ekran_panelu_admina * forma_ekran_panelu_admina = new TForm_ekran_panelu_admina(this);
+	TForm_ekran_panelu_admina * forma_ekran_panelu_admina = new TForm_ekran_panelu_admina(this,ADOConnection2);
 
 	forma_ekran_panelu_admina->ShowModal();
 

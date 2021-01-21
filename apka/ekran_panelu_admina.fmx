@@ -212,8 +212,8 @@ object Form_ekran_panelu_admina: TForm_ekran_panelu_admina
     Size.Height = 281.000000000000000000
     Size.PlatformDefault = False
     TabOrder = 8
-    Viewport.Width = 369.000000000000000000
-    Viewport.Height = 281.000000000000000000
+    Viewport.Width = 365.000000000000000000
+    Viewport.Height = 277.000000000000000000
   end
   object Btn_usun: TButton
     Align = Scale

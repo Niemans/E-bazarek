@@ -952,7 +952,7 @@ int Bazarek::dodaj_licytacje(Licytacja* toAdd)
 	return toAdd->podaj_id();			//na znak poprawnego dodania przedmiotu zwracane jest jego id
 
 
-}		//do zrobienia
+}	
 
 	//funkcja usuwajaca przedmiot
 int Bazarek::usun_przedmiot(unsigned int idPrzedmiotu)

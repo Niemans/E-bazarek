@@ -39,8 +39,6 @@ __published:	// IDE-managed Components
 private:	// User declarations
 public:		// User declarations
 	__fastcall TForm_ekran_panelu_admina(TComponent* Owner, TADOConnection* a_ADOConnection);
-	bool sprawdzIDprzedm();
-	bool sprawdzIDu();
 };
 //---------------------------------------------------------------------------
 extern PACKAGE TForm_ekran_panelu_admina *Form_ekran_panelu_admina;

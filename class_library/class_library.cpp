@@ -2,6 +2,8 @@
 
 		//metody klasy Przedmiot
 
+//------------------------------------------------------------------------------------------------
+
 	//konstruktor klasy Przedmiot
 Przedmiot::Przedmiot(std::string nazwaPrzedmiotu, unsigned int iloscPrzedmiotow, unsigned int id_wystawiajacego, unsigned int cenaPrzedmiotu, std::string opisPrzedmiotu)
 {
@@ -12,6 +14,8 @@ Przedmiot::Przedmiot(std::string nazwaPrzedmiotu, unsigned int iloscPrzedmiotow,
 	next = NULL;
 	opis = opisPrzedmiotu;
 }
+
+//------------------------------------------------------------------------------------------------
 
 	//funkcja sprawdzajaca czy podane id zgadza sie z id wlasciciela
 bool Przedmiot::sprawdz_id_wlasciciela(unsigned int idOsoby)
@@ -26,12 +30,15 @@ bool Przedmiot::sprawdz_id_wlasciciela(unsigned int idOsoby)
 	}
 }
 
+//------------------------------------------------------------------------------------------------
 
 	//funkcja zwracajaca id wlasciciela
 unsigned int Przedmiot::wypisz_id_wlasciciela()
 {
 	return IDWlasciciela;
 }
+
+//------------------------------------------------------------------------------------------------
 
 	//funkcja sprawdzajaca czy produkt jest dostepny
 bool Przedmiot::czy_dostepny()
@@ -46,22 +53,28 @@ bool Przedmiot::czy_dostepny()
 	}
 }
 
+//------------------------------------------------------------------------------------------------
+
 	//funkcja zwracajaca id przedmiotu
 unsigned int Przedmiot::podaj_id()
 {
 	return ID;
 }
 
+//------------------------------------------------------------------------------------------------
+
 	//funkcja usuwajaca egzemplaze przedmiotu
 int Przedmiot::usun_przedmioty(unsigned int ilosc_do_usuniecia)			
 {		
 	if (ilosc >= ilosc_do_usuniecia)
 	{
-		ilosc -= ilosc_do_usuniecia;
+		return ilosc -= ilosc_do_usuniecia;
 	}
 
 	return (ilosc - ilosc_do_usuniecia);		//funkcja zwraca roznice miedzy iloscia a usuwanymi przedmiotami. Jezeli ujemna - przedmioty nie zostana odjete
 }
+
+//------------------------------------------------------------------------------------------------
 
 	//zwraca nazwe przedmiotu
 std::string Przedmiot::podaj_nazwe()
@@ -69,11 +82,15 @@ std::string Przedmiot::podaj_nazwe()
 	return nazwa;
 }
 
+//------------------------------------------------------------------------------------------------
+
 	//zwraca adres nastepnego przedmiotu
 Przedmiot* Przedmiot::podaj_adres_nastepnego_przedmiotu()
 {
 	return next;
 }
+
+//------------------------------------------------------------------------------------------------
 
 	//ustawia wskaznik na nasteny przedmiot
 void Przedmiot::ustaw_nastepny_przedmiot(Przedmiot* nastepnyPrzedmiot)
@@ -81,23 +98,31 @@ void Przedmiot::ustaw_nastepny_przedmiot(Przedmiot* nastepnyPrzedmiot)
 	next = nastepnyPrzedmiot;
 }
 
+//------------------------------------------------------------------------------------------------
+
 	//zwraca ilosc przedmiotow
 unsigned int Przedmiot::podaj_ilosc()
 {
 	return ilosc;
 }
 	
+//------------------------------------------------------------------------------------------------
+
 	//zwraca cene przedmiotu
 unsigned int Przedmiot::podaj_cene()
 {
 	return cena;
 }
 
+//------------------------------------------------------------------------------------------------
+
 	//zwraca opis przedmiotu
 std::string Przedmiot::podaj_opis()
 {
 	return opis;
 }
+
+//------------------------------------------------------------------------------------------------
 
 	//edytuje parametry przedmiotu
 void Przedmiot::edytuj(std::string nowaNazwa, unsigned int nowaIlosc, unsigned int nowaCena, std::string nowyOpis)
@@ -107,6 +132,9 @@ void Przedmiot::edytuj(std::string nowaNazwa, unsigned int nowaIlosc, unsigned i
 	cena = nowaCena;
 	opis = nowyOpis;
 }
+
+//------------------------------------------------------------------------------------------------
+ 
 
 		//metody klasy licytacja
 
@@ -119,14 +147,20 @@ Licytacja::Licytacja(std::string nazwaLicytacji, unsigned int iloscPrzedmiotow, 
 	next = NULL;
 }
 
+//------------------------------------------------------------------------------------------------
+
 	//metoda zwracajaca next
 Licytacja* Licytacja::podaj_adres_nastepnej_licytacji()
 {
 	return next;
 }
 
+//------------------------------------------------------------------------------------------------
+
 	//metoda wkladajaca wygrany przedmiot do koszyka zwyciezcy
 void Licytacja::wygrana() {}		//do zrobienia
+
+//------------------------------------------------------------------------------------------------
 
 	//metoda dodajaca historie (najnowsza cene) do historii
 void Licytacja::dodaj_historie(HistoriaLicytacji* toAdd)
@@ -134,6 +168,8 @@ void Licytacja::dodaj_historie(HistoriaLicytacji* toAdd)
 	toAdd->next = head;		//ustawiamy wskaznik next nowej ceny jako glowe
 	head = toAdd;			//ustawiamy glowe na nowa cene
 }
+
+//------------------------------------------------------------------------------------------------
 
 	//funkcja dodajaca oferte
 int Licytacja::dodaj_oferte(unsigned int nowaCena, std::string nazwaUczestnika)
@@ -152,17 +188,23 @@ int Licytacja::dodaj_oferte(unsigned int nowaCena, std::string nazwaUczestnika)
 	head = toAdd;
 }
 
+//------------------------------------------------------------------------------------------------
+
 	//ustawia next licytacji
 void Licytacja::ustaw_nastepna_licytacje(Licytacja* nastepnaLicytacja)
 {
 	next = nastepnaLicytacja;
 }
 
+//------------------------------------------------------------------------------------------------
+
 	//zwraca head, slozy do wypisywania historii w okienku
 HistoriaLicytacji* Licytacja::zwroc_historie_licytacji()
 {
 	return head;
 }
+
+//------------------------------------------------------------------------------------------------
 
 
 		//metody klasy Osoba
@@ -185,6 +227,8 @@ bool Osoba::sprawdz_dane(std::string compMail, std::string compHaslo)
 	}
 }
 
+//------------------------------------------------------------------------------------------------
+
 	//funkcja edytujaca dane
 void Osoba::edytuj_dane(std::string newMail, std::string newHaslo)
 {
@@ -192,15 +236,21 @@ void Osoba::edytuj_dane(std::string newMail, std::string newHaslo)
 	haslo = newHaslo;
 }
 
+//------------------------------------------------------------------------------------------------
+
 void Osoba::edytuj_email(std::string newMail)
 {
 	mail = newMail;
 }
 
+//------------------------------------------------------------------------------------------------
+
 void Osoba::edytuj_haslo(std::string newHaslo)
 {
 	haslo = newHaslo;
 }
+
+//------------------------------------------------------------------------------------------------
 
 	
 	//funkcja zwracajaca id
@@ -209,16 +259,23 @@ unsigned int Osoba::podaj_id()
 	return ID;
 }
 
+//------------------------------------------------------------------------------------------------
+
 	//funkcja zwracajaca email
 std::string Osoba::podaj_email()
 {
 	return mail;
 }
+
+//------------------------------------------------------------------------------------------------
+
 	 //funkcja zwracajaca haslo
 std::string Osoba::podaj_haslo()
 {
    return haslo;
 }
+
+//------------------------------------------------------------------------------------------------
 
 	//funkcja dodajaca przedmiot na bazarek			//zrobione
 void Osoba::dodaj_przedmiot(Bazarek* adresBazarku, std::string nazwaPrzedmiotu, unsigned int iloscPrzedmiotow, unsigned int cenaPrzedmiotu, std::string opisPrzedmiotu)
@@ -228,6 +285,8 @@ void Osoba::dodaj_przedmiot(Bazarek* adresBazarku, std::string nazwaPrzedmiotu, 
 	adresBazarku->dodaj_przedmiot(przedmiotDoDodania);
 
 }
+
+//------------------------------------------------------------------------------------------------
 
 	//funkcja usuwajaca przedmiot z bazarku			//zrobione
 int Osoba::usun_przedmiot(Bazarek* adresBazarku, unsigned int idPrzedmiotu)
@@ -251,6 +310,8 @@ int Osoba::usun_przedmiot(Bazarek* adresBazarku, unsigned int idPrzedmiotu)
 
 }
 
+//------------------------------------------------------------------------------------------------
+
 	//funkcja zmieniajaca dane wystawionego przedmiotu
 int Osoba::edytuj_przedmiot(Bazarek* adresBazarku, unsigned int idPrzedmiotu, std::string nowaNazwa, unsigned int nowaIlosc, unsigned int nowaCena, std::string nowyOpis)
 {
@@ -272,6 +333,8 @@ int Osoba::edytuj_przedmiot(Bazarek* adresBazarku, unsigned int idPrzedmiotu, st
 
 }
 
+//------------------------------------------------------------------------------------------------
+
 	//funkcja dodajaca licytacje na bazarek			//zrobione
 void Osoba::dodaj_licytacje(Bazarek* adresBazarku, std::string nazwaLicytacji, unsigned int iloscPrzedmiotow, unsigned int cenaWywolawcza, std::string opisPrzedmiotu, unsigned int czasZakonczenia)
 {
@@ -279,6 +342,8 @@ void Osoba::dodaj_licytacje(Bazarek* adresBazarku, std::string nazwaLicytacji, u
 	Licytacja* LicytacjaDoDodania = new Licytacja(nazwaLicytacji, iloscPrzedmiotow, idOsoby, cenaWywolawcza, opisPrzedmiotu, czasZakonczenia);
 	adresBazarku->dodaj_przedmiot(LicytacjaDoDodania);
 }
+
+//------------------------------------------------------------------------------------------------
 
 	//funkcja usuwajaca licytacje z bazarku			//zrobione
 int Osoba::usun_licytacje(Bazarek* adresBazarku, unsigned int idLicytacji)
@@ -301,6 +366,9 @@ int Osoba::usun_licytacje(Bazarek* adresBazarku, unsigned int idLicytacji)
 	}
 }
 
+//------------------------------------------------------------------------------------------------
+
+
 		//metody klasy Klient
 
 	//konstruktor klasy Klient
@@ -313,6 +381,8 @@ Klient::Klient(std::string nazwaKlienta, Klient* nastepnyKlient, std::string mai
 	next = nastepnyKlient;
 }
 
+//------------------------------------------------------------------------------------------------
+
 	//funkcja dodaje podany przedmiot do koszyka
 void Klient::dodaj_do_koszyka(unsigned int id_przedmiotu, int ilosc)
 {
@@ -322,8 +392,12 @@ void Klient::dodaj_do_koszyka(unsigned int id_przedmiotu, int ilosc)
 	}
 }
 
+//------------------------------------------------------------------------------------------------
+
 	//funkcja uruchamia procedurê zakupu przedmiotów z koszyka
 Przedmiot* Klient::kup() { return NULL; }		//do zrobienia
+
+//------------------------------------------------------------------------------------------------
 
 	//funkcja zwracajaca koszyk
 std::vector<unsigned int>* Klient::zwroc_koszyk()
@@ -331,11 +405,15 @@ std::vector<unsigned int>* Klient::zwroc_koszyk()
 	return &koszyk;
 }
 
+//------------------------------------------------------------------------------------------------
+
 	//usuwa przedmioty z koszyka
 void Klient::oproznij_koszyk()
 {
 	koszyk.clear();
 }
+
+//------------------------------------------------------------------------------------------------
 
 	//gettery parametrow imieINazwisko oraz next
 std::string Klient::podaj_nazwe_klienta()
@@ -343,10 +421,14 @@ std::string Klient::podaj_nazwe_klienta()
 	return imieINazwisko;
 }
 
+//------------------------------------------------------------------------------------------------
+
 Klient* Klient::podaj_wskaznik_next_klienta()
 {
 	return next;
 }
+
+//------------------------------------------------------------------------------------------------
 
 	//settery parametrow imieINazwisko oraz next
 void Klient::ustaw_nazwe_klienta(std::string nazwa_do_ustawienia)
@@ -354,10 +436,14 @@ void Klient::ustaw_nazwe_klienta(std::string nazwa_do_ustawienia)
 	imieINazwisko = nazwa_do_ustawienia;
 }
 
+//------------------------------------------------------------------------------------------------
+
 void Klient::ustaw_wskaznik_next_klienta(Klient* wskaznik_do_ustawienia)
 {
 	next = wskaznik_do_ustawienia;
 }
+
+//------------------------------------------------------------------------------------------------
 
 
 		//metody klasy Firma
@@ -373,12 +459,15 @@ Firma::Firma(std::string nazwaFirmy, Firma* nastepnaFirma, std::string mailFirmy
 	next = nastepnaFirma;
 }
 
+//------------------------------------------------------------------------------------------------
 
 	//gettery parametrow nazwa i next
 std::string Firma::podaj_nazwe_firmy()
 {
 	return nazwa_firmy;
 }
+
+//------------------------------------------------------------------------------------------------
 
 Firma* Firma::podaj_wskaznik_next_firmy()
 {
@@ -391,10 +480,15 @@ void Firma::ustaw_nazwe_firmy(std::string nazwa_do_ustawienia)
 	nazwa_firmy = nazwa_do_ustawienia;
 }
 
+//------------------------------------------------------------------------------------------------
+
 void Firma::ustaw_wskaznik_next_firmy(Firma* wskaznik_do_ustawienia)
 {
 	next = wskaznik_do_ustawienia;
 }
+
+//------------------------------------------------------------------------------------------------
+
 
 		//metody klasy Admin
 
@@ -403,17 +497,23 @@ Admin::Admin(): Osoba("AdminBazarku@gmail.pl", "admin123")
 {
 }
 
+//------------------------------------------------------------------------------------------------
+
 	//funkcja usuwajaca nieodpowiedni przedmiot
 int Admin::usun_przedmiot(Bazarek* adresBazarku, unsigned int id_przedmiotu)
 {
 	return adresBazarku->usun_przedmiot(id_przedmiotu);
 }
 
+//------------------------------------------------------------------------------------------------
+
 	//funkcja usuwajaca nieodpowiednie licytacje
 int Admin::usun_licytacje(Bazarek* adresBazarku, unsigned int id_licytacji)
 {
 	return adresBazarku->usun_licytacje(id_licytacji);
 }
+
+//------------------------------------------------------------------------------------------------
 	
 	//funkcja usuwajaca uzytkownika
 int Admin::usun_uzytkownika(unsigned int id_uzytkownika, ListaKlientow* listaUzytkownikow, Bazarek* sklep)
@@ -421,14 +521,20 @@ int Admin::usun_uzytkownika(unsigned int id_uzytkownika, ListaKlientow* listaUzy
 	return listaUzytkownikow->usun(id_uzytkownika, sklep);		//zwraca wynik funkcji usun
 }
 
+//------------------------------------------------------------------------------------------------
+
 	//funkcja usuwajaca firme
 int Admin::usun_firme(unsigned int id_firmy, ListaFirm* listaFirm, Bazarek* sklep)
 {
 	return listaFirm->usun(id_firmy, sklep);
 }
 
+//------------------------------------------------------------------------------------------------
+
+
 		//metody klasy ListaFirm
 
+	//metoda usuwajaca firme
 int ListaFirm::usun(unsigned int idFirmyDoUsuniecia, Bazarek* sklep)
 {
 	Firma* pom = head;			//ustawiamy wskaznik pomocniczy na poczatek listy
@@ -465,11 +571,15 @@ int ListaFirm::usun(unsigned int idFirmyDoUsuniecia, Bazarek* sklep)
 	return 0;		//jezeli nie znaleziono firmy o takim id to zwracane jest 0
 }
 
+//------------------------------------------------------------------------------------------------
+
 	//konstruktor klasy ListaFirm
 ListaFirm::ListaFirm()
 {
 	head = NULL;
 }
+
+//------------------------------------------------------------------------------------------------
 
 	//funkcja dodaje firme do listy
 void ListaFirm::dodaj(Firma* toAdd)
@@ -490,8 +600,10 @@ void ListaFirm::dodaj(Firma* toAdd)
 	pom->ustaw_wskaznik_next_firmy(toAdd);				//dodana firma staje sie ogonem
 }
 
+//------------------------------------------------------------------------------------------------
+
 	//funkcja sprawdza czy podana firma juz istnieje
-int ListaFirm::sprawdz(std::string email_firmy, std::string nazwa_firmy)		
+int ListaFirm::sprawdz(std::string email_firmy, std::string nazwa_firmy)
 {
 	int returnInt = 0;		//wartosc ktora bedziemy zwracac
 
@@ -499,7 +611,6 @@ int ListaFirm::sprawdz(std::string email_firmy, std::string nazwa_firmy)
 
 	while (pom != NULL)
 	{
-		pom = pom->podaj_wskaznik_next_firmy();		//dopoki nie dotrzemy do konca listy - przechodzimy kolejne welzy
 
 		if (pom->podaj_email() == email_firmy)
 		{
@@ -511,10 +622,14 @@ int ListaFirm::sprawdz(std::string email_firmy, std::string nazwa_firmy)
 			returnInt += 1;
 		}
 
+		pom = pom->podaj_wskaznik_next_firmy();		//dopoki nie dotrzemy do konca listy - przechodzimy kolejne welzy
+
 	}
 
 	return returnInt;		//jezeli nie ma takiej firmy - 0, jezeli jest firma o takiej nazwie - 1, jezeli jest firma zarejestrowana na podany email - 2, jezeli nazwa i email sa zajete - 3
 }
+
+//------------------------------------------------------------------------------------------------
 
 	//funkcja wyszukuje firme po id
 Firma* ListaFirm::wyszukaj_firme(unsigned int id_firmy)
@@ -529,6 +644,8 @@ Firma* ListaFirm::wyszukaj_firme(unsigned int id_firmy)
 //	return pom;		//jezeli znajdziemy firme - zwroci jej adres, jezeli nie - NULL
 }
 
+//------------------------------------------------------------------------------------------------
+
 	//funkcja wyszukuje firme po nazwie
 Firma* ListaFirm::wyszukaj_firme(std::string email_firmy)
 {
@@ -542,6 +659,8 @@ Firma* ListaFirm::wyszukaj_firme(std::string email_firmy)
 //	return pom;		//jezeli znajdziemy firme - zwroci jej adres, jezeli nie - NULL
 }
 
+//------------------------------------------------------------------------------------------------
+
 
 		//metody klasy ListaKlientow
 
@@ -550,6 +669,8 @@ ListaKlientow::ListaKlientow()
 {
 	head = NULL;
 }
+
+//------------------------------------------------------------------------------------------------
 
 	//funkcja dodaje klienta do listy
 void ListaKlientow::dodaj(Klient* toAdd)
@@ -569,6 +690,8 @@ void ListaKlientow::dodaj(Klient* toAdd)
 
 	pom->ustaw_wskaznik_next_klienta(toAdd);				//dodany klient staje sie ogonem
 }
+
+//------------------------------------------------------------------------------------------------
 
 	//funkcja usuwa z listy klienta o zadanym ID
 int ListaKlientow::usun(unsigned int idKlientaDoUsuniecia, Bazarek* sklep)
@@ -606,8 +729,10 @@ int ListaKlientow::usun(unsigned int idKlientaDoUsuniecia, Bazarek* sklep)
 	return 0;		//jezeli nie znaleziono klienta o takim id to zwracane jest 0
 }
 
+//------------------------------------------------------------------------------------------------
+
 //funkcja sprawdza czy podany klient juz istnieje
-int ListaKlientow::sprawdz(std::string email_klienta, std::string nazwa_klienta)		
+int ListaKlientow::sprawdz(std::string email_klienta, std::string nazwa_klienta)
 {
 	int returnInt = 0;		//wartosc ktora bedziemy zwracac
 
@@ -615,7 +740,6 @@ int ListaKlientow::sprawdz(std::string email_klienta, std::string nazwa_klienta)
 
 	while (pom != NULL)
 	{
-		pom = pom->podaj_wskaznik_next_klienta();		//dopoki nie dotrzemy do konca listy - przechodzimy kolejne welzy
 
 		if (pom->podaj_email() == email_klienta)
 		{
@@ -627,10 +751,14 @@ int ListaKlientow::sprawdz(std::string email_klienta, std::string nazwa_klienta)
 			returnInt += 1;
 		}
 
+		pom = pom->podaj_wskaznik_next_klienta();		//dopoki nie dotrzemy do konca listy - przechodzimy kolejne welzy
+
 	}
 
 	return returnInt;		//jezeli nie ma takiego klienta - 0, jezeli jest klient o takiej nazwie - 1, jezeli jest klient zarejestrowany na podany email - 2, jezeli nazwa i email sa zajete - 3
 }
+
+//------------------------------------------------------------------------------------------------
 
 //funkcja wyszukuje klienta po id
 Klient* ListaKlientow::wyszukaj_klienta(unsigned int id_klienta)
@@ -645,6 +773,8 @@ Klient* ListaKlientow::wyszukaj_klienta(unsigned int id_klienta)
 //	return pom;		//jezeli znajdziemy klienta - zwroci jego adres, jezeli nie - NULL
 }
 
+//------------------------------------------------------------------------------------------------
+
 //funkcja wyszukuje klienta po nazwie
 Klient* ListaKlientow::wyszukaj_klienta(std::string email_klienta)
 {
@@ -658,6 +788,9 @@ Klient* ListaKlientow::wyszukaj_klienta(std::string email_klienta)
 //	return pom;		//jezeli znajdziemy klienta - zwroci jej adres, jezeli nie - NULL
 }
 
+//------------------------------------------------------------------------------------------------
+
+
 			//metody klasy Bazarek
 
 	//konstruktor klasy Bazarek
@@ -668,6 +801,8 @@ Bazarek::Bazarek()
 	listaPrzedmiotow = NULL;
 	listaLicytacji = NULL;
 }
+
+//------------------------------------------------------------------------------------------------
 
 		//obsluga wystawionych przedmiotow i licytacji
 	//funkcja dodajaca przedmiot
@@ -691,12 +826,14 @@ int Bazarek::dodaj_przedmiot(Przedmiot* toAdd)
 			pom = pom->podaj_adres_nastepnego_przedmiotu();
 		}
 
-		listaPrzedmiotow = toAdd;		//po zakonczeniu petli przedmiot dopisywany jest na koniec listy
+		pom->ustaw_nastepny_przedmiot(toAdd);		//po zakonczeniu petli przedmiot dopisywany jest na koniec listy
 	}
 
 	return toAdd->podaj_id();			//na znak poprawnego dodania przedmiotu zwracane jest jego id
-	
+
 }
+
+//------------------------------------------------------------------------------------------------
 
 	//funkcja dodajaca licytacje
 int Bazarek::dodaj_licytacje(Licytacja* toAdd)
@@ -719,13 +856,15 @@ int Bazarek::dodaj_licytacje(Licytacja* toAdd)
 			pom = pom->podaj_adres_nastepnej_licytacji();
 		}
 
-		listaLicytacji = toAdd;		//po zakonczeniu petli przedmiot dopisywany jest na koniec listy
+		pom->ustaw_nastepna_licytacje(toAdd);		//po zakonczeniu petli przedmiot dopisywany jest na koniec listy
 	}
 
 	return toAdd->podaj_id();			//na znak poprawnego dodania przedmiotu zwracane jest jego id
 
 
-}		//do zrobienia
+}
+
+//------------------------------------------------------------------------------------------------
 	
 	//funkcja usuwajaca przedmiot
 int Bazarek::usun_przedmiot(unsigned int idPrzedmiotu)
@@ -761,6 +900,8 @@ int Bazarek::usun_przedmiot(unsigned int idPrzedmiotu)
 	return 0;																							//jezeli nie ma przedmiotu o podanym id to zwracamy 0
 }
 
+//------------------------------------------------------------------------------------------------
+
 	//funkcja usuwajaca licytacje
 int Bazarek::usun_licytacje(unsigned int idLicytacji)
 {
@@ -795,6 +936,8 @@ int Bazarek::usun_licytacje(unsigned int idLicytacji)
 	return 0;																							//jezeli nie ma licytacji o podanym id zwracamy 0
 }
 
+//------------------------------------------------------------------------------------------------
+
 	//funkcja szukajaca przedmiotow po nazwie
 std::vector<unsigned int>* Bazarek::szukaj_przedmiotow_po_nazwie(std::string szukanaOferta)
 {
@@ -815,6 +958,8 @@ std::vector<unsigned int>* Bazarek::szukaj_przedmiotow_po_nazwie(std::string szu
 
 }
 
+//------------------------------------------------------------------------------------------------
+
 	//funkcja szukajaca licytacji po nazwie
 std::vector<unsigned int>* Bazarek::szukaj_licytacji_po_nazwie(std::string szukanaLicytacja)
 {
@@ -834,6 +979,8 @@ std::vector<unsigned int>* Bazarek::szukaj_licytacji_po_nazwie(std::string szuka
 	return zwracanyWektor;
 }
 
+//------------------------------------------------------------------------------------------------
+
 	//funkcja szukajaca przedmiotu o danym id
 Przedmiot* Bazarek::szukaj_przedmiotu_po_id(unsigned int idPrzedmiotu)
 {
@@ -851,6 +998,8 @@ Przedmiot* Bazarek::szukaj_przedmiotu_po_id(unsigned int idPrzedmiotu)
 
 	return zwracanyWskaznik;
 }
+
+//------------------------------------------------------------------------------------------------
 
 	//funkcja szukajaca licytacji o danym id
 Licytacja* Bazarek::szukaj_licytacji_po_id(unsigned int idLicytacji)
@@ -870,12 +1019,14 @@ Licytacja* Bazarek::szukaj_licytacji_po_id(unsigned int idLicytacji)
 	return zwracanyWskaznik;
 }
 
-
+//------------------------------------------------------------------------------------------------
 
 //funkcje wspolpracojace z okienkami		wszystko do zrobienia!!!
 void Bazarek::wyswietl(){}
 void Bazarek::wyswietl_przedmioty(){}
 void Bazarek::wyswietl_licytacje(){}
+
+//------------------------------------------------------------------------------------------------
 
 	//funkcja szukajaca wszystkich przedmiotow osoby
 std::vector<unsigned int>* Bazarek::wyszukaj_przedmioty_osoby(unsigned int idOsoby)
@@ -896,6 +1047,8 @@ std::vector<unsigned int>* Bazarek::wyszukaj_przedmioty_osoby(unsigned int idOso
 	return wektorDoZwrocenia;
 }
 
+//------------------------------------------------------------------------------------------------
+
 	//funkcja szukajaca wszystkich licytacji osoby
 std::vector<unsigned int>* Bazarek::wyszukaj_licytacje_osoby(unsigned int idOsoby)
 {
@@ -914,6 +1067,8 @@ std::vector<unsigned int>* Bazarek::wyszukaj_licytacje_osoby(unsigned int idOsob
 
 	return wektorDoZwrocenia;
 }
+
+//------------------------------------------------------------------------------------------------
 
 	//funkcja uzywana przy usuwaniu konta
 void Bazarek::usun_wszystkie_przedmioty_i_licytacje_wlasciciela(unsigned int idWlasciciela)
@@ -942,9 +1097,13 @@ void Bazarek::usun_wszystkie_przedmioty_i_licytacje_wlasciciela(unsigned int idW
 	}
 }
 
+//------------------------------------------------------------------------------------------------
+
 //funkcje do obslugi licytacji
 bool Bazarek::sprawdz_czas_licytacji(Licytacja* licytacjaDoSprawdzenia) { return true; }
 void Bazarek::sprawdz_wszystkie_licytacje(){}
+
+//------------------------------------------------------------------------------------------------
 
 
 		//metody klasy ObslogaZamowien
@@ -961,12 +1120,16 @@ ObslugaZamowien::ObslugaZamowien()
 	kodPocztowy = 0;
 }
 
+//------------------------------------------------------------------------------------------------
+
 	//funkcja pobierajaca od uzytkownika dane osobowe
 void ObslugaZamowien::podaj_dane_osobowe(std::string Im, std::string Naz)
 {
 	imie = Im;
 	nazwisko = Naz;
 }
+
+//------------------------------------------------------------------------------------------------
 
 	//funkcja pobierajaca od uzytkownika dane adresowe
 void ObslugaZamowien::podaj_dane_adresowe(std::string Kr, std::string Mi, std::string Ul, std::string Nr)
@@ -977,13 +1140,19 @@ void ObslugaZamowien::podaj_dane_adresowe(std::string Kr, std::string Mi, std::s
 	nrDomu = Nr;
 }
 
+//------------------------------------------------------------------------------------------------
+
 	//???
 int ObslugaZamowien::przekieruj_na_payu(){}			//do zrobienia wszystkie
 void ObslugaZamowien::wybierz_opcje_platnosci(){}
 void ObslugaZamowien::przekieruj_do_przelewu(){}
+
+//------------------------------------------------------------------------------------------------
 
 	//funkcja podajaca koszyk klienta
 void ObslugaZamowien::podaj_koszyk(std::vector<unsigned int> koszyk_do_podania)
 {
 	koszyk = koszyk_do_podania;
 }
+
+//------------------------------------------------------------------------------------------------
